@@ -6,6 +6,7 @@
 package entidades;
 
 import enumeraciones.Oficios;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -24,7 +25,7 @@ public class Proveedor extends Usuario{
     private String descripcionService;
     
     
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Imagen imagen;
 
     public Oficios getOficio() {
