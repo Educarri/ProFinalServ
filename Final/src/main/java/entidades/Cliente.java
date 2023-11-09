@@ -5,10 +5,14 @@
  */
 package entidades;
 
-/**
- *
- * @author gianc
- */
-public class Cliente {
+import javax.persistence.Entity;
+
+
+@Entity
+public class Cliente extends Usuario{
+
+    public Cliente() {
+    }
     
+   
 }

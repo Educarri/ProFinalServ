@@ -5,20 +5,15 @@
  */
 package repositorios;
 
-import entidades.Proveedor;
+import entidades.Calificacion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
-public interface ProveedorRepositorio extends JpaRepository<Proveedor, String>{
+public interface CalificacionRepositorio extends JpaRepository<Calificacion, String> {
     
-       @Query("SELECT p FROM Proveedor p WHERE p.email = :email")
-    public Proveedor buscarProveedorPorEmail(@Param("email")String email);
-    
-         @Query("SELECT p FROM Proveedor p WHERE p.nombre = :nombre")
-    public Proveedor buscarProveedorPorNombre(@Param("nombre")String nombre);
-    
+         @Query("SELECT c FROM Calificacion c WHERE c.puntaje = :puntaje")
+    public Calificacion buscarCalificacionPorPuntaje(@Param("puntaje")Integer puntaje);
 }

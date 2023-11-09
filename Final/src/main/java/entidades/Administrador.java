@@ -5,10 +5,16 @@
  */
 package entidades;
 
-/**
- *
- * @author gianc
- */
-public class Administrador {
+import javax.persistence.Entity;
+
+
+@Entity
+public class Administrador extends Usuario{
+
+    public Administrador() {
+    }
+    
+    
+    
     
 }
