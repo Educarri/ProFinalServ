@@ -5,12 +5,8 @@
  */
 package ProyectoFinal.Final.entidades;
 
-<<<<<<< HEAD:Final/src/main/java/entidades/Proveedor.java
-import enumeraciones.Oficios;
-import javax.persistence.CascadeType;
-=======
+
 import ProyectoFinal.Final.enumeraciones.Oficios;
->>>>>>> ccf5e717874618087f7981d6918a61ea05a25247:Final/src/main/java/ProyectoFinal/Final/entidades/Proveedor.java
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -29,7 +25,7 @@ public class Proveedor extends Usuario{
     private String descripcionService;
     
     
-    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToOne
     private Imagen imagen;
 
     public Oficios getOficio() {
