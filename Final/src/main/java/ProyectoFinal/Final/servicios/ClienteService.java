@@ -58,7 +58,12 @@ public class ClienteService {
         cliRepo.deleteById(id);
 
     }
+    
+       public Cliente buscarClientePorDNI(Long DNI){
+        return cliRepo.buscarClientePorDNI(DNI);
+    }
 
+       
     public void validar(Cliente cli) throws miException {
         if (cli.getNombre().isEmpty() || cli.getNombre() == null) {
             throw new miException("El nombre no puede estar vacio.");
