@@ -25,13 +25,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/admin")
 @CrossOrigin("*") //cualquier host puede consumir este controlador si pongo *
 public class AdminControlador {
+
     @Autowired
     private AdminService adminService;
-    
+
     @Autowired
     private ClienteService cliServ;
-    
-    
+
     @GetMapping("/clientes")
     public ResponseEntity<List<Cliente>> findAllClientes() {
         try {
@@ -44,8 +44,8 @@ public class AdminControlador {
             return ResponseEntity.status(400).body(null);
         }
     }
-    
-        @GetMapping("/cliente/DNI/{DNI}")
+
+    @GetMapping("/cliente/DNI/{DNI}")
     public ResponseEntity<Cliente> buscarClientePorDNI(@PathVariable Long DNI) {
         try {
             Cliente cli = cliServ.buscarClientePorDNI(DNI);
@@ -54,10 +54,9 @@ public class AdminControlador {
             return ResponseEntity.status(400).body(null);
         }
     }
-    
-    
+
     @PostMapping
-    public ResponseEntity<Administrador> save(@RequestBody Administrador admin) {
+    public ResponseEntity<Administrador> crearAdministrador(@RequestBody Administrador admin) {
         try {
             Administrador ad = adminService.registrarAdmin(admin);
             return ResponseEntity.status(HttpStatus.CREATED).body(ad);
