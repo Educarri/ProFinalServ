@@ -6,6 +6,7 @@
 package ProyectoFinal.Final.servicios;
 
 import ProyectoFinal.Final.entidades.Administrador;
+import ProyectoFinal.Final.enumeraciones.Rol;
 import ProyectoFinal.Final.excepciones.miException;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -26,6 +27,7 @@ public class AdminService {
     public Administrador registrarAdmin(Administrador admin) throws miException {
         validar(admin);
         
+        admin.setRol(Rol.ADMIN);
         return adminRepo.save(admin);
     }
     

@@ -6,6 +6,7 @@
 package ProyectoFinal.Final.servicios;
 
 import ProyectoFinal.Final.entidades.Cliente;
+import ProyectoFinal.Final.enumeraciones.Rol;
 import ProyectoFinal.Final.excepciones.miException;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -24,18 +25,31 @@ public class ClienteService {
 
     @Transactional
     public Cliente registrarCliente(Cliente cli) throws miException {
-        validar(cli);
+       validar(cli);
 
         Cliente clie = cliRepo.buscarClientePorDNI(cli.getDNI());
         if (clie != null) {
-            throw new miException("La patente ingresada ya está registrada.");
+            throw new miException("El dni ingresado ya está registrado.");
         }
+        
+        cli.setRol(Rol.USER);
 
        return cliRepo.save(cli);
 
     }
 
-    //AGREGAR METODO PARA QUE EL USUARIO PUEDA MODIFICAR SUS DATOS ??
+    //NECESITA MODIFICAR MAS QUE SOLO ESTOS 2 ATRIBUTOS??
+    
+        public Cliente modificarCliente (String id, Cliente cli) throws miException {
+
+       validar(cli);
+        Cliente cl = cliRepo.getById(id);
+        cl.setTelefono(cli.getTelefono());
+        cl.setCorreo(cli.getPassword());
+        
+        return cliRepo.save(cl);
+        
+    }
     
     
     public List<Cliente> listarClientes() {
@@ -58,7 +72,13 @@ public class ClienteService {
         cliRepo.deleteById(id);
 
     }
+    
+       public Cliente buscarClientePorDNI(Long DNI){
+        return cliRepo.buscarClientePorDNI(DNI);
+    }
 
+      
+       
     public void validar(Cliente cli) throws miException {
         if (cli.getNombre().isEmpty() || cli.getNombre() == null) {
             throw new miException("El nombre no puede estar vacio.");
