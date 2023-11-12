@@ -17,11 +17,9 @@ import org.hibernate.annotations.GenericGenerator;
 
 
 @Entity
-<<<<<<< HEAD
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) //para que en la base de datos se genere una tabla por cada entidad hija
-=======
+
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
->>>>>>> 10004ed099f584f5984b3434b518992aff210b8d
+
 public class Usuario {
     @Id
     @GeneratedValue(generator = "uuid")

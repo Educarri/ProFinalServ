@@ -1,13 +1,7 @@
 
 package ProyectoFinal.Final.controladores;
 
-<<<<<<< HEAD
 
-/**
- *
- * @author gianc
- */
-=======
 import ProyectoFinal.Final.entidades.Trabajo;
 import ProyectoFinal.Final.servicios.TrabajoService;
 import java.util.List;
@@ -26,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/trabajo")
 @CrossOrigin("*") //cualquier host puede consumir este controlador si pongo *
->>>>>>> 10004ed099f584f5984b3434b518992aff210b8d
 public class TrabajoControlador {
 
     @Autowired

@@ -5,14 +5,8 @@
  */
 package ProyectoFinal.Final.controladores;
 
-<<<<<<< HEAD
-public class ProveedorControlador {
-    
-    
-      
-    
-    
-=======
+
+
 import ProyectoFinal.Final.entidades.Proveedor;
 import ProyectoFinal.Final.servicios.ProveedorService;
 import java.util.List;
@@ -69,5 +63,5 @@ public class ProveedorControlador {
         }
     }
 
->>>>>>> 10004ed099f584f5984b3434b518992aff210b8d
+
 }
