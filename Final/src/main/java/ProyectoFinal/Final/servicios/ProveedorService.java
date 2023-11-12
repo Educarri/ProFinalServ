@@ -7,6 +7,7 @@ package ProyectoFinal.Final.servicios;
 
 import ProyectoFinal.Final.entidades.Imagen;
 import ProyectoFinal.Final.entidades.Proveedor;
+import ProyectoFinal.Final.enumeraciones.Rol;
 import ProyectoFinal.Final.excepciones.miException;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -32,9 +33,11 @@ public class ProveedorService {
 
         Proveedor prove = proRepo.buscarProveedorPorDNI(prov.getDNI());
         if (prove != null) {
-            throw new miException("La patente ingresada ya está registrada.");
+            throw new miException("El dni ingresado de Proveedor ya está registrado.");
         }
 
+        prov.setRol(Rol.PROVEEDOR);
+        
         return proRepo.save(prov);
 
     }

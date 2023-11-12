@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ProyectoFinal.Final.repositorios.TrabajoRepositorio;
+import java.util.List;
 
 
 @Service
@@ -35,6 +36,12 @@ public class TrabajoService {
         }
 
         traRepo.deleteById(id);
+
+    }
+    
+      public List<Trabajo> listarTrabajos() {
+
+        return traRepo.findAll();
 
     }
 
