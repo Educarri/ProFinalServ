@@ -13,3 +13,23 @@ export async function getAllClientes() {
       throw error; // Puedes lanzar el error nuevamente para que quien llame a esta función pueda manejarlo.
     }
   }
+
+  export async function eliminarCli(id){
+    await fetch(`${API_URL}/cliente/${id}`, {
+      method : "DELETE",
+    });
+  }
+
+  export async function getClienteById(id) {
+    try {
+      const response = await fetch(`${API_URL}/cliente/id/${id}`);
+      if (!response.ok) {
+        throw new Error("Hubo un error al obtener el cliente por ID");
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }

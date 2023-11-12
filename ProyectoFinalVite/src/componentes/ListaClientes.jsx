@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllClientes } from "../servicios/finalService";
+import { eliminarCli, getAllClientes } from "../servicios/finalService";
 import { Cliente } from './Cliente';
 
 export default function ListaClientes (){
@@ -11,13 +11,13 @@ export default function ListaClientes (){
     }, []);
   
   
-//   async function eliminarVehiculo(auto){
-//    await eliminarAuto(auto.id);
-//    const newArray = clientes.filter(cl => cl.id !== auto.id);
-//    setAuto(newArray);
-//   }
+  async function eliminarCliente(auto){
+    await eliminarCli(auto.id);
+   const newArray = clientes.filter(cl => cl.id !== auto.id);
+    setClientes(newArray);
+  }
   
-    const cardsList = clientes.map((c)=> <Cliente cliente={c}  key={c.id}/>) //hago automaticamente la cantidad de cartas necesarias
+    const cardsList = clientes.map((c)=> <Cliente cliente={c} eliminarCliente={eliminarCliente} key={c.id}/>) //hago automaticamente la cantidad de cartas necesarias
     
     return (
       <div className={`album ${clientes.length === 0 ? 'hidden' : ''}`} >
