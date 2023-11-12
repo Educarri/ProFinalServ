@@ -18,8 +18,7 @@ export default function ListaClientes (){
 //   }
   
     const cardsList = clientes.map((c)=> <Cliente cliente={c}  key={c.id}/>) //hago automaticamente la cantidad de cartas necesarias
-  //
-  
+    
     return (
       <div className={`album ${clientes.length === 0 ? 'hidden' : ''}`} >
         <div className="album py-5 bg-body-tertiary">
