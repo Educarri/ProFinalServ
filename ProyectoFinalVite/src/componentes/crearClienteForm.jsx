@@ -23,7 +23,6 @@ export default function CrearClienteForm() {
             dni <= 0 ||
             correo === "" ||
             telefono <= 0 ||
-            descripcion === "" ||
             password === "" ||
             direccion === ""
 
@@ -39,7 +38,6 @@ export default function CrearClienteForm() {
             dni,
             correo,
             telefono,
-            descripcion,
             password,
             direccion,
 
@@ -97,15 +95,6 @@ export default function CrearClienteForm() {
                         type="number"
                         name="telefono"
                         onChange={(e) => settelefono(e.target.value)}
-                    />
-
-                </div>
-                <div className="user-box">
-                    <label>Breve Descripcion  </label>
-                    <input
-                        type="text"
-                        name="descripcion"
-                        onChange={(e) => setdescripcion(e.target.value)}
                     />
 
                 </div>
