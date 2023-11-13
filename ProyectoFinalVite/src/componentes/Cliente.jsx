@@ -28,6 +28,16 @@ export const Cliente = ({ cliente, eliminarCliente }) => {
                 >
                   X Eliminar
                 </button>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-outline-secondary"
+                  style={{ color: "green" }}
+                  // onClick={() => modificarCliente(cliente)}
+                >
+                  <Link to={`/modificar/${cliente.id}`} className="nav-link">
+                  + Modificar
+                  </Link>     
+                </button>
               </div>
             </div>
           </div>

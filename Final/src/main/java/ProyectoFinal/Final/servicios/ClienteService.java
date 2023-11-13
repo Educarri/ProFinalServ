@@ -43,8 +43,12 @@ public class ClienteService {
 
         validar(cli);
         Cliente cl = cliRepo.getById(id);
+        cl.setNombre(cli.getNombre());
+        cl.setApellido(cli.getApellido());
+        cl.setCorreo(cli.getCorreo());
         cl.setTelefono(cli.getTelefono());
-        cl.setCorreo(cli.getPassword());
+        cl.setPassword(cli.getPassword());
+        cl.setDireccion(cli.getDireccion());
 
         return cliRepo.save(cl);
 
