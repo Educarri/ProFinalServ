@@ -72,4 +72,14 @@ public class ClienteControlador {
         }
     }
     
+        @GetMapping("/id/{id}")
+    public ResponseEntity<Cliente> buscarClientePorID(@PathVariable String id) {
+        try {
+            Cliente cli = cliServ.buscarClientePorID(id);
+            return ResponseEntity.status(200).body(cli);
+        } catch (Exception e) {
+            return ResponseEntity.status(400).body(null);
+        }
+    }
+    
 }

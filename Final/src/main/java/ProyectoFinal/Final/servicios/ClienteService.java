@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ProyectoFinal.Final.repositorios.ClienteRepositorio;
-
+import java.util.Optional;
 
 @Service
 public class ClienteService {
@@ -25,33 +25,31 @@ public class ClienteService {
 
     @Transactional
     public Cliente registrarCliente(Cliente cli) throws miException {
-       validar(cli);
+        validar(cli);
 
-        Cliente clie = cliRepo.buscarClientePorDNI(cli.getDNI());
+        Cliente clie = cliRepo.buscarClientePorDni(cli.getDni());
         if (clie != null) {
             throw new miException("El dni ingresado ya está registrado.");
         }
-        
+
         cli.setRol(Rol.USER);
 
-       return cliRepo.save(cli);
+        return cliRepo.save(cli);
 
     }
 
     //NECESITA MODIFICAR MAS QUE SOLO ESTOS 2 ATRIBUTOS??
-    
-        public Cliente modificarCliente (String id, Cliente cli) throws miException {
+    public Cliente modificarCliente(String id, Cliente cli) throws miException {
 
-       validar(cli);
+        validar(cli);
         Cliente cl = cliRepo.getById(id);
         cl.setTelefono(cli.getTelefono());
         cl.setCorreo(cli.getPassword());
-        
+
         return cliRepo.save(cl);
-        
+
     }
-    
-    
+
     public List<Cliente> listarClientes() {
 
         return cliRepo.findAll();
@@ -60,6 +58,15 @@ public class ClienteService {
 
     public Cliente getOne(String id) {
         return cliRepo.getOne(id);
+    }
+
+    public Cliente buscarClientePorID(String id) {
+        Optional<Cliente> respuesta = cliRepo.findById(id);
+        Cliente cli = new Cliente();
+        if (respuesta.isPresent()) {
+            cli = respuesta.get();
+        }
+        return cli;
     }
 
     @Transactional
@@ -72,13 +79,11 @@ public class ClienteService {
         cliRepo.deleteById(id);
 
     }
-    
-       public Cliente buscarClientePorDNI(Long DNI){
-        return cliRepo.buscarClientePorDNI(DNI);
+
+    public Cliente buscarClientePorDNI(Long DNI) {
+        return cliRepo.buscarClientePorDni(DNI);
     }
 
-      
-       
     public void validar(Cliente cli) throws miException {
         if (cli.getNombre().isEmpty() || cli.getNombre() == null) {
             throw new miException("El nombre no puede estar vacio.");
@@ -88,11 +93,11 @@ public class ClienteService {
             throw new miException("El apellido no puede estar vacio.");
         }
 
-        if (cli.getDNI() > 99999999) {
+        if (cli.getDni() > 99999999) {
             throw new miException("El dni supera la cantidad de digitos maximos.");
         }
 
-        if (cli.getDNI() == null) {
+        if (cli.getDni() == null) {
             throw new miException("El dni no puede estar vacio.");
         }
 
