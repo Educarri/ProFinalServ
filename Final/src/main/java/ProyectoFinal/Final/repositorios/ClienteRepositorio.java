@@ -20,7 +20,7 @@ public interface ClienteRepositorio extends JpaRepository<Cliente, String>{
          @Query("SELECT c FROM Cliente c WHERE c.nombre = :nombre")
     public Cliente buscarClientePorNombre(@Param("nombre")String nombre);
     
-           @Query("SELECT c FROM Cliente c WHERE c.DNI = :DNI")
-    public Cliente buscarClientePorDNI(@Param("DNI")Long dni);
+           @Query("SELECT c FROM Cliente c WHERE c.dni = :dni")
+    public Cliente buscarClientePorDni(@Param("dni")Long dni);
     
 }
