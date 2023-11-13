@@ -28,7 +28,7 @@ public class Usuario {
     
     protected String nombre;
     protected String apellido;
-    protected Long DNI;
+    protected Long dni;
     protected String correo;
     protected Integer telefono;
     protected String password;
@@ -65,12 +65,12 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public Long getDNI() {
-        return DNI;
+    public Long getDni() {
+        return dni;
     }
 
-    public void setDNI(Long DNI) {
-        this.DNI = DNI;
+    public void setDni(Long dni) {
+        this.dni = dni;
     }
 
     public String getCorreo() {

@@ -31,7 +31,7 @@ public class ProveedorService {
     public Proveedor registrarProveedor(Proveedor prov) throws miException {
         validar(prov); // AGREGAR ATRIBUTO OFICIO Y PENSAR COMO HACER PARA QUE EL USUARIO SIN INGRESAR UN TIPO DE DATO ROL SE ASIGNE EL MISMO
 
-        Proveedor prove = proRepo.buscarProveedorPorDNI(prov.getDNI());
+        Proveedor prove = proRepo.buscarProveedorPorDNI(prov.getDni());
         if (prove != null) {
             throw new miException("El dni ingresado de Proveedor ya está registrado.");
         }
@@ -72,11 +72,11 @@ public class ProveedorService {
             throw new miException("El apellido no puede estar vacio.");
         }
 
-        if (prov.getDNI() > 99999999) {
+        if (prov.getDni() > 99999999) {
             throw new miException("El dni supera la cantidad de digitos maximos.");
         }
 
-        if (prov.getDNI() == null) {
+        if (prov.getDni() == null) {
             throw new miException("El dni no puede estar vacio.");
         }
 
