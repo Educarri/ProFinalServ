@@ -1,12 +1,11 @@
-import '../CrearUsuarioForm.css';
 import React, { useState } from "react";
-import { crearCliente } from '../servicios/ClienteService';
+import { crearCliente } from '../servicios/clienteService';
 import { useNavigate } from "react-router-dom";
 
 export default function CrearClienteForm() {
     const [nombre, setnombre] = useState("");
     const [apellido, setapellido] = useState("");
-    const [DNI, setDNI] = useState(0);
+    const [dni, setDNI] = useState(0);
     const [correo, setcorreo] = useState("");
     const [telefono, settelefono] = useState(0);
     const [descripcion, setdescripcion] = useState("");
@@ -21,10 +20,9 @@ export default function CrearClienteForm() {
         if (
             nombre === "" ||
             apellido === "" ||
-            DNI <= 0 ||
+            dni <= 0 ||
             correo === "" ||
             telefono <= 0 ||
-            descripcion === "" ||
             password === "" ||
             direccion === ""
 
@@ -37,10 +35,9 @@ export default function CrearClienteForm() {
         const newCliente = {
             nombre,
             apellido,
-            DNI,
+            dni,
             correo,
             telefono,
-            descripcion,
             password,
             direccion,
 
@@ -77,7 +74,7 @@ export default function CrearClienteForm() {
                     <label>DNI  </label>
                     <input
                         type="number"
-                        name="DNI"
+                        name="dni"
                         onChange={(e) => setDNI(e.target.value)}
                     />
 
@@ -98,15 +95,6 @@ export default function CrearClienteForm() {
                         type="number"
                         name="telefono"
                         onChange={(e) => settelefono(e.target.value)}
-                    />
-
-                </div>
-                <div className="user-box">
-                    <label>Breve Descripcion  </label>
-                    <input
-                        type="text"
-                        name="descripcion"
-                        onChange={(e) => setdescripcion(e.target.value)}
                     />
 
                 </div>

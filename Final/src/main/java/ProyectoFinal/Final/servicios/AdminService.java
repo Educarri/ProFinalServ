@@ -63,11 +63,11 @@ public class AdminService {
             throw new miException("El apellido no puede estar vacio.");
         }
 
-        if (admin.getDNI() > 99999999) {
+        if (admin.getDni() > 99999999) {
             throw new miException("El dni supera la cantidad de digitos maximos.");
         }
 
-        if (admin.getDNI() == null) {
+        if (admin.getDni() == null) {
             throw new miException("El dni no puede estar vacio.");
         }
 

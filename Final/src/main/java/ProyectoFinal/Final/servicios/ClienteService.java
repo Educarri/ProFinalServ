@@ -27,7 +27,7 @@ public class ClienteService {
     public Cliente registrarCliente(Cliente cli) throws miException {
         validar(cli);
 
-        Cliente clie = cliRepo.buscarClientePorDNI(cli.getDNI());
+        Cliente clie = cliRepo.buscarClientePorDni(cli.getDni());
         if (clie != null) {
             throw new miException("El dni ingresado ya está registrado.");
         }
@@ -43,8 +43,12 @@ public class ClienteService {
 
         validar(cli);
         Cliente cl = cliRepo.getById(id);
+        cl.setNombre(cli.getNombre());
+        cl.setApellido(cli.getApellido());
+        cl.setCorreo(cli.getCorreo());
         cl.setTelefono(cli.getTelefono());
-        cl.setCorreo(cli.getPassword());
+        cl.setPassword(cli.getPassword());
+        cl.setDireccion(cli.getDireccion());
 
         return cliRepo.save(cl);
 
@@ -81,7 +85,7 @@ public class ClienteService {
     }
 
     public Cliente buscarClientePorDNI(Long DNI) {
-        return cliRepo.buscarClientePorDNI(DNI);
+        return cliRepo.buscarClientePorDni(DNI);
     }
 
     public void validar(Cliente cli) throws miException {
@@ -93,11 +97,11 @@ public class ClienteService {
             throw new miException("El apellido no puede estar vacio.");
         }
 
-        if (cli.getDNI() > 99999999) {
+        if (cli.getDni() > 99999999) {
             throw new miException("El dni supera la cantidad de digitos maximos.");
         }
 
-        if (cli.getDNI() == null) {
+        if (cli.getDni() == null) {
             throw new miException("El dni no puede estar vacio.");
         }
 

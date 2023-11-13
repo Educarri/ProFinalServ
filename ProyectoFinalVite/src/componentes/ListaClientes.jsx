@@ -11,11 +11,17 @@ export default function ListaClientes (){
     }, []);
   
   
-  async function eliminarCliente(auto){
-    await eliminarCli(auto.id);
-   const newArray = clientes.filter(cl => cl.id !== auto.id);
+  async function eliminarCliente(cliente){
+    await eliminarCli(cliente.id);
+   const newArray = clientes.filter(cl => cl.id !== cliente.id);
     setClientes(newArray);
   }
+
+
+  // async function modificarCliente(cliente, clienteModificado){
+  //   await modificarCliente(cliente.id, clienteModificado);
+  // }
+
   
     const cardsList = clientes.map((c)=> <Cliente cliente={c} eliminarCliente={eliminarCliente} key={c.id}/>) //hago automaticamente la cantidad de cartas necesarias
     
