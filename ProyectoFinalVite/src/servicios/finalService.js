@@ -20,6 +20,18 @@ export async function getAllClientes() {
     });
   }
 
+  export async function modificarCliente(id, clienteModificado) {
+    await fetch(`${API_URL}/cliente/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(clienteModificado),
+    });
+  }
+  
+  
+
   export async function getClienteById(id) {
     try {
       const response = await fetch(`${API_URL}/cliente/id/${id}`);

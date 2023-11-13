@@ -6,7 +6,7 @@ import { getClienteById } from "../servicios/finalService";
 export const Detail = () => {
   const [cliente, setCliente] = useState({});
   const { id } = useParams();
-  const { pathname } = useLocation();
+ 
 
   useEffect(() => {
     getClienteById(id)
