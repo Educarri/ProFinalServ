@@ -5,10 +5,7 @@
  */
 package ProyectoFinal.Final.enumeraciones;
 
-/**
- *
- * @author gianc
- */
+
 public enum Rol {
     ADMIN, USER, PROVEEDOR
 }
