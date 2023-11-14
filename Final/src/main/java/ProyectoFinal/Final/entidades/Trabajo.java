@@ -5,7 +5,6 @@
  */
 package ProyectoFinal.Final.entidades;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,7 +25,7 @@ public class Trabajo {
     private Integer presupuesto;
     private String estado;
     
-    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToOne
     private Calificacion calificacion;
 
     public Trabajo() {

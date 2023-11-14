@@ -1,7 +1,6 @@
 
 package ProyectoFinal.Final.controladores;
 
-
 import ProyectoFinal.Final.entidades.Trabajo;
 import ProyectoFinal.Final.servicios.TrabajoService;
 import java.util.List;

@@ -5,7 +5,6 @@
  */
 package ProyectoFinal.Final.entidades;
 
-
 import ProyectoFinal.Final.enumeraciones.Oficios;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

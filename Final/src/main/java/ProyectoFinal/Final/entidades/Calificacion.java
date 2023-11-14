@@ -17,7 +17,6 @@ public class Calificacion {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
-    // agregar id del usuario que la genera y del proveedor que la recibe
     private Integer puntaje;
     private String comentario;
 

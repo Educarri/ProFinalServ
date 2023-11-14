@@ -17,9 +17,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 
 @Entity
-
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-
 public class Usuario {
     @Id
     @GeneratedValue(generator = "uuid")
