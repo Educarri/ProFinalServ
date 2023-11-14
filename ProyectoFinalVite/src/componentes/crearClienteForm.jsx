@@ -8,7 +8,6 @@ export default function CrearClienteForm() {
     const [dni, setDNI] = useState(0);
     const [correo, setcorreo] = useState("");
     const [telefono, settelefono] = useState(0);
-    const [descripcion, setdescripcion] = useState("");
     const [password, setpassword] = useState("");
     const [direccion, setdireccion] = useState("");
     const [error, seterror] = useState(false);
