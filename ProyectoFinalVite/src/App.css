@@ -1,10 +1,21 @@
+body {
+    background-image: url('/src/assets/index.jpg');
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+    background-position: center; /* Centra la imagen en el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+  
+    
+  }
+  
+
+
 .footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #333; /* Puedes ajustar el color de fondo según tus preferencias */
-    color: white; /* Puedes ajustar el color del texto según tus preferencias */
+    background-color: #242424; /* Puedes ajustar el color de fondo según tus preferencias */
+    color: #00bfff; /* Puedes ajustar el color del texto según tus preferencias */
     text-align: center;
     padding: 10px;
   }
@@ -18,19 +29,43 @@
   
   .link{
     text-decoration: none;
-    color: rgb(245, 231, 231);
+    color: #00bfff;
+    font-size: large;
+    font-weight: 700;
+    padding: 10px;
+    ;
+  }
+  .link2{
+    text-decoration: none;
+    color: #00bfff;
+    font-size: large;
     font-weight: 400;
     padding: 10px;
+    ;
   }
-  
+
+  .options{
+    color: #00bfff;
+   
+  }
   .imagenLogo{
-    height: 280px;
+    height: 40px;
+    color: #00bfff;
   }
   
   .mensaje{
     margin-top: 5rem;
   }
 
+  .index{
+    align-items: center;
+    background-color: #242424;
+  }
+
+  .imagenAlbanil{
+    height: 400px;
+    size: 400px;
+  }
 
   /* CLIENTE FORM */
 
@@ -44,9 +79,10 @@
     padding: 20px;
     border-radius: 20px;
     position: relativey;
-    background-color: #1a1a1a;
+    background-color: #242424;
     color: #fff;
     border: 1px solid #333;
+    align-items: center;
   }
   
   .title {

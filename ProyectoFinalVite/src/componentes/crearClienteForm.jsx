@@ -52,64 +52,71 @@ export default function CrearClienteForm() {
                 <p className="message">Al registrarse tendra acceso a los datos de contacto de los proveedores</p>
 
                 <div className="user-box">
-                    <label>Nombre  </label>
+                    
                     <input
                         type="text"
                         name="nombre"
+                        placeholder="Nombre"
                         onChange={(e) => setnombre(e.target.value)}
                     />
 
                 </div>
                 <div className="user-box">
-                    <label>Apellido  </label>
+                    
                     <input
                         type="text"
                         name="apellido"
+                        placeholder="Apellido"
                         onChange={(e) => setapellido(e.target.value)}
                     />
 
                 </div>
                 <div className="user-box">
-                    <label>DNI  </label>
+                    
                     <input
                         type="number"
                         name="dni"
+                        placeholder="DNI"
                         onChange={(e) => setDNI(e.target.value)}
                     />
 
                 </div>
 
                 <div className="user-box">
-                    <label>Correo electronico  </label>
+                    
                     <input
                         type="text"
                         name="correo"
+                        placeholder="Correo electronico"
                         onChange={(e) => setcorreo(e.target.value)}
                     />
 
                 </div>
                 <div className="user-box">
-                    <label>Telefono  </label>
+                  
                     <input
                         type="number"
                         name="telefono"
+                        placeholder="Telefono "
                         onChange={(e) => settelefono(e.target.value)}
                     />
 
                 </div>
                 <div className="user-box">
-                    <label>Password  </label>
+                   
                     <input
                         type="password"
                         name="password"
+                        placeholder="Password "
                         onChange={(e) => setpassword(e.target.value)}
                     />
                 </div>
                 <div className="user-box">
-                    <label>Direccion  </label>
+                   
                     <input
                         type="text"
                         name="direccion"
+                        placeholder="Direccion"
                         onChange={(e) => setdireccion(e.target.value)}
                     />
 

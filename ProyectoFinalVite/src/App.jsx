@@ -15,7 +15,7 @@ function App() {
     <BrowserRouter>
     <NavBar/>
         <Routes>
-          <Route path="/" element={<ListaClientes />} />
+          <Route path="/listarClientes" element={<ListaClientes />} />
           <Route path={"/details/id/:id"} element={<Detail />} />
           <Route path={"/modificar/:id"} element={<ModificarClienteForm />} />
           <Route path="/registrar" element={<CrearClienteForm />} />
