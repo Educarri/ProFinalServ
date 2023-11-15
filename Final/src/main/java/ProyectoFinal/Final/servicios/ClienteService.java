@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ProyectoFinal.Final.repositorios.ClienteRepositorio;
 import java.util.Optional;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
 public class ClienteService {
@@ -31,6 +32,9 @@ public class ClienteService {
         if (clie != null) {
             throw new miException("El dni ingresado ya está registrado.");
         }
+        
+        String passw = cli.getPassword();
+        cli.setPassword(new BCryptPasswordEncoder().encode(passw));
 
         cli.setRol(Rol.USER);
 

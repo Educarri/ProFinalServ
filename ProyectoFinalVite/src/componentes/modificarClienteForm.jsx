@@ -69,7 +69,7 @@ export default function ModificarClienteForm() {
     // Llamada a la función modificarCliente del servicio
     await modificarCliente(id, clienteModificado);
     console.log(clienteModificado);
-    navigate("/");
+    navigate("/clientes");
   }
 
   return (
