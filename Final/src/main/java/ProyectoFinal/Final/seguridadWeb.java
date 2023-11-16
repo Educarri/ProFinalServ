@@ -30,15 +30,14 @@ public class seguridadWeb extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-              .authorizeHttpRequests()
-                .antMatchers("/**").permitAll()
-                .antMatchers("/admin/**").hasRole("ADMIN") // Permitir acceso a todos, incluidos los no autenticados
-                .antMatchers("/cliente/**").permitAll()
-                .antMatchers("/proveedor/**").hasRole("PROVEEDOR")
-                .antMatchers("/css/**", "/js/**", "/img/**").permitAll()
-                .antMatchers("/login", "/registrar", "/error", "/").permitAll()  
-                .anyRequest().authenticated() 
-                . and().formLogin()
+                .authorizeHttpRequests()
+                .antMatchers("/admin/*").hasRole("ADMIN")
+                .antMatchers("/cliente/*").authenticated()
+                .antMatchers("/proveedor/*").hasRole("PROVEEDOR")
+                .antMatchers("/css/*", "/js/*", "/img/*").permitAll()
+                .antMatchers("/login", "/registrar", "/error", "/").permitAll()
+                .anyRequest().authenticated()
+                .and().formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/logincheck")
                 .usernameParameter("correo")
@@ -51,6 +50,5 @@ public class seguridadWeb extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and().csrf()
                 .disable();
-
     }
 }
