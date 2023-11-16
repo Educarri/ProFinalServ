@@ -7,6 +7,7 @@ package ProyectoFinal.Final.servicios;
 
 import ProyectoFinal.Final.entidades.Imagen;
 import ProyectoFinal.Final.entidades.Proveedor;
+import ProyectoFinal.Final.enumeraciones.Oficios;
 import ProyectoFinal.Final.enumeraciones.Rol;
 import ProyectoFinal.Final.excepciones.miException;
 import java.util.List;
@@ -16,7 +17,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ProyectoFinal.Final.repositorios.ProveedorRepositorio;
-
+import java.util.Optional;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class ProveedorService {
@@ -28,17 +31,86 @@ public class ProveedorService {
     private ImagenService imgService;
 
     @Transactional
-    public Proveedor registrarProveedor(Proveedor prov) throws miException {
-        validar(prov); // AGREGAR ATRIBUTO OFICIO Y PENSAR COMO HACER PARA QUE EL USUARIO SIN INGRESAR UN TIPO DE DATO ROL SE ASIGNE EL MISMO
+    public void registrarProveedor(String nombre, String apellido, Long dni,
+            String correo, Integer telefono, String password, String direccion, String oficio, Integer precioHs,
+            Integer reputacion, String descripService, MultipartFile archivo) throws miException {
+        
+        validar(nombre, apellido, dni, correo, telefono, password, direccion, oficio, precioHs, reputacion, descripService); // AGREGAR ATRIBUTO OFICIO Y PENSAR COMO HACER PARA QUE EL USUARIO SIN INGRESAR UN TIPO DE DATO ROL SE ASIGNE EL MISMO
 
-        Proveedor prove = proRepo.buscarProveedorPorDNI(prov.getDni());
+        Proveedor prove = proRepo.buscarProveedorPorDNI(dni);
         if (prove != null) {
             throw new miException("El dni ingresado de Proveedor ya está registrado.");
         }
 
-        prov.setRol(Rol.PROVEEDOR);
-        
-        return proRepo.save(prov);
+        Proveedor pro = new Proveedor();
+        pro.setNombre(nombre);
+        pro.setApellido(apellido);
+        pro.setDni(dni);
+        pro.setCorreo(correo);
+        pro.setTelefono(telefono);
+        pro.setPassword(password);
+        pro.setDireccion(direccion);
+
+        Imagen imagen = imgService.guardar(archivo);
+        pro.setImagen(imagen);
+
+        switch (oficio.toLowerCase()) {
+            case "albañil":
+                pro.setOficio(Oficios.ALBAÑIL);
+                break;
+            case "gasista":
+                pro.setOficio(Oficios.GASISTA);
+                break;
+            case "plomero":
+                pro.setOficio(Oficios.PLOMERO);
+                break;
+            case "electricista":
+                pro.setOficio(Oficios.ELECTRICISTA);
+                break;
+        }
+
+        pro.setPrecioHs(precioHs);
+        pro.setReputacion(reputacion);
+        pro.setDescrService(descripService);
+        pro.setRol(Rol.PROVEEDOR);
+
+        proRepo.save(pro);
+
+    }
+
+    @Transactional
+    public void actualizarProveedor(String nombre, String apellido, Long dni,
+            String correo, Integer telefono, String password, String direccion, String oficio,
+            Integer precioHs, Integer reputacion, String descripService, MultipartFile archivo,
+            String idProveedor) throws miException {
+
+        validar(nombre, apellido, dni, correo, telefono, password, direccion, oficio, precioHs, reputacion, descripService);
+
+        Optional<Proveedor> respuesta = proRepo.findById(idProveedor);
+
+        if (respuesta.isPresent()) {
+            Proveedor pr = new Proveedor();
+            pr.setNombre(nombre);
+            pr.setCorreo(correo);
+            pr.setPassword(new BCryptPasswordEncoder().encode(password));
+            pr.setRol(Rol.PROVEEDOR);
+            pr.setDireccion(direccion);
+            pr.setDescrService(descripService);
+            pr.setReputacion(reputacion);
+            pr.setPrecioHs(precioHs);
+
+            String idImagen = null;
+
+            if (pr.getImagen() != null) {
+                idImagen = pr.getImagen().getId();
+            }
+
+            Imagen img = imgService.modificarImagen(archivo, idImagen);
+
+            pr.setImagen(img);
+
+            proRepo.save(pr);
+        }
 
     }
 
@@ -47,8 +119,8 @@ public class ProveedorService {
         return proRepo.findAll();
 
     }
-    
-        public Proveedor getOne(String id) {
+
+    public Proveedor getOne(String id) {
         return proRepo.getOne(id);
     }
 
@@ -63,60 +135,65 @@ public class ProveedorService {
 
     }
 
-    public void validar(Proveedor prov) throws miException {
-        if (prov.getNombre().isEmpty() || prov.getNombre() == null) {
+    public void validar(String nombre, String apellido, Long dni,
+            String correo, Integer telefono, String password,
+            String direccion, String oficio, Integer precioHs,
+            Integer reputacion, String descripService) throws miException {
+        if (nombre.isEmpty()) {
             throw new miException("El nombre no puede estar vacio.");
         }
 
-        if (prov.getApellido().isEmpty() || prov.getApellido() == null) {
+        if (apellido.isEmpty()) {
             throw new miException("El apellido no puede estar vacio.");
         }
 
-        if (prov.getDni() > 99999999) {
+        if (dni > 99999999) {
             throw new miException("El dni supera la cantidad de digitos maximos.");
         }
 
-        if (prov.getDni() == null) {
+        if (dni == null) {
             throw new miException("El dni no puede estar vacio.");
         }
 
-        if (prov.getCorreo().isEmpty() || prov.getNombre() == null) {
+        if (correo.isEmpty()) {
             throw new miException("El correo no puede estar vacio.");
         }
 
-        if (!prov.getCorreo().contains("@")) {
+        if (!correo.contains("@")) {
             throw new miException("El correo no contiene el simbolo '@'");
         }
 
-        if (prov.getTelefono() < 0) {
+        if (telefono < 0) {
             throw new miException("El numero ingresado es incorrecto.");
         }
 
-        if (prov.getTelefono() == null) {
+        if (telefono == null) {
             throw new miException("El numero de telefono no puede estar vacio.");
         }
 
-        if (prov.getPassword().isEmpty() || prov.getPassword() == null) {
+        if (password.isEmpty()) {
             throw new miException("La password no puede estar incompleta.");
         }
 
-        if (!isPasswordValid(prov.getPassword())) {
+        if (!isPasswordValid(password)) {
             throw new miException("La password no cumple con los requisitos de ser Alfanumerica y longitud minimo 6 caracteres");
         }
 
-        if(prov.getPrecioHs() == 0 || prov.getPrecioHs() < 0 || prov.getPrecioHs() == null){
+        if (precioHs == 0 || precioHs < 0 || precioHs == null) {
             throw new miException("El valor del precio no puede ser <= 0 ni estar vacio.");
         }
-        
-        if(prov.getReputacion() < 0 || prov.getReputacion() == null){
+
+        if (reputacion < 0 || reputacion == null) {
             throw new miException("Debe ingresar un valor >= a cero.");
         }
-        
-        if(prov.getDescrService().length() < 20 || prov.getDescrService().isEmpty()){
+
+        if (descripService.length() < 20 || descripService.isEmpty()) {
             throw new miException("La descripcion debe ser de almenos 20 caracteres.");
         }
-        
-        //validar oficio
+
+        if (oficio.toLowerCase() != "gasista" && oficio.toLowerCase() == "electricista" && oficio.toLowerCase() == "plomero" && oficio.toLowerCase() == "albañil") {
+            throw new miException("El oficio ingresado no corresponde con los disponibles.");
+        }
     }
 
     public boolean isPasswordValid(String password) {

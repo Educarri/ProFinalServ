@@ -1,0 +1,33 @@
+ <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Menu Libreria</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" th:if="${session.usuarioSesion != null}" aria-current="page" href="/autor/lista">Lista Autores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:if="${session.usuarioSesion != null}"  href="/editorial/lista">Lista Editoriales</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:if="${session.usuarioSesion != null}"  href="/libro/lista">Lista Libros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:if="${session.usuarioSesion != null}" href="/perfil"> Editar Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:if="${session.usuarioSesion != null}" href="/logout">Cerrar sesion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:if="${session.usuarioSesion == null}" href="/registrar">Registrarse</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:if="${session.usuarioSesion == null}" href="/login">Ingresar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+   

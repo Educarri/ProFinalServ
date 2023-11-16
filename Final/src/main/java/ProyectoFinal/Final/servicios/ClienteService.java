@@ -25,7 +25,7 @@ public class ClienteService {
     private ClienteRepositorio cliRepo;
 
     @Transactional
-    public Cliente registrarCliente(String nombre, String apellido, Long dni,
+    public void registrarCliente(String nombre, String apellido, Long dni,
             String correo, Integer telefono, String password, String direccion) throws miException {
         validar(nombre, apellido, dni, correo, telefono, password, direccion);
 
@@ -45,11 +45,12 @@ public class ClienteService {
         cli.setDireccion(direccion);
         cli.setRol(Rol.USER);
 
-        return cliRepo.save(cli);
+        cliRepo.save(cli);
 
     }
 
     //NECESITA MODIFICAR MAS QUE SOLO ESTOS 2 ATRIBUTOS??
+    @Transactional
     public void modificarCliente(String nombre, String apellido, Long dni,
             String correo, Integer telefono, String password, String direccion, String id) throws miException {
 

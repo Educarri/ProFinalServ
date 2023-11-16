@@ -5,11 +5,13 @@
  */
 package ProyectoFinal.Final.controladores;
 
+import ProyectoFinal.Final.entidades.Cliente;
 import ProyectoFinal.Final.excepciones.miException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ProyectoFinal.Final.servicios.ClienteService;
+import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -70,6 +72,14 @@ public class ClienteControlador {
             modelo.put("error", e.getMessage());
             return "cliente_modificar.html";
         }
+    }
+
+    @GetMapping("/lista")
+    public String listarClientes(ModelMap modelo) {
+        List<Cliente> clientes = cliServ.listarClientes();
+        modelo.addAttribute("clientes", clientes);
+
+        return "clientes_lista.html";
     }
 
     @PostMapping("/eliminar/{id}")
