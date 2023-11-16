@@ -10,7 +10,6 @@ import ProyectoFinal.Final.excepciones.miException;
 import ProyectoFinal.Final.servicios.ProveedorService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -104,7 +103,5 @@ public class ProveedorControlador {
             modelo.put("error", e.getMessage());
 
         }
-
     }
-
 }

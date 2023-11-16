@@ -39,6 +39,7 @@ public class AdminControlador {
         return "clientes_list";
     }
 
+    
     @PostMapping("/eliminar{id}")
     public String eliminar(@PathVariable String id, ModelMap modelo) {
         try {
