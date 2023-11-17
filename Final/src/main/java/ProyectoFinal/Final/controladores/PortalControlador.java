@@ -59,7 +59,6 @@ public class PortalControlador {
         }else if(logeado.getRol().toString().equals("PROVEEDOR")){
             return "redirect:/proveedor/inicio";
         }
-        System.out.println("estas en el controlador inicio");
         return "inicio.html"; //seria para el cliente
     }
     /*
@@ -81,12 +80,6 @@ public class PortalControlador {
             return "registro";
         }
     }
-    
-    
-    
- 
-    
- 
     
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/perfil")
