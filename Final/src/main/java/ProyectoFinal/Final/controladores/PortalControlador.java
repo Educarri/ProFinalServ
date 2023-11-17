@@ -1,5 +1,6 @@
 package ProyectoFinal.Final.controladores;
 
+import ProyectoFinal.Final.entidades.Usuario;
 import ProyectoFinal.Final.servicios.UsuarioService;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,21 +32,38 @@ public class PortalControlador {
         return "listas.html";
     }
 
-    @GetMapping("/registrar")
+    /*
+    @GetMapping("/cliente/registrar")
     public String registrar() {
-        return "registro";
+        return "registroCliente";
     }
 
+     */
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {
 
         if (error != null) {
             modelo.put("error", "Usuario o contraseña invalidos.");
         }
-        return "login";
+        return "login.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN' , 'ROLE_PROVEEDOR')")
+    @GetMapping("/inicio")
+    public String inicio(HttpSession sesion) {
+        Usuario logeado = (Usuario) sesion.getAttribute("usuarioSesion");
+
+        if (logeado.getRol().toString().equals("ADMIN")) {
+
+            return "redirect:/admin/dashboard";
+        }else if(logeado.getRol().toString().equals("PROVEEDOR")){
+            return "redirect:/proveedor/inicio";
+        }
+        System.out.println("estas en el controlador inicio");
+        return "inicio.html"; //seria para el cliente
+    }
     /*
+    
     @PostMapping("/registro")
     public String registro(@RequestParam(required=false) String nombre,
             @RequestParam(required=false) String email,
@@ -64,19 +82,11 @@ public class PortalControlador {
         }
     }
     
-
     
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
-    @GetMapping("/inicio")
-    public String inicio(HttpSession sesion){
-        Usuario logeado = (Usuario) sesion.getAttribute("usuarioSesion");
-        
-        if(logeado.getRol().toString().equals("ADMIN")){
-            
-            return "redirect:/admin/dashboard";
-        }
-        return "inicio";
-    }
+    
+ 
+    
+ 
     
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/perfil")
