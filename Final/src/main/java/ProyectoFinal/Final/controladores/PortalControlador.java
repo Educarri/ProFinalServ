@@ -81,6 +81,7 @@ public class PortalControlador {
         }
     }
     
+    */
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession sesion){
@@ -93,13 +94,17 @@ public class PortalControlador {
     
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/perfil/{id}")
-    public String actualizar(MultipartFile archivo,@PathVariable String id,
+    public String actualizar(@PathVariable String id,
             @RequestParam String nombre,
-            @RequestParam String email,
+            @RequestParam String apellido,
+            @RequestParam Long dni,
+            @RequestParam String correo,
+             @RequestParam int telefono,
+            @RequestParam String direccion,
             @RequestParam String password, ModelMap modelo){
         
         try {
-            usuServ.actualizarUsuario(archivo, password, nombre, email, password);
+            usuServ.actualizarUsuario(id,nombre,apellido,dni,correo,telefono,direccion,password);
             modelo.put("exito", "Usuario modificado correctamente.");
             return "inicio";
         } catch (Exception e) {
@@ -107,5 +112,5 @@ public class PortalControlador {
             return "usuario_Modificar";
         }
     }
-     */
+     
 }

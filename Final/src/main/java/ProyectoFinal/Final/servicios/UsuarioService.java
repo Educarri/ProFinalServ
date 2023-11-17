@@ -75,4 +75,23 @@ public class UsuarioService implements UserDetailsService {
 
     }
 
+    public void actualizarUsuario(String id, String nombre, String apellido, Long dni, String correo, int telefono, String direccion, String password) throws miException  {
+        Usuario usuario = usuarioRepo.getOne(id);
+    if (usuario != null) {
+        usuario.setNombre(nombre);
+        usuario.setApellido(apellido);
+        usuario.setDni(dni);
+        usuario.setCorreo(correo);
+        usuario.setTelefono(telefono);
+        usuario.setDireccion(direccion);
+        usuario.setPassword(password);
+        
+        // Guarda los cambios en el repositorio
+        usuarioRepo.save(usuario);
+    } else {
+        throw new miException("Usuario no encontrado");
+    }
+
+    }
+
 }
