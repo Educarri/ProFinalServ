@@ -13,7 +13,7 @@
                             <a class="nav-link" th:if="${session.usuarioSesion != null}"  href="/editorial/lista">Lista Editoriales</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" th:if="${session.usuarioSesion != null}"  href="/libro/lista">Lista Libros</a>
+                            <a class="nav-link" th:if="${session.usuarioSesion == ADMIN}"  href="/libro/lista">Lista Libros</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" th:if="${session.usuarioSesion != null}" href="/perfil"> Editar Perfil</a>
@@ -22,7 +22,7 @@
                             <a class="nav-link" th:if="${session.usuarioSesion != null}" href="/logout">Cerrar sesion</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" th:if="${session.usuarioSesion == null}" href="/registrar">Registrarse</a>
+                            <a class="nav-link" th:if="${session.usuarioSesion == null}" href="/cliente/registrar">Registrar Cliente</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" th:if="${session.usuarioSesion == null}" href="/login">Ingresar</a>

@@ -34,7 +34,6 @@ public class ClienteService {
             throw new miException("El dni ingresado ya está registrado.");
         }
 
-        
         Cliente cli = new Cliente();
         cli.setNombre(nombre);
         cli.setApellido(apellido);
@@ -69,7 +68,6 @@ public class ClienteService {
             
             cliRepo.save(cl);
         }
-
     }
 
     public List<Cliente> listarClientes() {

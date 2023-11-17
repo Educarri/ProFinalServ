@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ProyectoFinal.Final.servicios.ClienteService;
 import java.util.List;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +28,7 @@ public class ClienteControlador {
 
     @GetMapping("/registrar")
     public String registrar() {
-        return "cliente_form.html";
+        return "registroCliente.html";
     }
 
     @PostMapping("/registro")
