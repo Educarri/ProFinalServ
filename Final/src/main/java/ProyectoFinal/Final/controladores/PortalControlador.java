@@ -56,11 +56,12 @@ public class PortalControlador {
         if (logeado.getRol().toString().equals("ADMIN")) {
 
             return "redirect:/admin/dashboard";
-        }else if(logeado.getRol().toString().equals("PROVEEDOR")){
+        } else if (logeado.getRol().toString().equals("PROVEEDOR")) {
             return "redirect:/proveedor/inicio";
         }
         return "inicio.html"; //seria para el cliente
     }
+
     /*
     
     @PostMapping("/registro")
@@ -81,30 +82,34 @@ public class PortalControlador {
         }
     }
     
-    */
+     */
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/perfil")
-    public String perfil(ModelMap modelo, HttpSession sesion){
+    public String perfil(ModelMap modelo, HttpSession sesion) {
         Usuario user = (Usuario) sesion.getAttribute("usuarioSesion");
+
+        if (user != null) {
+            
+            modelo.put("user", user);
+            return "usuario_Modificar";
+        }
         
-        modelo.put("user", user);
-        
-        return "usuario_Modificar";
+        return "login.html";
     }
-    
+
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/perfil/{id}")
-    public String actualizar(@PathVariable String id,
+    public String actualizar(@RequestParam String id,
             @RequestParam String nombre,
             @RequestParam String apellido,
             @RequestParam Long dni,
             @RequestParam String correo,
-             @RequestParam int telefono,
+            @RequestParam Integer telefono,
             @RequestParam String direccion,
-            @RequestParam String password, ModelMap modelo){
-        
+            @RequestParam String password, ModelMap modelo) {
+
         try {
-            usuServ.actualizarUsuario(id,nombre,apellido,dni,correo,telefono,direccion,password);
+            usuServ.actualizarUsuario(id, nombre, apellido, dni, correo, telefono, direccion, password);          
             modelo.put("exito", "Usuario modificado correctamente.");
             return "inicio";
         } catch (Exception e) {
@@ -112,5 +117,5 @@ public class PortalControlador {
             return "usuario_Modificar";
         }
     }
-     
+
 }
