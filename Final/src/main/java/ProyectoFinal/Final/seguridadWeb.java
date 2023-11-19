@@ -32,10 +32,10 @@ public class seguridadWeb extends WebSecurityConfigurerAdapter {
         http
                 .authorizeHttpRequests()
                 .antMatchers("/admin/*").hasRole("ADMIN")
-                .antMatchers("/cliente/*").permitAll() //controlar
-                .antMatchers("/proveedor/*").hasRole("PROVEEDOR")
+                .antMatchers("/cliente/*").permitAll() //cambiar nuevamente a que solo los clientes puedan acceder a este controlador
+               // .antMatchers("/proveedor/*").hasRole("PROVEEDOR")
                 .antMatchers("/css/**", "/js/**", "/img/**").permitAll()
-                .antMatchers("/login", "/registrar", "/error", "/").permitAll()
+                .antMatchers("/login", "/proveedor/registrar","/proveedor/registro", "/error", "/").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin()
                 .loginPage("/login")

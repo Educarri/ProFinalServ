@@ -10,6 +10,7 @@ import ProyectoFinal.Final.excepciones.miException;
 import ProyectoFinal.Final.servicios.ProveedorService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,30 +27,33 @@ public class ProveedorControlador {
     @Autowired
     private ProveedorService proServ;
 
+    @PreAuthorize("permitAll()")
     @GetMapping("/registrar")
     public String registrar() {
-        return "proveedor_form.html";
+        return "registroProveedor.html";
     }
 
+    @PreAuthorize("permitAll()")
     @PostMapping("/registro")
     public String registro(String nombre, String apellido, Long dni,
             String correo, Integer telefono, String password, String direccion, String oficio, Integer precioHs,
-            Integer reputacion, String descripService, MultipartFile archivo, ModelMap modelo) {
+            String descripService, MultipartFile archivo, ModelMap modelo) {
 
         try {
             proServ.registrarProveedor(nombre, apellido, dni, correo, telefono,
-                    password, direccion, oficio, precioHs, reputacion, descripService, archivo);
+                    password, direccion, oficio, precioHs, descripService, archivo);
 
             modelo.put("exito", "El Proveedor fue guardado exitosamente");
 
         } catch (miException e) {
             modelo.put("error", e.getMessage());
-            return "proveedor_form.html"; //si hay error se regarga la misma pagina
+            return "registroProveedor.html"; //si hay error se regarga la misma pagina
         }
 
         return "index.html"; //si no hay errores me manda a la pagina main
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable String id, ModelMap modelo) {
         modelo.put("proveedor", proServ.getOne(id));
@@ -57,7 +61,8 @@ public class ProveedorControlador {
         return "proveedor_modificar.html";
     }
 
-        @PostMapping("/modificar/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
+    @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable String id,
             @RequestParam(required = false) String nombre,
             @RequestParam(required = false) String apellido,
@@ -83,16 +88,16 @@ public class ProveedorControlador {
             return "proveedor_modificar.html";
         }
     }
-    
+
     @GetMapping("/lista")
-    public String listarProveedores(ModelMap modelo){
+    public String listarProveedores(ModelMap modelo) {
         List<Proveedor> proveedores = proServ.listarProveedores();
         modelo.addAttribute("proveedores", proveedores);
-        
+
         return "proveedores_lista.html";
     }
 
-
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/eliminar/{id}")
     public void eliminar(@PathVariable String id, ModelMap modelo) {
         try {
@@ -104,4 +109,11 @@ public class ProveedorControlador {
 
         }
     }
+
+    
+    @GetMapping("/inicio")
+    public String inicio(){
+        return "inicioProveedor.html";
+    }
+
 }
