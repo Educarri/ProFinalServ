@@ -1,12 +1,201 @@
-body{
+
+
+.formulario {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #D4E6F1;
-    margin-top: 25px;
+    padding: 10px 20px;
+    margin: 400px;
+    border-radius: 20px;
+    margin-top: 50px;
+    background-color: #21222c;
+    
+    
 }
 
+.tituloform{
+    color: #005ce6;
+        }
+        
+ form button{
+    background-color: #005ce6; 
+    padding: 10px 20px;
+/*    margin: 400px;*/
+    border-radius: 15px;
+    margin-top: 20px;
+    color: whitesmoke;
+    height: 40px;
+    width: 40%;
+    align-items: center;
+}
+.input {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  height: 40px;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  font-size: .9rem;
+  padding: 8px 20px;
+  
+}/*
+
+ //prueba https://uiverse.io/ammarsaa/chatty-firefox-25*/
+ 
+/* .formulario {
+  display: flex;
+  flex-direction: column;
+   gap: 6px;
+  max-width: 350px;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+  background-color: #21222c;
+  color: #fff;
+  border: 1px solid #333;
+  align-items: center;
+  margin: 50px 400px;
+  justify-content: center;  
+
+   
+}
+
+.tituloform {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  color: #00bfff;
+}
+
+.tituloform::before {
+  width: 18px;
+  height: 18px;
+}
+
+.tituloform::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.tituloform::before,
+.tituloform::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: #00bfff;
+}
+
+.formulario label {
+  position: relative;
+}
+
+.formulario label .input {
+  
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+  padding: 20px 05px 05px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+ 
+}
+
+.formulario label .input + span {
+  color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.formulario label .input:placeholder-shown + span {
+  top: 12.5px;
+  font-size: 0.9em;
+}
+
+.formulario label .input:focus + span,
+.formulario label .input:valid + span {
+  color: #00bfff;
+  top: 0px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.input {
+  font-size: medium;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+  background-color: #00bfff;
+}
+
+.submit:hover {
+  background-color: #00bfff96;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}*/
+
+
+/* no se usa https://uiverse.io/ammarsaa/chatty-firefox-25
+.message, 
+.signin {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a:hover {
+  text-decoration: underline royalblue;
+}
+
+.signin a {
+  color: #00bfff;
+}*/
+
+/*.flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+//https://uiverse.io/ammarsaa/chatty-firefox-25 no se usa
+*/
+
+
+ 
+/* 
+ 
 
 .form-box {
   max-width: 300px;
@@ -15,8 +204,9 @@ body{
   border-radius: 16px;
   color: #010101;
 }
-
 .form {
+  margin-top: 20px;
+     
   position: relative;
   display: flex;
   flex-direction: column;
@@ -25,7 +215,7 @@ body{
   text-align: center;
 }
 
-/*Form text*/
+Form text
 .title {
   font-weight: bold;
   font-size: 1.6rem;
@@ -36,24 +226,13 @@ body{
   color: #666;
 }
 
-/*Inputs box*/
+Inputs box
 .form-container {
   overflow: hidden;
   border-radius: 8px;
   background-color: #fff;
   margin: 1rem 0 .5rem;
   width: 100%;
-}
-
-.input {
-  background: none;
-  border: 0;
-  outline: 0;
-  height: 40px;
-  width: 100%;
-  border-bottom: 1px solid #eee;
-  font-size: .9rem;
-  padding: 8px 15px;
 }
 
 .form-section {
@@ -74,7 +253,7 @@ body{
   text-decoration: underline;
 }
 
-/*Button*/
+Button
 .form button {
   background-color: #0066ff;
   color: #fff;
@@ -89,4 +268,7 @@ body{
 
 .form button:hover {
   background-color: #005ce6;
-}
+}*/
+
+
+
