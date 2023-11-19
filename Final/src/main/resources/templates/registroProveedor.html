@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulario de Creación</title>
+        <link href="/css/registro.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <h1>Formulario de Creación</h1>
+        <form th:action="@{/proveedor/registro}" method="post" enctype="multipart/form-data">
+            <!-- Campos del formulario -->
+            <input type="text" class="input" name="nombre" placeholder="Nombre">
+            <input type="text" class="input" name="apellido" placeholder="apellido">
+            <input type="number" class="input" name="dni" placeholder="Dni">
+            <input type="text" class="input" name="correo" placeholder="correo">
+            <input type="number" class="input" name="telefono" placeholder="telefono">
+            <input type="text" class="input" name="direccion" placeholder="direccion">
+            <input type="text" class="input" name="password" placeholder="password">
+            
+            <label><input type="checkbox" name="oficio" value="albañil"> Albañil</label>
+            <label><input type="checkbox" name="oficio" value="electricista"> Electricista</label>
+            <label><input type="checkbox" name="oficio" value="plomero"> Plomero</label>
+            <label><input type="checkbox" name="oficio" value="gasista"> Gasista</label>
+
+
+            <input type="number" class="input" name="precioHs" placeholder="Precio x Hora">
+            <input type="text" class="input" name="descripService" placeholder="Descripcion del Servicio">
+            <input type="file" class="input" name="archivo">
+
+
+
+
+            <!-- 
+           <label>Nombre: <input type="text" th:field="*{nombre}" /></label><br/>
+           <label>Apellido: <input type="text" th:field="*{apellido}" /></label><br/>
+           <label>DNI: <input type="text" th:field="*{dni}" /></label><br/>
+           <label>Correo: <input type="text" th:field="*{correo}" /></label><br/>
+           <label>Teléfono: <input type="text" th:field="*{telefono}" /></label><br/>
+           <label>Dirección: <input type="text" th:field="*{direccion}" /></label><br/>
+            -->
+            <button type="submit">Crear Proveedor</button>
+        </form>
+
+        <div style="display: block">
+            <div th:if="${error != null}" style="background-color: red">
+                <h5>Error!</h5>
+                <p th:text="${error}"></p>
+            </div>
+        </div>
+    </body>
+</html>

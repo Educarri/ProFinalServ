@@ -32,7 +32,8 @@ public class ClienteControlador {
     }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam(required = false) String nombre, @RequestParam(required = false) String apellido, @RequestParam(required = false) Long dni,
+    public String registro(@RequestParam(required = false) String nombre, @RequestParam(required = false)
+            String apellido, @RequestParam(required = false) Long dni,
             String correo, Integer telefono, String password, String direccion, ModelMap modelo) {
 
         try {

@@ -33,9 +33,9 @@ public class ProveedorService {
     @Transactional
     public void registrarProveedor(String nombre, String apellido, Long dni,
             String correo, Integer telefono, String password, String direccion, String oficio, Integer precioHs,
-            Integer reputacion, String descripService, MultipartFile archivo) throws miException {
+            String descripService, MultipartFile archivo) throws miException {
         
-        validar(nombre, apellido, dni, correo, telefono, password, direccion, oficio, precioHs, reputacion, descripService); // AGREGAR ATRIBUTO OFICIO Y PENSAR COMO HACER PARA QUE EL USUARIO SIN INGRESAR UN TIPO DE DATO ROL SE ASIGNE EL MISMO
+        validar(nombre, apellido, dni, correo, telefono, password, direccion, oficio, precioHs, descripService); // AGREGAR ATRIBUTO OFICIO Y PENSAR COMO HACER PARA QUE EL USUARIO SIN INGRESAR UN TIPO DE DATO ROL SE ASIGNE EL MISMO
 
         Proveedor prove = proRepo.buscarProveedorPorDNI(dni);
         if (prove != null) {
@@ -48,7 +48,7 @@ public class ProveedorService {
         pro.setDni(dni);
         pro.setCorreo(correo);
         pro.setTelefono(telefono);
-        pro.setPassword(password);
+        pro.setPassword(new BCryptPasswordEncoder().encode(password));
         pro.setDireccion(direccion);
 
         Imagen imagen = imgService.guardar(archivo);
@@ -70,7 +70,7 @@ public class ProveedorService {
         }
 
         pro.setPrecioHs(precioHs);
-        pro.setReputacion(reputacion);
+        pro.setReputacion(0); //inicializo la reputancion al momento de crear el proveedor en 0
         pro.setDescrService(descripService);
         pro.setRol(Rol.PROVEEDOR);
 
@@ -84,7 +84,7 @@ public class ProveedorService {
             Integer precioHs, Integer reputacion, String descripService, MultipartFile archivo,
             String idProveedor) throws miException {
 
-        validar(nombre, apellido, dni, correo, telefono, password, direccion, oficio, precioHs, reputacion, descripService);
+        validar(nombre, apellido, dni, correo, telefono, password, direccion, oficio, precioHs, descripService);
 
         Optional<Proveedor> respuesta = proRepo.findById(idProveedor);
 
@@ -138,7 +138,7 @@ public class ProveedorService {
     public void validar(String nombre, String apellido, Long dni,
             String correo, Integer telefono, String password,
             String direccion, String oficio, Integer precioHs,
-            Integer reputacion, String descripService) throws miException {
+            String descripService) throws miException {
         if (nombre.isEmpty()) {
             throw new miException("El nombre no puede estar vacio.");
         }
@@ -181,10 +181,6 @@ public class ProveedorService {
 
         if (precioHs == 0 || precioHs < 0 || precioHs == null) {
             throw new miException("El valor del precio no puede ser <= 0 ni estar vacio.");
-        }
-
-        if (reputacion < 0 || reputacion == null) {
-            throw new miException("Debe ingresar un valor >= a cero.");
         }
 
         if (descripService.length() < 20 || descripService.isEmpty()) {
