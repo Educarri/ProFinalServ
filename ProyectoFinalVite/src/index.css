@@ -1,0 +1,8 @@
+body {
+  background-color: #242424;
+  color: antiquewhite;
+  background-image: url('/src/assets/index.jpg');
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+    background-position: center; /* Centra la imagen en el fondo */
+    background-repeat: no-repeat;
+}
