@@ -1,7 +1,10 @@
 package ProyectoFinal.Final.controladores;
 
+import ProyectoFinal.Final.entidades.Proveedor;
 import ProyectoFinal.Final.entidades.Usuario;
+import ProyectoFinal.Final.servicios.ProveedorService;
 import ProyectoFinal.Final.servicios.UsuarioService;
+import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,24 +24,25 @@ public class PortalControlador {
     @Autowired
     UsuarioService usuServ;
 
+    @Autowired
+    ProveedorService proServ;
+
+    //MODIFICO LA PAGINA DE INICIO PARA QUE SE VEAN LOS PROVEEDORES APENAS ACCEDES A LA PAGINA PRINCIPAL
+    /* 
     @GetMapping("/") //cuando en la url ponga la / se ejecutara este metodo en este caso, al principio apenas
     //abro la pagina
     public String index() {
         return "index.html";
     }
-
-    @GetMapping("/listas")
-    public String listas() {
-        return "listas.html";
-    }
-
-    /*
-    @GetMapping("/cliente/registrar")
-    public String registrar() {
-        return "registroCliente";
-    }
-
      */
+    @GetMapping("/")
+    public String listarProveedores(ModelMap modelo) {
+        List<Proveedor> proveedores = proServ.listarProveedores();
+        modelo.addAttribute("proveedores", proveedores);
+
+        return "index.html";
+    }
+
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {
 
@@ -62,38 +66,17 @@ public class PortalControlador {
         return "inicio.html"; //seria para el cliente
     }
 
-    /*
-    
-    @PostMapping("/registro")
-    public String registro(@RequestParam(required=false) String nombre,
-            @RequestParam(required=false) String email,
-            @RequestParam(required=false) String password,
-            ModelMap modelo,
-            MultipartFile archivo){
-        
-        try{
-           usuServ.registrar(archivo, nombre, email, password);  
-           modelo.put("exito", "Usuario registrado exitosamente.");
-           
-           return "index";
-        }catch(miException e){
-            modelo.put("error", e.getMessage());
-            return "registro";
-        }
-    }
-    
-     */
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession sesion) {
         Usuario user = (Usuario) sesion.getAttribute("usuarioSesion");
 
         if (user != null) {
-            
+
             modelo.put("user", user);
             return "usuario_Modificar";
         }
-        
+
         return "login.html";
     }
 
@@ -109,7 +92,7 @@ public class PortalControlador {
             @RequestParam String password, ModelMap modelo) {
 
         try {
-            usuServ.actualizarUsuario(id, nombre, apellido, dni, correo, telefono, direccion, password);          
+            usuServ.actualizarUsuario(id, nombre, apellido, dni, correo, telefono, direccion, password);
             modelo.put("exito", "Usuario modificado correctamente.");
             return "inicio";
         } catch (Exception e) {

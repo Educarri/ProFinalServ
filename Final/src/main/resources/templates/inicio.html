@@ -13,7 +13,7 @@ and open the template in the editor.
         <link href="/css/inicio.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        
+
         <div class="navbar">
             <nav th:replace="/fragments/navbar :: nav"></nav>
         </div>
@@ -21,7 +21,6 @@ and open the template in the editor.
         <div class="content">
             <h1>Bienvenido a nuestra pagina Principal!</h1>
             <p th:if="${session.usuarioSesion != null}" th:text="'Hola de vuelta '+ ${session.usuarioSesion.nombre}"></p>
-
         </div>
 
         <div class="footer">
