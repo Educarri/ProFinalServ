@@ -48,13 +48,15 @@ public class ClienteControlador {
         return "index.html"; //si no hay errores me manda a la pagina main
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable String id, ModelMap modelo) {
         modelo.put("cliente", cliServ.getOne(id));
 
         return "cliente_modificar.html";
     }
-
+    
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable String id,
             @RequestParam(required = false) String nombre,
@@ -76,6 +78,8 @@ public class ClienteControlador {
         }
     }
 
+    
+      @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/lista")
     public String listarClientes(ModelMap modelo) {
         List<Cliente> clientes = cliServ.listarClientes();
@@ -84,6 +88,8 @@ public class ClienteControlador {
         return "clientes_lista.html";
     }
 
+    
+      @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/eliminar/{id}")
     public void eliminar(@PathVariable String id, ModelMap modelo) {
         try {

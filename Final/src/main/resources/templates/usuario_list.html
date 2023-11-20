@@ -25,8 +25,7 @@
                         
                         <td th:text="${usu.nombre}"></td>
                         
-                        <td 
-                            <a><img th:if="${usu.imagen != null}" th:src="@{/imagen/perfil/__${usu.id}__}" style="width: 150px; border-radius: 20px" alt="Imagen Perfil Usuario"/></a>
+                        <td <a><img th:if="${usu.imagen != null}" th:src="@{/imagen/perfil/__${usu.id}__}" style="width: 150px; border-radius: 20px" alt="Imagen Perfil Usuario"/>></a>
                         </td>
                         
                         <td th:text="${usu.rol}"></td>
