@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*body{
     background-color: #21222c;
 }*/
@@ -38,3 +39,17 @@
         margin-top: 10px;
     }
 
+=======
+    img{
+/*        display:flex ;*/
+        width: 50px;
+        margin: 10px auto;
+        border-radius: 40px;
+
+    }
+
+    p{
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+>>>>>>> 328b198ad1e2e177e3f174b9ec5fc3d2748bf261

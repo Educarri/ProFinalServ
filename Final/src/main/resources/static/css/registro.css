@@ -197,13 +197,20 @@
 /* 
  
 
-.form-box {
-  max-width: 300px;
-  background: #f1f7fe;
-  overflow: hidden;
-  border-radius: 16px;
-  color: #010101;
+.formulario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px 20px;
+    margin: 400px;
+    border-radius: 20px;
+    margin-top: 50px;
+    background-color: #21222c;
+    
+    
 }
+<<<<<<< HEAD
 .form {
   margin-top: 20px;
      
@@ -272,3 +279,32 @@ Button
 
 
 
+=======
+
+.tituloform{
+    color: #005ce6;
+        }
+        
+ form button{
+    background-color: #005ce6; 
+    padding: 10px 20px;
+/*    margin: 400px;*/
+    border-radius: 15px;
+    margin-top: 20px;
+    color: whitesmoke;
+    height: 40px;
+    width: 40%;
+    align-items: center;
+}
+.input {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  height: 40px;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  font-size: .9rem;
+  padding: 8px 20px;
+  
+}
+>>>>>>> 328b198ad1e2e177e3f174b9ec5fc3d2748bf261
