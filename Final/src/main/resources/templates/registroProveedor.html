@@ -4,45 +4,72 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Formulario de Creación</title>
+        <title>Registro Proveedor</title>
+        <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
         <link href="/css/registro.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h1>Formulario de Creación</h1>
-        <form th:action="@{/proveedor/registro}" method="post" enctype="multipart/form-data">
-            <!-- Campos del formulario -->
-            <input type="text" class="input" name="nombre" placeholder="Nombre">
-            <input type="text" class="input" name="apellido" placeholder="apellido">
-            <input type="number" class="input" name="dni" placeholder="Dni">
-            <input type="text" class="input" name="correo" placeholder="correo">
-            <input type="number" class="input" name="telefono" placeholder="telefono">
-            <input type="text" class="input" name="direccion" placeholder="direccion">
-            <input type="text" class="input" name="password" placeholder="password">
-            
-            <label><input type="checkbox" name="oficio" value="albañil"> Albañil</label>
-            <label><input type="checkbox" name="oficio" value="electricista"> Electricista</label>
-            <label><input type="checkbox" name="oficio" value="plomero"> Plomero</label>
-            <label><input type="checkbox" name="oficio" value="gasista"> Gasista</label>
+        <header>
+            <nav th:replace="/fragments/navbar :: nav"></nav> 
+        </header> 
+
+        <div class="formulario"> 
+            <h1 class="tituloform">Registro de Proveedor</h1>
+            <form th:action="@{/proveedor/registro}" method="post" enctype="multipart/form-data">
+                <!-- Campos del formulario -->
+                <div class="mb-3">
+                    <input type="text" class="input" name="nombre" placeholder="Nombre">
+                    <input type="text" class="input" name="apellido" placeholder="Apellido">
+                    <input type="number" class="input" name="dni" placeholder="DNI">
+                    <input type="text" class="input" name="correo" placeholder="Correo electronico">
+                    <input type="number" class="input" name="telefono" placeholder="Telefono">
+                    <input type="text" class="input" name="direccion" placeholder="Direccion">
+                    <input type="password" class="input" name="password" placeholder="Password">
+
+                    <!--                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label"><input type="checkbox" class="form-check-input" name="oficio" value="albañil"> Albañil</label>
+                                            <label class="form-check-label"><input type="checkbox" class="form-check-input" name="oficio" value="electricista"> Electricista</label>
+                                            <label class="form-check-label"><input type="checkbox" class="form-check-input" name="oficio" value="plomero"> Plomero</label>
+                                            <label class="form-check-label"><input type="checkbox" class="form-check-input" name="oficio" value="gasista"> Gasista</label>
+                                            <div/>-->
+                    <div class="form-check form-check-inline">
+                        <div class="checkbox-item">
+                            <input type="checkbox" class="form-check-input" name="oficio" value="albañil" id="checkbox1">
+                            <label class="form-check-label" for="checkbox1">Albañil</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" class="form-check-input" name="oficio" value="electricista" id="checkbox2">
+                            <label class="form-check-label" for="checkbox2">Electricista</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" class="form-check-input" name="oficio" value="plomero" id="checkbox3">
+                            <label class="form-check-label" for="checkbox3">Plomero</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" class="form-check-input" name="oficio" value="gasista" id="checkbox4">
+                            <label class="form-check-label" for="checkbox4">Gasista</label>
+                        </div>
+                    </div>
 
 
-            <input type="number" class="input" name="precioHs" placeholder="Precio x Hora">
-            <input type="text" class="input" name="descripService" placeholder="Descripcion del Servicio">
-            <input type="file" class="input" name="archivo">
+                    <input type="number" class="input" name="precioHs" placeholder="Precio x Hora">
+                    <input type="text" class="input" name="descripService" placeholder="Descripcion del Servicio">
+                    <input type="file" class="input" name="archivo">
 
 
+                    <div/>
 
-
-            <!-- 
-           <label>Nombre: <input type="text" th:field="*{nombre}" /></label><br/>
-           <label>Apellido: <input type="text" th:field="*{apellido}" /></label><br/>
-           <label>DNI: <input type="text" th:field="*{dni}" /></label><br/>
-           <label>Correo: <input type="text" th:field="*{correo}" /></label><br/>
-           <label>Teléfono: <input type="text" th:field="*{telefono}" /></label><br/>
-           <label>Dirección: <input type="text" th:field="*{direccion}" /></label><br/>
-            -->
-            <button type="submit">Crear Proveedor</button>
-        </form>
-
+                    <!-- 
+                   <label>Nombre: <input type="text" th:field="*{nombre}" /></label><br/>
+                   <label>Apellido: <input type="text" th:field="*{apellido}" /></label><br/>
+                   <label>DNI: <input type="text" th:field="*{dni}" /></label><br/>
+                   <label>Correo: <input type="text" th:field="*{correo}" /></label><br/>
+                   <label>Teléfono: <input type="text" th:field="*{telefono}" /></label><br/>
+                   <label>Dirección: <input type="text" th:field="*{direccion}" /></label><br/>
+                    -->
+                    <button class="mx-auto d-block" type="submit">Crear Proveedor</button>
+            </form>
+        </div>
         <div style="display: block">
             <div th:if="${error != null}" style="background-color: red">
                 <h5>Error!</h5>
