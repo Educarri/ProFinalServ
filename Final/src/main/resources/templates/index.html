@@ -12,9 +12,9 @@
         <link href="/css/main.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div class="navbar">
-            <nav th:replace="/fragments/navbar :: nav"></nav>
-        </div>
+         <header>
+             <nav th:replace="/fragments/navbar :: nav"></nav> 
+         </header> 
         <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
             <div class="card-body">
                 <h5 class="card-title">Exito!</h5>

@@ -1,12 +1,12 @@
-body{
+/*body{
     background-color: #21222c;
-}
+}*/
 
 .container{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 200px;
+    margin-top: 50px;
 }
 
 .form {
@@ -16,7 +16,7 @@ body{
   padding-left: 2em;
   padding-right: 2em;
   padding-bottom: 0.4em;
-  background-color: #171717;
+  background-color: #21222c;
   border-radius: 25px;
   transition: .4s ease-in-out;
 }
@@ -28,9 +28,11 @@ body{
 
 #heading {
   text-align: center;
-  margin: 2em;
-  color: rgb(255, 255, 255);
+  margin: 10px;
+  color: #005ce6;
   font-size: 1.2em;
+  font-weight:bolder;
+  font-size: xx-large;
 }
 
 .field {
@@ -77,12 +79,12 @@ body{
   border: none;
   outline: none;
   transition: .4s ease-in-out;
-  background-color: #252525;
+  background-color: #005ce6;
   color: white;
 }
 
 .button1:hover {
-  background-color: black;
+  background-color: grey;
   color: white;
 }
 
@@ -95,12 +97,12 @@ body{
   border: none;
   outline: none;
   transition: .4s ease-in-out;
-  background-color: #252525;
+  background-color: #005ce6;
   color: white;
 }
 
 .button2:hover {
-  background-color: black;
+  background-color: grey;
   color: white;
 }
 

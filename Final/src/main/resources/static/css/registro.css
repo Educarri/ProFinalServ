@@ -37,7 +37,7 @@
   border-bottom: 1px solid #eee;
   font-size: .9rem;
   padding: 8px 20px;
-  
+ color: white;
 }
  .checkbox-item {
     margin-right: 2px; /* Espacio entre cada checkbox */
@@ -49,6 +49,7 @@
      font-size: .9rem;
     color: grey; /* Cambia el color de la fuente a azul */
 }
+
 /*
 
  //prueba https://uiverse.io/ammarsaa/chatty-firefox-25*/
