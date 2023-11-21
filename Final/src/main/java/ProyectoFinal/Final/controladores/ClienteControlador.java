@@ -51,7 +51,7 @@ public class ClienteControlador {
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable String id, ModelMap modelo) {
-        modelo.put("cliente", cliServ.getOne(id));
+        modelo.put("user", cliServ.getOne(id));
 
         return "cliente_modificar.html";
     }
