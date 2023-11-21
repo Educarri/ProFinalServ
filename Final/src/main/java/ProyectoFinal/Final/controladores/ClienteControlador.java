@@ -89,9 +89,9 @@ public class ClienteControlador {
     }
 
     
-      @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
+    //@PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')") VOLVER A PONER ROLES
     @PostMapping("/eliminar/{id}")
-    public void eliminar(@PathVariable String id, ModelMap modelo) {
+    public String eliminar(@PathVariable String id, ModelMap modelo) {
         try {
             cliServ.eliminarCliente(id);
             modelo.put("exito", "Cliente eliminado correctamente");
@@ -100,7 +100,7 @@ public class ClienteControlador {
             modelo.put("error", e.getMessage());
 
         }
-
+       return "redirect:/cliente/lista";
     }
 
 }
