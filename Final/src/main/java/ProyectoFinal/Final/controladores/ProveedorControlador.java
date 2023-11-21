@@ -97,9 +97,11 @@ public class ProveedorControlador {
         return "proveedores_lista.html";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+   
+    //@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @PreAuthorize("permitAll()")
     @PostMapping("/eliminar/{id}")
-    public void eliminar(@PathVariable String id, ModelMap modelo) {
+    public String eliminar(@PathVariable String id, ModelMap modelo) {
         try {
             proServ.eliminarProveedor(id);
             modelo.put("exito", "Proveedor eliminado correctamente");
@@ -108,6 +110,7 @@ public class ProveedorControlador {
             modelo.put("error", e.getMessage());
 
         }
+        return "redirect:/";
     }
 
     

@@ -37,4 +37,18 @@
     p{
         margin-left: 10px;
         margin-top: 10px;
+<<<<<<< HEAD
     }
+=======
+    }
+
+    .footer, .navbar{
+       
+        background-color: #21222c;
+        color: whitesmoke;
+        
+
+    }
+
+   
+>>>>>>> ded70a01884b56f802fd2a78d832e923faf0aade

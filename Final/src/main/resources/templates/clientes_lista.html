@@ -32,9 +32,9 @@
                         <th  th:text="${cliente.direccion}"></th>
                         <th th:text="${cliente.correo}"></th>
                         <th>
-                            <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
-                                <button type="submit"><i class="fas fa-father-alt"></i> Eliminar</button>
-                            </form>        
+                                 <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
+                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
+                            </form>          
                         </th>
 
                     </tr>
