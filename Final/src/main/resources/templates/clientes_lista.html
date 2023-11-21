@@ -18,11 +18,6 @@
                         <th scope="col">DNI</th>
                         <th scope="col">DIRECCION</th>
                         <th scope="col">CORREO</th>
-<<<<<<< HEAD
-                        
-=======
-
->>>>>>> 37fd9cf03d3d2755bfd0308015319e67b6e3485a
 
                         <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th>
                     </tr>
@@ -35,27 +30,25 @@
                         <th th:text="${cliente.dni}"></th>
                         <th  th:text="${cliente.direccion}"></th>
                         <th th:text="${cliente.correo}"></th>
-<<<<<<< HEAD
-                        <th th:action="@{'/cliente//eliminar/{id}}" method="post">
-                           <input type="submit" th:value="Eliminar"  onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"></th>                 
-=======
+      
+
                         <th>
                             <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
-                                <button type="submit"><i class="fas fa-father-alt"></i> Eliminar</button>
+                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
                             </form>        
                         </th>
 
->>>>>>> 37fd9cf03d3d2755bfd0308015319e67b6e3485a
+
                     </tr>
                 </tbody>
             </table>
 
             <div>
-<<<<<<< HEAD
+
                 <a href="/inicio">
-=======
+
                 <a href="/">
->>>>>>> 37fd9cf03d3d2755bfd0308015319e67b6e3485a
+
                     <button class="btn btn-primary">Volver</button>
                 </a>
             </div>
