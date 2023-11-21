@@ -1,3 +1,31 @@
+
+/*body{
+    background-color: #21222c;
+}*/
+/*    .botones{
+        display: flex;
+        justify-content: center;
+        justify-content: space-around;
+        margin-top: 100px;
+    }*/
+
+/*    h1{
+        color: whitesmoke;
+        font-size: 30px;
+        text-align: center;
+        margin-top: 20px;
+    }*/
+/*
+    .contenedorMain{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: red;
+        font-size: 35px;
+        font-family: fantasy;
+        margin-top: 60px;
+    }*/
+
     img{
 /*        display:flex ;*/
         width: 50px;
@@ -9,4 +37,11 @@
     p{
         margin-left: 10px;
         margin-top: 10px;
+    }
+
+    .footer, .navbar{
+       
+        background-color: #21222c;
+        color: whitesmoke;
+        
     }
