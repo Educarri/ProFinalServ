@@ -5,7 +5,7 @@
         <title>Lista Clientes</title>
         <meta charset="UTF-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
+    
     </head>
     <body>
         <div class="container m-5">
@@ -18,53 +18,46 @@
                         <th scope="col">DNI</th>
                         <th scope="col">DIRECCION</th>
                         <th scope="col">CORREO</th>
+                        <th scope="col">OFICIO</th>
+                        <th scope="col">PRECIO HORA</th>
+                        <th scope="col">REPUTACION</th>
+                        <th scope="col">DESCRIPCION SERVICIO</th>
+
 
                         <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="cliente:${clientes}">
-                        <th th:text="${cliente.nombre}" ></th>
-                        <th th:text="${cliente.apellido}"></th>
-                        <th th:text="${cliente.telefono}"></th>
-                        <th th:text="${cliente.dni}"></th>
-                        <th  th:text="${cliente.direccion}"></th>
-                        <th th:text="${cliente.correo}"></th>
-      
-
+                    <tr th:each="proveedor:${proveedores}">
+                        <th th:text="${proveedor.nombre}" ></th>
+                        <th th:text="${proveedor.apellido}"></th>
+                        <th th:text="${proveedor.telefono}"></th>
+                        <th th:text="${proveedor.dni}"></th>
+                        <th  th:text="${proveedor.direccion}"></th>
+                        <th th:text="${proveedor.correo}"></th>
+                        <th th:text="${proveedor.oficio}"></th>
+                        <th th:text="${proveedor.precioHs}"></th>
+                        <th th:text="${proveedor.reputacion}"></th>
+                        <th th:text="${proveedor.descripService}"></th>
                         <th>
-<<<<<<< HEAD
-                            <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
-                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
-                            </form>        
-=======
-                                 <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
+                            <form th:action="@{/proveedor/eliminar/__${proveedor.id}__}" method="post">
                                 <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
                             </form>          
->>>>>>> dc7459c11bfa3ee851f0448b964f8889e09f1893
                         </th>
-
 
                     </tr>
                 </tbody>
             </table>
 
             <div>
-<<<<<<< HEAD
-
-                <a href="/inicio">
-
-                <a href="/">
-
-                    <button class="btn btn-primary">Volver</button>
-=======
                 <a>
                     <button class="btn btn-primary" onclick="goBack()">Volver</button>
->>>>>>> dc7459c11bfa3ee851f0448b964f8889e09f1893
                 </a>
             </div>
         </div>
-       <script>
+
+        
+           <script>
             function goBack() {
                 window.history.back();
             }
