@@ -26,14 +26,15 @@ public class ClienteControlador {
     @Autowired
     private ClienteService cliServ;
 
+    @PreAuthorize("permitAll()")
     @GetMapping("/registrar")
     public String registrar() {
         return "registroCliente.html";
     }
 
+    @PreAuthorize("permitAll()")
     @PostMapping("/registro")
-    public String registro(@RequestParam(required = false) String nombre, @RequestParam(required = false)
-            String apellido, @RequestParam(required = false) Long dni,
+    public String registro(@RequestParam(required = false) String nombre, @RequestParam(required = false) String apellido, @RequestParam(required = false) Long dni,
             String correo, Integer telefono, String password, String direccion, ModelMap modelo) {
 
         try {
@@ -55,7 +56,7 @@ public class ClienteControlador {
 
         return "cliente_modificar.html";
     }
-    
+
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable String id,
@@ -78,8 +79,7 @@ public class ClienteControlador {
         }
     }
 
-    
-      @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/lista")
     public String listarClientes(ModelMap modelo) {
         List<Cliente> clientes = cliServ.listarClientes();
@@ -88,8 +88,7 @@ public class ClienteControlador {
         return "clientes_lista.html";
     }
 
-    
-    //@PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')") VOLVER A PONER ROLES
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/eliminar/{id}")
     public String eliminar(@PathVariable String id, ModelMap modelo) {
         try {
@@ -100,7 +99,7 @@ public class ClienteControlador {
             modelo.put("error", e.getMessage());
 
         }
-       return "redirect:/cliente/lista";
+        return "redirect:/cliente/lista";
     }
 
 }
