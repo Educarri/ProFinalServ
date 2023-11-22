@@ -18,7 +18,14 @@
                         <th scope="col">DNI</th>
                         <th scope="col">DIRECCION</th>
                         <th scope="col">CORREO</th>
+<<<<<<< HEAD
+<<<<<<< HEAD
+                        
+=======
 
+>>>>>>> 37fd9cf03d3d2755bfd0308015319e67b6e3485a
+=======
+>>>>>>> e408b70bd27e85907730f87cc5dacc859e4e114e
 
                         <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th>
                     </tr>
@@ -31,18 +38,50 @@
                         <th th:text="${cliente.dni}"></th>
                         <th  th:text="${cliente.direccion}"></th>
                         <th th:text="${cliente.correo}"></th>
+<<<<<<< HEAD
+<<<<<<< HEAD
+                        <th th:action="@{'/cliente//eliminar/{id}}" method="post">
+                           <input type="submit" th:value="Eliminar"  onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"></th>                 
+=======
+=======
+      
+
+>>>>>>> e408b70bd27e85907730f87cc5dacc859e4e114e
                         <th>
+<<<<<<< HEAD
+                            <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
+                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
+                            </form>        
+=======
                                  <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
                                 <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
                             </form>          
+>>>>>>> ded70a01884b56f802fd2a78d832e923faf0aade
                         </th>
 
+<<<<<<< HEAD
+>>>>>>> 37fd9cf03d3d2755bfd0308015319e67b6e3485a
+=======
+
+>>>>>>> e408b70bd27e85907730f87cc5dacc859e4e114e
                     </tr>
                 </tbody>
             </table>
 
             <div>
+<<<<<<< HEAD
+<<<<<<< HEAD
+                <a href="/inicio">
+=======
                 <a href="/">
+>>>>>>> 37fd9cf03d3d2755bfd0308015319e67b6e3485a
+=======
+
+                <a href="/inicio">
+
+                <a href="/">
+
+>>>>>>> e408b70bd27e85907730f87cc5dacc859e4e114e
                     <button class="btn btn-primary">Volver</button>
                 </a>
             </div>

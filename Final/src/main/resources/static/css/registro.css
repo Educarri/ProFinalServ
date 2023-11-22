@@ -39,7 +39,6 @@
   border-bottom: 1px solid #eee;
   font-size: .9rem;
   padding: 8px 20px;
-<<<<<<< HEAD
   
 }/*
 
@@ -237,10 +236,7 @@
   border-bottom: 1px solid #eee;
   font-size: .9rem;
   padding: 8px 20px;
-  
-=======
- color: white;
->>>>>>> ded70a01884b56f802fd2a78d832e923faf0aade
+  color: white;
 }
  .checkbox-item {
     margin-right: 2px; /* Espacio entre cada checkbox */
