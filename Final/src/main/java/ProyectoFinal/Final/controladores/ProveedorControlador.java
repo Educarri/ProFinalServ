@@ -53,6 +53,7 @@ public class ProveedorControlador {
         return "index.html"; //si no hay errores me manda a la pagina main
     }
 
+    
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable String id, ModelMap modelo) {
@@ -89,17 +90,18 @@ public class ProveedorControlador {
         }
     }
 
+    
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/lista")
     public String listarProveedores(ModelMap modelo) {
         List<Proveedor> proveedores = proServ.listarProveedores();
         modelo.addAttribute("proveedores", proveedores);
 
-        return "proveedores_lista.html";
+        return "proveedor_lista.html";
     }
 
    
-    //@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-    @PreAuthorize("permitAll()")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/eliminar/{id}")
     public String eliminar(@PathVariable String id, ModelMap modelo) {
         try {
@@ -112,7 +114,6 @@ public class ProveedorControlador {
         }
         return "redirect:/";
     }
-
     
     @GetMapping("/inicio")
     public String inicio(){

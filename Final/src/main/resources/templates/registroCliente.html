@@ -16,6 +16,7 @@
             <h1 class="tituloform">Registro de Cliente</h1>
 
             <form th:action="@{/cliente/registro}" method="post" >
+<<<<<<< HEAD
                 <!-- Campos del formulario -->
                 <!--                <div class= "mb-3">-->
 <!--                 <div class="mb-3">
@@ -62,17 +63,21 @@
                                     <input type="text" class="input" name="direccion" placeholder="Direccion">
                                     <input type="password" class="input" name="password" placeholder="Password">
                                     <div/>
+=======
+                <div class="mb-3">
+>>>>>>> dc7459c11bfa3ee851f0448b964f8889e09f1893
 
 
-                <!-- 
-               <label>Nombre: <input type="text" th:field="*{nombre}" /></label><br/>
-               <label>Apellido: <input type="text" th:field="*{apellido}" /></label><br/>
-               <label>DNI: <input type="text" th:field="*{dni}" /></label><br/>
-               <label>Correo: <input type="text" th:field="*{correo}" /></label><br/>
-               <label>Teléfono: <input type="text" th:field="*{telefono}" /></label><br/>
-               <label>Dirección: <input type="text" th:field="*{direccion}" /></label><br/>
-                -->
-                                <button class="mx-auto d-block" type="submit">Crear Cliente</button>
+                    <input type="text" class="input" name="nombre" placeholder="Nombre">
+                    <input type="text" class="input" name="apellido" placeholder="Apellido">
+                    <input type="number" class="input" name="dni" placeholder="DNI">
+                    <input type="text" class="input" name="correo" placeholder="Correo electronico">
+                    <input type="number" class="input" name="telefono" placeholder="Telefono">
+                    <input type="text" class="input" name="direccion" placeholder="Direccion">
+                    <input type="text" class="input" name="password" placeholder="Password">
+                    <div/>
+
+                    <button class="mx-auto d-block" type="submit">Crear Cliente</button>
 
             </form>
         </div>
