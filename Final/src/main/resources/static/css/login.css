@@ -130,7 +130,9 @@ section .cuadrado:nth-child(3) {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-
+.LoginForm .inputBox input::placeholder {
+    color: whitesmoke;
+}
 
 .LoginForm .btn-neon {
 
@@ -250,4 +252,9 @@ header .navbar-brand {
 
   .text-center {  
     color: whitesmoke;
+}
+
+.error {
+    text-align: center;
+    color: #001133;
 }

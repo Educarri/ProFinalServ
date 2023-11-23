@@ -25,12 +25,12 @@
                 <div class="LoginContainer">
                     <div class="LoginForm">
                         <h2>Iniciar Sesión</h2>
-                        <form>
+                        <form th:action="@{/logincheck}" method="POST">
                             <div class="inputBox">
-                                <input type="text" placeholder="Correo">
+                               <input autocomplete="off" placeholder="Email" class="input-field" type="text" name="correo">
                             </div>
                             <div class="inputBox">
-                                <input type="password" placeholder="Contraseña">
+                                <input placeholder="Password" class="input-field" type="password" name="password">
                             </div>
                             <button href="" class="btn-neon">
                                 <span id="span1"></span>
@@ -46,8 +46,15 @@
                                 <a href="">Registrate</a>
                             </p>
                         </form>
+                             <div class="error">
+            <div th:if="${error != null}" class="error-interno">
+                <h4>Error!</h4>
+                <p th:text="${error}"></p>
+            </div>
+        </div>
                     </div>
                 </div>
+         
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3 ">
                     <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Home</a></li>
                     <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Features</a></li>
@@ -57,6 +64,7 @@
                 </ul>
                 <p class="text-center">© 2023 Home Fix, Inc</p>
             </div>    
-        </section>  
+        </section> 
+   
     </body>
 </html>
