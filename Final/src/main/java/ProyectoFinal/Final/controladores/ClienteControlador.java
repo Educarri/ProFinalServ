@@ -43,12 +43,13 @@ public class ClienteControlador {
 
         } catch (miException e) {
             modelo.put("error", e.getMessage());
-            return "cliente_form.html"; //si hay error se regarga la misma pagina
+            return "registroCliente.html"; //si hay error se regarga la misma pagina
         }
 
         return "index.html"; //si no hay errores me manda a la pagina main
     }
 
+    /*
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable String id, ModelMap modelo) {
@@ -57,6 +58,7 @@ public class ClienteControlador {
         return "cliente_modificar.html";
     }
 
+*/
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable String id,
@@ -71,7 +73,7 @@ public class ClienteControlador {
         try {
             cliServ.modificarCliente(nombre, apellido, dni, correo, telefono, password, direccion, id);
             modelo.put("exito", "Logro modificar correctamente al Cliente");
-            return "redirect:../lista";
+            return "inicio.html";
         } catch (miException e) {
 
             modelo.put("error", e.getMessage());

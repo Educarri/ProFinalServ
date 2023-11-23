@@ -53,7 +53,7 @@ public class ProveedorControlador {
         return "index.html"; //si no hay errores me manda a la pagina main
     }
 
-    
+    /*
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable String id, ModelMap modelo) {
@@ -62,6 +62,8 @@ public class ProveedorControlador {
         return "proveedor_modificar.html";
     }
 
+*/
+    
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
     @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable String id,
@@ -82,7 +84,7 @@ public class ProveedorControlador {
             proServ.actualizarProveedor(nombre, apellido, dni, correo, telefono,
                     password, direccion, oficio, PrecioHs, reputacion, descripService, archivo, id);
             modelo.put("exito", "Logro modificar correctamente al Proveedor");
-            return "redirect:../lista";
+            return "inicioProveedor.html";
         } catch (miException e) {
 
             modelo.put("error", e.getMessage());

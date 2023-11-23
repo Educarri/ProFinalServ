@@ -82,23 +82,24 @@ public class ProveedorService {
     public void actualizarProveedor(String nombre, String apellido, Long dni,
             String correo, Integer telefono, String password, String direccion, String oficio,
             Integer precioHs, Integer reputacion, String descripService, MultipartFile archivo,
-            String idProveedor) throws miException {
+            String id) throws miException {
 
         validar(nombre, apellido, dni, correo, telefono, password, direccion, oficio, precioHs, descripService);
 
-        Optional<Proveedor> respuesta = proRepo.findById(idProveedor);
+        Optional<Proveedor> respuesta = proRepo.findById(id);
 
         if (respuesta.isPresent()) {
-            Proveedor pr = new Proveedor();
+            Proveedor pr = respuesta.get();
             pr.setNombre(nombre);
             pr.setCorreo(correo);
             pr.setPassword(new BCryptPasswordEncoder().encode(password));
             pr.setRol(Rol.PROVEEDOR);
             pr.setDireccion(direccion);
             pr.setDescrService(descripService);
-            pr.setReputacion(reputacion);
+            pr.setReputacion(pr.getReputacion());
             pr.setPrecioHs(precioHs);
 
+         
             String idImagen = null;
 
             if (pr.getImagen() != null) {
