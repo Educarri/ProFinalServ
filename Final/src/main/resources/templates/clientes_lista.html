@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Lista Clientes</title>
+        <meta charset="UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <div class="container m-5">
+            <table class="table table-dark">
+                <thead>
+                    <tr >
+                        <th scope="col">NOMBRE</th>
+                        <th scope="col">APELLIDO</th>
+                        <th scope="col">TELEFONO</th>
+                        <th scope="col">DNI</th>
+                        <th scope="col">DIRECCION</th>
+                        <th scope="col">CORREO</th>
+<<<<<<< HEAD
+<<<<<<< HEAD
+                        
+=======
+
+>>>>>>> 37fd9cf03d3d2755bfd0308015319e67b6e3485a
+=======
+>>>>>>> e408b70bd27e85907730f87cc5dacc859e4e114e
+
+                        <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="cliente:${clientes}">
+                        <th th:text="${cliente.nombre}" ></th>
+                        <th th:text="${cliente.apellido}"></th>
+                        <th th:text="${cliente.telefono}"></th>
+                        <th th:text="${cliente.dni}"></th>
+                        <th  th:text="${cliente.direccion}"></th>
+                        <th th:text="${cliente.correo}"></th>
+<<<<<<< HEAD
+<<<<<<< HEAD
+                        <th th:action="@{'/cliente//eliminar/{id}}" method="post">
+                           <input type="submit" th:value="Eliminar"  onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"></th>                 
+=======
+=======
+      
+
+>>>>>>> e408b70bd27e85907730f87cc5dacc859e4e114e
+                        <th>
+<<<<<<< HEAD
+                            <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
+                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
+                            </form>        
+=======
+                                 <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
+                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
+                            </form>          
+>>>>>>> ded70a01884b56f802fd2a78d832e923faf0aade
+                        </th>
+
+<<<<<<< HEAD
+>>>>>>> 37fd9cf03d3d2755bfd0308015319e67b6e3485a
+=======
+
+>>>>>>> e408b70bd27e85907730f87cc5dacc859e4e114e
+                    </tr>
+                </tbody>
+            </table>
+
+            <div>
+<<<<<<< HEAD
+<<<<<<< HEAD
+                <a href="/inicio">
+=======
+                <a href="/">
+>>>>>>> 37fd9cf03d3d2755bfd0308015319e67b6e3485a
+=======
+
+                <a href="/inicio">
+
+                <a href="/">
+
+>>>>>>> e408b70bd27e85907730f87cc5dacc859e4e114e
+                    <button class="btn btn-primary">Volver</button>
+                </a>
+            </div>
+        </div>
+
+    </body>
+</html>

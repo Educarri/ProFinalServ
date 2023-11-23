@@ -21,7 +21,7 @@ public class Proveedor extends Usuario{
     private Oficios oficio;
     private Integer precioHs;
     private Integer reputacion;
-    private String descripcionService;
+    private String descripService;
     
     
     @OneToOne
@@ -52,11 +52,11 @@ public class Proveedor extends Usuario{
     }
 
     public String getDescrService() {
-        return descripcionService;
+        return descripService;
     }
 
     public void setDescrService(String descrService) {
-        this.descripcionService = descrService;
+        this.descripService = descrService;
     }
 
     public Imagen getImagen() {
