@@ -1,5 +1,3 @@
-
-
 * {
     margin: 0;
     padding: 0;
@@ -130,8 +128,6 @@ section .cuadrado:nth-child(3) {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-
-
 .LoginForm .btn-neon {
 
     background: #fff;
@@ -225,18 +221,8 @@ section .cuadrado:nth-child(3) {
     transition-delay: 0.75s;
 }
 
-.OlvidoPass, .Registro {
-    margin-top: 5px;
-    color: #fff;
-}
-
-.OlvidoPass a, .Registro a {
-    color: #fff;
-    font-weight: 600;
-}
-
 header .navbar-brand {     
-  
+    background-color: #21222c;
     color: whitesmoke;
 }
 
