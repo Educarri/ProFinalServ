@@ -77,7 +77,7 @@ public class PortalControlador {
                 modelo.put("user", user);
                 return "cliente_Modificar";
             } else {
-                modelo.put("proveedor", user);
+                modelo.put("user", user);
                 return "proveedor_modificar";
             }
 

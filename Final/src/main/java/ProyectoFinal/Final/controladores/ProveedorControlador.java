@@ -75,14 +75,14 @@ public class ProveedorControlador {
             @RequestParam(required = false) String password,
             @RequestParam(required = false) String direccion,
             @RequestParam(required = false) String oficio,
-            @RequestParam(required = false) Integer PrecioHs,
-            @RequestParam(required = false) Integer reputacion,
+            @RequestParam(required = false) Integer precioHs,
+            Integer reputacion,
             @RequestParam(required = false) String descripService,
             @RequestParam(required = false) MultipartFile archivo,
             ModelMap modelo) {
         try {
             proServ.actualizarProveedor(nombre, apellido, dni, correo, telefono,
-                    password, direccion, oficio, PrecioHs, reputacion, descripService, archivo, id);
+                    password, direccion, oficio, precioHs, reputacion, descripService, archivo, id);
             modelo.put("exito", "Logro modificar correctamente al Proveedor");
             return "inicioProveedor.html";
         } catch (miException e) {

@@ -16,15 +16,15 @@
 
 
         <div class="formulario">
-            <form th:action="@{/proveedor/modificar/__${proveedor?.id}__}" method="POST">
+            <form th:action="@{/proveedor/modificar/__${user?.id}__}" method="POST" enctype="multipart/form-data">
 
-                <input type="text" name="id" th:value="${proveedor.id}" >
-                <input type="text" class="input" name="nombre" placeholder="Nombre" th:value= "${proveedor.nombre}">
-                <input type="text" class="input" name="apellido" placeholder="apellido" th:value = "${proveedor.apellido}">
-                <input type="number" class="input" name="dni" placeholder="Dni" th:value = "${proveedor.dni}">
-                <input type="text" class="input" name="correo" placeholder="correo" th:value = "${proveedor.correo}">
-                <input type="number" class="input" name="telefono" placeholder="telefono" th:value = "${proveedor.telefono}">
-                <input type="text" class="input" name="direccion" placeholder="direccion" th:value = "${proveedor.direccion}">
+                <input type="text" name="id" th:value="${user.id}" >
+                <input type="text" class="input" name="nombre"  th:value= "${user.nombre}">
+                <input type="text" class="input" name="apellido"  th:value = "${user.apellido}">
+                <input type="number" class="input" name="dni"  th:value = "${user.dni}">
+                <input type="text" class="input" name="correo"  th:value = "${user.correo}">
+                <input type="number" class="input" name="telefono"  th:value = "${user.telefono}">
+                <input type="text" class="input" name="direccion"  th:value = "${user.direccion}">
                 <input type="text" class="input" name="password" placeholder="password" required="">
 
                 <div class="form-group">
@@ -37,20 +37,22 @@
                     </select>
                 </div>
 
-                <input type="number" class="input" name="precioHs" placeholder="Precio x Hora" th:value = "${proveedor.precioHs}">
-                <textarea class="form-control" name="descripService" placeholder="Descripcion del Servicio" rows="3" cols="3"></textarea>
+                <input type="number" class="input" name="precioHs" th:value = "${user.precioHs}">
+                <input type="text" class="input" name="descripService" th:value = "${user.descripService}">
+
+
 
 
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupFile01">Foto Actual</label>
-                    
-                    <img th:if="${proveedor.imagen != null}" th:src="@{/imagen/perfil/__${proveedor.id}__}" class="img-fluid" style="height: 100px"/>
-                    
-                    <input type="file" class="form-control" id="inputGroupFile01" name="archivo" >
+
+                    <img th:if="${user.imagen != null}" th:src="@{/imagen/perfil/__${user.id}__}" class="img-fluid" style="height: 100px"/>
+
+                    <input type="file" class="form-control" id="inputGroupFile01" name="archivo" />
                 </div>
                 <button type="submit" class="btn btn-primary mt-3 botones">Actualizar</button>
             </form>
-            
+
         </div>
         <a href="/inicio" style="margin: 0 auto">
             <button class="btn btn-primary mt-3 botones"> Volver </button>
