@@ -31,7 +31,7 @@ img{
     padding: 20px;
 }
 
-.footer {
+/*.footer {
     background-color: #f0f0f0;
     padding: 20px 0;
     text-align: center;
@@ -40,7 +40,7 @@ img{
 
 .footer-content {
     color: #333;
-}
+}*/
 
 p{
     margin-top: 20px;
@@ -51,7 +51,3 @@ p{
     font-style: italic;
 }
 
-.navbar{
-    max-height: 150px;
-    width: 100%;
-}
