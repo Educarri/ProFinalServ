@@ -28,9 +28,7 @@
                         <th th:text="${trabajo.calificacion}"></th>
 
                         <th>
-                            <form th:action="@{/proveedor/eliminar/__${proveedor.id}__}" method="post">
-                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
-                            </form>          
+                           <a th:href="@{/trabajo/calificar/__${trabajo.id}__}" sec:authorize="hasAnyRole('USER', 'ADMIN')" class="btn btn-sm btn-outline-secondary">CALIFICAR</a>
                         </th>
 
                     </tr>

@@ -14,40 +14,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ProyectoFinal.Final.repositorios.TrabajoRepositorio;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TrabajoService {
 
     @Autowired
     private TrabajoRepositorio traRepo;
-    
-    
+
     @Autowired
     private ProveedorRepositorio proRepo;
 
     @Transactional
-    public void registrarTrabajo(String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto, 
+    public void registrarTrabajo(String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
             String estado, Integer calificacion) throws miException {
-        
+
         validar(HsTrabajo);
 
         Trabajo tra = new Trabajo();
-      
+
         Proveedor pro = proRepo.getOne(idProveedor);
-        
+
         Integer precioHoraProveedor = pro.getPrecioHs();
-        
+
         Integer valorFinalHora = precioHoraProveedor * HsTrabajo;
-         
+
         tra.setIdCliente(idCliente);
         tra.setIdProveedor(idProveedor);
         tra.setPresupuesto(valorFinalHora);
         tra.setEstado(estado);
         tra.setHsTrabajo(HsTrabajo);
-        
+
         //validar que la calificacion esta siendo nula sino crearla 
         tra.setCalificacion(calificacion);
-            
+
         traRepo.save(tra);
 
     }
@@ -72,14 +72,32 @@ public class TrabajoService {
         return traRepo.findAll();
 
     }
-    
-    
-    public List<Trabajo> listarTrabajosPorIdCliente(String id){
-        
+
+    public List<Trabajo> listarTrabajosPorIdCliente(String id) {
+
         return traRepo.buscarTrabajoPorIdCliente(id);
     }
 
-    
+    @Transactional
+    public void modificar(String id, String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
+            String estado, Integer calificacion) throws miException {
+
+        Optional<Trabajo> respuesta = traRepo.findById(id);
+
+        if (respuesta.isPresent()) {
+            Trabajo tra = respuesta.get();
+            tra.setCalificacion(calificacion);
+            
+            tra.setHsTrabajo(tra.getHsTrabajo()); 
+            tra.setPresupuesto(tra.getPresupuesto());
+            tra.setIdCliente(tra.getIdCliente());
+            tra.setIdProveedor(tra.getIdProveedor());
+            tra.setEstado(estado);
+        
+            traRepo.save(tra);
+        }
+    }
+
     public void validar(Integer HsTrabajo) throws miException {
 
         if (HsTrabajo < 0 || HsTrabajo == null) {
