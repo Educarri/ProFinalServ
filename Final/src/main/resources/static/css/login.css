@@ -1,8 +1,5 @@
 
-<<<<<<< HEAD
-=======
 
->>>>>>> a8e848bd3381b63cef0d923285a5b310efc7cd05
 * {
     margin: 0;
     padding: 0;
@@ -18,17 +15,9 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #21222c;
-    
-=======
     min-height: 90vh;
     background: #21222c;
     margin-bottom: 0;
->>>>>>> a8e848bd3381b63cef0d923285a5b310efc7cd05
 }
 
 section .cuadrado {
@@ -62,11 +51,7 @@ section .cuadrado:nth-child(3) {
 .cuadrado {
     position: absolute;
     animation: animacion 5s linear infinite;
-<<<<<<< HEAD
-/*    animation-delay: calc(1s * var(--i));*/
-=======
     animation-delay: calc(1s * var(--i));
->>>>>>> a8e848bd3381b63cef0d923285a5b310efc7cd05
 }
 
 @keyframes animacion {
@@ -145,13 +130,10 @@ section .cuadrado:nth-child(3) {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-<<<<<<< HEAD
-=======
 .LoginForm .inputBox input::placeholder {
     color: whitesmoke;
 }
 
->>>>>>> a8e848bd3381b63cef0d923285a5b310efc7cd05
 .LoginForm .btn-neon {
 
     background: #fff;
@@ -174,10 +156,7 @@ section .cuadrado:nth-child(3) {
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     text-align: center;
-<<<<<<< HEAD
-=======
 
->>>>>>> a8e848bd3381b63cef0d923285a5b310efc7cd05
     position: relative;
     display: inline-block;
     padding: 15px 30px;
@@ -258,14 +237,6 @@ section .cuadrado:nth-child(3) {
     font-weight: 600;
 }
 
-<<<<<<< HEAD
-header .navbar-brand{     
-    background-color: #21222c;
-    color: whitesmoke;
-}
-
-
-=======
 header .navbar-brand {     
   
     color: whitesmoke;
@@ -287,4 +258,3 @@ header .navbar-brand {
     text-align: center;
     color: #001133;
 }
->>>>>>> a8e848bd3381b63cef0d923285a5b310efc7cd05

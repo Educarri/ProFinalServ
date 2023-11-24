@@ -8,7 +8,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
-        <!--    <link href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">-->
         <link href="/css/main.css" rel="stylesheet" type="text/css"/>
         <link href="/css/navfoot.css" rel="stylesheet" type="text/css"/>
 
@@ -26,7 +25,6 @@
         </div>
         <section>
 
-<<<<<<< HEAD
             <div class="content"> 
                 <div class="cuadrado" style="-- i :0"></div>
                 <div class="cuadrado" style="-- i :1"></div>
@@ -94,32 +92,6 @@
                                                                                     </div>
                                                                                 </div>-->
                                         </div>
-=======
-        <div class="album py-5 bg-body-tertiary">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-                    <div class="col" th:each="proveedor : ${proveedores}">
-                        <div class="card shadow-sm">
-
-                            <img th:if="${proveedor.imagen != null}" th:src="@{/imagen/perfil/__${proveedor.id}__}" class="bd-placeholder-img card-img-top" width="150px" height="200px" alt="Imagen del proveedor"/>
-
-                            <div class="card-body">
-
-                                <h5 class="card-title" th:text="${proveedor.nombre}"></h5>
-                                <p class="card-text" th:text="${proveedor.oficio}"></p>
-
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        
-                                        <a th:href="@{/login}" th:if="${session.usuarioSesion == null}" class="btn btn-sm btn-outline-secondary">Ver Perfil</a>
-                                        <a th:href="@{/proveedor/contacto/__${proveedor.id}__}" sec:authorize="hasAnyRole('USER', 'ADMIN')" class="btn btn-sm btn-outline-secondary">Ver Perfil</a>
-
-                                        <form th:action="@{/proveedor/eliminar/__${proveedor.id}__}" method="post">
-                                            <button type="submit" sec:authorize="hasRole('ADMIN')"><i class="fas fa-father-alt" ></i> Eliminar</button>
-                                        </form>  
-
->>>>>>> ccc5570a9d9da975360c8ca2cd1b85b1914b6cf7
                                     </div>
                                 </div>
                             </div>
@@ -127,16 +99,12 @@
 
                     </div>
                 </div>
-<<<<<<< HEAD
-=======
-            </div>
-        </div>
->>>>>>> ccc5570a9d9da975360c8ca2cd1b85b1914b6cf7
 
         </section>
         <div class="footer">
             <footer th:replace="/fragments/footer :: footer"> </footer>
         </div>
+
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
         </script>
