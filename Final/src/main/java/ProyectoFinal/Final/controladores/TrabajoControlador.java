@@ -1,62 +1,119 @@
-
 package ProyectoFinal.Final.controladores;
 
+import ProyectoFinal.Final.entidades.Proveedor;
 import ProyectoFinal.Final.entidades.Trabajo;
+import ProyectoFinal.Final.excepciones.miException;
+import ProyectoFinal.Final.servicios.ProveedorService;
 import ProyectoFinal.Final.servicios.TrabajoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
-@RestController
+@Controller
 @RequestMapping("/trabajo")
-@CrossOrigin("*") //cualquier host puede consumir este controlador si pongo *
 public class TrabajoControlador {
 
     @Autowired
     private TrabajoService trabServ;
 
-    @PostMapping
-    public ResponseEntity<Trabajo> crearTrabajo(@RequestBody Trabajo trabajo) {
+    @Autowired
+    private ProveedorService proServ;
+
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
+    @GetMapping("/contratar/{id}")
+    public String registrar(@PathVariable String id, ModelMap modelo) {
 
         try {
-            Trabajo t = trabServ.registrarTrabajo(trabajo);
-            return ResponseEntity.status(HttpStatus.CREATED).body(t);
+            Proveedor pro = proServ.getOne(id);
+            modelo.put("proveedor", pro);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            modelo.put("error", e.getMessage());
         }
 
+        return "registroTrabajo.html";
     }
 
-    @GetMapping
-    public ResponseEntity<List<Trabajo>> findAllTrabajos() {
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
+    @PostMapping("/registro")
+    public String registro(@RequestParam(required = false) String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
+            String estado, Integer calificacion, ModelMap modelo) {
+
         try {
-            List<Trabajo> trabajos = trabServ.listarTrabajos();
-            if (trabajos == null || trabajos.isEmpty()) {
-                return ResponseEntity.status(400).body(null);
-            }
-            return ResponseEntity.status(200).body(trabajos);
-        } catch (Exception e) {
-            return ResponseEntity.status(400).body(null);
+            trabServ.registrarTrabajo(idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion);
+
+            modelo.put("exito", "El Trabajo fue guardado exitosamente");
+
+        } catch (miException e) {
+            modelo.put("error", e.getMessage());
+            return "registroTrabajo.html";
         }
+
+        return "index.html";
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Object> eliminarTrabajo(@PathVariable String id) {
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/listaTrabajos")
+    public String listarTrabajos(ModelMap modelo) {
+        List<Trabajo> trabajos = trabServ.listarTrabajos();
+        modelo.addAttribute("trabajos", trabajos);
+
+        return "trabajos_lista.html";
+    }
+    
+    
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("/calificar/{id}")
+    public String calificar(@PathVariable String id, ModelMap modelo){
+           
+        try {
+             Trabajo trabajo = trabServ.getOne(id);
+             modelo.addAttribute("trabajo", trabajo);
+             
+        } catch (Exception e) {
+            modelo.put("error", e.getMessage());
+        }
+ 
+        return "calificarTrabajo.html";
+    }
+    
+    
+        @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
+    @PostMapping("/modificar/{id}")
+    public String calificado(@PathVariable String id, String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
+            String estado, Integer calificacion,
+            ModelMap modelo) {
+        
+        try {
+            trabServ.modificar(id, idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion);
+            modelo.put("exito", "Logro modificar correctamente al Trabajo");
+            return "redirect:/inicio";
+        } catch (miException e) {
+
+            modelo.put("error", e.getMessage());
+            return "calificarTrabajo.html";
+        }
+    }
+            
+            
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @PostMapping("/eliminar/{id}")
+    public String eliminar(@PathVariable String id, ModelMap modelo) {
         try {
             trabServ.eliminarTrabajo(id);
-            return ResponseEntity.status(201).body("Trabajo Eliminado.");
-        } catch (Exception e) {
-            return ResponseEntity.status(400).body(null);
+            modelo.put("exito", "Trabajo eliminado correctamente");
+        } catch (miException e) {
+            System.out.println("Error al eliminar");
+            modelo.put("error", e.getMessage());
+
         }
+        return "redirect:/inicio";
     }
 
 }

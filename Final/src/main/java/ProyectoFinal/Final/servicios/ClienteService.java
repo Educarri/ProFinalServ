@@ -58,14 +58,15 @@ public class ClienteService {
         Optional<Cliente> respuesta = cliRepo.findById(id);
 
         if (respuesta.isPresent()) {
-            Cliente cl = new Cliente();
+            Cliente cl = respuesta.get();
             cl.setNombre(nombre);
             cl.setApellido(apellido);
             cl.setCorreo(correo);
             cl.setTelefono(telefono);
-            cl.setPassword(password);
+            cl.setPassword(new BCryptPasswordEncoder().encode(password));
             cl.setDireccion(direccion);
-            
+            cl.setDni(dni);
+            cl.setRol(Rol.USER);
             cliRepo.save(cl);
         }
     }

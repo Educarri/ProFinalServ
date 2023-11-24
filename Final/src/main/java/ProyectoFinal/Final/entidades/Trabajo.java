@@ -25,8 +25,7 @@ public class Trabajo {
     private Integer presupuesto;
     private String estado;
     
-    @OneToOne
-    private Calificacion calificacion;
+    private Integer calificacion;
 
     public Trabajo() {
     }
@@ -79,15 +78,13 @@ public class Trabajo {
         this.estado = estado;
     }
 
-    public Calificacion getCalificacion() {
+    public Integer getCalificacion() {
         return calificacion;
     }
 
-    public void setCalificacion(Calificacion calificacion) {
+    public void setCalificacion(Integer calificacion) {
         this.calificacion = calificacion;
-    }
-    
-    
+    } 
     
         
 }
