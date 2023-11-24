@@ -121,5 +121,20 @@ public class ProveedorControlador {
     public String inicio(){
         return "inicioProveedor.html";
     }
+    
+    
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN, ROLE_USER')")
+    @GetMapping("/contacto/{id}")
+    public String contacto(@PathVariable String id, ModelMap modelo){
+        
+        try {
+            Proveedor pro = proServ.getOne(id);
+            modelo.put("proveedor", pro);
+            
+        } catch (Exception e) {
+            modelo.put("error", e.getMessage());
+        }
+        return "contactoProveedor.html";
+    }
 
 }

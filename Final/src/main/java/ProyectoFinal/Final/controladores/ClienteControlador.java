@@ -6,11 +6,13 @@
 package ProyectoFinal.Final.controladores;
 
 import ProyectoFinal.Final.entidades.Cliente;
+import ProyectoFinal.Final.entidades.Trabajo;
 import ProyectoFinal.Final.excepciones.miException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ProyectoFinal.Final.servicios.ClienteService;
+import ProyectoFinal.Final.servicios.TrabajoService;
 import java.util.List;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,9 @@ public class ClienteControlador {
 
     @Autowired
     private ClienteService cliServ;
+    
+    @Autowired
+    private TrabajoService traServ;
 
     @PreAuthorize("permitAll()")
     @GetMapping("/registrar")
@@ -103,5 +108,16 @@ public class ClienteControlador {
         }
         return "redirect:/cliente/lista";
     }
+    
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("/listaTrabajos/{id}")
+    public String listarTrabajos(@PathVariable String id, ModelMap modelo) {
+        
+        List<Trabajo> trabajos = traServ.listarTrabajosPorIdCliente(id);
+        modelo.addAttribute("trabajos", trabajos);
+
+        return "listaTrabajosCliente.html";
+    }
+
 
 }
