@@ -51,3 +51,25 @@ p{
     font-style: italic;
 }
 
+<<<<<<< HEAD
+=======
+.navbar{
+    max-height: 150px;
+    width: 100%;
+}
+
+
+.infoProve{
+    color: #cccc;
+    font-size: 20px;
+    margin: 5px auto;
+    text-align: center;
+        
+}
+
+.imagenProve{
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
+}
+>>>>>>> ccc5570a9d9da975360c8ca2cd1b85b1914b6cf7

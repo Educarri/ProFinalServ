@@ -53,7 +53,7 @@ public class ProveedorControlador {
         return "index.html"; //si no hay errores me manda a la pagina main
     }
 
-    
+    /*
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable String id, ModelMap modelo) {
@@ -62,6 +62,8 @@ public class ProveedorControlador {
         return "proveedor_modificar.html";
     }
 
+*/
+    
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
     @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable String id,
@@ -73,16 +75,16 @@ public class ProveedorControlador {
             @RequestParam(required = false) String password,
             @RequestParam(required = false) String direccion,
             @RequestParam(required = false) String oficio,
-            @RequestParam(required = false) Integer PrecioHs,
-            @RequestParam(required = false) Integer reputacion,
+            @RequestParam(required = false) Integer precioHs,
+            Integer reputacion,
             @RequestParam(required = false) String descripService,
             @RequestParam(required = false) MultipartFile archivo,
             ModelMap modelo) {
         try {
             proServ.actualizarProveedor(nombre, apellido, dni, correo, telefono,
-                    password, direccion, oficio, PrecioHs, reputacion, descripService, archivo, id);
+                    password, direccion, oficio, precioHs, reputacion, descripService, archivo, id);
             modelo.put("exito", "Logro modificar correctamente al Proveedor");
-            return "redirect:../lista";
+            return "inicioProveedor.html";
         } catch (miException e) {
 
             modelo.put("error", e.getMessage());
@@ -118,6 +120,21 @@ public class ProveedorControlador {
     @GetMapping("/inicio")
     public String inicio(){
         return "inicioProveedor.html";
+    }
+    
+    
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN, ROLE_USER')")
+    @GetMapping("/contacto/{id}")
+    public String contacto(@PathVariable String id, ModelMap modelo){
+        
+        try {
+            Proveedor pro = proServ.getOne(id);
+            modelo.put("proveedor", pro);
+            
+        } catch (Exception e) {
+            modelo.put("error", e.getMessage());
+        }
+        return "contactoProveedor.html";
     }
 
 }
