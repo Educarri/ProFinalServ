@@ -15,9 +15,8 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 90vh;
+    min-height: 100vh;
     background: #21222c;
-    margin-bottom: 0;
 }
 
 section .cuadrado {
@@ -65,6 +64,9 @@ section .cuadrado:nth-child(3) {
 
 .LoginBox {
     position: relative;
+
+    height: 80vh;
+    
 }
 
 .LoginContainer {
@@ -243,18 +245,89 @@ header .navbar-brand {
 }
 
 .footer {
-     background-color: #21222c;
+    background: none;
     color: whitesmoke;
-       position: fixed;
+    position: fixed;
     bottom: 0;
     width: 100%;
 }
 
-  .text-center {  
-    color: whitesmoke;
-}
-
+  
 .error {
     text-align: center;
     color: #001133;
+}
+
+/* Consultas de medios para hacer el diseño más responsive */
+
+@media screen and (max-width: 768px) {
+    section {
+        min-height: 70vh;
+    }
+
+    section .cuadrado:nth-child(1) {
+        top: -300px;
+        width: 400px;
+        height: 400px;
+    }
+
+    section .cuadrado:nth-child(2) {
+        bottom: -100px;
+        left: 60px;
+        width: 450px;
+        height: 450px;
+    }
+
+    section .cuadrado:nth-child(3) {
+        bottom: 30px;
+        right: 70px;
+        width: 350px;
+        height: 350px;
+    }
+
+    .LoginContainer {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    section {
+        min-height: 60vh;
+    }
+
+    section .cuadrado:nth-child(1) {
+        top: -200px;
+        width: 300px;
+        height: 300px;
+    }
+
+    section .cuadrado:nth-child(2) {
+        bottom: -50px;
+        left: 30px;
+        width: 350px;
+        height: 350px;
+    }
+
+    section .cuadrado:nth-child(3) {
+        bottom: 10px;
+        right: 40px;
+        width: 250px;
+        height: 250px;
+    }
+
+    .LoginContainer {
+        width: 90%;
+    }
+
+    .LoginForm {
+        padding: 20px;
+    }
+}
+
+footer .nav {
+    border-bottom: none !important;
+}
+
+.navbar-toggler {
+    display: none;
 }
