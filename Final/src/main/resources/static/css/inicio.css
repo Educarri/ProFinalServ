@@ -55,3 +55,18 @@ p{
     max-height: 150px;
     width: 100%;
 }
+
+
+.infoProve{
+    color: #cccc;
+    font-size: 20px;
+    margin: 5px auto;
+    text-align: center;
+        
+}
+
+.imagenProve{
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
+}
