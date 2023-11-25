@@ -90,6 +90,11 @@ public class TrabajoService {
 
         if (respuesta.isPresent()) {
             Trabajo tra = respuesta.get();
+            
+            if(calificacion == null){
+                calificacion = tra.getCalificacion(); //ver si funciona para cuando el proveedor cambia el estado
+            }
+            
             tra.setCalificacion(calificacion);
             
             tra.setHsTrabajo(tra.getHsTrabajo()); 

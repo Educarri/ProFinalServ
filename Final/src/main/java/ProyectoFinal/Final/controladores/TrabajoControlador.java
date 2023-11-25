@@ -66,30 +66,28 @@ public class TrabajoControlador {
 
         return "trabajos_lista.html";
     }
-    
-    
+
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/calificar/{id}")
-    public String calificar(@PathVariable String id, ModelMap modelo){
-           
+    public String calificar(@PathVariable String id, ModelMap modelo) {
+
         try {
-             Trabajo trabajo = trabServ.getOne(id);
-             modelo.addAttribute("trabajo", trabajo);
-             
+            Trabajo trabajo = trabServ.getOne(id);
+            modelo.addAttribute("trabajo", trabajo);
+
         } catch (Exception e) {
             modelo.put("error", e.getMessage());
         }
- 
+
         return "calificarTrabajo.html";
     }
-    
-    
-        @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
+
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/modificar/{id}")
     public String calificado(@PathVariable String id, String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
             String estado, Integer calificacion,
             ModelMap modelo) {
-        
+
         try {
             trabServ.modificar(id, idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion);
             modelo.put("exito", "Logro modificar correctamente al Trabajo");
@@ -100,8 +98,39 @@ public class TrabajoControlador {
             return "calificarTrabajo.html";
         }
     }
-            
-            
+
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("/estado/{id}")
+    public String estado(@PathVariable String id, ModelMap modelo) {
+
+        try {
+            Trabajo trabajo = trabServ.getOne(id);
+            modelo.addAttribute("trabajo", trabajo);
+
+        } catch (Exception e) {
+            modelo.put("error", e.getMessage());
+        }
+
+        return "cambiarEstadoTrabajo.html";
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
+    @PostMapping("/cambiar/{id}")
+    public String cambiarEstado(@PathVariable String id, String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
+            String estado, Integer calificacion,
+            ModelMap modelo) {
+
+        try {
+            trabServ.modificar(id, idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion);
+            modelo.put("exito", "Logro modificar correctamente al Trabajo");
+            return "redirect:/inicio";
+        } catch (miException e) {
+
+            modelo.put("error", e.getMessage());
+            return "cambiarEstadoTrabajo.html";
+        }
+    }
+
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/eliminar/{id}")
     public String eliminar(@PathVariable String id, ModelMap modelo) {
