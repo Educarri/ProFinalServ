@@ -16,6 +16,7 @@
                         <th scope="col">PRESUPUESTO</th>
                         <th scope="col">ESTADO</th>
                         <th scope="col">CALIFICACION</th>
+                        <th scope="col">COMENTARIO</th>
  
                         <th scope="col" sec:authorize="hasAnyRole('ADMIN', 'USER')">Acciones</th>
                     </tr>
@@ -26,6 +27,7 @@
                         <th th:text="${trabajo.presupuesto}"></th>
                         <th th:text="${trabajo.estado}"></th>
                         <th th:text="${trabajo.calificacion}"></th>
+                        <th th:text="${trabajo.comentario}"></th>
 
                         <th>
                            <a th:href="@{/trabajo/calificar/__${trabajo.id}__}" sec:authorize="hasAnyRole('USER', 'ADMIN')" class="btn btn-sm btn-outline-secondary">CALIFICAR</a>

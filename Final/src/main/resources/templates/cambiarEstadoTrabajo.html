@@ -19,8 +19,9 @@
             <form th:action="@{/trabajo/modificar/__${trabajo.id}__}" method="post" >
                 <div class="mb-3">
 
-
-                    <input hidden type="number" class="input" name="calificacion" placeholder="CALIFICACION">
+                    
+                    <input hidden type="number" class="input" name="calificacion">
+                    <input hidden type="text" class="input" name="comentario">
                     <input type="text"  name="estado" placeholder="ESTADO">
 
                     <button class="mx-auto d-block" type="submit">Registrar Calificacion</button>

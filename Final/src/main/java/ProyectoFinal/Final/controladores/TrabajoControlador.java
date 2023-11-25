@@ -43,10 +43,10 @@ public class TrabajoControlador {
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/registro")
     public String registro(@RequestParam(required = false) String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
-            String estado, Integer calificacion, ModelMap modelo) {
+            String estado, Integer calificacion, String comentario, ModelMap modelo) {
 
         try {
-            trabServ.registrarTrabajo(idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion);
+            trabServ.registrarTrabajo(idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion, comentario);
 
             modelo.put("exito", "El Trabajo fue guardado exitosamente");
 
@@ -85,11 +85,11 @@ public class TrabajoControlador {
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/modificar/{id}")
     public String calificado(@PathVariable String id, String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
-            String estado, Integer calificacion,
+            String estado, Integer calificacion, String comentario,
             ModelMap modelo) {
 
         try {
-            trabServ.modificar(id, idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion);
+            trabServ.modificar(id, idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion, comentario);
             modelo.put("exito", "Logro modificar correctamente al Trabajo");
             return "redirect:/inicio";
         } catch (miException e) {
@@ -117,11 +117,11 @@ public class TrabajoControlador {
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
     @PostMapping("/cambiar/{id}")
     public String cambiarEstado(@PathVariable String id, String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
-            String estado, Integer calificacion,
+            String estado, Integer calificacion, String comentario,
             ModelMap modelo) {
 
         try {
-            trabServ.modificar(id, idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion);
+            trabServ.modificar(id, idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion, comentario);
             modelo.put("exito", "Logro modificar correctamente al Trabajo");
             return "redirect:/inicio";
         } catch (miException e) {

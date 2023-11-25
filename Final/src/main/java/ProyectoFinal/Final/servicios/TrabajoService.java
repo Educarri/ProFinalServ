@@ -27,7 +27,7 @@ public class TrabajoService {
 
     @Transactional
     public void registrarTrabajo(String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
-            String estado, Integer calificacion) throws miException {
+            String estado, Integer calificacion, String comentario) throws miException {
 
         validar(HsTrabajo);
 
@@ -47,6 +47,7 @@ public class TrabajoService {
 
         //validar que la calificacion esta siendo nula sino crearla 
         tra.setCalificacion(calificacion);
+        tra.setComentario("");
 
         traRepo.save(tra);
 
@@ -84,7 +85,7 @@ public class TrabajoService {
 
     @Transactional
     public void modificar(String id, String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
-            String estado, Integer calificacion) throws miException {
+            String estado, Integer calificacion, String comentario) throws miException {
 
         Optional<Trabajo> respuesta = traRepo.findById(id);
 
@@ -102,7 +103,8 @@ public class TrabajoService {
             tra.setIdCliente(tra.getIdCliente());
             tra.setIdProveedor(tra.getIdProveedor());
             tra.setEstado(estado);
-        
+            tra.setComentario(comentario);
+            
             traRepo.save(tra);
         }
     }
