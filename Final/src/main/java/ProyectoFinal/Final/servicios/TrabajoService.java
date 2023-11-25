@@ -77,6 +77,10 @@ public class TrabajoService {
 
         return traRepo.buscarTrabajoPorIdCliente(id);
     }
+    public List<Trabajo> listarTrabajosPorIdProveedor(String id) {
+
+        return traRepo.buscarTrabajoPorIdProveedor(id);
+    }
 
     @Transactional
     public void modificar(String id, String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
