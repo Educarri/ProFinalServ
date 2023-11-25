@@ -64,7 +64,7 @@ public class TrabajoControlador {
         List<Trabajo> trabajos = trabServ.listarTrabajos();
         modelo.addAttribute("trabajos", trabajos);
 
-        return "trabajos_lista.html";
+        return "listaTrabajosAdmin.html";
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")

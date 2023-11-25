@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Lista Trabajos</title>
+        <meta charset="UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <div class="container m-5">
+            <table class="table table-dark">
+                <thead>
+                    <tr >
+                        <th scope="col">HORAS TRABAJO</th>
+                        <th scope="col">PRESUPUESTO</th>
+                        <th scope="col">ESTADO</th>
+                        <th scope="col">CALIFICACION</th>
+
+                        <th scope="col" sec:authorize="hasAnyRole('ADMIN', 'USER', 'PROVEEDOR')">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="trabajo:${trabajos}">
+                        <th th:text="${trabajo.HsTrabajo}" ></th>
+                        <th th:text="${trabajo.presupuesto}"></th>
+                        <th th:text="${trabajo.estado}"></th>
+                        <th th:text="${trabajo.calificacion}"></th>
+
+                        <th>
+                            <a th:href="@{/trabajo/calificar/__${trabajo.id}__}" sec:authorize="hasAnyRole('USER', 'ADMIN')" class="btn btn-sm btn-outline-secondary">CALIFICAR</a>
+                            <a th:href="@{/trabajo/estado/__${trabajo.id}__}" sec:authorize="hasAnyRole('PROVEEDOR', 'ADMIN')" class="btn btn-sm btn-outline-secondary">CAMBIAR ESTADO</a>
+                        </th>
+
+                    </tr>
+                </tbody>
+            </table>
+
+            <div>
+                <a>
+                    <button class="btn btn-primary" onclick="goBack()">Volver</button>
+                </a>
+            </div>
+        </div>
+
+
+        <script>
+            function goBack() {
+            window.history.back();
+            }
+        </script>
+    </body>
+</html>
