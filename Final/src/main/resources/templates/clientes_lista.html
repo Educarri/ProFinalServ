@@ -19,7 +19,6 @@
                         <th scope="col">DIRECCION</th>
                         <th scope="col">CORREO</th>
 
-
                         <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th>
                     </tr>
                 </thead>
@@ -31,26 +30,32 @@
                         <th th:text="${cliente.dni}"></th>
                         <th  th:text="${cliente.direccion}"></th>
                         <th th:text="${cliente.correo}"></th>
+      
+
                         <th>
+
                                  <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
                                 <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
                             </form>          
+
                         </th>
+
 
                     </tr>
                 </tbody>
             </table>
 
             <div>
-                <a>
-                    <button class="btn btn-primary" onclick="goBack()">Volver</button>
-                </a>
+
+
+                <a href="/inicio">
+
+                <a href="/">
+
+                    <button class="btn btn-primary">Volver</button>
+
             </div>
         </div>
-       <script>
-            function goBack() {
-                window.history.back();
-            }
-        </script>
+  
     </body>
 </html>
