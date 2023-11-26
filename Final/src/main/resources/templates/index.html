@@ -82,6 +82,7 @@
 
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div class="btn-group">
+<<<<<<< HEAD
                                                         <!--                                                        Agregar enlaces o botones según tus necesidades -->
                                                         <!--<button type="button" class="btn btn-sm btn-outline-secondary">View</button>-->
                                                         <button type="submit" class="btn-neon"
@@ -94,6 +95,15 @@
                                                         <!--                                                        <form th:action="@{/proveedor/eliminar/__${proveedor.id}__}" method="post">
                                                                                                                     <button type="submit"><i class="fas fa-father-alt"></i> Eliminar</button>
                                                                                                                 </form>  -->
+=======
+                                                        <!--                                                        Agregar enlaces o botones según tus necesidades -->                             
+                                                        <a th:href="@{/login}" th:if="${session.usuarioSesion == null}" class="btn-neon">Ver Perfil</a>
+                                                        <a th:href="@{/proveedor/contacto/__${proveedor.id}__}" sec:authorize="hasAnyRole('USER', 'ADMIN')" class="btn-neon">Ver Perfil</a>
+
+                                                        <form th:action="@{/proveedor/eliminar/__${proveedor.id}__}" method="post">
+                                                            <button type="submit" sec:authorize="hasRole('ADMIN')"><i class="fas fa-father-alt" ></i> Eliminar</button>
+                                                        </form>  
+>>>>>>> 589546c87a0be225c6e4635fe1be14ab6a31d4c4
 
                                                     </div>
                                                 </div>
@@ -116,4 +126,11 @@
                     </script>
                     </body>
                     </html>
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> 589546c87a0be225c6e4635fe1be14ab6a31d4c4
 
