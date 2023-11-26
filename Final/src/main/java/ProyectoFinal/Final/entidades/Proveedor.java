@@ -51,12 +51,12 @@ public class Proveedor extends Usuario{
         this.reputacion = reputacion;
     }
 
-    public String getDescrService() {
+    public String getDescripService() {
         return descripService;
     }
 
-    public void setDescrService(String descrService) {
-        this.descripService = descrService;
+    public void setDescripService(String descripService) {
+        this.descripService = descripService;
     }
 
     public Imagen getImagen() {

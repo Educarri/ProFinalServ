@@ -2,7 +2,7 @@ body {
     
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Raleway', sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -15,23 +15,23 @@ h1{
     margin-top: 40px;
 }
 
-.imagen{
+/*.imagen{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 80px; 
-}
+}*/
 
-img{
+/*img{
     border-radius: 20px;
     box-shadow: 10px 5px 5px black;
-}
+}*/
 
 .content {
     padding: 20px;
 }
 
-.footer {
+/*.footer {
     background-color: #f0f0f0;
     padding: 20px 0;
     text-align: center;
@@ -40,8 +40,8 @@ img{
 
 .footer-content {
     color: #333;
-}
-
+}*/
+/*
 p{
     margin-top: 20px;
     text-align: center;
@@ -49,9 +49,43 @@ p{
     font-family: monospace;
     font-size: 18px;
     font-style: italic;
-}
+}*/
 
+/*
 .navbar{
     max-height: 150px;
     width: 100%;
+}*/
+
+
+/*.infoProve{
+    color: #cccc;
+    font-size: 20px;
+    margin: 5px auto;
+    text-align: center;
+        
+}*/
+
+/*.imagenProve{
+    height: 1000px;
+    width: 1000px;
+    margin: 0 auto;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 10px 5px 5px black;
+    display: flex;
+    justify-content: center;
+}*/
+
+.imagenProve{
+    background-color:#21222;
+    height: 700px;
+    width: 700px;
+}
+
+.imgTrabajo{
+    height: 120px;
+    width: 120px;
+    color: whitesmoke;
+    
 }

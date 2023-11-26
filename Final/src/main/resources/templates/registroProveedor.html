@@ -26,51 +26,26 @@
                     <input type="text" class="input" name="direccion" placeholder="Direccion">
                     <input type="password" class="input" name="password" placeholder="Password">
 
-                    <!--                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label"><input type="checkbox" class="form-check-input" name="oficio" value="albañil"> Albañil</label>
-                                            <label class="form-check-label"><input type="checkbox" class="form-check-input" name="oficio" value="electricista"> Electricista</label>
-                                            <label class="form-check-label"><input type="checkbox" class="form-check-input" name="oficio" value="plomero"> Plomero</label>
-                                            <label class="form-check-label"><input type="checkbox" class="form-check-input" name="oficio" value="gasista"> Gasista</label>
-                                            <div/>-->
-                    <div class="form-check form-check-inline">
-                        <div class="checkbox-item">
-                            <input type="checkbox" class="form-check-input" name="oficio" value="albañil" id="checkbox1">
-                            <label class="form-check-label" for="checkbox1">Albañil</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" class="form-check-input" name="oficio" value="electricista" id="checkbox2">
-                            <label class="form-check-label" for="checkbox2">Electricista</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" class="form-check-input" name="oficio" value="plomero" id="checkbox3">
-                            <label class="form-check-label" for="checkbox3">Plomero</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" class="form-check-input" name="oficio" value="gasista" id="checkbox4">
-                            <label class="form-check-label" for="checkbox4">Gasista</label>
-                        </div>
+                    <div class="form-group">
+                        <label for="tipoProveedor">Selecciona el tipo de proveedor:</label>
+                        <select class="form-control"  name="oficio">
+                            <option value="albanil">Albañil</option>
+                            <option value="electricista">Electricista</option>
+                            <option value="plomero">Plomero</option>
+                            <option value="gasista">Gasista</option>
+                        </select>
                     </div>
 
-
                     <input type="number" class="input" name="precioHs" placeholder="Precio x Hora">
-                    <input type="text" class="input" name="descripService" placeholder="Descripcion del Servicio">
-                    <!--                    <input type="file" class="input" name="archivo">-->
+                   <textarea class="form-control" name="descripService" placeholder="Descripcion del Servicio" rows="4"></textarea>
 
                     <div class="input-group mb-3">
                         <label class="input-group-text" for="inputGroupFile01">Foto</label>
-                        <input type="file" class="form-control" id="inputGroupFile01">
+                        <input type="file" class="form-control" id="inputGroupFile01" name="archivo">
                     </div>
 
                     <div/>
 
-                    <!-- 
-                   <label>Nombre: <input type="text" th:field="*{nombre}" /></label><br/>
-                   <label>Apellido: <input type="text" th:field="*{apellido}" /></label><br/>
-                   <label>DNI: <input type="text" th:field="*{dni}" /></label><br/>
-                   <label>Correo: <input type="text" th:field="*{correo}" /></label><br/>
-                   <label>Teléfono: <input type="text" th:field="*{telefono}" /></label><br/>
-                   <label>Dirección: <input type="text" th:field="*{direccion}" /></label><br/>
-                    -->
                     <button class="mx-auto d-block" type="submit">Crear Proveedor</button>
             </form>
         </div>

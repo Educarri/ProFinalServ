@@ -31,12 +31,13 @@ public class seguridadWeb extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests()
-                .antMatchers("/admin/*").permitAll()
-                .antMatchers("/imagen/*").permitAll()
-                .antMatchers("/cliente/*").permitAll() //cambiar nuevamente a que solo los clientes puedan acceder a este controlador
-               // .antMatchers("/proveedor/*").hasRole("PROVEEDOR")
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/cliente/lista").hasRole("ADMIN")
+                .antMatchers("/trabajo/listaTrabajos").hasRole("ADMIN")
+                .antMatchers("/proveedor/lista").hasRole("ADMIN")
+                .antMatchers("/imagen/**").permitAll()
                 .antMatchers("/css/**", "/js/**", "/img/**").permitAll()
-                .antMatchers("/login", "/proveedor/*", "/error", "/", "/imagen/perfil/*").permitAll()
+                .antMatchers("/login", "/error", "/", "/registrar/*").permitAll()
                 //.anyRequest().authenticated()
                 .and().formLogin()
                 .loginPage("/login")

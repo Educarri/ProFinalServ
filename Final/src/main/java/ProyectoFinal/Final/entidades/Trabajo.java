@@ -8,7 +8,6 @@ package ProyectoFinal.Final.entidades;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -25,8 +24,8 @@ public class Trabajo {
     private Integer presupuesto;
     private String estado;
     
-    @OneToOne
-    private Calificacion calificacion;
+    private Integer calificacion;
+    private String comentario;
 
     public Trabajo() {
     }
@@ -79,15 +78,20 @@ public class Trabajo {
         this.estado = estado;
     }
 
-    public Calificacion getCalificacion() {
+    public Integer getCalificacion() {
         return calificacion;
     }
 
-    public void setCalificacion(Calificacion calificacion) {
+    public void setCalificacion(Integer calificacion) {
         this.calificacion = calificacion;
+    } 
+
+    public String getComentario() {
+        return comentario;
     }
-    
-    
-    
-        
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+     
 }

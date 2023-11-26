@@ -1,10 +1,10 @@
-<!--<nav class="navbar expand-lg bg-dark border-body" data-bs-theme="dark">-->
-<nav class="navbar expand-lg fixed-top" >
+<nav class="navbar expand-lg bg-dark border-body" data-bs-theme="dark">
     <div class="container-fluid">
         <div>
             <img src="../img/logo.png"  alt="HomeFix" width="50" height="35">
-            <a class="navbar-brand " href="/" >HomeFix</a> 
+            <a class="navbar-brand" href="/" >HomeFix</a> 
         </div>
+
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -17,16 +17,10 @@
                     <a class="nav-link active" sec:authorize="hasRole('ADMIN')" aria-current="page" href="###">Lista Calificacion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" sec:authorize="hasRole('USER')" th:if="${session.usuarioSesion != null}" th:href="@{/inicio}">Menu Cliente</a>
+                    <a class="nav-link" sec:authorize="hasRole('USER')"  href="/editorial/lista">Lista Proveedores</a>
                 </li>
-<!--                <li class="nav-item">
-                    <a class="nav-link" sec:authorize="hasRole('USER')" th:if="${session.usuarioSesion != null}" th:href="@{/cliente/listaTrabajos/__${session.usuarioSesion.id}__}">Lista Trabajos Solicitados</a>
-                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasRole('ADMIN')"  href="/cliente/lista">Lista cliente</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" sec:authorize="hasRole('PROVEEDOR')" th:if="${session.usuarioSesion != null}" th:href="@{/proveedor/listaTrabajos/__${session.usuarioSesion.id}__}">Lista Trabajos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasAnyRole('ADMIN', 'USER', 'PROVEEDOR')" href="/perfil"> Editar Perfil</a>
@@ -48,4 +42,4 @@
 
     </div>
 <nav/>
-
+   

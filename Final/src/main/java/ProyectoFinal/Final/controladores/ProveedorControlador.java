@@ -6,8 +6,10 @@
 package ProyectoFinal.Final.controladores;
 
 import ProyectoFinal.Final.entidades.Proveedor;
+import ProyectoFinal.Final.entidades.Trabajo;
 import ProyectoFinal.Final.excepciones.miException;
 import ProyectoFinal.Final.servicios.ProveedorService;
+import ProyectoFinal.Final.servicios.TrabajoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,6 +28,9 @@ public class ProveedorControlador {
 
     @Autowired
     private ProveedorService proServ;
+
+    @Autowired
+    private TrabajoService traServ;
 
     @PreAuthorize("permitAll()")
     @GetMapping("/registrar")
@@ -53,6 +58,7 @@ public class ProveedorControlador {
         return "index.html"; //si no hay errores me manda a la pagina main
     }
 
+    /*
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable String id, ModelMap modelo) {
@@ -61,6 +67,7 @@ public class ProveedorControlador {
         return "proveedor_modificar.html";
     }
 
+     */
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
     @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable String id,
@@ -72,16 +79,16 @@ public class ProveedorControlador {
             @RequestParam(required = false) String password,
             @RequestParam(required = false) String direccion,
             @RequestParam(required = false) String oficio,
-            @RequestParam(required = false) Integer PrecioHs,
-            @RequestParam(required = false) Integer reputacion,
+            @RequestParam(required = false) Integer precioHs,
+            Integer reputacion,
             @RequestParam(required = false) String descripService,
             @RequestParam(required = false) MultipartFile archivo,
             ModelMap modelo) {
         try {
             proServ.actualizarProveedor(nombre, apellido, dni, correo, telefono,
-                    password, direccion, oficio, PrecioHs, reputacion, descripService, archivo, id);
+                    password, direccion, oficio, precioHs, reputacion, descripService, archivo, id);
             modelo.put("exito", "Logro modificar correctamente al Proveedor");
-            return "redirect:../lista";
+            return "inicioProveedor.html";
         } catch (miException e) {
 
             modelo.put("error", e.getMessage());
@@ -89,17 +96,16 @@ public class ProveedorControlador {
         }
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/lista")
     public String listarProveedores(ModelMap modelo) {
         List<Proveedor> proveedores = proServ.listarProveedores();
         modelo.addAttribute("proveedores", proveedores);
 
-        return "proveedores_lista.html";
+        return "proveedor_lista.html";
     }
 
-   
-    //@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-    @PreAuthorize("permitAll()")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/eliminar/{id}")
     public String eliminar(@PathVariable String id, ModelMap modelo) {
         try {
@@ -113,10 +119,33 @@ public class ProveedorControlador {
         return "redirect:/";
     }
 
-    
     @GetMapping("/inicio")
-    public String inicio(){
+    public String inicio() {
         return "inicioProveedor.html";
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN, ROLE_USER')")
+    @GetMapping("/contacto/{id}")
+    public String contacto(@PathVariable String id, ModelMap modelo) {
+
+        try {
+            Proveedor pro = proServ.getOne(id);
+            modelo.put("proveedor", pro);
+
+        } catch (Exception e) {
+            modelo.put("error", e.getMessage());
+        }
+        return "contactoProveedor.html";
+    }
+
+    @PreAuthorize("hasRole('ROLE_PROVEEDOR')")
+    @GetMapping("/listaTrabajos/{id}")
+    public String listarTrabajos(@PathVariable String id, ModelMap modelo) {
+
+        List<Trabajo> trabajos = traServ.listarTrabajosPorIdProveedor(id);
+        modelo.addAttribute("trabajos", trabajos);
+
+        return "listaTrabajosProveedor.html";
     }
 
 }

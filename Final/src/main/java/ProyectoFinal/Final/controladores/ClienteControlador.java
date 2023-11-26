@@ -6,11 +6,13 @@
 package ProyectoFinal.Final.controladores;
 
 import ProyectoFinal.Final.entidades.Cliente;
+import ProyectoFinal.Final.entidades.Trabajo;
 import ProyectoFinal.Final.excepciones.miException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ProyectoFinal.Final.servicios.ClienteService;
+import ProyectoFinal.Final.servicios.TrabajoService;
 import java.util.List;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -25,15 +27,19 @@ public class ClienteControlador {
 
     @Autowired
     private ClienteService cliServ;
+    
+    @Autowired
+    private TrabajoService traServ;
 
+    @PreAuthorize("permitAll()")
     @GetMapping("/registrar")
     public String registrar() {
         return "registroCliente.html";
     }
 
+    @PreAuthorize("permitAll()")
     @PostMapping("/registro")
-    public String registro(@RequestParam(required = false) String nombre, @RequestParam(required = false)
-            String apellido, @RequestParam(required = false) Long dni,
+    public String registro(@RequestParam(required = false) String nombre, @RequestParam(required = false) String apellido, @RequestParam(required = false) Long dni,
             String correo, Integer telefono, String password, String direccion, ModelMap modelo) {
 
         try {
@@ -42,12 +48,13 @@ public class ClienteControlador {
 
         } catch (miException e) {
             modelo.put("error", e.getMessage());
-            return "cliente_form.html"; //si hay error se regarga la misma pagina
+            return "registroCliente.html"; //si hay error se regarga la misma pagina
         }
 
         return "index.html"; //si no hay errores me manda a la pagina main
     }
 
+    /*
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable String id, ModelMap modelo) {
@@ -55,7 +62,8 @@ public class ClienteControlador {
 
         return "cliente_modificar.html";
     }
-    
+
+*/
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable String id,
@@ -70,7 +78,7 @@ public class ClienteControlador {
         try {
             cliServ.modificarCliente(nombre, apellido, dni, correo, telefono, password, direccion, id);
             modelo.put("exito", "Logro modificar correctamente al Cliente");
-            return "redirect:../lista";
+            return "inicio.html";
         } catch (miException e) {
 
             modelo.put("error", e.getMessage());
@@ -78,8 +86,7 @@ public class ClienteControlador {
         }
     }
 
-    
-      @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/lista")
     public String listarClientes(ModelMap modelo) {
         List<Cliente> clientes = cliServ.listarClientes();
@@ -88,8 +95,7 @@ public class ClienteControlador {
         return "clientes_lista.html";
     }
 
-    
-    //@PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')") VOLVER A PONER ROLES
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/eliminar/{id}")
     public String eliminar(@PathVariable String id, ModelMap modelo) {
         try {
@@ -100,7 +106,18 @@ public class ClienteControlador {
             modelo.put("error", e.getMessage());
 
         }
-       return "redirect:/cliente/lista";
+        return "redirect:/cliente/lista";
     }
+    
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("/listaTrabajos/{id}")
+    public String listarTrabajos(@PathVariable String id, ModelMap modelo) {
+        
+        List<Trabajo> trabajos = traServ.listarTrabajosPorIdCliente(id);
+        modelo.addAttribute("trabajos", trabajos);
+
+        return "listaTrabajosCliente.html";
+    }
+
 
 }

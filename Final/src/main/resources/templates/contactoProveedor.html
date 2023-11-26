@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Contacto Proveedor</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <link href="/css/inicio.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <h3 class="infoProve" th:text="${proveedor.nombre}"></h3>
+        <p class="infoProve" th:text="${proveedor.apellido}"></p>
+        <p class="infoProve" th:text="${proveedor.correo}"></p>
+        <p class="infoProve" th:text="${proveedor.telefono}"></p>
+        <p class="infoProve" th:text="${proveedor.direccion}"></p>
+        <p class="infoProve" th:text="${proveedor.oficio}"></p>
+        <p class="infoProve" th:text="${proveedor.precioHs}"></p>
+        <p class="infoProve" th:text="${proveedor.descripService}"></p>
+        <p class="infoProve" th:text="${proveedor.reputacion}"></p>
+        <img class="imagenProve" th:src="@{/imagen/perfil/__${proveedor.id}__}"/>
+      
+        <a th:href="@{/trabajo/contratar/__${proveedor.id}__}" sec:authorize="hasAnyRole('USER', 'ADMIN')" class="btn btn-sm btn-outline-secondary">Contratar</a>
+        
+    </body>
+</html>
