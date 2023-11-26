@@ -17,8 +17,11 @@
                     <a class="nav-link active" sec:authorize="hasRole('ADMIN')" aria-current="page" href="###">Lista Calificacion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" sec:authorize="hasRole('USER')" th:if="${session.usuarioSesion != null}" th:href="@{/cliente/listaTrabajos/__${session.usuarioSesion.id}__}">Lista Trabajos Solicitados</a>
+                    <a class="nav-link" sec:authorize="hasRole('USER')" th:if="${session.usuarioSesion != null}" th:href="@{/inicio}">Menu Cliente</a>
                 </li>
+<!--                <li class="nav-item">
+                    <a class="nav-link" sec:authorize="hasRole('USER')" th:if="${session.usuarioSesion != null}" th:href="@{/cliente/listaTrabajos/__${session.usuarioSesion.id}__}">Lista Trabajos Solicitados</a>
+                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasRole('ADMIN')"  href="/cliente/lista">Lista cliente</a>
                 </li>
@@ -44,9 +47,5 @@
         </div>
 
     </div>
-<<<<<<< HEAD
 <nav/>
 
-=======
-    <nav/>
->>>>>>> 267a045becbebd7cf47eae78244c9796ab82bd1a

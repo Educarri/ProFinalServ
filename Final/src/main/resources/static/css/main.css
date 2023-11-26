@@ -172,7 +172,7 @@ section .cuadrado:nth-child(3) {
 
 
 
-.LoginForm .btn-neon {
+.LoginForm */.btn-neon {
 
     background: #fff;
     color: #666;
@@ -205,9 +205,9 @@ section .cuadrado:nth-child(3) {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     overflow: hidden;
     transition: 0.2s;
-}
+}/*
 
-.btn-neon:hover{
+*/.btn-neon:hover{
     background: #04a4ec;
     box-shadow: 0 0 10px whitesmoke, 0 0 40px whitesmoke, 0 0 80px whitesmoke;
     transition-delay: 1s;
@@ -263,7 +263,7 @@ section .cuadrado:nth-child(3) {
     bottom: 100%;
     transition: 1s;
     transition-delay: 0.75s;
-}
+}/*
 
 .OlvidoPass, .Registro {
     margin-top: 5px;
