@@ -35,6 +35,7 @@ public class AdminControlador {
         return "registroCliente.html";
     }
 
+    @PreAuthorize("permitAll()")
     @PostMapping("/registro")
     public String registro(@RequestParam(required = false) String nombre, @RequestParam(required = false)
             String apellido, @RequestParam(required = false) Long dni,
@@ -46,7 +47,7 @@ public class AdminControlador {
 
         } catch (miException e) {
             modelo.put("error", e.getMessage());
-            return "cliente_form.html"; //si hay error se regarga la misma pagina
+            return "registroCliente.html"; //si hay error se regarga la misma pagina
         }
 
         return "index.html"; //si no hay errores me manda a la pagina main

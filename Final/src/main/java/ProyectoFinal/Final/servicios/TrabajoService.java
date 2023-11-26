@@ -14,40 +14,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ProyectoFinal.Final.repositorios.TrabajoRepositorio;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TrabajoService {
 
     @Autowired
     private TrabajoRepositorio traRepo;
-    
-    
+
     @Autowired
     private ProveedorRepositorio proRepo;
 
     @Transactional
-    public void registrarTrabajo(String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto, 
-            String estado, Integer calificacion) throws miException {
-        
+    public void registrarTrabajo(String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
+            String estado, Integer calificacion, String comentario) throws miException {
+
         validar(HsTrabajo);
 
         Trabajo tra = new Trabajo();
-      
+
         Proveedor pro = proRepo.getOne(idProveedor);
-        
+
         Integer precioHoraProveedor = pro.getPrecioHs();
-        
+
         Integer valorFinalHora = precioHoraProveedor * HsTrabajo;
-         
+
         tra.setIdCliente(idCliente);
         tra.setIdProveedor(idProveedor);
         tra.setPresupuesto(valorFinalHora);
         tra.setEstado(estado);
         tra.setHsTrabajo(HsTrabajo);
-        
+
         //validar que la calificacion esta siendo nula sino crearla 
         tra.setCalificacion(calificacion);
-            
+        tra.setComentario("");
+
         traRepo.save(tra);
 
     }
@@ -72,14 +73,42 @@ public class TrabajoService {
         return traRepo.findAll();
 
     }
-    
-    
-    public List<Trabajo> listarTrabajosPorIdCliente(String id){
-        
+
+    public List<Trabajo> listarTrabajosPorIdCliente(String id) {
+
         return traRepo.buscarTrabajoPorIdCliente(id);
     }
+    public List<Trabajo> listarTrabajosPorIdProveedor(String id) {
 
-    
+        return traRepo.buscarTrabajoPorIdProveedor(id);
+    }
+
+    @Transactional
+    public void modificar(String id, String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
+            String estado, Integer calificacion, String comentario) throws miException {
+
+        Optional<Trabajo> respuesta = traRepo.findById(id);
+
+        if (respuesta.isPresent()) {
+            Trabajo tra = respuesta.get();
+            
+            if(calificacion == null){
+                calificacion = tra.getCalificacion(); //ver si funciona para cuando el proveedor cambia el estado
+            }
+            
+            tra.setCalificacion(calificacion);
+            
+            tra.setHsTrabajo(tra.getHsTrabajo()); 
+            tra.setPresupuesto(tra.getPresupuesto());
+            tra.setIdCliente(tra.getIdCliente());
+            tra.setIdProveedor(tra.getIdProveedor());
+            tra.setEstado(estado);
+            tra.setComentario(comentario);
+            
+            traRepo.save(tra);
+        }
+    }
+
     public void validar(Integer HsTrabajo) throws miException {
 
         if (HsTrabajo < 0 || HsTrabajo == null) {
