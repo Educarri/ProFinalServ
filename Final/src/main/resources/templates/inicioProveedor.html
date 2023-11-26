@@ -42,7 +42,8 @@ and open the template in the editor.
 
                     <div class="imagenProve" style="height: 700px;">
                         <img th:src="@{/imagen/perfil/__${session.usuarioSesion.id}__}" style="width: 700px;" alt="Imagen Perfil">
-                        <p th:if="${session.usuarioSesion != null}" th:text="Oficio: ${session.usuarioSesion.oficio} + Breve descripcion: ${session.usuarioSesion.descripService} " >
+                        <p th:if="${session.usuarioSesion != null}" th:text="'Oficio: ' + ${session.usuarioSesion.oficio} + ' Breve descripcion: ' + ${session.usuarioSesion.descripService}"></p>
+ 
                             
                         </p>
                     
