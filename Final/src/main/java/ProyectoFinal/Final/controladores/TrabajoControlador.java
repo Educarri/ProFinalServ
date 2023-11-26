@@ -131,6 +131,22 @@ public class TrabajoControlador {
         }
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping("/eliminarComentario/{id}")
+    public String cambiarEstado(@PathVariable String id,
+            ModelMap modelo) {
+
+        try {
+            trabServ.eliminarComentario(id);
+            modelo.put("exito", "Logro eliminar el Comentario correctamente del Trabajo");
+            return "redirect:/inicio";
+        } catch (miException e) {
+
+            modelo.put("error", e.getMessage());
+            return "listaTrabajosAdmin.html";
+        }
+    }
+
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/eliminar/{id}")
     public String eliminar(@PathVariable String id, ModelMap modelo) {

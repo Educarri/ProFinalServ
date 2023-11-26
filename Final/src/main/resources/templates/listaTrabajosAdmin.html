@@ -30,8 +30,16 @@
                         <th th:text="${trabajo.comentario}"></th>
 
                         <th>
-                            <a th:href="@{/trabajo/calificar/__${trabajo.id}__}" sec:authorize="hasAnyRole('USER', 'ADMIN')" class="btn btn-sm btn-outline-secondary">CALIFICAR</a>
-                            <a th:href="@{/trabajo/estado/__${trabajo.id}__}" sec:authorize="hasAnyRole('PROVEEDOR', 'ADMIN')" class="btn btn-sm btn-outline-secondary">CAMBIAR ESTADO</a>
+                            <a th:href="@{/trabajo/calificar/__${trabajo.id}__}" sec:authorize="hasAnyRole('ADMIN')" class="btn btn-sm btn-outline-secondary">CALIFICAR</a>
+                            <a th:href="@{/trabajo/estado/__${trabajo.id}__}" sec:authorize="hasAnyRole('ADMIN')" class="btn btn-sm btn-outline-secondary">CAMBIAR ESTADO</a>
+
+                            <form th:action="@{/trabajo/eliminarComentario/__${trabajo.id}__}" method="post">
+                                <button type="submit" sec:authorize="hasRole('ADMIN')" class="btn btn-sm btn-outline-secondary" style="color: red">CENSURAR COMENTARIO</button>
+                            </form>  
+
+                            <!-- <a th:href="@{/trabajo/eliminarComentario/__${trabajo.id}__}" sec:authorize="hasRole('ADMIN')" class="btn btn-sm btn-outline-secondary" style="color: red">CENSURAR COMENTARIO</a>
+                            -->
+
                         </th>
 
                     </tr>

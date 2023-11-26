@@ -68,6 +68,21 @@ public class TrabajoService {
 
     }
 
+    
+    @Transactional
+    public void eliminarComentario(String id) throws miException {
+
+        Optional<Trabajo> respuesta = traRepo.findById(id);
+        
+        if(respuesta.isPresent()){
+            Trabajo tra = respuesta.get();
+            
+            tra.setComentario("**********");
+             traRepo.save(tra);
+        }
+   
+    }
+    
     public List<Trabajo> listarTrabajos() {
 
         return traRepo.findAll();
