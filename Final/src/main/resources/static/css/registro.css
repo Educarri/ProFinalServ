@@ -1,5 +1,7 @@
 
 
+
+
 .formulario {
     display: flex;
     align-items: center;
@@ -11,18 +13,18 @@
     margin-top: 50px;
     background-color: #21222c;
     color: whitesmoke;
-    
+
 
 }
 
 .tituloform{
     color: #005ce6;
-        }
-        
- form button{
+}
+
+form button{
     background-color: #005ce6; 
     padding: 10px 20px;
-/*    margin: 400px;*/
+    /*    margin: 400px;*/
     border-radius: 15px;
     margin-top: 20px;
     color: whitesmoke;
@@ -31,31 +33,31 @@
     align-items: center;
 }
 .input {
-  background: transparent;
-  border: 0;
-  outline: 0;
-  height: 40px;
-  width: 100%;
-  border-bottom: 1px solid #eee;
-  font-size: .9rem;
-  padding: 8px 20px;
- color: white;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    height: 40px;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    font-size: .9rem;
+    padding: 8px 20px;
+    color: white;
 }
- .checkbox-item {
+.checkbox-item {
     margin-right: 2px; /* Espacio entre cada checkbox */
     align-items: center;
 }
 
 /* Cambiar color de la fuente de los checkboxes */
 .form-check-label {
-     font-size: .9rem;
+    font-size: .9rem;
     color: grey; /* Cambia el color de la fuente a azul */
 }
 
 /*
 
  //prueba https://uiverse.io/ammarsaa/chatty-firefox-25*/
- 
+
 /* .formulario {
   display: flex;
   flex-direction: column;
@@ -206,7 +208,7 @@
 */
 
 
- 
+
 /* 
  
 
@@ -289,8 +291,15 @@ Button
 .form button:hover {
   background-color: #005ce6;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7148f6b3bba01e2bc32daee539692719363ee705
 }*/
 
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7148f6b3bba01e2bc32daee539692719363ee705

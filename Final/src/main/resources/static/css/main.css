@@ -122,6 +122,7 @@ section .cuadrado:nth-child(3) {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+<<<<<<< HEAD
 .LoginForm {
     position: relative;
     width: 100%;
@@ -333,3 +334,6 @@ header .navbar-brand{
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding: 12px;
 }
+=======
+
+>>>>>>> 7148f6b3bba01e2bc32daee539692719363ee705
