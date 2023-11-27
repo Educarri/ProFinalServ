@@ -9,6 +9,7 @@
         
     </head>
     <body>
+<<<<<<< HEAD
         <header>    
             <nav th:replace="/fragments/navbar :: nav"></nav> 
         </header>
@@ -59,5 +60,49 @@
             }
         </script>
 
+=======
+        <div class="container m-5">
+            <table class="table table-dark">
+                <thead>
+                    <tr >
+                        <th scope="col">NOMBRE</th>
+                        <th scope="col">APELLIDO</th>
+                        <th scope="col">TELEFONO</th>
+                        <th scope="col">DNI</th>
+                        <th scope="col">DIRECCION</th>
+                        <th scope="col">CORREO</th>
+                        <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="cliente:${clientes}">
+                        <th th:text="${cliente.nombre}" ></th>
+                        <th th:text="${cliente.apellido}"></th>
+                        <th th:text="${cliente.telefono}"></th>
+                        <th th:text="${cliente.dni}"></th>
+                        <th  th:text="${cliente.direccion}"></th>
+                        <th th:text="${cliente.correo}"></th>
+                        <th>
+                            <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
+                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
+                            </form>          
+                        <th>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div>
+
+
+                <a>
+                    <button class="btn btn-primary" onclick="goBack()">Volver</button>
+                </a>
+            </div>
+            <script>
+                function goBack() {
+                window.history.back();
+                }
+            </script>
+>>>>>>> 9d26ff6914ead39e57c98a9b6ba27f3e8b28982b
     </body>
 </html>

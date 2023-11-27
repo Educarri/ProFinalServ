@@ -2,6 +2,7 @@ package ProyectoFinal.Final.controladores;
 
 import ProyectoFinal.Final.entidades.Proveedor;
 import ProyectoFinal.Final.entidades.Usuario;
+import ProyectoFinal.Final.enumeraciones.Rol;
 import ProyectoFinal.Final.servicios.ProveedorService;
 import ProyectoFinal.Final.servicios.UsuarioService;
 import java.util.List;
@@ -11,6 +12,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,23 +66,31 @@ public class PortalControlador {
         return "inicio.html"; //seria para el cliente
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_PROVEDOR')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession sesion) {
         Usuario user = (Usuario) sesion.getAttribute("usuarioSesion");
 
         if (user != null) {
-
-            modelo.put("user", user);
-            return "usuario_Modificar";
+            if (user.getRol().equals(Rol.USER)) {
+                modelo.put("user", user);
+                return "cliente_Modificar";
+            } else if(user.getRol().equals(Rol.PROVEEDOR)) {
+                modelo.put("user", user);
+                return "proveedor_modificar";
+            } else if(user.getRol().equals(Rol.ADMIN)){
+                 modelo.put("user", user);
+                return "admin_modificar";
+            }
+        } else {
+            modelo.put("error", "Usuario no encontrado");       
         }
-        
-        return "login.html";
+        return "/perfil"; 
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/perfil/{id}")
-    public String actualizar(@RequestParam String id,
+    public String actualizar(@PathVariable String id,
             @RequestParam String nombre,
             @RequestParam String apellido,
             @RequestParam Long dni,

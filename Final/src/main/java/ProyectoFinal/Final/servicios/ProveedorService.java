@@ -34,8 +34,8 @@ public class ProveedorService {
     public void registrarProveedor(String nombre, String apellido, Long dni,
             String correo, Integer telefono, String password, String direccion, String oficio, Integer precioHs,
             String descripService, MultipartFile archivo) throws miException {
-        
-        validar(nombre, apellido, dni, correo, telefono, password, direccion, oficio, precioHs, descripService); // AGREGAR ATRIBUTO OFICIO Y PENSAR COMO HACER PARA QUE EL USUARIO SIN INGRESAR UN TIPO DE DATO ROL SE ASIGNE EL MISMO
+
+        validar(nombre, apellido, dni, correo, telefono, password, direccion, oficio, precioHs, descripService, archivo); // AGREGAR ATRIBUTO OFICIO Y PENSAR COMO HACER PARA QUE EL USUARIO SIN INGRESAR UN TIPO DE DATO ROL SE ASIGNE EL MISMO
 
         Proveedor prove = proRepo.buscarProveedorPorDNI(dni);
         if (prove != null) {
@@ -71,7 +71,7 @@ public class ProveedorService {
 
         pro.setPrecioHs(precioHs);
         pro.setReputacion(0); //inicializo la reputancion al momento de crear el proveedor en 0
-        pro.setDescrService(descripService);
+        pro.setDescripService(descripService);
         pro.setRol(Rol.PROVEEDOR);
 
         proRepo.save(pro);
@@ -82,30 +82,37 @@ public class ProveedorService {
     public void actualizarProveedor(String nombre, String apellido, Long dni,
             String correo, Integer telefono, String password, String direccion, String oficio,
             Integer precioHs, Integer reputacion, String descripService, MultipartFile archivo,
-            String idProveedor) throws miException {
+            String id) throws miException {
 
-        validar(nombre, apellido, dni, correo, telefono, password, direccion, oficio, precioHs, descripService);
+      //  validar(nombre, apellido, dni, correo, telefono, password, direccion, oficio, precioHs, descripService, archivo);
 
-        Optional<Proveedor> respuesta = proRepo.findById(idProveedor);
+        Optional<Proveedor> respuesta = proRepo.findById(id);
 
         if (respuesta.isPresent()) {
-            Proveedor pr = new Proveedor();
+            Proveedor pr = respuesta.get();
             pr.setNombre(nombre);
             pr.setCorreo(correo);
             pr.setPassword(new BCryptPasswordEncoder().encode(password));
             pr.setRol(Rol.PROVEEDOR);
             pr.setDireccion(direccion);
-            pr.setDescrService(descripService);
-            pr.setReputacion(reputacion);
+            pr.setDescripService(descripService);
+            pr.setReputacion(pr.getReputacion());
             pr.setPrecioHs(precioHs);
 
+            
+            System.out.println("Precio hora dentro modificar " + precioHs);
+            
             String idImagen = null;
 
             if (pr.getImagen() != null) {
                 idImagen = pr.getImagen().getId();
             }
 
-            Imagen img = imgService.modificarImagen(archivo, idImagen);
+            Imagen img = null;
+
+            if (archivo != null && !archivo.isEmpty()) {
+                img = imgService.modificarImagen(archivo, idImagen);
+            }
 
             pr.setImagen(img);
 
@@ -138,7 +145,7 @@ public class ProveedorService {
     public void validar(String nombre, String apellido, Long dni,
             String correo, Integer telefono, String password,
             String direccion, String oficio, Integer precioHs,
-            String descripService) throws miException {
+            String descripService, MultipartFile archivo) throws miException {
         if (nombre.isEmpty()) {
             throw new miException("El nombre no puede estar vacio.");
         }
@@ -179,7 +186,7 @@ public class ProveedorService {
             throw new miException("La password no cumple con los requisitos de ser Alfanumerica y longitud minimo 6 caracteres");
         }
 
-        if (precioHs == 0 || precioHs < 0 || precioHs == null) {
+        if (precioHs == 0 || precioHs < 0) {
             throw new miException("El valor del precio no puede ser <= 0 ni estar vacio.");
         }
 
@@ -189,6 +196,10 @@ public class ProveedorService {
 
         if (oficio.toLowerCase() != "gasista" && oficio.toLowerCase() == "electricista" && oficio.toLowerCase() == "plomero" && oficio.toLowerCase() == "albañil") {
             throw new miException("El oficio ingresado no corresponde con los disponibles.");
+        }
+
+        if (archivo == null || archivo.isEmpty()) {
+            throw new miException("La imagen no puede estar vacia.");
         }
     }
 

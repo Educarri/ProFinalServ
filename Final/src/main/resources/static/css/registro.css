@@ -1,5 +1,8 @@
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9d26ff6914ead39e57c98a9b6ba27f3e8b28982b
 .formulario {
     display: flex;
     align-items: center;
@@ -11,18 +14,31 @@
     margin-top: 50px;
     background-color: #21222c;
     color: whitesmoke;
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 9d26ff6914ead39e57c98a9b6ba27f3e8b28982b
 
 }
 
 .tituloform{
     color: #005ce6;
+<<<<<<< HEAD
         }
         
  form button{
     background-color: #005ce6; 
     padding: 10px 20px;
 /*    margin: 400px;*/
+=======
+}
+
+form button{
+    background-color: #005ce6; 
+    padding: 10px 20px;
+    /*    margin: 400px;*/
+>>>>>>> 9d26ff6914ead39e57c98a9b6ba27f3e8b28982b
     border-radius: 15px;
     margin-top: 20px;
     color: whitesmoke;
@@ -31,6 +47,7 @@
     align-items: center;
 }
 .input {
+<<<<<<< HEAD
   background: transparent;
   border: 0;
   outline: 0;
@@ -239,20 +256,41 @@
   color: white;
 }
  .checkbox-item {
+=======
+    background: transparent;
+    border: 0;
+    outline: 0;
+    height: 40px;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    font-size: .9rem;
+    padding: 8px 20px;
+    color: white;
+}
+.checkbox-item {
+>>>>>>> 9d26ff6914ead39e57c98a9b6ba27f3e8b28982b
     margin-right: 2px; /* Espacio entre cada checkbox */
     align-items: center;
 }
 
 /* Cambiar color de la fuente de los checkboxes */
 .form-check-label {
+<<<<<<< HEAD
      font-size: .9rem;
+=======
+    font-size: .9rem;
+>>>>>>> 9d26ff6914ead39e57c98a9b6ba27f3e8b28982b
     color: grey; /* Cambia el color de la fuente a azul */
 }
 
 /*
 
  //prueba https://uiverse.io/ammarsaa/chatty-firefox-25*/
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 9d26ff6914ead39e57c98a9b6ba27f3e8b28982b
 /* .formulario {
   display: flex;
   flex-direction: column;
@@ -403,7 +441,11 @@
 */
 
 
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 9d26ff6914ead39e57c98a9b6ba27f3e8b28982b
 /* 
  
 
@@ -485,4 +527,20 @@ Button
 
 .form button:hover {
   background-color: #005ce6;
+<<<<<<< HEAD
 }*/
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7148f6b3bba01e2bc32daee539692719363ee705
+}*/
+
+
+
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7148f6b3bba01e2bc32daee539692719363ee705
+>>>>>>> 9d26ff6914ead39e57c98a9b6ba27f3e8b28982b

@@ -17,10 +17,13 @@
                     <a class="nav-link active" sec:authorize="hasRole('ADMIN')" aria-current="page" href="###">Lista Calificacion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" sec:authorize="hasRole('USER')"  href="/editorial/lista">Lista Proveedores</a>
+                    <a class="nav-link" sec:authorize="hasRole('USER')" th:if="${session.usuarioSesion != null}" th:href="@{/cliente/listaTrabajos/__${session.usuarioSesion.id}__}">Lista Trabajos Solicitados</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasRole('ADMIN')"  href="/cliente/lista">Lista cliente</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" sec:authorize="hasRole('PROVEEDOR')" th:if="${session.usuarioSesion != null}" th:href="@{/proveedor/listaTrabajos/__${session.usuarioSesion.id}__}">Lista Trabajos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasAnyRole('ADMIN', 'USER', 'PROVEEDOR')" href="/perfil"> Editar Perfil</a>
@@ -42,4 +45,7 @@
 
     </div>
     <nav/>
+<<<<<<< HEAD
    
+=======
+>>>>>>> 9d26ff6914ead39e57c98a9b6ba27f3e8b28982b
