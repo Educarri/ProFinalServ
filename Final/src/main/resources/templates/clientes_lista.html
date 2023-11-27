@@ -30,43 +30,25 @@
                         <th  th:text="${cliente.direccion}"></th>
                         <th th:text="${cliente.correo}"></th>
                         <th>
-                                 <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
-                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
-                            </form>          
                             <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
                                 <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
-                            </form>        
-
-                                 <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
-                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
                             </form>          
-
-                                 <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
-                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
-                            </form>          
-                        </th>
-                       <th>
-
-                                 <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
-                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
-                            </form>          
-
-                        </th>
-
+                        <th>
                     </tr>
                 </tbody>
             </table>
 
             <div>
 
-                <a href="/inicio">
-                <a href="/">
-                    <button class="btn btn-primary">Volver</button>
+
                 <a>
                     <button class="btn btn-primary" onclick="goBack()">Volver</button>
                 </a>
             </div>
-        </div>
-  
+            <script>
+                function goBack() {
+                window.history.back();
+                }
+            </script>
     </body>
 </html>

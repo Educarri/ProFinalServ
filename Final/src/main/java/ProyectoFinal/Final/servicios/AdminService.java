@@ -15,6 +15,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ProyectoFinal.Final.repositorios.AdminRepositorio;
+import java.util.Optional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
@@ -39,6 +40,29 @@ public class AdminService {
         admin.setDireccion(direccion);
         admin.setRol(Rol.ADMIN);
         adminRepo.save(admin);
+    }
+    
+    
+    @Transactional
+    public void modificarAdmin(String nombre, String apellido, Long dni,
+            String correo, Integer telefono, String password, String direccion, String id) throws miException {
+
+        validar(nombre, apellido, dni, correo, telefono, password, direccion);
+        
+        Optional<Administrador> respuesta = adminRepo.findById(id);
+
+        if (respuesta.isPresent()) {
+            Administrador admin = respuesta.get();
+            admin.setNombre(nombre);
+            admin.setApellido(apellido);
+            admin.setCorreo(correo);
+            admin.setTelefono(telefono);
+            admin.setPassword(new BCryptPasswordEncoder().encode(password));
+            admin.setDireccion(direccion);
+            admin.setDni(dni);
+            admin.setRol(Rol.ADMIN);
+            adminRepo.save(admin);
+        }
     }
 
     //AGREGAR METODO PARA QUE EL USUARIO PUEDA MODIFICAR SUS DATOS ??

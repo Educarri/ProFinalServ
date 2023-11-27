@@ -75,15 +75,17 @@ public class PortalControlador {
             if (user.getRol().equals(Rol.USER)) {
                 modelo.put("user", user);
                 return "cliente_Modificar";
-            } else {
+            } else if(user.getRol().equals(Rol.PROVEEDOR)) {
                 modelo.put("user", user);
                 return "proveedor_modificar";
+            } else if(user.getRol().equals(Rol.ADMIN)){
+                 modelo.put("user", user);
+                return "admin_modificar";
             }
-
         } else {
-            modelo.put("error", "Usuario no encontrado");
-            return "/perfil"; // 
+            modelo.put("error", "Usuario no encontrado");       
         }
+        return "/perfil"; 
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
