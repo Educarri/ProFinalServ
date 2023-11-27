@@ -5,63 +5,147 @@
  */
 package ProyectoFinal.Final.controladores;
 
-
-
 import ProyectoFinal.Final.entidades.Proveedor;
+import ProyectoFinal.Final.entidades.Trabajo;
+import ProyectoFinal.Final.excepciones.miException;
 import ProyectoFinal.Final.servicios.ProveedorService;
+import ProyectoFinal.Final.servicios.TrabajoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-@RestController
+@Controller
 @RequestMapping("/proveedor")
-@CrossOrigin("*") //cualquier host puede consumir este controlador si pongo *
 public class ProveedorControlador {
 
     @Autowired
     private ProveedorService proServ;
 
-    @GetMapping
-    public ResponseEntity<List<Proveedor>> findAllProveedores() {
+    @Autowired
+    private TrabajoService traServ;
+
+    @PreAuthorize("permitAll()")
+    @GetMapping("/registrar")
+    public String registrar() {
+        return "registroProveedor.html";
+    }
+
+    @PreAuthorize("permitAll()")
+    @PostMapping("/registro")
+    public String registro(String nombre, String apellido, Long dni,
+            String correo, Integer telefono, String password, String direccion, String oficio, Integer precioHs,
+            String descripService, MultipartFile archivo, ModelMap modelo) {
+
         try {
-            List<Proveedor> proveedores = proServ.listarProveedores();
-            if (proveedores == null || proveedores.isEmpty()) {
-                return ResponseEntity.status(400).body(null);
-            }
-            return ResponseEntity.status(200).body(proveedores);
-        } catch (Exception e) {
-            return ResponseEntity.status(400).body(null);
+            proServ.registrarProveedor(nombre, apellido, dni, correo, telefono,
+                    password, direccion, oficio, precioHs, descripService, archivo);
+
+            modelo.put("exito", "El Proveedor fue guardado exitosamente");
+
+        } catch (miException e) {
+            modelo.put("error", e.getMessage());
+            return "registroProveedor.html"; //si hay error se regarga la misma pagina
+        }
+
+        return "index.html"; //si no hay errores me manda a la pagina main
+    }
+
+    /*
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
+    @GetMapping("/modificar/{id}")
+    public String modificar(@PathVariable String id, ModelMap modelo) {
+        modelo.put("proveedor", proServ.getOne(id));
+
+        return "proveedor_modificar.html";
+    }
+
+     */
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
+    @PostMapping("/modificar/{id}")
+    public String modificar(@PathVariable String id,
+            @RequestParam(required = false) String nombre,
+            @RequestParam(required = false) String apellido,
+            @RequestParam(required = false) Long dni,
+            @RequestParam(required = false) String correo,
+            @RequestParam(required = false) Integer telefono,
+            @RequestParam(required = false) String password,
+            @RequestParam(required = false) String direccion,
+            @RequestParam(required = false) String oficio,
+            @RequestParam(required = false) Integer precioHs,
+            Integer reputacion,
+            @RequestParam(required = false) String descripService,
+            @RequestParam(required = false) MultipartFile archivo,
+            ModelMap modelo) {
+        try {
+            proServ.actualizarProveedor(nombre, apellido, dni, correo, telefono,
+                    password, direccion, oficio, precioHs, reputacion, descripService, archivo, id);
+            modelo.put("exito", "Logro modificar correctamente al Proveedor");
+            return "inicioProveedor.html";
+        } catch (miException e) {
+
+            modelo.put("error", e.getMessage());
+            return "proveedor_modificar.html";
         }
     }
 
-    @PostMapping
-    public ResponseEntity<Proveedor> guardarProveedor(@RequestBody Proveedor proveedor) {
-        try {
-            Proveedor pro = proServ.registrarProveedor(proveedor);
-            return ResponseEntity.status(HttpStatus.CREATED).body(pro);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        }
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/lista")
+    public String listarProveedores(ModelMap modelo) {
+        List<Proveedor> proveedores = proServ.listarProveedores();
+        modelo.addAttribute("proveedores", proveedores);
+
+        return "proveedor_lista.html";
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Object> eliminar(@PathVariable String id) {
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @PostMapping("/eliminar/{id}")
+    public String eliminar(@PathVariable String id, ModelMap modelo) {
         try {
             proServ.eliminarProveedor(id);
-            return ResponseEntity.status(201).body("Proveedor Eliminado");
-        } catch (Exception e) {
-            return ResponseEntity.status(400).body(null);
+            modelo.put("exito", "Proveedor eliminado correctamente");
+        } catch (miException e) {
+            System.out.println("Error al eliminar");
+            modelo.put("error", e.getMessage());
+
         }
+        return "redirect:/";
     }
 
+    @GetMapping("/inicio")
+    public String inicio() {
+        return "inicioProveedor.html";
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN, ROLE_USER')")
+    @GetMapping("/contacto/{id}")
+    public String contacto(@PathVariable String id, ModelMap modelo) {
+
+        try {
+            Proveedor pro = proServ.getOne(id);
+            modelo.put("proveedor", pro);
+
+        } catch (Exception e) {
+            modelo.put("error", e.getMessage());
+        }
+        return "contactoProveedor.html";
+    }
+
+    @PreAuthorize("hasRole('ROLE_PROVEEDOR')")
+    @GetMapping("/listaTrabajos/{id}")
+    public String listarTrabajos(@PathVariable String id, ModelMap modelo) {
+
+        List<Trabajo> trabajos = traServ.listarTrabajosPorIdProveedor(id);
+        modelo.addAttribute("trabajos", trabajos);
+
+        return "listaTrabajosProveedor.html";
+    }
 
 }

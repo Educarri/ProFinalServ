@@ -5,7 +5,6 @@
  */
 package ProyectoFinal.Final.entidades;
 
-
 import ProyectoFinal.Final.enumeraciones.Oficios;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -22,7 +21,7 @@ public class Proveedor extends Usuario{
     private Oficios oficio;
     private Integer precioHs;
     private Integer reputacion;
-    private String descripcionService;
+    private String descripService;
     
     
     @OneToOne
@@ -52,12 +51,12 @@ public class Proveedor extends Usuario{
         this.reputacion = reputacion;
     }
 
-    public String getDescrService() {
-        return descripcionService;
+    public String getDescripService() {
+        return descripService;
     }
 
-    public void setDescrService(String descrService) {
-        this.descripcionService = descrService;
+    public void setDescripService(String descripService) {
+        this.descripService = descripService;
     }
 
     public Imagen getImagen() {

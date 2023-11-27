@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ProyectoFinal.Final.repositorios.ClienteRepositorio;
 import java.util.Optional;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
 public class ClienteService {
@@ -24,23 +25,39 @@ public class ClienteService {
     private ClienteRepositorio cliRepo;
 
     @Transactional
-    public Cliente registrarCliente(Cliente cli) throws miException {
-        validar(cli);
+    public void registrarCliente(String nombre, String apellido, Long dni,
+            String correo, Integer telefono, String password, String direccion) throws miException {
+        validar(nombre, apellido, dni, correo, telefono, password, direccion);
 
+<<<<<<< HEAD
         Cliente clie = cliRepo.buscarClientePorDni(cli.getDni());
+=======
+        Cliente clie = cliRepo.buscarClientePorDni(dni);
+>>>>>>> back
         if (clie != null) {
             throw new miException("El dni ingresado ya está registrado.");
         }
 
+        Cliente cli = new Cliente();
+        cli.setNombre(nombre);
+        cli.setApellido(apellido);
+        cli.setDni(dni);
+        cli.setCorreo(correo);
+        cli.setTelefono(telefono);
+        cli.setPassword(new BCryptPasswordEncoder().encode(password));
+        cli.setDireccion(direccion);
         cli.setRol(Rol.USER);
 
-        return cliRepo.save(cli);
+        cliRepo.save(cli);
 
     }
 
     //NECESITA MODIFICAR MAS QUE SOLO ESTOS 2 ATRIBUTOS??
-    public Cliente modificarCliente(String id, Cliente cli) throws miException {
+    @Transactional
+    public void modificarCliente(String nombre, String apellido, Long dni,
+            String correo, Integer telefono, String password, String direccion, String id) throws miException {
 
+<<<<<<< HEAD
         validar(cli);
         Cliente cl = cliRepo.getById(id);
         cl.setNombre(cli.getNombre());
@@ -51,7 +68,24 @@ public class ClienteService {
         cl.setDireccion(cli.getDireccion());
 
         return cliRepo.save(cl);
+=======
+        validar(nombre, apellido, dni, correo, telefono, password, direccion);
+        
+        Optional<Cliente> respuesta = cliRepo.findById(id);
+>>>>>>> back
 
+        if (respuesta.isPresent()) {
+            Cliente cl = respuesta.get();
+            cl.setNombre(nombre);
+            cl.setApellido(apellido);
+            cl.setCorreo(correo);
+            cl.setTelefono(telefono);
+            cl.setPassword(new BCryptPasswordEncoder().encode(password));
+            cl.setDireccion(direccion);
+            cl.setDni(dni);
+            cl.setRol(Rol.USER);
+            cliRepo.save(cl);
+        }
     }
 
     public List<Cliente> listarClientes() {
@@ -88,44 +122,53 @@ public class ClienteService {
         return cliRepo.buscarClientePorDni(DNI);
     }
 
-    public void validar(Cliente cli) throws miException {
-        if (cli.getNombre().isEmpty() || cli.getNombre() == null) {
+    public void validar(String nombre, String apellido, Long dni,
+            String correo, Integer telefono, String password, String direccion) throws miException {
+        if (nombre.isEmpty() || nombre == null) {
             throw new miException("El nombre no puede estar vacio.");
         }
 
-        if (cli.getApellido().isEmpty() || cli.getApellido() == null) {
+        if (apellido.isEmpty() || apellido == null) {
             throw new miException("El apellido no puede estar vacio.");
         }
 
+<<<<<<< HEAD
         if (cli.getDni() > 99999999) {
             throw new miException("El dni supera la cantidad de digitos maximos.");
         }
 
         if (cli.getDni() == null) {
+=======
+        if (dni > 99999999) {
+            throw new miException("El dni supera la cantidad de digitos maximos.");
+        }
+
+        if (dni == null) {
+>>>>>>> back
             throw new miException("El dni no puede estar vacio.");
         }
 
-        if (cli.getCorreo().isEmpty() || cli.getNombre() == null) {
+        if (correo.isEmpty() || correo == null) {
             throw new miException("El correo no puede estar vacio.");
         }
 
-        if (!cli.getCorreo().contains("@")) {
+        if (!correo.contains("@")) {
             throw new miException("El correo no contiene el simbolo '@'");
         }
 
-        if (cli.getTelefono() < 0) {
+        if (telefono < 0) {
             throw new miException("El numero ingresado es incorrecto.");
         }
 
-        if (cli.getTelefono() == null) {
+        if (telefono == null) {
             throw new miException("El numero de telefono no puede estar vacio.");
         }
 
-        if (cli.getPassword().isEmpty() || cli.getPassword() == null) {
+        if (password.isEmpty() || password == null) {
             throw new miException("La password no puede estar incompleta.");
         }
 
-        if (!isPasswordValid(cli.getPassword())) {
+        if (!isPasswordValid(password)) {
             throw new miException("La password no cumple con los requisitos de ser Alfanumerica y longitud minimo 6 caracteres");
         }
 
