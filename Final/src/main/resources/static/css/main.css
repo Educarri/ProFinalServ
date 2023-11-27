@@ -40,15 +40,6 @@ h2{
 }
 
 
-<<<<<<< HEAD
-    img{
-       /*display:flex ;*/
-        width: 50px;
-        margin: 10px auto;
-        border-radius: 40px;
-=======
->>>>>>> 9d26ff6914ead39e57c98a9b6ba27f3e8b28982b
-
 section {
     display: flex;
     justify-content: center;
@@ -107,9 +98,6 @@ section .cuadrado:nth-child(3) {
     position: relative;
 }
 
-<<<<<<< HEAD
-    }
-=======
 .LoginContainer {
     position: relative;
     width: 400px;
@@ -126,7 +114,6 @@ section .cuadrado:nth-child(3) {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-<<<<<<< HEAD
 .LoginForm {
     position: relative;
     width: 100%;
@@ -342,4 +329,3 @@ header .navbar-brand{
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding: 12px;
 }
->>>>>>> 9d26ff6914ead39e57c98a9b6ba27f3e8b28982b
