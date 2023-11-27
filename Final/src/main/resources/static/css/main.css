@@ -1,3 +1,4 @@
+
 img{
     /*        display:flex ;*/
     width: 50px;
@@ -5,31 +6,11 @@ img{
     border-radius: 40px;
 }
 
-<<<<<<< HEAD
-=======
-img{
-    /*        display:flex ;*/
-    width: 50px;
-    margin: 10px auto;
-    border-radius: 40px;
-}
-
->>>>>>> 589546c87a0be225c6e4635fe1be14ab6a31d4c4
 p{
     margin-left: 10px;
     margin-top: 10px;
 }
 
-<<<<<<< HEAD
-/*.album{
-
-    margin-top: 50px;
-    margin-bottom: 50px;
-    background-color: #21222c;
-}*/
-
-/*estilos de login*/
-
 * {
     margin: 10;
     padding: 10;
@@ -60,38 +41,6 @@ h2{
 
 
 
-=======
-* {
-    margin: 10;
-    padding: 10;
-    box-sizing: border-box;
-    font-family: 'Raleway', sans-serif;
-}
-.intro{
-    
- font-family: 'Raleway', sans-serif;
- color: whitesmoke;
-    text-shadow:  #21222c;
- text-align: justify;
- padding: 40px;
- padding-top: 100px;
-}
-/*body {
-    overflow: hidden;
-}*/
-h2{
-    font-family: 'Raleway', sans-serif;
-    text-align: center;
-    font-weight: bolder;
-    color: whitesmoke;
-    text-shadow:  #21222c;
-    padding: 40px;
-          
-}
-
-
-
->>>>>>> 589546c87a0be225c6e4635fe1be14ab6a31d4c4
 section {
     display: flex;
     justify-content: center;
@@ -104,19 +53,12 @@ section {
 
 section .cuadrado {
     position: absolute;
-<<<<<<< HEAD
-    filter: blur(100px);
-=======
     filter: blur(70px);
->>>>>>> 589546c87a0be225c6e4635fe1be14ab6a31d4c4
 }
 
 section .cuadrado:nth-child(1) {
     top: -370px;
-<<<<<<< HEAD
-=======
     left: 250px;
->>>>>>> 589546c87a0be225c6e4635fe1be14ab6a31d4c4
     width: 500px;
     height: 500px;
     background: #04a4ec;
@@ -223,26 +165,18 @@ section .cuadrado:nth-child(3) {
 
 
 
-<<<<<<< HEAD
-.LoginForm */.btn-neon {
-=======
 .LoginForm 
 */
 
 
 .btn-neon {
->>>>>>> 589546c87a0be225c6e4635fe1be14ab6a31d4c4
 
     background: #fff;
     color: #666;
     width: 100%;
     cursor: pointer;
     margin-bottom: 20px;
-<<<<<<< HEAD
-    transition: 0.3s;
-=======
     transition: 0.1s;
->>>>>>> 589546c87a0be225c6e4635fe1be14ab6a31d4c4
 }
 
 .btn-neon{
@@ -268,21 +202,12 @@ section .cuadrado:nth-child(3) {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     overflow: hidden;
     transition: 0.2s;
-<<<<<<< HEAD
-}/*
-
-*/.btn-neon:hover{
-    background: #04a4ec;
-    box-shadow: 0 0 10px whitesmoke, 0 0 40px whitesmoke, 0 0 80px whitesmoke;
-    transition-delay: 1s;
-=======
 }
 
 .btn-neon:hover{
     background: #04a4ec;
     box-shadow: 0 0 10px whitesmoke, 0 0 40px whitesmoke, 0 0 80px whitesmoke;
     transition-delay: 0.2s;
->>>>>>> 589546c87a0be225c6e4635fe1be14ab6a31d4c4
     color: #fff;
 }
 .btn-neon span{
@@ -298,11 +223,7 @@ section .cuadrado:nth-child(3) {
 }
 .btn-neon:hover #span1{
     left: 100%;
-<<<<<<< HEAD
-    transition: 1s;
-=======
     transition: 0.2s;
->>>>>>> 589546c87a0be225c6e4635fe1be14ab6a31d4c4
 }
 #span3{
     bottom: 0;
@@ -313,13 +234,8 @@ section .cuadrado:nth-child(3) {
 }
 .btn-neon:hover #span3{
     right: 100%;
-<<<<<<< HEAD
-    transition: 1s;
-    transition-delay: 0.5s;
-=======
     transition: 0.5s;
     transition-delay: 0.2s;
->>>>>>> 589546c87a0be225c6e4635fe1be14ab6a31d4c4
 }
 #span2{
     top: -100%;
@@ -330,11 +246,7 @@ section .cuadrado:nth-child(3) {
 }
 .btn-neon:hover #span2{
     top: 100%;
-<<<<<<< HEAD
-    transition: 1s;
-=======
     transition: 0.5s;
->>>>>>> 589546c87a0be225c6e4635fe1be14ab6a31d4c4
     transition-delay: 0.25s;
 }
 #span4{
@@ -346,13 +258,8 @@ section .cuadrado:nth-child(3) {
 }
 .btn-neon:hover #span4{
     bottom: 100%;
-<<<<<<< HEAD
-    transition: 1s;
-    transition-delay: 0.75s;
-=======
     transition: 0.5s;
     transition-delay: 0.2s;
->>>>>>> 589546c87a0be225c6e4635fe1be14ab6a31d4c4
 }/*
 
 .OlvidoPass, .Registro {
@@ -423,11 +330,4 @@ header .navbar-brand{
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding: 12px;
-<<<<<<< HEAD
 }
-=======
-
->>>>>>> 7148f6b3bba01e2bc32daee539692719363ee705
-=======
-}
->>>>>>> 589546c87a0be225c6e4635fe1be14ab6a31d4c4

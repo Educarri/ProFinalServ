@@ -18,11 +18,6 @@
                         <th scope="col">DNI</th>
                         <th scope="col">DIRECCION</th>
                         <th scope="col">CORREO</th>
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 589546c87a0be225c6e4635fe1be14ab6a31d4c4
                         <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th>
                     </tr>
                 </thead>
@@ -34,38 +29,6 @@
                         <th th:text="${cliente.dni}"></th>
                         <th  th:text="${cliente.direccion}"></th>
                         <th th:text="${cliente.correo}"></th>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        <th>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                 <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
-                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
-                            </form>          
-=======
-<<<<<<< HEAD
-                            <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
-                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
-                            </form>        
-=======
-                                 <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
-                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
-                            </form>          
->>>>>>> dc7459c11bfa3ee851f0448b964f8889e09f1893
->>>>>>> 17f6714a6bc0a5cbdf6f55eaba42a274a1064c49
-=======
-
-                                 <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
-                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
-                            </form>          
-
->>>>>>> a8e848bd3381b63cef0d923285a5b310efc7cd05
-                        </th>
-
-=======
-
-=======
->>>>>>> 589546c87a0be225c6e4635fe1be14ab6a31d4c4
                         <th>
                                  <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
                                 <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
@@ -90,47 +53,18 @@
 
                         </th>
 
-<<<<<<< HEAD
-
->>>>>>> 7148f6b3bba01e2bc32daee539692719363ee705
-=======
->>>>>>> 589546c87a0be225c6e4635fe1be14ab6a31d4c4
                     </tr>
                 </tbody>
             </table>
 
             <div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
 
-<<<<<<< HEAD
->>>>>>> a8e848bd3381b63cef0d923285a5b310efc7cd05
-
-                <a href="/inicio">
-
->>>>>>> 17f6714a6bc0a5cbdf6f55eaba42a274a1064c49
-                <a href="/">
-                    <button class="btn btn-primary">Volver</button>
-
-=======
-
-                <a>
-                    <button class="btn btn-primary" onclick="goBack()">Volver</button>
-
-                </a>
->>>>>>> 7148f6b3bba01e2bc32daee539692719363ee705
-=======
                 <a href="/inicio">
                 <a href="/">
                     <button class="btn btn-primary">Volver</button>
                 <a>
                     <button class="btn btn-primary" onclick="goBack()">Volver</button>
                 </a>
->>>>>>> 589546c87a0be225c6e4635fe1be14ab6a31d4c4
             </div>
         </div>
   
