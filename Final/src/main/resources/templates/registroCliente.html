@@ -1,142 +1,86 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-        <title>Registro Cliente</title>
-=======
-        <link href="/css/main.css" rel="stylesheet" type="text/css"/>
-        <link href="/css/registroCliente.css" rel="stylesheet" type="text/css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/registroCliente.css" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <title>Registrar Cliente</title>
+  </head>
 
->>>>>>> 0ac7f2233e38d84f8edc8da4e1e63bb5f03694b7
-        <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
-        <title>Registrar Cliente</title>
-    </head>
-    <body>
-<<<<<<< HEAD
+  <body>
+    <section>
+      <div class="cuadrado" style="-- i :0"></div>
+      <div class="cuadrado" style="-- i :1"></div>
+      <div class="cuadrado" style="-- i :2"></div>
+      <div class="LoginBox">
+        <div class="LoginContainer">
+          <div class="LoginForm">
+            <h2>Registro De Cliente</h2>
 
-        <header><nav th:replace="/fragments/navbar :: nav"></nav> </header> 
-
-        <div class="formulario"  > 
-            <h1 class="tituloform">Registro de Cliente</h1>
-
-            <form th:action="@{/cliente/registro}" method="post" >
-<<<<<<< HEAD
-                <!-- Campos del formulario -->
-                <!--                <div class= "mb-3">-->
-<!--                 <div class="mb-3">
-                   <label>
-                        <input class="input" type="text" placeholder="" required="">
-                        <span>Nombre</span>
-                    </label>
-                    
-                    <label>
-                        <input class="input" type="text" placeholder="" required="">
-                        <span>Apellido</span>
-                    </label>
-                    <label>
-                        <input class="input" type="number" placeholder="" required="">
-                        <span>DNI</span>
-                    </label>
-
-                    <label>
-                        <input class="input" type="email" placeholder="" required="">
-                        <span>Correo electronico</span>
-                    </label> 
-                    <label>
-                        <input class="input" type="number" placeholder="" required="">
-                        <span>Telefono</span>
-                    </label>
-                    <label>
-                        <input class="input" type="text" placeholder="" required="">
-                        <span>Direccion</span>
-                    </label>
-                    <label>
-                        <input class="input" type="password" placeholder="" required="">
-                        <span>Password</span>
-                    </label>
-
-                    <button class="submit">Registrarse</button>
-
-                </div> -->
-
-                                    <input type="text" class="input" name="nombre" placeholder="Nombre">
-                                    <input type="text" class="input" name="apellido" placeholder="Apellido">
-                                    <input type="number" class="input" name="dni" placeholder="DNI">
-                                    <input type="text" class="input" name="correo" placeholder="Correo electronico">
-                                    <input type="number" class="input" name="telefono" placeholder="Telefono">
-                                    <input type="text" class="input" name="direccion" placeholder="Direccion">
-                                    <input type="password" class="input" name="password" placeholder="Password">
-                                    <div/>
-=======
-                <div class="mb-3">
->>>>>>> dc7459c11bfa3ee851f0448b964f8889e09f1893
-
-
-                    <input type="text" class="input" name="nombre" placeholder="Nombre">
-                    <input type="text" class="input" name="apellido" placeholder="Apellido">
-                    <input type="number" class="input" name="dni" placeholder="DNI">
-                    <input type="text" class="input" name="correo" placeholder="Correo electronico">
-                    <input type="number" class="input" name="telefono" placeholder="Telefono">
-                    <input type="text" class="input" name="direccion" placeholder="Direccion">
-                    <input type="text" class="input" name="password" placeholder="Password">
-                    <div/>
-
-                    <button class="mx-auto d-block" type="submit">Crear Cliente</button>
-
+            <form th:action="@{/cliente/registro}" method="post">
+              <div class="inputBox">
+                <input
+                  type="text"
+                  class="input"
+                  name="nombre"
+                  placeholder="Nombre"
+                />
+                <input
+                  type="text"
+                  class="input"
+                  name="apellido"
+                  placeholder="Apellido"
+                />
+                <input
+                  type="number"
+                  class="input"
+                  name="dni"
+                  placeholder="DNI"
+                />
+                <input
+                  type="text"
+                  class="input"
+                  name="correo"
+                  placeholder="Correo electronico"
+                />
+                <input
+                  type="number"
+                  class="input"
+                  name="telefono"
+                  placeholder="Telefono"
+                />
+                <input
+                  type="text"
+                  class="input"
+                  name="direccion"
+                  placeholder="Direccion"
+                />
+                <input
+                  type="text"
+                  class="input"
+                  name="password"
+                  placeholder="Password"
+                />
+              </div>
+              <button class="btn-neon" type="submit">
+                <span id="span1"></span>
+                <span id="span2"></span>
+                <span id="span3"></span>
+                <span id="span4"></span> Registrar Cliente
+              </button>
             </form>
+          </div>
         </div>
-        <div style="display: block">
-            <div th:if="${error != null}" style="background-color: red">
-                <h5>Error!</h5>
-                <p th:text="${error}"></p>
-=======
-        <header class="navbar">
-            <div>
-                <img src="../img/logo.png"  alt="HomeFix" width="50" height="35">
-                <a class="navbar-brand" href="/" >HomeFix</a> 
->>>>>>> 0ac7f2233e38d84f8edc8da4e1e63bb5f03694b7
-            </div>
-        </header>
-        <section>
-            <div class="cuadrado" style="-- i :0"></div>
-            <div class="cuadrado" style="-- i :1"></div>
-            <div class="cuadrado" style="-- i :2"></div>
-            <div class="LoginBox">
-
-
-                <div class="LoginContainer">
-
-
-                    <div class="LoginForm">
-                        <h2>Registro De Cliente</h2>
-
-                        <form th:action="@{/cliente/registro}" method="post" >
-                            <div class="inputBox">
-                                <input type="text"  class="input" name="nombre" placeholder="Nombre">
-                                <input type="text" class="input" name="apellido" placeholder="Apellido">
-                                <input type="number" class="input" name="dni" placeholder="DNI">
-                                <input type="text" class="input" name="correo" placeholder="Correo electronico">
-                                <input type="number" class="input" name="telefono" placeholder="Telefono">
-                                <input type="text" class="input" name="direccion" placeholder="Direccion">
-                                <input type="text" class="input" name="password" placeholder="Password">
-                            </div>
-                            <button class="btn-neon" type="submit">
-                                <span id="span1"></span>
-                                <span id="span2"></span>
-                                <span id="span3"></span>
-                                <span id="span4"></span>
-                                Registrar Cliente
-                            </button>
-
-                        </form>
-                    </div>
-                </div> 
-            </div>
-        </section>
-        <div class="footer">
-            <footer th:replace="/fragments/footer :: footer"> </footer>
-        </div>
-    </body>
+      </div>
+      <div class="footer">
+        <footer th:replace="/fragments/footer :: footer"></footer>
+      </div>
+    </section>
+   
+  </body>
 </html>

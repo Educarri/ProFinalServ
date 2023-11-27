@@ -51,6 +51,10 @@ section .cuadrado:nth-child(3) {
     animation: animacion 5s linear infinite;
     animation-delay: calc(1s * var(--i));
 }
+:root {
+    --i: 5; /* Puedes ajustar el valor según sea necesario */
+}
+
 
 @keyframes animacion {
     0%, 100% {

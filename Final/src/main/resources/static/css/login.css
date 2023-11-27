@@ -22,6 +22,7 @@ section {
 section .cuadrado {
     position: absolute;
     filter: blur(100px);
+   
 }
 
 section .cuadrado:nth-child(1) {
@@ -29,15 +30,16 @@ section .cuadrado:nth-child(1) {
     width: 500px;
     height: 500px;
     background: #04a4ec;
+   
 }
 
 section .cuadrado:nth-child(2) {
     bottom: -170px;
-    left: 110px;
-    width: 550px;
-    height: 550px;
+    left: 800px;
+    width: 200px;
+    height: 250px;
     background: #00aae4;
-}
+  }
 
 section .cuadrado:nth-child(3) {
     bottom: 80px;
@@ -45,7 +47,7 @@ section .cuadrado:nth-child(3) {
     width: 450px;
     height: 450px;
     background: #04a4ec;
-}
+    }
 
 .cuadrado {
     position: absolute;

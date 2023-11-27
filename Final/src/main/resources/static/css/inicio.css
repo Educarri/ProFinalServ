@@ -1,12 +1,12 @@
-body {
-    
+body {    
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Raleway', sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     background-color: #21222c;
+    color:white;
 }
 h1{
     color: whitesmoke;
@@ -51,7 +51,40 @@ p{
     font-style: italic;
 }
 
+
 .navbar{
     max-height: 150px;
     width: 100%;
+}
+
+.infoProve{
+    color: #cccc;
+    font-size: 20px;
+    margin: 5px auto;
+    text-align: center;
+        
+}
+
+.imagenProve{
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 10px 5px 5px black;
+    display: flex;
+    justify-content: center;
+}
+
+.imagenProve{
+    background-color:#21222;
+    height: 700px;
+    width: 700px;
+}
+
+.imgTrabajo{
+    height: 120px;
+    width: 120px;
+    color: whitesmoke;
+    
 }
