@@ -42,7 +42,14 @@ h1{
     color: #333;
 }*/
 /*
-*/
+p{
+    margin-top: 20px;
+    text-align: center;
+    color: whitesmoke;
+    font-family: monospace;
+    font-size: 18px;
+    font-style: italic;
+}*/
 
 /*
 .navbar{
@@ -81,13 +88,4 @@ h1{
     width: 120px;
     color: whitesmoke;
     
-}
-
-p{
-    margin-top: 20px;
-    text-align: center;
-    color: whitesmoke;
-    font-family: monospace;
-    font-size: 18px;
-    font-style: italic;
 }
