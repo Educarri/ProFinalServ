@@ -1,0 +1,166 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #21222c;
+}
+
+section .cuadrado {
+    position: absolute;
+    filter: blur(100px);
+}
+
+section .cuadrado:nth-child(1) {
+    top: -370px;
+    width: 500px;
+    height: 500px;
+    background: #04a4ec;
+}
+
+section .cuadrado:nth-child(2) {
+    bottom: -170px;
+    left: 110px;
+    width: 550px;
+    height: 550px;
+    background: #00aae4;
+}
+
+section .cuadrado:nth-child(3) {
+    bottom: 80px;
+    right: 120px;
+    width: 450px;
+    height: 450px;
+    background: #04a4ec;
+}
+
+.cuadrado {
+    position: absolute;
+    animation: animacion 5s linear infinite;
+    animation-delay: calc(1s * var(--i));
+}
+
+@keyframes animacion {
+    0%, 100% {
+        transform: translatex(-50px);
+    }
+    50% {
+        transform: translatex(50px);
+    }
+}
+
+.LoginBox {
+    position: relative;
+
+    height: 90vh;    
+}
+
+.Container {
+    position: relative;
+    height: 70vh;
+    width: 100vh;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+   
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.LoginForm h2 {
+    position: relative;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+
+table {
+    color: whitesmoke;
+    font-size: 16px;
+    table-layout: fixed;
+    border-collapse: collapse;
+     letter-spacing: 1px;
+     margin: 25px;
+}
+
+thead {
+   
+    background: rgba(255, 255, 255, 0.2);
+}
+
+th {
+   padding: 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+
+td {
+    border-bottom: 1px solid whitesmoke !important;
+    padding: 8px;
+}
+
+
+.LoginForm a {
+    text-decoration: none;
+    color: #ffffff;
+    border: 1px solid white !important;
+    padding: 8px;
+}
+
+.LoginForm .a a:hover {
+      background: #04a4ec;
+    box-shadow: 0 0 10px whitesmoke, 0 0 40px whitesmoke, 0 0 80px whitesmoke;
+    transition-delay: 1s;
+    color: #fff;
+}
+
+footer .nav {
+    border-bottom: none !important;
+}
+
+.navbar-toggler {
+    display: none;
+}
+
+
+.footer {
+    background: none;
+    color: whitesmoke;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 15%;
+}
+
+.navbar {
+     
+   color: whitesmoke;
+   width: 100%;
+  background: none;
+}
+
+.volver {
+    margin-block-start: auto;
+}
+

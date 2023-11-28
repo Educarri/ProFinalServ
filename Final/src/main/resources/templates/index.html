@@ -82,13 +82,18 @@
 
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div class="btn-group">
-                                                        <!--                                                        Agregar enlaces o botones según tus necesidades -->                             
-                                                        <a th:href="@{/login}" th:if="${session.usuarioSesion == null}" class="btn-neon">Ver Perfil</a>
-                                                        <a th:href="@{/proveedor/contacto/__${proveedor.id}__}" sec:authorize="hasAnyRole('USER', 'ADMIN')" class="btn-neon">Ver Perfil</a>
+                                                        <!--                                                        Agregar enlaces o botones según tus necesidades -->
+                                                        <!--<button type="button" class="btn btn-sm btn-outline-secondary">View</button>-->
+                                                        <button type="submit" class="btn-neon"
+                                                                sec:authorize="hasRole('USER')"
+                                                                th:if="${session.usuarioSesion != null}"
+                                                                th:href="@{/proveedor/contacto/__${proveedor.id}__}">Contactar
+                                                        </button>
 
-                                                        <form th:action="@{/proveedor/eliminar/__${proveedor.id}__}" method="post">
-                                                            <button type="submit" sec:authorize="hasRole('ADMIN')"><i class="fas fa-father-alt" ></i> Eliminar</button>
-                                                        </form>  
+                                                        </li>
+                                                        <!--                                                        <form th:action="@{/proveedor/eliminar/__${proveedor.id}__}" method="post">
+                                                                                                                    <button type="submit"><i class="fas fa-father-alt"></i> Eliminar</button>
+                                                                                                                </form>  -->
 
                                                     </div>
                                                 </div>
@@ -111,8 +116,3 @@
                     </script>
                     </body>
                     </html>
-
-
-
-
-

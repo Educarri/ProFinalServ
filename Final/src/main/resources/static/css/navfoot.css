@@ -9,23 +9,17 @@
 footer{
     background-color: #21222c;
     color: whitesmoke;
+    margin-top: 10px;
+    opacity: 0.9;
 }
-
-.nav-link{
-     color: whitesmoke;
-}
-
 /*.navbar-brand, .navbar-toggler-icon, .navbar-toggler  {
     color: whitesmoke;
     font-family: sans-serif bolder;
-
-
-
-.navbarNav, .navbar, .nav, .nav-item, .navbar-brand, .navbar-collapse, .navbar-expand-lg, .navbar-nav, .navbar-toggler, .navbar-toggler-icon, span  {
+}*/
+.navbarNav, .navbar, .nav, .nav-item, .nav-link, .navbar-brand, .navbar-collapse, .navbar-expand-lg, .navbar-nav, .navbar-toggler, .navbar-toggler-icon  {
     color: whitesmoke !important;
     font-family: sans-serif bolder !important;
     background-color: #21222c !important;
-    font-family: sans-serif bolder;
+     font-family: sans-serif bolder;
+     opacity: 0.9;
 }
-
-}*/
