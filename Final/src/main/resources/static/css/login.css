@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif;
+    color: whitesmoke;
 }
 
 body {
@@ -17,6 +18,8 @@ section {
     align-items: center;
     min-height: 100vh;
     background: #21222c;
+    margin-top: -6%;
+        
 }
 
 section .cuadrado {
@@ -83,6 +86,7 @@ section .cuadrado:nth-child(3) {
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 50px;
 }
 
 .LoginForm {
@@ -239,19 +243,8 @@ section .cuadrado:nth-child(3) {
     font-weight: 600;
 }
 
-header .navbar-brand {     
-  
-    color: whitesmoke;
-}
 
-.footer {
-    background: none;
-    color: whitesmoke;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 17%
-}
+
 
   
 .error {
@@ -323,12 +316,4 @@ header .navbar-brand {
     .LoginForm {
         padding: 20px;
     }
-}
-
-footer .nav {
-    border-bottom: none !important;
-}
-
-.navbar-toggler {
-    display: none;
 }
