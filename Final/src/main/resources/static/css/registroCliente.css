@@ -16,7 +16,7 @@ section {
     align-items: center;
     min-height: 100vh;
     background: #21222c;
-    margin-top: -7.5%;
+    margin-top: -4.5%;
         
 }
 
@@ -65,7 +65,6 @@ section .cuadrado:nth-child(3) {
 
 .LoginBox {
     position: relative;
-   
 }
 
 .LoginContainer {
@@ -84,7 +83,7 @@ section .cuadrado:nth-child(3) {
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     margin-bottom: 150px;
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 .LoginForm {
@@ -179,10 +178,12 @@ section .cuadrado:nth-child(3) {
     transition-delay: 1s;
     color: #fff;
 }
+
 .btn-neon span{
     position: absolute;
     display: block;
 }
+
 #span1{
     top: 0;
     left: -100%;
@@ -190,10 +191,12 @@ section .cuadrado:nth-child(3) {
     height: 2px;
     background: linear-gradient(90deg, transparent,#21222c);
 }
+
 .btn-neon:hover #span1{
     left: 100%;
     transition: 1s;
 }
+
 #span3{
     bottom: 0;
     right: -100%;
@@ -231,10 +234,6 @@ section .cuadrado:nth-child(3) {
     transition-delay: 0.75s;
 }
 
-header .navbar-brand {     
-
-    color: whitesmoke;
-}
 
 
 
@@ -303,3 +302,4 @@ header .navbar-brand {
         padding: 20px;
     }
 }
+
