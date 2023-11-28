@@ -184,6 +184,13 @@ h2{
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding: 12px;
+<<<<<<< HEAD
     margin-bottom: 200px;
     
+=======
+}
+
+button.navbar-toggler {
+  display: block;
+>>>>>>> 11286c48d9cc65469f1718275bf18950c09a4c2b
 }
