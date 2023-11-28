@@ -18,6 +18,7 @@
                         <th scope="col">DNI</th>
                         <th scope="col">DIRECCION</th>
                         <th scope="col">CORREO</th>
+                        <th scope="col">ROL</th>
                         <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th>
                     </tr>
                 </thead>
@@ -29,10 +30,13 @@
                         <th th:text="${cliente.dni}"></th>
                         <th  th:text="${cliente.direccion}"></th>
                         <th th:text="${cliente.correo}"></th>
+                        <th th:text="${cliente.Rol}"></th>
                         <th>
                             <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
                                 <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
-                            </form>          
+                            </form>    
+
+                            <a  th:href="@{/admin/modificarRolCliente/__${cliente.id}__}"><i class="fas fa-father-alt"></i> Cambiar Rol </a>
                         <th>
                     </tr>
                 </tbody>
@@ -50,5 +54,15 @@
                 window.history.back();
                 }
             </script>
+
+            <div th:if="${error != null}" class="mensajeError">
+                <h5>Error!</h5>
+                <p th:text="${error}"></p>
+            </div>
+
+            <div th:if="${exito != null}" class="mensajeExito"> 
+                <h5>Exito!</h5>
+                <p th:text="${exito}"></p>
+            </div>
     </body>
 </html>
