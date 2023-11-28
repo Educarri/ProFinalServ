@@ -84,8 +84,7 @@ public class ProveedorService {
             Integer precioHs, Integer reputacion, String descripService, MultipartFile archivo,
             String id) throws miException {
 
-      //  validar(nombre, apellido, dni, correo, telefono, password, direccion, oficio, precioHs, descripService, archivo);
-
+        //  validar(nombre, apellido, dni, correo, telefono, password, direccion, oficio, precioHs, descripService, archivo);
         Optional<Proveedor> respuesta = proRepo.findById(id);
 
         if (respuesta.isPresent()) {
@@ -99,9 +98,8 @@ public class ProveedorService {
             pr.setReputacion(pr.getReputacion());
             pr.setPrecioHs(precioHs);
 
-            
             System.out.println("Precio hora dentro modificar " + precioHs);
-            
+
             String idImagen = null;
 
             if (pr.getImagen() != null) {
@@ -119,6 +117,26 @@ public class ProveedorService {
             proRepo.save(pr);
         }
 
+    }
+
+    @Transactional
+    public void cambiarRol(String id) throws miException {
+
+        if (id == null || id.isEmpty()) {
+            throw new miException("La identificacion del Proveedor no es correcta.");
+        }
+
+        Optional<Proveedor> respuesta = proRepo.findById(id);
+
+        if (respuesta.isPresent()) {
+            Proveedor user = respuesta.get();
+
+            if (user.getRol().equals(Rol.PROVEEDOR)) {
+                user.setRol(Rol.USER);
+            }else{
+                user.setRol(Rol.PROVEEDOR);
+            }
+        }
     }
 
     public List<Proveedor> listarProveedores() {
