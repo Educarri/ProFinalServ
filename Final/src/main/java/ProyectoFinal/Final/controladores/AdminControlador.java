@@ -6,6 +6,7 @@
 package ProyectoFinal.Final.controladores;
 
 import ProyectoFinal.Final.entidades.Cliente;
+import ProyectoFinal.Final.entidades.Proveedor;
 import ProyectoFinal.Final.excepciones.miException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -99,6 +100,29 @@ public class AdminControlador {
     public String cambiarRolCliente(@PathVariable String id, ModelMap modelo) {
         try {
             cliServ.cambiarRol(id);
+            Cliente cli = cliServ.getOne(id);
+            
+            Proveedor pro = new Proveedor();
+            
+            pro.setNombre(cli.getNombre());
+            pro.setApellido(cli.getApellido());
+            pro.setCorreo(cli.getCorreo());
+            pro.setDireccion(cli.getDireccion());
+            pro.setDni(cli.getDni());
+            pro.setTelefono(cli.getTelefono());
+            pro.setRol(cli.getRol());
+            pro.setDescripService("-");
+            pro.setImagen(null);
+            pro.setOficio(null);
+            pro.setPrecioHs(1);
+            pro.setPassword(cli.getPassword());
+            
+            proServ.registrarCambiado(pro);
+            
+            cliServ.eliminarCliente(id);
+          
+            
+           
             modelo.put("exito", "Rol de Cliente a Proveedor modificado correctamente!");
 
         } catch (miException e) {
