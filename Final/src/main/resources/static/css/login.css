@@ -7,9 +7,9 @@
     font-family: 'Raleway', sans-serif;
 }
 
-body {
+/*body {
     overflow: hidden;
-}
+}*/
 
 section {
     display: flex;
@@ -49,10 +49,10 @@ section .cuadrado:nth-child(3) {
 
 .cuadrado {
     position: absolute;
-    animation: animacion 5s linear infinite;
-    animation-delay: calc(1s * var(--i));
+/*    animation: animacion 5s linear infinite;
+    animation-delay: calc(1s * var(--i));*/
 }
-
+/*
 @keyframes animacion {
     0%, 100% {
         transform: translatex(-50px);
@@ -60,7 +60,7 @@ section .cuadrado:nth-child(3) {
     50% {
         transform: translatex(50px);
     }
-}
+}*/
 
 .LoginBox {
     position: relative;

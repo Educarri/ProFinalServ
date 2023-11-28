@@ -1,3 +1,7 @@
+.body{
+/*    background-image: url(../static/img/index.jpg');*/
+background-color: blue;
+}
 
 img{
     /*        display:flex ;*/
@@ -40,7 +44,7 @@ h2{
 }
 
 
-
+/*
 section {
     display: flex;
     justify-content: center;
@@ -83,7 +87,7 @@ section .cuadrado:nth-child(3) {
 .cuadrado {
     position: absolute;
     animation: animacion 5s linear infinite;
-    /*animation-delay: calc(1s * var(--i));*/
+    animation-delay: calc(1s * var(--i));
 }
 
 @keyframes animacion {
@@ -93,7 +97,7 @@ section .cuadrado:nth-child(3) {
     50% {
         transform: translatex(50px);
     }
-}
+}*/
 
 /*.LoginBox {
     position: relative;
