@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif;
+    color: whitesmoke;
 }
 
 body {
@@ -13,9 +14,10 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 90vh;
+    min-height: 100vh;
     background: #21222c;
-    margin-bottom: 0;
+    margin-top: -7.5%;
+        
 }
 
 section .cuadrado {
@@ -63,6 +65,7 @@ section .cuadrado:nth-child(3) {
 
 .LoginBox {
     position: relative;
+   
 }
 
 .LoginContainer {
@@ -80,6 +83,8 @@ section .cuadrado:nth-child(3) {
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 150px;
+    margin-top: 50px;
 }
 
 .LoginForm {
@@ -231,14 +236,6 @@ header .navbar-brand {
     color: whitesmoke;
 }
 
-.footer {
-    background: none;
-    color: whitesmoke;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 13.5%;
-}
 
 
 /* Consultas de medios para hacer el diseño más responsive */
@@ -305,12 +302,4 @@ header .navbar-brand {
     .LoginForm {
         padding: 20px;
     }
-}
-
-footer .nav {
-    border-bottom: none !important;
-}
-
-.navbar-toggler {
-    display: none;
 }
