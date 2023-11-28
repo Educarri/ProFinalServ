@@ -11,6 +11,9 @@
     </head>
 
     <body>
+        <header>
+            <nav th:replace="/fragments/navbar :: nav"></nav> 
+        </header> 
 
         <h1>BIENVENIDO AL AREA DE MODIFICACION DE PERFIL</h1>
 
@@ -50,6 +53,6 @@
     </body>
 
     <div class="footer">
-        <footer th:replace="/fragments/footer :: footer"></footer>
+        <footer th:replace="/fragments/footer :: footer"> </footer>
     </div>
 </html>
