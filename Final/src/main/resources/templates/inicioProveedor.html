@@ -6,30 +6,57 @@ and open the template in the editor.
 -->
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
-        <title>Inicio Usuarios</title>
+        <title>Inicio Proveedor</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-        <link href="/css/inicio.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+        <link href="/css/main.css" rel="stylesheet" type="text/css"/>
+         <link href="/css/inicio.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/navfoot.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
-        <div class="navbar">
-            <nav th:replace="/fragments/navbar :: nav"></nav>
-        </div>
+        <header>
+            <nav th:replace="/fragments/navbar :: nav"></nav> 
+        </header>
+        <!--        Mensaje de inicio de sesion exitoso-->
 
-        <div class="content">
-            <h1>Bienvenido a nuestra pagina Principal!</h1>
-            <p th:if="${session.usuarioSesion != null}" th:text="'Hola de vuelta '+ ${session.usuarioSesion.nombre}"></p>
-            
-            <div class="imagen">
-                <img th:src="@{/imagen/perfil/__${session.usuarioSesion.id}__}" alt="Imagen Perfil"/>
-            </div>
+        <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
+            <div class="card-body">
+                <h5 class="card-title">Exito!</h5>
+                <p class="card-text" th:text="${exito}"></p>
+            </div>   
         </div>
+        <section>
 
-        <div class="footer">
-            <footer th:replace="/fragments/footer :: footer"> </footer>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    </body>
-</html>
+            <div class="content"> 
+                <div class="cuadrado" style="-- i :0"></div>
+                <div class="cuadrado" style="-- i :1"></div>
+                <div class="cuadrado" style="-- i :2"></div>
+
+                <div class="content">
+
+                    <h1> Pagina principal de proveedores</h1>
+                    <h3 align="center" th:if="${session.usuarioSesion != null}" th:text="'Bienvenido '+ ${session.usuarioSesion.nombre} "></h3>
+
+
+                    <div class="imagenProve" style="height: 700px;">
+                        <img th:src="@{/imagen/perfil/__${session.usuarioSesion.id}__}" style="width: 700px;" alt="Imagen Perfil">
+                       <!-- 
+                        <p th:if="${session.usuarioSesion != null}" th:text="Oficio: ${session.usuarioSesion.oficio} + Breve descripcion: ${session.usuarioSesion.descripService} " >
+                            
+                        </p>
+                    -->
+                    </div>
+
+
+                </div>
+
+                <div class="footer">
+                    <footer th:replace="/fragments/footer :: footer"> </footer>
+                </div>
+
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+                </script>
+                </body>
+                </html>

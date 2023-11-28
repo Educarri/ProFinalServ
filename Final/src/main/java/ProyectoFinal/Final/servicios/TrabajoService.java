@@ -27,7 +27,7 @@ public class TrabajoService {
 
     @Transactional
     public void registrarTrabajo(String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
-            String estado, Integer calificacion) throws miException {
+            String estado, Integer calificacion, String comentario) throws miException {
 
         validar(HsTrabajo);
 
@@ -47,6 +47,7 @@ public class TrabajoService {
 
         //validar que la calificacion esta siendo nula sino crearla 
         tra.setCalificacion(calificacion);
+        tra.setComentario("");
 
         traRepo.save(tra);
 
@@ -67,6 +68,21 @@ public class TrabajoService {
 
     }
 
+    
+    @Transactional
+    public void eliminarComentario(String id) throws miException {
+
+        Optional<Trabajo> respuesta = traRepo.findById(id);
+        
+        if(respuesta.isPresent()){
+            Trabajo tra = respuesta.get();
+            
+            tra.setComentario("**********");
+             traRepo.save(tra);
+        }
+   
+    }
+    
     public List<Trabajo> listarTrabajos() {
 
         return traRepo.findAll();
@@ -77,15 +93,24 @@ public class TrabajoService {
 
         return traRepo.buscarTrabajoPorIdCliente(id);
     }
+    public List<Trabajo> listarTrabajosPorIdProveedor(String id) {
+
+        return traRepo.buscarTrabajoPorIdProveedor(id);
+    }
 
     @Transactional
     public void modificar(String id, String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
-            String estado, Integer calificacion) throws miException {
+            String estado, Integer calificacion, String comentario) throws miException {
 
         Optional<Trabajo> respuesta = traRepo.findById(id);
 
         if (respuesta.isPresent()) {
             Trabajo tra = respuesta.get();
+            
+            if(calificacion == null){
+                calificacion = tra.getCalificacion(); //ver si funciona para cuando el proveedor cambia el estado
+            }
+            
             tra.setCalificacion(calificacion);
             
             tra.setHsTrabajo(tra.getHsTrabajo()); 
@@ -93,7 +118,8 @@ public class TrabajoService {
             tra.setIdCliente(tra.getIdCliente());
             tra.setIdProveedor(tra.getIdProveedor());
             tra.setEstado(estado);
-        
+            tra.setComentario(comentario);
+            
             traRepo.save(tra);
         }
     }

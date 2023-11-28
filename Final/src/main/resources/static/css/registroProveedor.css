@@ -1,64 +1,38 @@
 
-img{
-    /*        display:flex ;*/
-    width: 50px;
-    margin: 10px auto;
-    border-radius: 40px;
-}
-
-p{
-    margin-left: 10px;
-    margin-top: 10px;
-}
-
 * {
-    margin: 10;
-    padding: 10;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif;
 }
-.intro{
-    
- font-family: 'Raleway', sans-serif;
- color: whitesmoke;
-    text-shadow:  #21222c;
- text-align: justify;
- padding: 40px;
- padding-top: 100px;
-}
-/*body {
+
+body {
     overflow: hidden;
-}*/
-h2{
-    font-family: 'Raleway', sans-serif;
-    text-align: center;
-    font-weight: bolder;
-    color: whitesmoke;
-    text-shadow:  #21222c;
-    padding: 40px;
-          
+    
 }
-
-
 
 section {
+    
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 0vh;
     background: #21222c;
-    color: whitesmoke;
-    padding-bottom: 120px;
+    margin-bottom: 20px;
+    
+    
+    
 }
 
 section .cuadrado {
     position: absolute;
-    filter: blur(70px);
+    filter: blur(100px);
+    
 }
+
 
 section .cuadrado:nth-child(1) {
     top: -370px;
-    left: 250px;
     width: 500px;
     height: 500px;
     background: #04a4ec;
@@ -83,7 +57,7 @@ section .cuadrado:nth-child(3) {
 .cuadrado {
     position: absolute;
     animation: animacion 5s linear infinite;
-    /*animation-delay: calc(1s * var(--i));*/
+    animation-delay:calc(1s * var(--i));
 }
 
 @keyframes animacion {
@@ -95,35 +69,41 @@ section .cuadrado:nth-child(3) {
     }
 }
 
-/*.LoginBox {
+.RegistroBox {
     position: relative;
+    
+     
 }
 
-.LoginContainer {
+.RegistroContainer {
     position: relative;
-    width: 400px;
-    min-height: 400px;
+    width: 900px;
+    min-height: 300px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     display: flex;
-    justify-content: center;
+   justify-content: center;
     align-items: center;
     backdrop-filter: blur(5px);
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+   
+    
 }
 
-<<<<<<< HEAD
-.LoginForm {
+.RegistroForm {
     position: relative;
     width: 100%;
     height: 100%;
-    padding: 40px;
+    padding: 20px;
+    padding-bottom: 0px;
+    
+    
 }
 
-.LoginForm h2 {
+.RegistroForm h2 {
     position: relative;
     color: #fff;
     font-size: 24px;
@@ -132,7 +112,7 @@ section .cuadrado:nth-child(3) {
     margin-bottom: 40px;
 }
 
-.LoginForm h2::before {
+.RegistroForm h2::before {
     content: ' ';
     position: absolute;
     left: 0;
@@ -142,13 +122,55 @@ section .cuadrado:nth-child(3) {
     background: #fff;
 }
 
-.LoginForm .inputBox {
+.RegistroForm .inputBox {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    
 }
 
-.LoginForm .inputBox input {
-    width: 100%;
+.RegistroForm .inputBox input::placeholder {
+    color: whitesmoke;
+    font-style: italic;
+   
+}
+/*
+@media screen and (max-width: 480px) {
+    section {
+        min-height: 60vh;
+    }
+    
+section .cuadrado:nth-child(1) {
+        top: -200px;
+        width: 300px;
+        height: 300px;
+    }
+    
+    section .cuadrado:nth-child(2) {
+        bottom: -50px;
+        left: 30px;
+        width: 350px;
+        height: 350px;
+    }
+    section .cuadrado:nth-child(3) {
+        bottom: 10px;
+        right: 40px;
+        width: 250px;
+        height: 250px;
+    }
+    
+    .RegitroContainer {
+        width: 90%;
+    }
+
+    .RegistroForm {
+        padding: 20px;
+    }*/
+
+
+.RegistroForm .inputBox input {
+    width: 50%;
     background: rgba(255, 255, 255, 0.2);
     border: none;
     outline: none;
@@ -161,22 +183,54 @@ section .cuadrado:nth-child(3) {
     letter-spacing: 1px;
     color: #fff;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-right: 10px;
+    
+}
+
+.LabelFoto{
+    color: whitesmoke;
+    width: 10%;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 16px;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-right: 10px;
+}
+
+.RegistroCheck {
+    margin-top: 10px;
+    width: 99%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    
 }
 
 
-
-.LoginForm 
-*/
-
-
-.btn-neon {
+.RegistroForm .btn-neon {
 
     background: #fff;
     color: #666;
     width: 100%;
     cursor: pointer;
     margin-bottom: 20px;
-    transition: 0.1s;
+    transition: 0.3s;
 }
 
 .btn-neon{
@@ -207,7 +261,7 @@ section .cuadrado:nth-child(3) {
 .btn-neon:hover{
     background: #04a4ec;
     box-shadow: 0 0 10px whitesmoke, 0 0 40px whitesmoke, 0 0 80px whitesmoke;
-    transition-delay: 0.2s;
+    transition-delay: 1s;
     color: #fff;
 }
 .btn-neon span{
@@ -223,7 +277,7 @@ section .cuadrado:nth-child(3) {
 }
 .btn-neon:hover #span1{
     left: 100%;
-    transition: 0.2s;
+    transition: 1s;
 }
 #span3{
     bottom: 0;
@@ -234,8 +288,8 @@ section .cuadrado:nth-child(3) {
 }
 .btn-neon:hover #span3{
     right: 100%;
-    transition: 0.5s;
-    transition-delay: 0.2s;
+    transition: 1s;
+    transition-delay: 0.5s;
 }
 #span2{
     top: -100%;
@@ -246,7 +300,7 @@ section .cuadrado:nth-child(3) {
 }
 .btn-neon:hover #span2{
     top: 100%;
-    transition: 0.5s;
+    transition: 1s;
     transition-delay: 0.25s;
 }
 #span4{
@@ -258,76 +312,23 @@ section .cuadrado:nth-child(3) {
 }
 .btn-neon:hover #span4{
     bottom: 100%;
-    transition: 0.5s;
-    transition-delay: 0.2s;
-}/*
-
-.OlvidoPass, .Registro {
-    margin-top: 5px;
-    color: #fff;
+    transition: 1s;
+    transition-delay: 0.75s;
 }
 
-.OlvidoPass a, .Registro a {
-    color: #fff;
-    font-weight: 600;
-}
+
 
 header .navbar-brand{     
     background-color: #21222c;
     color: whitesmoke;
-}*/
+}
 
-
-/*Tarjetas*/
-/*.card-body, .card{
-    background-color: #21222c ;
-    opacity: 90;
-    border-radius: 20px;
-}*/
-
-.card-title, .card-text{
+.footer {
+    background: none;
     color: whitesmoke;
-    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
-.card-img-top{
-    border-radius: 20px;
-}
-
-.bd-placeholder-img card-img-top{
-    margin:20px 20px;
-}
-
-.card{
-    position: relative;
-    width: 300px;
-    min-height: 200px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 12px;
-}
-
-.list_card{
-    position: relative;
-/*    width: 300px;
-    min-height: 200px;*/
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 12px;
-}
+ 

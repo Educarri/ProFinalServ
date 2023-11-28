@@ -43,10 +43,10 @@ public class TrabajoControlador {
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/registro")
     public String registro(@RequestParam(required = false) String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
-            String estado, Integer calificacion, ModelMap modelo) {
+            String estado, Integer calificacion, String comentario, ModelMap modelo) {
 
         try {
-            trabServ.registrarTrabajo(idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion);
+            trabServ.registrarTrabajo(idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion, comentario);
 
             modelo.put("exito", "El Trabajo fue guardado exitosamente");
 
@@ -64,34 +64,32 @@ public class TrabajoControlador {
         List<Trabajo> trabajos = trabServ.listarTrabajos();
         modelo.addAttribute("trabajos", trabajos);
 
-        return "trabajos_lista.html";
+        return "listaTrabajosAdmin.html";
     }
-    
-    
+
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/calificar/{id}")
-    public String calificar(@PathVariable String id, ModelMap modelo){
-           
+    public String calificar(@PathVariable String id, ModelMap modelo) {
+
         try {
-             Trabajo trabajo = trabServ.getOne(id);
-             modelo.addAttribute("trabajo", trabajo);
-             
+            Trabajo trabajo = trabServ.getOne(id);
+            modelo.addAttribute("trabajo", trabajo);
+
         } catch (Exception e) {
             modelo.put("error", e.getMessage());
         }
- 
+
         return "calificarTrabajo.html";
     }
-    
-    
-        @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
+
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/modificar/{id}")
     public String calificado(@PathVariable String id, String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
-            String estado, Integer calificacion,
+            String estado, Integer calificacion, String comentario,
             ModelMap modelo) {
-        
+
         try {
-            trabServ.modificar(id, idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion);
+            trabServ.modificar(id, idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion, comentario);
             modelo.put("exito", "Logro modificar correctamente al Trabajo");
             return "redirect:/inicio";
         } catch (miException e) {
@@ -100,8 +98,55 @@ public class TrabajoControlador {
             return "calificarTrabajo.html";
         }
     }
-            
-            
+
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("/estado/{id}")
+    public String estado(@PathVariable String id, ModelMap modelo) {
+
+        try {
+            Trabajo trabajo = trabServ.getOne(id);
+            modelo.addAttribute("trabajo", trabajo);
+
+        } catch (Exception e) {
+            modelo.put("error", e.getMessage());
+        }
+
+        return "cambiarEstadoTrabajo.html";
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
+    @PostMapping("/cambiar/{id}")
+    public String cambiarEstado(@PathVariable String id, String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
+            String estado, Integer calificacion, String comentario,
+            ModelMap modelo) {
+
+        try {
+            trabServ.modificar(id, idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion, comentario);
+            modelo.put("exito", "Logro modificar correctamente al Trabajo");
+            return "redirect:/inicio";
+        } catch (miException e) {
+
+            modelo.put("error", e.getMessage());
+            return "cambiarEstadoTrabajo.html";
+        }
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping("/eliminarComentario/{id}")
+    public String cambiarEstado(@PathVariable String id,
+            ModelMap modelo) {
+
+        try {
+            trabServ.eliminarComentario(id);
+            modelo.put("exito", "Logro eliminar el Comentario correctamente del Trabajo");
+            return "redirect:/inicio";
+        } catch (miException e) {
+
+            modelo.put("error", e.getMessage());
+            return "listaTrabajosAdmin.html";
+        }
+    }
+
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/eliminar/{id}")
     public String eliminar(@PathVariable String id, ModelMap modelo) {

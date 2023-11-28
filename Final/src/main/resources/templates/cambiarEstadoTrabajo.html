@@ -14,15 +14,15 @@
         <header><nav th:replace="/fragments/navbar :: nav"></nav> </header> 
 
         <div class="formulario"  > 
-            <h1 class="tituloform">CALIFIQUE NUESTRO PROVEEDOR</h1>
+            <h1 class="tituloform">ASIGNE EL ESTADO DEL TRABAJO</h1>
 
             <form th:action="@{/trabajo/modificar/__${trabajo.id}__}" method="post" >
                 <div class="mb-3">
 
-
-                    <input type="number" class="input" name="calificacion" placeholder="CALIFICACION">
-                    <input type="text" class="input" name="comentario" placeholder="COMENTARIO">
-                    <input hidden type="text"  name="estado" th:value="Pendiente">
+                    
+                    <input hidden type="number" class="input" name="calificacion">
+                    <input hidden type="text" class="input" name="comentario">
+                    <input type="text"  name="estado" placeholder="ESTADO">
 
                     <button class="mx-auto d-block" type="submit">Registrar Calificacion</button>
 

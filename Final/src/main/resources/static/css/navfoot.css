@@ -1,0 +1,31 @@
+/*.navbar{
+    max-height: 150px;
+    width: 100%;
+    background-color: #21222c;
+    color: whitesmoke;
+    font-family: sans-serif bolder;
+}*/
+
+footer{
+    background-color: #21222c;
+    color: whitesmoke;
+}
+
+.nav-link{
+     color: whitesmoke;
+}
+
+/*.navbar-brand, .navbar-toggler-icon, .navbar-toggler  {
+    color: whitesmoke;
+    font-family: sans-serif bolder;
+
+
+
+.navbarNav, .navbar, .nav, .nav-item, .navbar-brand, .navbar-collapse, .navbar-expand-lg, .navbar-nav, .navbar-toggler, .navbar-toggler-icon, span  {
+    color: whitesmoke !important;
+    font-family: sans-serif bolder !important;
+    background-color: #21222c !important;
+    font-family: sans-serif bolder;
+}
+
+}*/
