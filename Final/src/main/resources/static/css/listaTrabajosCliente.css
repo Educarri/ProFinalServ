@@ -227,7 +227,6 @@ tbody tr:hover {
 
 /* Consultas de medios para hacer el diseño más responsive */
 @media only screen and (max-width: 768px) {
-   
     section {
         background: #00aae4;
     }
@@ -236,7 +235,7 @@ tbody tr:hover {
         display: none; /* Oculta los cuadrados en pantallas más pequeñas */
         background: #00aae4;
     }
- 
+
     .LoginBox {
         margin-top: 0; /* Ajusta el margen superior */
     }
@@ -255,11 +254,13 @@ tbody tr:hover {
     }
 
     .TableContainer {
-        width: 90%; /* Reduzco el ancho de la tabla */
-        margin-left: auto;
-        margin-right: auto;
-        overflow-x: auto; /* Agrega barra de desplazamiento horizontal */
-    }
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: auto; /* Agrega barra de desplazamiento horizontal */
+    overflow-y: hidden; /* Deshabilita la barra de desplazamiento vertical */
+}
+
 
     .TableList {
         padding-left: 10px; /* Ajusta el relleno izquierdo */
@@ -277,5 +278,3 @@ tbody tr:hover {
         display: none;
     }
 }
-
-

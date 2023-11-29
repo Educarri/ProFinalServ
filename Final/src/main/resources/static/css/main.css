@@ -332,6 +332,6 @@ header .navbar-brand{
     padding: 12px;
 }
 
-button.navbar-toggler {
+header button.navbar-toggler {
   display: block;
 }
