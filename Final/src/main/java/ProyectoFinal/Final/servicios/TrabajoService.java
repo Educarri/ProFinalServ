@@ -99,7 +99,7 @@ public class TrabajoService {
     }
 
     @Transactional
-    public void modificar(String id, String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
+    public void modificar(String id, 
             String estado, Integer calificacion, String comentario) throws miException {
 
         Optional<Trabajo> respuesta = traRepo.findById(id);
@@ -112,13 +112,26 @@ public class TrabajoService {
             }
             
             tra.setCalificacion(calificacion);
-            
-            tra.setHsTrabajo(tra.getHsTrabajo()); 
-            tra.setPresupuesto(tra.getPresupuesto());
-            tra.setIdCliente(tra.getIdCliente());
-            tra.setIdProveedor(tra.getIdProveedor());
+
             tra.setEstado(estado);
             tra.setComentario(comentario);
+            
+            traRepo.save(tra);
+        }
+    }
+    
+    @Transactional
+    public void cambiarEstado(String id, 
+            String estado) throws miException {
+
+        Optional<Trabajo> respuesta = traRepo.findById(id);
+
+        if (respuesta.isPresent()) {
+            Trabajo tra = respuesta.get();
+            
+            
+            tra.setEstado(estado);
+            
             
             traRepo.save(tra);
         }
@@ -132,4 +145,5 @@ public class TrabajoService {
         }
 
     }
+    
 }
