@@ -13,6 +13,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ProyectoFinal.Final.repositorios.TrabajoRepositorio;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,8 +45,7 @@ public class TrabajoService {
         tra.setPresupuesto(valorFinalHora);
         tra.setEstado(estado);
         tra.setHsTrabajo(HsTrabajo);
-
-        //validar que la calificacion esta siendo nula sino crearla 
+        tra.setFechaCreacion(new Date());
         tra.setCalificacion(calificacion);
         tra.setComentario("");
 

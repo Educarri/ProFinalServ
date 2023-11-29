@@ -77,6 +77,14 @@ public class ProveedorService {
         proRepo.save(pro);
 
     }
+    
+   
+    @Transactional
+    public void registrarCambiado(Proveedor pro){
+        if(pro != null){
+            proRepo.save(pro);
+        }
+    }
 
     @Transactional
     public void actualizarProveedor(String nombre, String apellido, Long dni,
