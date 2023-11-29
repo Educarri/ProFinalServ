@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import ProyectoFinal.Final.repositorios.ImagenRepositorio;
-
+import java.io.IOException;
+import java.nio.file.Files;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 @Service
 public class ImagenService {
@@ -38,14 +41,14 @@ public class ImagenService {
         if (archivo != null) {
             try {
                 Imagen imagen = new Imagen();
-                if(id != null){
+                if (id != null) {
                     Optional<Imagen> respuesta = imgRepo.findById(id);
-                    
-                    if(respuesta.isPresent()){
-                        imagen =  respuesta.get();
+
+                    if (respuesta.isPresent()) {
+                        imagen = respuesta.get();
                     }
                 }
-                
+
                 imagen.setMime(archivo.getContentType());
                 imagen.setNombre(archivo.getName());
                 imagen.setContenido(archivo.getBytes());
@@ -59,6 +62,29 @@ public class ImagenService {
         }
         return null;
 
+    }
+
+    public Imagen obtenerImagenPorDefecto() {
+        try {
+            // Ruta relativa al directorio de recursos
+            String rutaImagenPredeterminada = "static/img/electricista.jpg";
+
+            Resource resource = new ClassPathResource(rutaImagenPredeterminada);
+            byte[] contenidoImagen = Files.readAllBytes(resource.getFile().toPath());
+
+            Imagen imagen = new Imagen();
+            imagen.setMime("image/jpeg"); 
+            imagen.setNombre("electricista.jpg");
+            imagen.setContenido(contenidoImagen);
+
+            return imagen;
+
+        } catch (IOException e) {
+       
+            e.printStackTrace(); 
+        }
+
+        return null; 
     }
 
 }
