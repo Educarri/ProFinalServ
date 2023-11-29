@@ -6,13 +6,16 @@
 package ProyectoFinal.Final.controladores;
 
 import ProyectoFinal.Final.entidades.Cliente;
+import ProyectoFinal.Final.entidades.Imagen;
 import ProyectoFinal.Final.entidades.Proveedor;
 import ProyectoFinal.Final.excepciones.miException;
+import ProyectoFinal.Final.repositorios.ImagenRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ProyectoFinal.Final.servicios.AdminService;
 import ProyectoFinal.Final.servicios.ClienteService;
+import ProyectoFinal.Final.servicios.ImagenService;
 import ProyectoFinal.Final.servicios.ProveedorService;
 import ProyectoFinal.Final.servicios.UsuarioService;
 import java.util.List;
@@ -32,9 +35,15 @@ public class AdminControlador {
 
     @Autowired
     private ClienteService cliServ;
-    
+
     @Autowired
     private ProveedorService proServ;
+    
+    @Autowired 
+    private ImagenService imgServ;
+    
+    @Autowired
+    private ImagenRepositorio imgRepo;
 
     @GetMapping("/registrar")
     public String registrar() {
@@ -72,8 +81,7 @@ public class AdminControlador {
         modelo.addAttribute("clientes", clientes);
         return "clientes_lista";
     }
-*/
-    
+     */
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable String id,
@@ -101,9 +109,9 @@ public class AdminControlador {
         try {
             cliServ.cambiarRol(id);
             Cliente cli = cliServ.getOne(id);
-            
+
             Proveedor pro = new Proveedor();
-            
+
             pro.setNombre(cli.getNombre());
             pro.setApellido(cli.getApellido());
             pro.setCorreo(cli.getCorreo());
@@ -112,17 +120,19 @@ public class AdminControlador {
             pro.setTelefono(cli.getTelefono());
             pro.setRol(cli.getRol());
             pro.setDescripService("-");
-            pro.setImagen(null);
+            Imagen imagenPorDefecto = imgServ.obtenerImagenPorDefecto();
+            imgRepo.save(imagenPorDefecto);
+            pro.setImagen(imagenPorDefecto);
             pro.setOficio(null);
             pro.setPrecioHs(1);
             pro.setPassword(cli.getPassword());
-            
+            pro.setCalificacionPromedio(0.0);
+            pro.setNumeroCalificaciones(0);
+
             proServ.registrarCambiado(pro);
-            
+
             cliServ.eliminarCliente(id);
-          
-            
-           
+
             modelo.put("exito", "Rol de Cliente a Proveedor modificado correctamente!");
 
         } catch (miException e) {
@@ -131,15 +141,14 @@ public class AdminControlador {
         return "redirect:/cliente/lista";
     }
 
-    
     @GetMapping("/modificarRolProveedor/{id}")
     public String cambiarRolProveedor(@PathVariable String id, ModelMap modelo) {
         try {
-            
+
             proServ.cambiarRol(id);
-            
+
             Proveedor pro = proServ.getOne(id);
-            
+
             Cliente cli = new Cliente();
             cli.setNombre(pro.getNombre());
             cli.setApellido(pro.getApellido());
@@ -149,12 +158,11 @@ public class AdminControlador {
             cli.setTelefono(pro.getTelefono());
             cli.setPassword(pro.getPassword());
             cli.setRol(pro.getRol());
-            
+
             cliServ.registrarCambiado(cli);
-            
+
             proServ.eliminarProveedor(id);
-            
-            
+
             modelo.put("exito", "Rol de Proveedor a Cliente modificado correctamente!");
 
         } catch (miException e) {

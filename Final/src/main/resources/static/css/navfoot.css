@@ -1,8 +1,8 @@
-/*.navbar{
-    max-height: 150px;
-    width: 100%;
+
+footer{
     background-color: #21222c;
     color: whitesmoke;
+<<<<<<< HEAD
     font-family: sans-serif bolder;
 }*/
 
@@ -30,10 +30,21 @@ footer{
     color: whitesmoke;
     font-family: sans-serif bolder;
 }*/
+=======
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+>>>>>>> ea3f17c963287a170e3cdf7fb0f31574037068fa
 .navbarNav, .navbar, .nav, .nav-item, .nav-link, .navbar-brand, .navbar-collapse, .navbar-expand-lg, .navbar-nav, .navbar-toggler, .navbar-toggler-icon  {
     color: whitesmoke !important;
     font-family: sans-serif bolder !important;
     background-color: #21222c !important;
      font-family: sans-serif bolder;
      opacity: 0.9;
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> ea3f17c963287a170e3cdf7fb0f31574037068fa
