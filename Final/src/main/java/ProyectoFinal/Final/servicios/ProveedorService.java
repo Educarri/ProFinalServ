@@ -78,8 +78,7 @@ public class ProveedorService {
 
     }
     
-    
-    
+   
     @Transactional
     public void registrarCambiado(Proveedor pro){
         if(pro != null){

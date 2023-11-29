@@ -135,7 +135,26 @@ public class AdminControlador {
     @GetMapping("/modificarRolProveedor/{id}")
     public String cambiarRolProveedor(@PathVariable String id, ModelMap modelo) {
         try {
+            
             proServ.cambiarRol(id);
+            
+            Proveedor pro = proServ.getOne(id);
+            
+            Cliente cli = new Cliente();
+            cli.setNombre(pro.getNombre());
+            cli.setApellido(pro.getApellido());
+            cli.setDni(pro.getDni());
+            cli.setCorreo(pro.getCorreo());
+            cli.setDireccion(pro.getDireccion());
+            cli.setTelefono(pro.getTelefono());
+            cli.setPassword(pro.getPassword());
+            cli.setRol(pro.getRol());
+            
+            cliServ.registrarCambiado(cli);
+            
+            proServ.eliminarProveedor(id);
+            
+            
             modelo.put("exito", "Rol de Proveedor a Cliente modificado correctamente!");
 
         } catch (miException e) {

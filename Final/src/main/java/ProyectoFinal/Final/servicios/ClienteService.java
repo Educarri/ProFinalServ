@@ -85,9 +85,16 @@ public class ClienteService {
 
             if (user.getRol().equals(Rol.USER)) {
                 user.setRol(Rol.PROVEEDOR);
-            }else{
+            } else {
                 user.setRol(Rol.USER);
-            } 
+            }
+        }
+    }
+
+    @Transactional
+    public void registrarCambiado(Cliente cli) {
+        if (cli != null) {
+            cliRepo.save(cli);
         }
     }
 

@@ -5,9 +5,12 @@
  */
 package ProyectoFinal.Final.entidades;
 
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -23,6 +26,10 @@ public class Trabajo {
     private Integer HsTrabajo;
     private Integer presupuesto;
     private String estado;
+    
+    
+    @Temporal(TemporalType.DATE)
+    private Date fechaCreacion;
     
     private Integer calificacion;
     private String comentario;
@@ -93,5 +100,13 @@ public class Trabajo {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
-     
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+    
 }
