@@ -19,18 +19,21 @@
                 <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasRole('USER')" th:if="${session.usuarioSesion != null}" th:href="@{/inicio}">Menu Cliente</a>
                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link" sec:authorize="hasRole('PROVEEDOR')" th:if="${session.usuarioSesion != null}" th:href="@{/inicio}">Menu Proveedor</a>
+                </li>
 <!--                <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasRole('USER')" th:if="${session.usuarioSesion != null}" th:href="@{/cliente/listaTrabajos/__${session.usuarioSesion.id}__}">Lista Trabajos Solicitados</a>
                 </li>-->
                 <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasRole('ADMIN')"  href="/cliente/lista">Lista cliente</a>
                 </li>
-                <li class="nav-item">
+<!--                <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasRole('PROVEEDOR')" th:if="${session.usuarioSesion != null}" th:href="@{/proveedor/listaTrabajos/__${session.usuarioSesion.id}__}">Lista Trabajos</a>
-                </li>
-                <li class="nav-item">
+                </li>-->
+<!--                <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasAnyRole('ADMIN', 'USER', 'PROVEEDOR')" href="/perfil"> Editar Perfil</a>
-                </li>
+                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasAnyRole('ADMIN', 'USER', 'PROVEEDOR')" href="/logout">Cerrar sesion</a>
                 </li>

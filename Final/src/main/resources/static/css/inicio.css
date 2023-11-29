@@ -49,22 +49,22 @@ p{
         
 }*/
 
-/*.imagenProve{
-    height: 1000px;
-    width: 1000px;
+.imagenProve{
+/*    height: 1000px;
+    width: 1000px;*/
     margin: 0 auto;
     align-items: center;
     border-radius: 20px;
-    box-shadow: 10px 5px 5px black;
+/*    box-shadow: 10px 5px 5px black;*/
     display: flex;
     justify-content: center;
-}*/
+}
 
-.imagenProve{
+/*.imagenProve{
     background-color:#21222;
     height: 700px;
     width: 700px;
-}
+}*/
 
 .imgTrabajo{
     height: 120px;
