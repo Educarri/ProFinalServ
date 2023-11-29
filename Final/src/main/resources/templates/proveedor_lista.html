@@ -20,10 +20,11 @@
                         <th scope="col">CORREO</th>
                         <th scope="col">OFICIO</th>
                         <th scope="col">PRECIO HORA</th>
-                        <th scope="col">REPUTACION</th>
+                       
                         <th scope="col">DESCRIPCION SERVICIO</th>
                         <th scope="col">ROL</th>
-
+                        <th scope="col">CALIFICACION PROMEDIO</th>
+                        <th scope="col">NUMERO DE CALIFICACIONES</th>
 
                         <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th>
                     </tr>
@@ -38,9 +39,11 @@
                         <th th:text="${proveedor.correo}"></th>
                         <th th:text="${proveedor.oficio}"></th>
                         <th th:text="${proveedor.precioHs}"></th>
-                        <th th:text="${proveedor.reputacion}"></th>
+                        
                         <th th:text="${proveedor.descripService}"></th>
                         <th th:text="${proveedor.Rol}"></th>
+                        <th th:text="${proveedor.calificacionPromedio}"></th>
+                        <th th:text="${proveedor.numeroCalificaciones}"></th>
                         <th>
                             <form th:action="@{/proveedor/eliminar/__${proveedor.id}__}" method="post">
                                 <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>

@@ -13,6 +13,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ProyectoFinal.Final.repositorios.TrabajoRepositorio;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,8 +45,7 @@ public class TrabajoService {
         tra.setPresupuesto(valorFinalHora);
         tra.setEstado(estado);
         tra.setHsTrabajo(HsTrabajo);
-
-        //validar que la calificacion esta siendo nula sino crearla 
+        tra.setFechaCreacion(new Date());
         tra.setCalificacion(calificacion);
         tra.setComentario("");
 
@@ -99,7 +99,7 @@ public class TrabajoService {
     }
 
     @Transactional
-    public void modificar(String id, String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
+    public void modificar(String id, 
             String estado, Integer calificacion, String comentario) throws miException {
 
         Optional<Trabajo> respuesta = traRepo.findById(id);
@@ -112,13 +112,26 @@ public class TrabajoService {
             }
             
             tra.setCalificacion(calificacion);
-            
-            tra.setHsTrabajo(tra.getHsTrabajo()); 
-            tra.setPresupuesto(tra.getPresupuesto());
-            tra.setIdCliente(tra.getIdCliente());
-            tra.setIdProveedor(tra.getIdProveedor());
+
             tra.setEstado(estado);
             tra.setComentario(comentario);
+            
+            traRepo.save(tra);
+        }
+    }
+    
+    @Transactional
+    public void cambiarEstado(String id, 
+            String estado) throws miException {
+
+        Optional<Trabajo> respuesta = traRepo.findById(id);
+
+        if (respuesta.isPresent()) {
+            Trabajo tra = respuesta.get();
+            
+            
+            tra.setEstado(estado);
+            
             
             traRepo.save(tra);
         }
@@ -132,4 +145,5 @@ public class TrabajoService {
         }
 
     }
+    
 }

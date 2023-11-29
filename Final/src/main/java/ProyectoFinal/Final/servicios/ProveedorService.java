@@ -7,6 +7,7 @@ package ProyectoFinal.Final.servicios;
 
 import ProyectoFinal.Final.entidades.Imagen;
 import ProyectoFinal.Final.entidades.Proveedor;
+import ProyectoFinal.Final.entidades.Trabajo;
 import ProyectoFinal.Final.enumeraciones.Oficios;
 import ProyectoFinal.Final.enumeraciones.Rol;
 import ProyectoFinal.Final.excepciones.miException;
@@ -29,6 +30,9 @@ public class ProveedorService {
 
     @Autowired
     private ImagenService imgService;
+    
+    @Autowired
+    private TrabajoService traserv;
 
     @Transactional
     public void registrarProveedor(String nombre, String apellido, Long dni,
@@ -50,6 +54,8 @@ public class ProveedorService {
         pro.setTelefono(telefono);
         pro.setPassword(new BCryptPasswordEncoder().encode(password));
         pro.setDireccion(direccion);
+        pro.setCalificacionPromedio(0.0);
+        pro.setNumeroCalificaciones(0);
 
         Imagen imagen = imgService.guardar(archivo);
         pro.setImagen(imagen);
@@ -70,12 +76,19 @@ public class ProveedorService {
         }
 
         pro.setPrecioHs(precioHs);
-        pro.setReputacion(0); //inicializo la reputancion al momento de crear el proveedor en 0
         pro.setDescripService(descripService);
         pro.setRol(Rol.PROVEEDOR);
 
         proRepo.save(pro);
 
+    }
+    
+   
+    @Transactional
+    public void registrarCambiado(Proveedor pro){
+        if(pro != null){
+            proRepo.save(pro);
+        }
     }
 
     @Transactional
@@ -95,7 +108,6 @@ public class ProveedorService {
             pr.setRol(Rol.PROVEEDOR);
             pr.setDireccion(direccion);
             pr.setDescripService(descripService);
-            pr.setReputacion(pr.getReputacion());
             pr.setPrecioHs(precioHs);
 
             System.out.println("Precio hora dentro modificar " + precioHs);
@@ -228,4 +240,25 @@ public class ProveedorService {
         return matcher.find();
 
     }
+   public void calificarProveedor(String idTrabajo, Integer calificacion) throws miException {
+       
+       Trabajo tra = traserv.getOne(idTrabajo);
+       String idProveedor = tra.getIdProveedor();
+    Optional<Proveedor> optionalProveedor = proRepo.findById(idProveedor);
+    
+       
+    if (optionalProveedor.isPresent()) {
+        Proveedor proveedor = optionalProveedor.get();
+        
+        double nuevoPromedio = ((proveedor.getCalificacionPromedio() * proveedor.getNumeroCalificaciones()) + calificacion)
+                / (proveedor.getNumeroCalificaciones() + 1);
+
+        proveedor.setCalificacionPromedio(Math.floor(nuevoPromedio));
+        proveedor.setNumeroCalificaciones(proveedor.getNumeroCalificaciones() + 1);
+
+        proRepo.save(proveedor);
+    } else {
+        throw new miException("Proveedor no encontrado");
+    }
+}
 }

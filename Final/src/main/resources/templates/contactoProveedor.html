@@ -17,7 +17,6 @@
         <p class="infoProve" th:text="${proveedor.oficio}"></p>
         <p class="infoProve" th:text="${proveedor.precioHs}"></p>
         <p class="infoProve" th:text="${proveedor.descripService}"></p>
-        <p class="infoProve" th:text="${proveedor.reputacion}"></p>
         <img class="imagenProve" th:src="@{/imagen/perfil/__${proveedor.id}__}"/>
       
         <a th:href="@{/trabajo/contratar/__${proveedor.id}__}" sec:authorize="hasAnyRole('USER', 'ADMIN')" class="btn btn-sm btn-outline-secondary">Contratar</a>
