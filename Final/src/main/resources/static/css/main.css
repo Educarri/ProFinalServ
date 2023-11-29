@@ -23,15 +23,16 @@ p{
     padding: 10;
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif;
+    color: whitesmoke;
 }
-.intro{
-    
- font-family: 'Raleway', sans-serif;
- color: whitesmoke;
+.intro {
+
+    font-family: 'Raleway', sans-serif;
+    color: whitesmoke;
     text-shadow:  #21222c;
- text-align: justify;
- padding: 40px;
- padding-top: 100px;
+    text-align: justify;
+    padding: 40px;
+    padding-top: 100px;
 }
 
 h2{
@@ -41,7 +42,7 @@ h2{
     color: whitesmoke;
     text-shadow:  #21222c;
     padding: 40px;
-          
+
 }
 
 
@@ -145,6 +146,8 @@ h2{
 
 .card-img-top{
     border-radius: 20px;
+    height: 20vh;
+    width: 20vh;
 }
 
 .bd-placeholder-img card-img-top{
@@ -152,9 +155,9 @@ h2{
 }
 
 .card{
-    position: relative;
-    width: 300px;
-    min-height: 200px;
+    position: relative; 
+    height: 50vh;
+    width: 30vh;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     display: flex;
@@ -165,14 +168,19 @@ h2{
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+<<<<<<< HEAD
     padding: 12px;
     flex-wrap:wrap;
+=======
+    padding: 10px;
+    margin-bottom: 35px;
+>>>>>>> f0edc08ded70f3b37ebdd6f810c083de3e08f02f
 }
 
 .list_card{
     position: relative;
-/*    width: 300px;
-    min-height: 200px;*/
+    /*    width: 300px;
+        min-height: 200px;*/
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     display: flex;
@@ -184,6 +192,7 @@ h2{
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding: 12px;
+<<<<<<< HEAD
 <<<<<<< HEAD
     margin-bottom: 200px;
     
@@ -199,3 +208,40 @@ header button.navbar-toggler {
 >>>>>>> 751caa238522f284de30154efa23f2007a9f28b4
 >>>>>>> 7024fefe499909d428fd75c219b145126fe27944
 }
+=======
+    margin-top: -30px;
+    height: 75vh;
+    width: 200vh;
+    margin-left: 20px;
+}
+
+header button.navbar-toggler {
+    display: block;
+}
+
+h3 {
+    margin-top: -80px;
+}
+
+footer.footer.fixed-bottom {
+    margin-bottom: 0px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0; /* Cambia según sea necesario */
+    background: none;/* Cambia según sea necesario */
+    color: whitesmoke; /* Cambia según sea necesario */
+    transition: opacity 0.3s ease-in-out;
+    
+}
+
+/* Estilo del footer cuando tiene la clase 'visible' (visible) */
+.footer.visible {
+    opacity: 1; /* Cambia según sea necesario */
+}
+
+>>>>>>> f0edc08ded70f3b37ebdd6f810c083de3e08f02f
