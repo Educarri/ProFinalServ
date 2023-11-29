@@ -6,24 +6,26 @@
 package ProyectoFinal.Final.entidades;
 
 import ProyectoFinal.Final.enumeraciones.Oficios;
+import ProyectoFinal.Final.enumeraciones.Rol;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Proveedor extends Usuario{
+public class Proveedor extends Usuario {
 
     public Proveedor() {
     }
-    
+
     @Enumerated(EnumType.STRING)
     private Oficios oficio;
     private Integer precioHs;
-    private Integer reputacion;
+   
     private String descripService;
-    
-    
+    private Double calificacionPromedio;
+    private Integer numeroCalificaciones;
+
     @OneToOne
     private Imagen imagen;
 
@@ -43,13 +45,7 @@ public class Proveedor extends Usuario{
         this.precioHs = precioHs;
     }
 
-    public Integer getReputacion() {
-        return reputacion;
-    }
-
-    public void setReputacion(Integer reputacion) {
-        this.reputacion = reputacion;
-    }
+ 
 
     public String getDescripService() {
         return descripService;
@@ -59,6 +55,22 @@ public class Proveedor extends Usuario{
         this.descripService = descripService;
     }
 
+    public Double getCalificacionPromedio() {
+        return calificacionPromedio;
+    }
+
+    public void setCalificacionPromedio(Double calificacionPromedio) {
+        this.calificacionPromedio = calificacionPromedio;
+    }
+
+    public Integer getNumeroCalificaciones() {
+        return numeroCalificaciones;
+    }
+
+    public void setNumeroCalificaciones(Integer numeroCalificaciones) {
+        this.numeroCalificaciones = numeroCalificaciones;
+    }
+
     public Imagen getImagen() {
         return imagen;
     }
@@ -66,10 +78,5 @@ public class Proveedor extends Usuario{
     public void setImagen(Imagen imagen) {
         this.imagen = imagen;
     }
-    
-    
-    
-    
-    
-    
+
 }

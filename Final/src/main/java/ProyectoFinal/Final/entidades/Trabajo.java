@@ -33,6 +33,7 @@ public class Trabajo {
     
     private Integer calificacion;
     private String comentario;
+   
 
     public Trabajo() {
     }
