@@ -251,69 +251,40 @@ section .cuadrado:nth-child(3) {
 
 /* Consultas de medios para hacer el diseño más responsive */
 
-@media screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
+   
     section {
-        min-height: 70vh;
+        background: #00aae4;
     }
-
-    section .cuadrado:nth-child(1) {
-        top: -300px;
-        width: 400px;
-        height: 400px;
+    section .cuadrado {
+        display: none; /* Oculta los cuadrados en pantallas más pequeñas */
+        background: #00aae4;
     }
-
-    section .cuadrado:nth-child(2) {
-        bottom: -100px;
-        left: 60px;
-        width: 450px;
-        height: 450px;
-    }
-
-    section .cuadrado:nth-child(3) {
-        bottom: 30px;
-        right: 70px;
-        width: 350px;
-        height: 350px;
+ 
+     .LoginBox {
+        margin-top: 0; /* Ajusta el margen superior */
     }
 
     .LoginContainer {
-        width: 80%;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    section {
-        min-height: 60vh;
-    }
-
-    section .cuadrado:nth-child(1) {
-        top: -200px;
-        width: 300px;
-        height: 300px;
-    }
-
-    section .cuadrado:nth-child(2) {
-        bottom: -50px;
-        left: 30px;
-        width: 350px;
-        height: 350px;
-    }
-
-    section .cuadrado:nth-child(3) {
-        bottom: 10px;
-        right: 40px;
-        width: 250px;
-        height: 250px;
-    }
-
-    .LoginContainer {
-        width: 90%;
+        width: 80%; /* Ajusta el ancho del contenedor de login */
+        margin-top: 20px; /* Ajusta el margen superior del contenedor de login */
     }
 
     .LoginForm {
-        padding: 20px;
+        padding: 20px; /* Ajusta el relleno del formulario de login */
+    }
+
+    .LoginForm h2 {
+        margin-bottom: 20px; /* Ajusta el margen inferior del título del formulario */
+    }
+
+    .btn-neon {
+        padding: 10px 20px; /* Ajusta el relleno del botón */
+        margin-top: 20px; /* Ajusta el margen superior del botón */
+    }
+    
+    .footer {
+        display: none;
     }
 }
-
-
 
