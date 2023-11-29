@@ -6,7 +6,6 @@
 package ProyectoFinal.Final.entidades;
 
 import ProyectoFinal.Final.enumeraciones.Oficios;
-import ProyectoFinal.Final.enumeraciones.Rol;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -21,7 +20,6 @@ public class Proveedor extends Usuario {
     @Enumerated(EnumType.STRING)
     private Oficios oficio;
     private Integer precioHs;
-   
     private String descripService;
     private Double calificacionPromedio;
     private Integer numeroCalificaciones;
