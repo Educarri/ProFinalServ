@@ -12,9 +12,9 @@
         <link href="/css/navfoot.css" rel="stylesheet" type="text/css"/>
 
     </head>
-    <body class="pagina-inicio">
+    <body>
         <header>
-            <nav th:replace="/fragments/navbar :: nav" th:attr="navbarClass=${mostrarNav ? 'visible-nav' : 'hidden-nav'}"></nav> 
+            <nav th:replace="/fragments/navbar :: nav"></nav> 
         </header> 
 
         <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito" >

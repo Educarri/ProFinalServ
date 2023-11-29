@@ -72,7 +72,7 @@ section .cuadrado:nth-child(3) {
     top: 0;
     position: relative;
     width: 1000px;
-    min-height: 600px;
+    min-height: 580px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     display: flex;
@@ -128,6 +128,10 @@ th {
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .boton {
@@ -218,4 +222,59 @@ th {
     bottom: 100%;
     transition: 1s;
     transition-delay: 0.75s;
+}
+
+
+/* Consultas de medios para hacer el diseño más responsive */
+@media only screen and (max-width: 768px) {
+    section {
+        background: #00aae4;
+    }
+
+    section .cuadrado {
+        display: none; /* Oculta los cuadrados en pantallas más pequeñas */
+        background: #00aae4;
+    }
+
+    .LoginBox {
+        margin-top: 0; /* Ajusta el margen superior */
+    }
+
+    .LoginContainer {
+        width: 80%; /* Ajusta el ancho del contenedor de login */
+        margin-top: 20px; /* Ajusta el margen superior del contenedor de login */
+    }
+
+    .LoginForm {
+        padding: 20px; /* Ajusta el relleno del formulario de login */
+    }
+
+    .LoginForm h2 {
+        margin-bottom: 20px; /* Ajusta el margen inferior del título del formulario */
+    }
+
+    .TableContainer {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: auto; /* Agrega barra de desplazamiento horizontal */
+    overflow-y: hidden; /* Deshabilita la barra de desplazamiento vertical */
+}
+
+
+    .TableList {
+        padding-left: 10px; /* Ajusta el relleno izquierdo */
+        padding-right: 10px; /* Ajusta el relleno derecho */
+        overflow-y: auto; /* Agrega barra de desplazamiento vertical */
+        max-height: 300px; /* Establece la altura máxima de la tabla, ajusta según tus necesidades */
+    }
+
+    .btn-neon {
+        padding: 10px 20px; /* Ajusta el relleno del botón */
+        margin-top: 20px; /* Ajusta el margen superior del botón */
+    }
+
+    .footer {
+        display: none;
+    }
 }

@@ -84,19 +84,22 @@ public class TrabajoControlador {
 
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/modificar/{id}")
-    public String calificado(@PathVariable String id, String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
+    public String calificado(@PathVariable String id,
             String estado, Integer calificacion, String comentario,
             ModelMap modelo) {
 
         try {
-            trabServ.modificar(id, idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion, comentario);
+            trabServ.modificar(id, estado, calificacion, comentario);
             modelo.put("exito", "Logro modificar correctamente al Trabajo");
+       
+            proServ.calificarProveedor(id, calificacion);
             return "redirect:/inicio";
         } catch (miException e) {
 
             modelo.put("error", e.getMessage());
             return "calificarTrabajo.html";
         }
+
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
@@ -116,13 +119,13 @@ public class TrabajoControlador {
 
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
     @PostMapping("/cambiar/{id}")
-    public String cambiarEstado(@PathVariable String id, String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
-            String estado, Integer calificacion, String comentario,
+    public String cambiarEstado(@PathVariable String id,
+            String estado, 
             ModelMap modelo) {
 
         try {
-            trabServ.modificar(id, idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion, comentario);
-            modelo.put("exito", "Logro modificar correctamente al Trabajo");
+            trabServ.cambiarEstado(id, estado);
+            modelo.put("exito", "Logro cambiar el estado correctamente al Trabajo");
             return "redirect:/inicio";
         } catch (miException e) {
 

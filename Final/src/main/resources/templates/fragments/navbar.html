@@ -1,5 +1,15 @@
+<<<<<<< HEAD
 <!--<nav class="navbar expand-lg bg-dark border-body" data-bs-theme="dark">-->
 <nav class="navbar expand-lg fixed-top" >
+=======
+
+
+<link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
+
+<div class="navbar">
+<nav class="navbar expand-lg bg-dark border-body" data-bs-theme="dark">
+
+>>>>>>> 7024fefe499909d428fd75c219b145126fe27944
     <div class="container-fluid">
         <div>
             <img src="../img/logo.png"  alt="HomeFix" width="50" height="35">
@@ -19,18 +29,21 @@
                 <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasRole('USER')" th:if="${session.usuarioSesion != null}" th:href="@{/inicio}">Menu Cliente</a>
                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link" sec:authorize="hasRole('PROVEEDOR')" th:if="${session.usuarioSesion != null}" th:href="@{/inicio}">Menu Proveedor</a>
+                </li>
 <!--                <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasRole('USER')" th:if="${session.usuarioSesion != null}" th:href="@{/cliente/listaTrabajos/__${session.usuarioSesion.id}__}">Lista Trabajos Solicitados</a>
                 </li>-->
                 <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasRole('ADMIN')"  href="/cliente/lista">Lista cliente</a>
                 </li>
-                <li class="nav-item">
+<!--                <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasRole('PROVEEDOR')" th:if="${session.usuarioSesion != null}" th:href="@{/proveedor/listaTrabajos/__${session.usuarioSesion.id}__}">Lista Trabajos</a>
-                </li>
-                <li class="nav-item">
+                </li>-->
+<!--                <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasAnyRole('ADMIN', 'USER', 'PROVEEDOR')" href="/perfil"> Editar Perfil</a>
-                </li>
+                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasAnyRole('ADMIN', 'USER', 'PROVEEDOR')" href="/logout">Cerrar sesion</a>
                 </li>
@@ -47,5 +60,15 @@
         </div>
 
     </div>
+<<<<<<< HEAD
 <nav/>
 
+=======
+<<<<<<< HEAD
+<nav/>
+
+=======
+</nav>
+</div>
+>>>>>>> 751caa238522f284de30154efa23f2007a9f28b4
+>>>>>>> 7024fefe499909d428fd75c219b145126fe27944
