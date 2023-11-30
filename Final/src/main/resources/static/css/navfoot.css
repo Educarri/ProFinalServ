@@ -1,50 +1,18 @@
 
-footer{
-    background-color: #21222c;
-    color: whitesmoke;
-<<<<<<< HEAD
-    font-family: sans-serif bolder;
-}*/
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 7024fefe499909d428fd75c219b145126fe27944
+
 footer{
     background-color: #21222c;
     color: whitesmoke;
     margin-top: 10px;
     opacity: 0.9;
 }
-<<<<<<< HEAD
-=======
-=======
 
-
-
-
-
->>>>>>> 751caa238522f284de30154efa23f2007a9f28b4
->>>>>>> 7024fefe499909d428fd75c219b145126fe27944
-/*.navbar-brand, .navbar-toggler-icon, .navbar-toggler  {
-    color: whitesmoke;
-    font-family: sans-serif bolder;
-}*/
-=======
-    margin-top: 10px;
-    opacity: 0.9;
-}
-
->>>>>>> ea3f17c963287a170e3cdf7fb0f31574037068fa
 .navbarNav, .navbar, .nav, .nav-item, .nav-link, .navbar-brand, .navbar-collapse, .navbar-expand-lg, .navbar-nav, .navbar-toggler, .navbar-toggler-icon  {
     color: whitesmoke !important;
     font-family: sans-serif bolder !important;
     background-color: #21222c !important;
      font-family: sans-serif bolder;
      opacity: 0.9;
-<<<<<<< HEAD
-}
-=======
 }
 
->>>>>>> ea3f17c963287a170e3cdf7fb0f31574037068fa

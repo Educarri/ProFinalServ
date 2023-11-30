@@ -45,6 +45,60 @@ h2{
 
 }
 
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #21222c;
+    color: whitesmoke;
+    padding-bottom: 120px;
+}
+
+section .cuadrado {
+    position: absolute;
+    filter: blur(70px);
+}
+
+section .cuadrado:nth-child(1) {
+    top: -370px;
+    left: 250px;
+    width: 500px;
+    height: 500px;
+    background: #04a4ec;
+}
+
+section .cuadrado:nth-child(2) {
+    bottom: -170px;
+    left: 110px;
+    width: 550px;
+    height: 550px;
+    background: #00aae4;
+}
+
+section .cuadrado:nth-child(3) {
+    bottom: 80px;
+    right: 120px;
+    width: 450px;
+    height: 450px;
+    background: #04a4ec;
+}
+
+.cuadrado {
+    position: absolute;
+    animation: animacion 5s linear infinite;
+    /*animation-delay: calc(1s * var(--i));*/
+}
+
+@keyframes animacion {
+    0%, 100% {
+        transform: translatex(-50px);
+    }
+    50% {
+        transform: translatex(50px);
+    }
+}
+
 
 .btn-neon {
 
@@ -168,13 +222,10 @@ h2{
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-<<<<<<< HEAD
-    padding: 12px;
     flex-wrap:wrap;
-=======
     padding: 10px;
     margin-bottom: 35px;
->>>>>>> f0edc08ded70f3b37ebdd6f810c083de3e08f02f
+
 }
 
 .list_card{
@@ -192,23 +243,6 @@ h2{
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding: 12px;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    margin-bottom: 200px;
-    
-=======
-<<<<<<< HEAD
-    margin-bottom: 200px;
-    
-=======
-}
-
-header button.navbar-toggler {
-  display: block;
->>>>>>> 751caa238522f284de30154efa23f2007a9f28b4
->>>>>>> 7024fefe499909d428fd75c219b145126fe27944
-}
-=======
     margin-top: -30px;
     height: 75vh;
     width: 200vh;
@@ -244,4 +278,4 @@ footer.footer.fixed-bottom {
     opacity: 1; /* Cambia según sea necesario */
 }
 
->>>>>>> f0edc08ded70f3b37ebdd6f810c083de3e08f02f
+

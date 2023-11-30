@@ -5,16 +5,11 @@
         <title>Lista Clientes</title>
         <meta charset="UTF-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-<<<<<<< HEAD
         <link rel="stylesheet" type="text/css" href="/css/footer.css">
         <link href="/css/listaTrabajosCliente.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="/css/navbar.css">
-=======
-
->>>>>>> ea3f17c963287a170e3cdf7fb0f31574037068fa
     </head>
     <body>
-<<<<<<< HEAD
         <header class="navbar">
             <nav th:replace="/fragments/navbar :: nav"></nav> 
         </header>
@@ -35,36 +30,7 @@
                                         <th scope="col">ESTADO</th>
                                         <th scope="col">CALIFICACION</th>
                                         <th scope="col">COMENTARIO</th>
-=======
-        <div class="container m-5">
-            <table class="table table-dark">
-                <thead>
-                    <tr >
-                        <th scope="col">HORAS TRABAJO</th>
-                        <th scope="col">PRESUPUESTO</th>
-                        <th scope="col">ESTADO</th>
-                        <th scope="col">CALIFICACION</th>
-                        <th scope="col">COMENTARIO</th>
-                        <th scope="col">FECHA CREACION</th>
 
-                        <th scope="col" sec:authorize="hasAnyRole('ADMIN', 'USER')">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="trabajo:${trabajos}">
-                        <th th:text="${trabajo.HsTrabajo}" ></th>
-                        <th th:text="${trabajo.presupuesto}"></th>
-                        <th th:text="${trabajo.estado}"></th>
-                        <th th:text="${trabajo.calificacion}"></th>
-                        <th th:text="${trabajo.comentario}"></th>
-                        <th th:text="${trabajo.fechaCreacion}"></th>
-<<<<<<< HEAD
->>>>>>> a9ef200c7dbc2aaf05aae33383cd5c71ba267ca0
-=======
->>>>>>> da9f6aea40de5722214fa7204dd7d04e23d74491
->>>>>>> 7024fefe499909d428fd75c219b145126fe27944
-
-<<<<<<< HEAD
                                         <th scope="col" sec:authorize="hasAnyRole('ADMIN', 'USER')">Acciones</th>
                                     </tr>
                                 </thead>
@@ -75,19 +41,6 @@
                                         <th th:text="${trabajo.estado}"></th>
                                         <th th:text="${trabajo.calificacion}"></th>
                                         <th th:text="${trabajo.comentario}"></th>
-=======
-                        <th>
-                            <a th:if="${trabajo.calificacion == 0}"
-                               th:href="@{/trabajo/calificar/__${trabajo.id}__}"
-                               sec:authorize="hasAnyRole('USER', 'ADMIN')"
-                               class="btn btn-sm btn-outline-secondary">CALIFICAR</a>
-
-                            <button th:unless="${trabajo.calificacion == 0}"
-                                    type="button"
-                                    class="btn btn-sm btn-outline-secondary"
-                                    disabled="disabled">CALIFICADO</button>
-                        </th>
->>>>>>> ea3f17c963287a170e3cdf7fb0f31574037068fa
 
                                         <th>
                                             <a th:href="@{/trabajo/calificar/__${trabajo.id}__}" sec:authorize="hasAnyRole('USER', 'ADMIN')" class="btn-neon">
@@ -112,10 +65,6 @@
             </div>
         </section>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ea3f17c963287a170e3cdf7fb0f31574037068fa
         <script>
             function goBack() {
             window.history.back();
