@@ -53,9 +53,13 @@ public class ProveedorService {
         pro.setCalificacionPromedio(0.0);
         pro.setNumeroCalificaciones(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         pro.setFechaCreacion(new Date());
 >>>>>>> b216b020352c169027d44315cc5220324d97eaad
+=======
+        pro.setFechaCreacion(new Date());
+>>>>>>> d176ffd3d1a1e2681a4487c2b5d5a47a699e688c
 
         Imagen imagen = imgService.guardar(archivo);
         pro.setImagen(imagen);

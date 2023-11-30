@@ -96,10 +96,14 @@ public class TrabajoService {
     @Transactional
     public void modificar(String id, 
 <<<<<<< HEAD
+<<<<<<< HEAD
             String estado, Integer calificacion, String comentario) throws miException {
 =======
             Integer calificacion, String comentario) throws miException {
 >>>>>>> b216b020352c169027d44315cc5220324d97eaad
+=======
+            Integer calificacion, String comentario) throws miException {
+>>>>>>> d176ffd3d1a1e2681a4487c2b5d5a47a699e688c
 
         Optional<Trabajo> respuesta = traRepo.findById(id);
 
@@ -113,9 +117,12 @@ public class TrabajoService {
             tra.setCalificacion(calificacion);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             tra.setEstado(estado);
 =======
 >>>>>>> b216b020352c169027d44315cc5220324d97eaad
+=======
+>>>>>>> d176ffd3d1a1e2681a4487c2b5d5a47a699e688c
             tra.setComentario(comentario);
             
             traRepo.save(tra);

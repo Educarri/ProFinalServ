@@ -23,6 +23,11 @@
                 <p class="card-text" th:text="${exito}"></p>
             </div>   
         </div>
+        <div th:if="${error != null}" class="mensajeError" style="color: red">
+            <h5>Error!</h5>
+            <p th:text="${error}"></p>
+        </div>
+
         <section>
 
             <div class="content"> 
@@ -48,28 +53,45 @@
                             </li>
 
                         </ul>
-
-                        <!--                        <select th:field="*{oficios}">
-                                                    <option th:each="oficio : ${T(ProyectoFinal.Final.enumeraciones.Oficios).values()}"
-                                                            th:value="${oficio}"
-                                                            th:text="${oficio}">
-                                                    </option>
-                                                </select>-->
-
                     </h4>
+
                 </div>
 
 
                 <div class="list_card shadow ">
                     <div class="card-body ">
                         <h2 class="card-title ">Listado de proveedores de servicios</h2>
-                        <div/>
+
+                        <div>
+                            <h3>SELECCIONE EL FILTRO PARA BUSCAR :</h3>
+
+                            <!-- Filtro por oficio -->
+                            <label for="oficioFilter">Oficio:</label>
+                            <select id="oficioFilter" class="form-select">
+                                <option value="">Todos</option>
+                                <option value="PLOMERO">PLOMEROS</option>
+                                <option value="GASISTA">GASISTAS</option>
+                                <option value="ALBAÑIL">ALBAÑILES</option>
+                                <option value="ELECTRICISTA">ELECTRICISTAS</option>
+                                <!-- Agrega más opciones según tus oficios -->
+                            </select>
+
+                            <!-- Filtro por antigüedad -->
+                            <label for="antiguedadFilter">Antigüedad:</label>
+                            <select id="antiguedadFilter" class="form-select">
+                                <option value="">Todas</option>
+                                <option value="1">Creados hace menos de 1 dia</option>
+                                <option value="5">Creados hace menos de 5 dias</option>
+                                <!-- Agrega más opciones según tu lógica de antigüedad -->
+                            </select>
+
+                            <!-- Botón para aplicar filtros -->
+                            <button id="aplicarFiltros" class="btn btn-primary">Aplicar Filtros</button>
+                        </div>
 
                         <div class="album">
                             <div class="container-fluid">
                                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                                    <!-- Iterar sobre la lista de proveedores -->
-                                    <!--                            <div class="col" th:each="proveedor : ${proveedores}">-->
                                     <div class="col-6 col-md-4 col-lg-3 " th:each="proveedor : ${proveedores}">
                                         <div class="card shadow-sm" >
                                             <!-- Puedes personalizar la imagen según la información del proveedor -->
@@ -78,8 +100,14 @@
                                             <div class="card-body">
                                                 <!-- Mostrar información del proveedor -->
                                                 <h5 class="card-title" th:text="${proveedor.nombre}"></h5>
+<<<<<<< HEAD
                                                 <p class="card-text" th:text="${proveedor.oficio}"></p>
 
+=======
+                                                <p class="card-text-oficio" th:text="${proveedor.oficio}"></p>
+                                                <p class="card-text" th:text="${proveedor.calificacionPromedio}"></p>
+                                                <p class="card-text-antiguedad" th:text="${proveedor.fechaCreacion}"></p>
+>>>>>>> d176ffd3d1a1e2681a4487c2b5d5a47a699e688c
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div class="btn-group">
                                                         <!--                                                        Agregar enlaces o botones según tus necesidades -->
@@ -143,5 +171,46 @@
 
 >>>>>>> b216b020352c169027d44315cc5220324d97eaad
                     </script>
+<<<<<<< HEAD
+=======
+
+                    <!-- SCRIPT PARA EL FILTRADO -->
+                    <script>
+                        $(document).ready(function () {
+                        $('#aplicarFiltros').on('click', function () {
+
+                        var oficio = $('#oficioFilter').val();
+                        var antiguedad = $('#antiguedadFilter').val();
+
+                        $('.card').each(function () {
+                        var proveedorOficio = $(this).find('.card-text-oficio').text().trim();
+                        var proveedorFechaCreacion = $(this).find('.card-text-antiguedad').text().trim();
+
+                        // Convierte la fecha de creación a un objeto Date
+                        var proveedorDate = new Date(Date.parse(proveedorFechaCreacion.replace(/-/g, '/')));
+
+                        // Calcula la diferencia de días entre la fecha actual y la fecha de creación
+                        var diferenciaDias = Math.floor((new Date() - proveedorDate) / (1000 * 60 * 60 * 24));
+
+                        var cumpleFiltroAntiguedad = antiguedad === '' || diferenciaDias < parseInt(antiguedad);
+
+                        var cumpleFiltroOficio = oficio === '' || proveedorOficio === oficio;
+
+                        if (cumpleFiltroOficio && cumpleFiltroAntiguedad) {
+                        $(this).addClass('cumpleFiltro').show();
+                        } else {
+                        $(this).removeClass('cumpleFiltro').hide();
+                        }
+                        });
+                        });
+                        });
+                    </script>
+
+
+
+
+
+
+>>>>>>> d176ffd3d1a1e2681a4487c2b5d5a47a699e688c
                     </body>
                     </html>

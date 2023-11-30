@@ -29,12 +29,20 @@
                         <th th:text="${trabajo.estado}"></th>
                         <th th:text="${trabajo.calificacion}"></th>
                         <th th:text="${trabajo.comentario}"></th>
-                         <th th:text="${trabajo.fechaCreacion}"></th>
+                        <th th:text="${trabajo.fechaCreacion}"></th>
 
                         <th>
-                            <a th:href="@{/trabajo/calificar/__${trabajo.id}__}" sec:authorize="hasAnyRole('USER', 'ADMIN')" class="btn btn-sm btn-outline-secondary">CALIFICAR</a>
-                            <a th:href="@{/trabajo/estado/__${trabajo.id}__}" sec:authorize="hasAnyRole('PROVEEDOR', 'ADMIN')" class="btn btn-sm btn-outline-secondary">CAMBIAR ESTADO</a>
+                            <a th:if="${#strings.trim(trabajo.estado) == 'Pendiente'}"
+                               th:href="@{/trabajo/estado/__${trabajo.id}__}"
+                               sec:authorize="hasAnyRole('PROVEEDOR', 'ADMIN')"
+                               class="btn btn-sm btn-outline-secondary">CAMBIAR ESTADO</a>
+
+                            <button th:unless="${#strings.trim(trabajo.estado) != 'Finalizado'}"
+                                    type="button"
+                                    class="btn btn-sm btn-outline-secondary"
+                                    disabled="disabled">TRABAJO FINALIZADO</button>
                         </th>
+
 
                     </tr>
                 </tbody>

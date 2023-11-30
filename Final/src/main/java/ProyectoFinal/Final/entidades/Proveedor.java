@@ -22,12 +22,18 @@ public class Proveedor extends Usuario {
     private Double calificacionPromedio;
     private Integer numeroCalificaciones;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> d176ffd3d1a1e2681a4487c2b5d5a47a699e688c
     
        
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
+<<<<<<< HEAD
 >>>>>>> b216b020352c169027d44315cc5220324d97eaad
+=======
+>>>>>>> d176ffd3d1a1e2681a4487c2b5d5a47a699e688c
 
     @OneToOne
     private Imagen imagen;
@@ -83,6 +89,17 @@ public class Proveedor extends Usuario {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+>>>>>>> d176ffd3d1a1e2681a4487c2b5d5a47a699e688c
 }
 =======
     public Date getFechaCreacion() {

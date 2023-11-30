@@ -2,12 +2,18 @@ package ProyectoFinal.Final.controladores;
 
 import ProyectoFinal.Final.entidades.Cliente;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import ProyectoFinal.Final.entidades.Proveedor;
 =======
 import ProyectoFinal.Final.entidades.Imagen;
 import ProyectoFinal.Final.entidades.Proveedor;
 import ProyectoFinal.Final.enumeraciones.Rol;
 >>>>>>> b216b020352c169027d44315cc5220324d97eaad
+=======
+import ProyectoFinal.Final.entidades.Imagen;
+import ProyectoFinal.Final.entidades.Proveedor;
+import ProyectoFinal.Final.enumeraciones.Rol;
+>>>>>>> d176ffd3d1a1e2681a4487c2b5d5a47a699e688c
 import ProyectoFinal.Final.excepciones.miException;
 import ProyectoFinal.Final.repositorios.ImagenRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -111,6 +117,7 @@ public class AdminControlador {
             cliServ.cambiarRol(id);
             Cliente cli = cliServ.getOne(id);
 <<<<<<< HEAD
+<<<<<<< HEAD
             
             Proveedor pro = new Proveedor();
             
@@ -119,6 +126,11 @@ public class AdminControlador {
             Proveedor pro = new Proveedor();
 
 >>>>>>> b216b020352c169027d44315cc5220324d97eaad
+=======
+
+            Proveedor pro = new Proveedor();
+
+>>>>>>> d176ffd3d1a1e2681a4487c2b5d5a47a699e688c
             pro.setNombre(cli.getNombre());
             pro.setApellido(cli.getApellido());
             pro.setCorreo(cli.getCorreo());
@@ -126,16 +138,26 @@ public class AdminControlador {
             pro.setDni(cli.getDni());
             pro.setTelefono(cli.getTelefono());
 <<<<<<< HEAD
+<<<<<<< HEAD
             pro.setRol(cli.getRol());
+=======
+            pro.setRol(Rol.PROVEEDOR);
+>>>>>>> d176ffd3d1a1e2681a4487c2b5d5a47a699e688c
             pro.setDescripService("-");
-            pro.setImagen(null);
+            Imagen imagenPorDefecto = imgServ.obtenerImagenPorDefecto();
+            imgRepo.save(imagenPorDefecto);
+            pro.setImagen(imagenPorDefecto);
             pro.setOficio(null);
             pro.setPrecioHs(1);
             pro.setPassword(cli.getPassword());
-            
+            pro.setCalificacionPromedio(0.0);
+            pro.setNumeroCalificaciones(0);
+            pro.setFechaCreacion(new Date());
+
             proServ.registrarCambiado(pro);
-            
+
             cliServ.eliminarCliente(id);
+<<<<<<< HEAD
           
             
            
@@ -157,6 +179,9 @@ public class AdminControlador {
             cliServ.eliminarCliente(id);
 
 >>>>>>> b216b020352c169027d44315cc5220324d97eaad
+=======
+
+>>>>>>> d176ffd3d1a1e2681a4487c2b5d5a47a699e688c
             modelo.put("exito", "Rol de Cliente a Proveedor modificado correctamente!");
 
         } catch (miException e) {
@@ -169,10 +194,15 @@ public class AdminControlador {
     public String cambiarRolProveedor(@PathVariable String id, ModelMap modelo) {
         try {
 <<<<<<< HEAD
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> d176ffd3d1a1e2681a4487c2b5d5a47a699e688c
             proServ.cambiarRol(id);
-            
+
             Proveedor pro = proServ.getOne(id);
+<<<<<<< HEAD
             
 =======
 
@@ -181,6 +211,9 @@ public class AdminControlador {
             Proveedor pro = proServ.getOne(id);
 
 >>>>>>> b216b020352c169027d44315cc5220324d97eaad
+=======
+
+>>>>>>> d176ffd3d1a1e2681a4487c2b5d5a47a699e688c
             Cliente cli = new Cliente();
             cli.setNombre(pro.getNombre());
             cli.setApellido(pro.getApellido());
@@ -190,11 +223,17 @@ public class AdminControlador {
             cli.setTelefono(pro.getTelefono());
             cli.setPassword(pro.getPassword());
 <<<<<<< HEAD
+<<<<<<< HEAD
             cli.setRol(pro.getRol());
             
+=======
+            cli.setRol(Rol.USER);
+
+>>>>>>> d176ffd3d1a1e2681a4487c2b5d5a47a699e688c
             cliServ.registrarCambiado(cli);
-            
+
             proServ.eliminarProveedor(id);
+<<<<<<< HEAD
             
             
 =======
@@ -205,6 +244,9 @@ public class AdminControlador {
             proServ.eliminarProveedor(id);
 
 >>>>>>> b216b020352c169027d44315cc5220324d97eaad
+=======
+
+>>>>>>> d176ffd3d1a1e2681a4487c2b5d5a47a699e688c
             modelo.put("exito", "Rol de Proveedor a Cliente modificado correctamente!");
 
         } catch (miException e) {

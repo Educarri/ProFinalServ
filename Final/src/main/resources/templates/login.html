@@ -12,12 +12,12 @@
     </head>
 
     <body>
-        
+
         <header class="navbar">
             <nav th:replace="/fragments/navbar :: nav"></nav> 
         </header>
         <section>
-            
+
             <div class="cuadrado" style="-- i :0"></div>
             <div class="cuadrado" style="-- i :1"></div>
             <div class="cuadrado" style="-- i :2"></div>
@@ -57,8 +57,24 @@
 
             </div>    
         </section> 
+        
+        <!-- VER PORQUE NO MUESTRA LOS MENSAJES DE ERROR EXITO -->
+
+        <div th:if="${error != null}" class="mensajeError">
+            <h5>Error!</h5>
+            <p th:text="${error}"></p>
+        </div>
+
+        <div th:if="${exito != null}" class="mensajeExito"> 
+            <h5>Exito!</h5>
+            <p th:text="${exito}"></p>
+        </div>
+        
         <div class="footer">
-        <footer th:replace="/fragments/footer :: footer"> </footer>
-       </div>
+            <footer th:replace="/fragments/footer :: footer"> </footer>
+        </div>
+
+
+
     </body>
 </html>
