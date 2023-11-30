@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ProyectoFinal.Final.servicios;
 
 import ProyectoFinal.Final.entidades.Proveedor;
@@ -100,7 +95,11 @@ public class TrabajoService {
 
     @Transactional
     public void modificar(String id, 
+<<<<<<< HEAD
             String estado, Integer calificacion, String comentario) throws miException {
+=======
+            Integer calificacion, String comentario) throws miException {
+>>>>>>> b216b020352c169027d44315cc5220324d97eaad
 
         Optional<Trabajo> respuesta = traRepo.findById(id);
 
@@ -113,7 +112,10 @@ public class TrabajoService {
             
             tra.setCalificacion(calificacion);
 
+<<<<<<< HEAD
             tra.setEstado(estado);
+=======
+>>>>>>> b216b020352c169027d44315cc5220324d97eaad
             tra.setComentario(comentario);
             
             traRepo.save(tra);
@@ -146,4 +148,8 @@ public class TrabajoService {
 
     }
     
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b216b020352c169027d44315cc5220324d97eaad

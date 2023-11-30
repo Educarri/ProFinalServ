@@ -73,13 +73,18 @@ public class TrabajoControlador {
 
         try {
             Trabajo trabajo = trabServ.getOne(id);
-            modelo.addAttribute("trabajo", trabajo);
-
+            if (trabajo.getEstado().toLowerCase().equals("finalizado")) {
+                modelo.addAttribute("trabajo", trabajo);
+                 return "calificarTrabajo.html";
+            }else{
+                modelo.put("error", "El trabajo todavia no fue finalizado, intente mas tarde.");
+            }
+            
+            
         } catch (Exception e) {
             modelo.put("error", e.getMessage());
-        }
-
-        return "calificarTrabajo.html";
+        }  
+       return "index.html";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
@@ -89,9 +94,15 @@ public class TrabajoControlador {
             ModelMap modelo) {
 
         try {
+<<<<<<< HEAD
             trabServ.modificar(id, estado, calificacion, comentario);
             modelo.put("exito", "Logro modificar correctamente al Trabajo");
        
+=======
+            trabServ.modificar(id, calificacion, comentario);
+            modelo.put("exito", "Logro modificar correctamente al Trabajo");
+
+>>>>>>> b216b020352c169027d44315cc5220324d97eaad
             proServ.calificarProveedor(id, calificacion);
             return "redirect:/inicio";
         } catch (miException e) {
@@ -120,7 +131,11 @@ public class TrabajoControlador {
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
     @PostMapping("/cambiar/{id}")
     public String cambiarEstado(@PathVariable String id,
+<<<<<<< HEAD
             String estado, 
+=======
+            String estado,
+>>>>>>> b216b020352c169027d44315cc5220324d97eaad
             ModelMap modelo) {
 
         try {

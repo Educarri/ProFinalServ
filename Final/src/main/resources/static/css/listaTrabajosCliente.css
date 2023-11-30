@@ -96,6 +96,8 @@ section .cuadrado:nth-child(3) {
     padding-top: -100px;
     padding-right: 30px;
     padding-left: 100px;
+    max-height: 500px; 
+    overflow-y: auto; 
 }
 
 .TableList h2 {
@@ -254,12 +256,12 @@ tbody tr:hover {
     }
 
     .TableContainer {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    overflow-x: auto; /* Agrega barra de desplazamiento horizontal */
-    overflow-y: hidden; /* Deshabilita la barra de desplazamiento vertical */
-}
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        overflow-x: auto; /* Agrega barra de desplazamiento horizontal */
+        overflow-y: hidden; /* Deshabilita la barra de desplazamiento vertical */
+    }
 
 
     .TableList {

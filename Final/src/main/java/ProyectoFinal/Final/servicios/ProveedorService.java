@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ProyectoFinal.Final.servicios;
 
 import ProyectoFinal.Final.entidades.Imagen;
@@ -18,6 +13,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ProyectoFinal.Final.repositorios.ProveedorRepositorio;
+import java.util.Date;
 import java.util.Optional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.multipart.MultipartFile;
@@ -56,6 +52,10 @@ public class ProveedorService {
         pro.setDireccion(direccion);
         pro.setCalificacionPromedio(0.0);
         pro.setNumeroCalificaciones(0);
+<<<<<<< HEAD
+=======
+        pro.setFechaCreacion(new Date());
+>>>>>>> b216b020352c169027d44315cc5220324d97eaad
 
         Imagen imagen = imgService.guardar(archivo);
         pro.setImagen(imagen);
@@ -148,6 +148,23 @@ public class ProveedorService {
             }else{
                 user.setRol(Rol.PROVEEDOR);
             }
+        }
+    }
+    
+    
+    @Transactional
+    public void darBaja(String id) throws miException {
+
+        if (id == null || id.isEmpty()) {
+            throw new miException("La identificacion del Proveedor no es correcta.");
+        }
+
+        Optional<Proveedor> respuesta = proRepo.findById(id);
+
+        if (respuesta.isPresent()) {
+            Proveedor user = respuesta.get();
+
+            user.setRol(Rol.BAJA);
         }
     }
 
@@ -260,5 +277,9 @@ public class ProveedorService {
     } else {
         throw new miException("Proveedor no encontrado");
     }
+<<<<<<< HEAD
+}
+=======
+>>>>>>> b216b020352c169027d44315cc5220324d97eaad
 }
 }

@@ -1,15 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ProyectoFinal.Final.entidades;
 
 import ProyectoFinal.Final.enumeraciones.Oficios;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Proveedor extends Usuario {
@@ -23,6 +21,13 @@ public class Proveedor extends Usuario {
     private String descripService;
     private Double calificacionPromedio;
     private Integer numeroCalificaciones;
+<<<<<<< HEAD
+=======
+    
+       
+    @Temporal(TemporalType.DATE)
+    private Date fechaCreacion;
+>>>>>>> b216b020352c169027d44315cc5220324d97eaad
 
     @OneToOne
     private Imagen imagen;
@@ -77,4 +82,16 @@ public class Proveedor extends Usuario {
         this.imagen = imagen;
     }
 
+<<<<<<< HEAD
 }
+=======
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+}
+>>>>>>> b216b020352c169027d44315cc5220324d97eaad
