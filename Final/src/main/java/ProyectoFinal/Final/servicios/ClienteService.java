@@ -16,13 +16,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ProyectoFinal.Final.repositorios.ClienteRepositorio;
 import java.util.Optional;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class ClienteService {
 
     @Autowired
     private ClienteRepositorio cliRepo;
+    
+    @Autowired
+    private ProveedorService proServ;
 
     @Transactional
     public void registrarCliente(String nombre, String apellido, Long dni,
@@ -85,9 +93,16 @@ public class ClienteService {
 
             if (user.getRol().equals(Rol.USER)) {
                 user.setRol(Rol.PROVEEDOR);
-            }else{
+            } else {
                 user.setRol(Rol.USER);
-            } 
+            }
+        }
+    }
+
+    @Transactional
+    public void registrarCambiado(Cliente cli) {
+        if (cli != null) {
+            cliRepo.save(cli);
         }
     }
 
@@ -176,5 +191,7 @@ public class ClienteService {
         return matcher.find();
 
     }
+    
+   
 
 }

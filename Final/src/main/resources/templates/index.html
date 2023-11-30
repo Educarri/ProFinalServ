@@ -80,7 +80,7 @@
                                                 <!-- Mostrar información del proveedor -->
                                                 <h5 class="card-title" th:text="${proveedor.nombre}"></h5>
                                                 <p class="card-text" th:text="${proveedor.oficio}"></p>
-
+                                                <p class="card-text" th:text="${proveedor.calificacionPromedio}"></p>
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div class="btn-group">
                                                         <!--                                                        Agregar enlaces o botones según tus necesidades -->                             
@@ -110,22 +110,22 @@
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
                     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
                     <script>
-        jQuery(document).ready(function($) {
-    var footer = $('.footer');
+                        jQuery(document).ready(function($) {
+                        var footer = $('.footer');
 
-    $(window).scroll(function() {
-        var windowHeight = $(window).height();
-        var scrollTop = $(window).scrollTop();
-        var documentHeight = $(document).height();
+                        $(window).scroll(function() {
+                        var windowHeight = $(window).height();
+                        var scrollTop = $(window).scrollTop();
+                        var documentHeight = $(document).height();
 
-        // Verifica si el usuario está cerca del final de la página (ajusta el 100 según sea necesario)
-        if (windowHeight + scrollTop >= documentHeight - 100) {
-            footer.addClass('visible');
-        } else {
-            footer.removeClass('visible');
-        }
-    });
-});
+                        // Verifica si el usuario está cerca del final de la página (ajusta el 100 según sea necesario)
+                        if (windowHeight + scrollTop >= documentHeight - 100) {
+                        footer.addClass('visible');
+                        } else {
+                        footer.removeClass('visible');
+                        }
+                        });
+                        });
 
 
 

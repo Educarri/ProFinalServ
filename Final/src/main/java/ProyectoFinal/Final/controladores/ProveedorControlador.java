@@ -147,5 +147,9 @@ public class ProveedorControlador {
 
         return "listaTrabajosProveedor.html";
     }
+     
+    
+  
+    
 
 }
