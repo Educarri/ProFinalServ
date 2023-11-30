@@ -3,19 +3,18 @@ body{
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size:  cover;
+<<<<<<< HEAD
+
+}
+=======
+>>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8
 
 }
 
-img{
-    /*        display:flex ;*/
-    width: 50px;
-    margin: 10px auto;
-    border-radius: 40px;
-}
 
 p{
     margin-left: 10px;
-    margin-top: 10px;
+    margin-top: 0px;
 }
 
 * {
@@ -30,9 +29,15 @@ p{
     font-family: 'Raleway', sans-serif;
     color: whitesmoke;
     text-shadow:  #21222c;
+<<<<<<< HEAD
     text-align: justify;
     padding: 40px;
     padding-top: 100px;
+=======
+ text-align: justify;
+ padding: 40px;
+ padding-top: 60px;
+>>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8
 }
 
 h2{
@@ -171,10 +176,13 @@ h2{
 <<<<<<< HEAD
     padding: 12px;
     flex-wrap:wrap;
+<<<<<<< HEAD
 =======
     padding: 10px;
     margin-bottom: 35px;
 >>>>>>> b216b020352c169027d44315cc5220324d97eaad
+=======
+>>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8
 }
 
 .list_card{
@@ -192,6 +200,7 @@ h2{
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding: 12px;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     margin-bottom: 200px;
@@ -251,3 +260,8 @@ body > section > div > div.list_card.shadow > div > div > div > div > div {
     margin-right: 530px;
 >>>>>>> b216b020352c169027d44315cc5220324d97eaad
 }
+=======
+    margin-bottom: 200px;
+    
+}
+>>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8

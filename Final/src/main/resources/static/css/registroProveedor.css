@@ -9,20 +9,59 @@
 
 body {
     overflow: hidden;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0520c4e9c734f94ca092d1f5835a3503f5726a8e
+    background-image: url('../img/fondo3.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size:  cover;
+<<<<<<< HEAD
+}
+
+section {
+    z-index: 0;
+=======
+}
+
+section {
+    z-index: 0;
+=======
     
 }
 
 section {
     
+>>>>>>> ba4ed5e85042a2516c2e0f9cc9e813614e16de69
+>>>>>>> 0520c4e9c734f94ca092d1f5835a3503f5726a8e
     display: flex;
     justify-content: center;
     align-items: center;
+<<<<<<< HEAD
     min-height: 100vh;
     background: #21222c;
     margin-bottom: 20px;    
     margin-top: -70px;
+=======
+    min-height: 0vh;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    margin-bottom: 20px;
+   
+>>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8
 }
 
+=======
+    background: #21222c;
+>>>>>>> 0520c4e9c734f94ca092d1f5835a3503f5726a8e
+    margin-bottom: 20px;
+   
+}
+
+<<<<<<< HEAD
+=======
 section .cuadrado {
     position: absolute;
     filter: blur(100px);
@@ -67,6 +106,8 @@ section .cuadrado:nth-child(3) {
         transform: translatex(50px);
     }
 }
+>>>>>>> ba4ed5e85042a2516c2e0f9cc9e813614e16de69
+>>>>>>> 0520c4e9c734f94ca092d1f5835a3503f5726a8e
 
 .RegistroBox {
     position: relative;
@@ -88,7 +129,15 @@ section .cuadrado:nth-child(3) {
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+<<<<<<< HEAD
+      
+=======
+<<<<<<< HEAD
+      
+=======
    
+>>>>>>> ba4ed5e85042a2516c2e0f9cc9e813614e16de69
+>>>>>>> 0520c4e9c734f94ca092d1f5835a3503f5726a8e
     
 }
 
@@ -274,4 +323,28 @@ section .cuadrado:nth-child(3) {
     transition-delay: 0.75s;
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
 
+<<<<<<< HEAD
+=======
+
+header .navbar-brand{     
+    background-color: #21222c;
+    color: whitesmoke;
+}
+
+.footer {
+    background: none;
+    color: whitesmoke;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+>>>>>>> ba4ed5e85042a2516c2e0f9cc9e813614e16de69
+>>>>>>> 0520c4e9c734f94ca092d1f5835a3503f5726a8e
+ 
+>>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8
