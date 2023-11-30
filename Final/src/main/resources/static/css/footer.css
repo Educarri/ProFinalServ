@@ -1,0 +1,16 @@
+
+a.nav-link.px-2 {
+    color: whitesmoke;
+}
+
+ul.nav.justify-content-center.border-bottom.pb-3.mb-3 {
+    border-bottom:  none !important;
+}
+   
+.fixed-bottom {
+margin-bottom: 30px;
+}
+
+
+
+

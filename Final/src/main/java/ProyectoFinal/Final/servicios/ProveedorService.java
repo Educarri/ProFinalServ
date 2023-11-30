@@ -18,6 +18,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ProyectoFinal.Final.repositorios.ProveedorRepositorio;
+import java.util.Date;
 import java.util.Optional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.multipart.MultipartFile;
@@ -56,6 +57,7 @@ public class ProveedorService {
         pro.setDireccion(direccion);
         pro.setCalificacionPromedio(0.0);
         pro.setNumeroCalificaciones(0);
+        pro.setFechaCreacion(new Date());
 
         Imagen imagen = imgService.guardar(archivo);
         pro.setImagen(imagen);
@@ -148,6 +150,23 @@ public class ProveedorService {
             }else{
                 user.setRol(Rol.PROVEEDOR);
             }
+        }
+    }
+    
+    
+    @Transactional
+    public void darBaja(String id) throws miException {
+
+        if (id == null || id.isEmpty()) {
+            throw new miException("La identificacion del Proveedor no es correcta.");
+        }
+
+        Optional<Proveedor> respuesta = proRepo.findById(id);
+
+        if (respuesta.isPresent()) {
+            Proveedor user = respuesta.get();
+
+            user.setRol(Rol.BAJA);
         }
     }
 

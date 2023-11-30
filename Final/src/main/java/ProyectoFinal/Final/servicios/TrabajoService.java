@@ -100,7 +100,7 @@ public class TrabajoService {
 
     @Transactional
     public void modificar(String id, 
-            String estado, Integer calificacion, String comentario) throws miException {
+            Integer calificacion, String comentario) throws miException {
 
         Optional<Trabajo> respuesta = traRepo.findById(id);
 
@@ -113,7 +113,6 @@ public class TrabajoService {
             
             tra.setCalificacion(calificacion);
 
-            tra.setEstado(estado);
             tra.setComentario(comentario);
             
             traRepo.save(tra);

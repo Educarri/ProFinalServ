@@ -8,6 +8,7 @@ package ProyectoFinal.Final.controladores;
 import ProyectoFinal.Final.entidades.Cliente;
 import ProyectoFinal.Final.entidades.Imagen;
 import ProyectoFinal.Final.entidades.Proveedor;
+import ProyectoFinal.Final.enumeraciones.Rol;
 import ProyectoFinal.Final.excepciones.miException;
 import ProyectoFinal.Final.repositorios.ImagenRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import ProyectoFinal.Final.servicios.ClienteService;
 import ProyectoFinal.Final.servicios.ImagenService;
 import ProyectoFinal.Final.servicios.ProveedorService;
 import ProyectoFinal.Final.servicios.UsuarioService;
+import java.util.Date;
 import java.util.List;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -118,7 +120,7 @@ public class AdminControlador {
             pro.setDireccion(cli.getDireccion());
             pro.setDni(cli.getDni());
             pro.setTelefono(cli.getTelefono());
-            pro.setRol(cli.getRol());
+            pro.setRol(Rol.PROVEEDOR);
             pro.setDescripService("-");
             Imagen imagenPorDefecto = imgServ.obtenerImagenPorDefecto();
             imgRepo.save(imagenPorDefecto);
@@ -128,6 +130,7 @@ public class AdminControlador {
             pro.setPassword(cli.getPassword());
             pro.setCalificacionPromedio(0.0);
             pro.setNumeroCalificaciones(0);
+            pro.setFechaCreacion(new Date());
 
             proServ.registrarCambiado(pro);
 
@@ -157,7 +160,7 @@ public class AdminControlador {
             cli.setDireccion(pro.getDireccion());
             cli.setTelefono(pro.getTelefono());
             cli.setPassword(pro.getPassword());
-            cli.setRol(pro.getRol());
+            cli.setRol(Rol.USER);
 
             cliServ.registrarCambiado(cli);
 
