@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ProyectoFinal.Final;
 
+import ProyectoFinal.Final.servicios.UsuarioService;
 import ProyectoFinal.Final.servicios.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -34,6 +30,7 @@ public class seguridadWeb extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/cliente/lista").hasRole("ADMIN")
                 .antMatchers("/trabajo/listaTrabajos").hasRole("ADMIN")
+                .antMatchers("/trabajo/*").hasAnyRole("ADMIN", "USER", "PROVEEDOR")
                 .antMatchers("/proveedor/lista").hasRole("ADMIN")
                 .antMatchers("/imagen/**").permitAll()
                 .antMatchers("/css/**", "/js/**", "/img/**").permitAll()

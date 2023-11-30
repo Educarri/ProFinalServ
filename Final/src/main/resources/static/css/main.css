@@ -369,3 +369,15 @@ footer.footer.fixed-bottom {
     opacity: 1; /* Cambia según sea necesario */
 }
 
+body > div.card.text-white.bg-success.mb-3.mt-3.mensajeExito {
+    width: 620px;
+    position: absolute;
+    left: 400px;
+    top: -6px;
+    height: 80px;
+}
+
+body > section > div > div.list_card.shadow > div > div > div > div > div {
+    justify-content: center;
+    margin-right: 530px;
+}

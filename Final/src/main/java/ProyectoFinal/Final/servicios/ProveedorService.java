@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ProyectoFinal.Final.servicios;
 
 import ProyectoFinal.Final.entidades.Imagen;
 import ProyectoFinal.Final.entidades.Proveedor;
+import ProyectoFinal.Final.entidades.Trabajo;
 import ProyectoFinal.Final.enumeraciones.Oficios;
 import ProyectoFinal.Final.enumeraciones.Rol;
 import ProyectoFinal.Final.excepciones.miException;
@@ -17,6 +13,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ProyectoFinal.Final.repositorios.ProveedorRepositorio;
+import java.util.Date;
 import java.util.Optional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,6 +26,9 @@ public class ProveedorService {
 
     @Autowired
     private ImagenService imgService;
+    
+    @Autowired
+    private TrabajoService traserv;
 
     @Transactional
     public void registrarProveedor(String nombre, String apellido, Long dni,
@@ -50,6 +50,9 @@ public class ProveedorService {
         pro.setTelefono(telefono);
         pro.setPassword(new BCryptPasswordEncoder().encode(password));
         pro.setDireccion(direccion);
+        pro.setCalificacionPromedio(0.0);
+        pro.setNumeroCalificaciones(0);
+        pro.setFechaCreacion(new Date());
 
         Imagen imagen = imgService.guardar(archivo);
         pro.setImagen(imagen);
@@ -70,12 +73,19 @@ public class ProveedorService {
         }
 
         pro.setPrecioHs(precioHs);
-        pro.setReputacion(0); //inicializo la reputancion al momento de crear el proveedor en 0
         pro.setDescripService(descripService);
         pro.setRol(Rol.PROVEEDOR);
 
         proRepo.save(pro);
 
+    }
+    
+   
+    @Transactional
+    public void registrarCambiado(Proveedor pro){
+        if(pro != null){
+            proRepo.save(pro);
+        }
     }
 
     @Transactional
@@ -95,7 +105,6 @@ public class ProveedorService {
             pr.setRol(Rol.PROVEEDOR);
             pr.setDireccion(direccion);
             pr.setDescripService(descripService);
-            pr.setReputacion(pr.getReputacion());
             pr.setPrecioHs(precioHs);
 
             System.out.println("Precio hora dentro modificar " + precioHs);
@@ -136,6 +145,23 @@ public class ProveedorService {
             }else{
                 user.setRol(Rol.PROVEEDOR);
             }
+        }
+    }
+    
+    
+    @Transactional
+    public void darBaja(String id) throws miException {
+
+        if (id == null || id.isEmpty()) {
+            throw new miException("La identificacion del Proveedor no es correcta.");
+        }
+
+        Optional<Proveedor> respuesta = proRepo.findById(id);
+
+        if (respuesta.isPresent()) {
+            Proveedor user = respuesta.get();
+
+            user.setRol(Rol.BAJA);
         }
     }
 
@@ -228,4 +254,25 @@ public class ProveedorService {
         return matcher.find();
 
     }
+   public void calificarProveedor(String idTrabajo, Integer calificacion) throws miException {
+       
+       Trabajo tra = traserv.getOne(idTrabajo);
+       String idProveedor = tra.getIdProveedor();
+    Optional<Proveedor> optionalProveedor = proRepo.findById(idProveedor);
+    
+       
+    if (optionalProveedor.isPresent()) {
+        Proveedor proveedor = optionalProveedor.get();
+        
+        double nuevoPromedio = ((proveedor.getCalificacionPromedio() * proveedor.getNumeroCalificaciones()) + calificacion)
+                / (proveedor.getNumeroCalificaciones() + 1);
+
+        proveedor.setCalificacionPromedio(Math.floor(nuevoPromedio));
+        proveedor.setNumeroCalificaciones(proveedor.getNumeroCalificaciones() + 1);
+
+        proRepo.save(proveedor);
+    } else {
+        throw new miException("Proveedor no encontrado");
+    }
+}
 }

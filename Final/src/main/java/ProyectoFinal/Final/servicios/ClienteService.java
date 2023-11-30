@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ProyectoFinal.Final.servicios;
 
 import ProyectoFinal.Final.entidades.Cliente;
@@ -23,6 +18,9 @@ public class ClienteService {
 
     @Autowired
     private ClienteRepositorio cliRepo;
+
+    @Autowired
+    private ProveedorService proServ;
 
     @Transactional
     public void registrarCliente(String nombre, String apellido, Long dni,
@@ -85,9 +83,16 @@ public class ClienteService {
 
             if (user.getRol().equals(Rol.USER)) {
                 user.setRol(Rol.PROVEEDOR);
-            }else{
+            } else {
                 user.setRol(Rol.USER);
-            } 
+            }
+        }
+    }
+
+    @Transactional
+    public void registrarCambiado(Cliente cli) {
+        if (cli != null) {
+            cliRepo.save(cli);
         }
     }
 
@@ -119,6 +124,22 @@ public class ClienteService {
 
         cliRepo.deleteById(id);
 
+    }
+
+    @Transactional
+    public void darBaja(String id) throws miException {
+
+        if (id == null || id.isEmpty()) {
+            throw new miException("La identificacion del Proveedor no es correcta.");
+        }
+
+        Optional<Cliente> respuesta = cliRepo.findById(id);
+
+        if (respuesta.isPresent()) {
+            Cliente user = respuesta.get();
+
+            user.setRol(Rol.BAJA);
+        }
     }
 
     public Cliente buscarClientePorDNI(Long DNI) {
