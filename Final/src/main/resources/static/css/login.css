@@ -1,14 +1,17 @@
-
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif;
-}
+    color: whitesmoke;
+   }
 
 body {
     overflow: hidden;
+    background-image: url('../img/fondo3.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size:  cover;
 }
 
 section {
@@ -16,63 +19,16 @@ section {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #21222c;
+           
 }
-
-section .cuadrado {
-    position: absolute;
-    filter: blur(100px);
-}
-
-section .cuadrado:nth-child(1) {
-    top: -370px;
-    width: 500px;
-    height: 500px;
-    background: #04a4ec;
-}
-
-section .cuadrado:nth-child(2) {
-    bottom: -170px;
-    left: 110px;
-    width: 550px;
-    height: 550px;
-    background: #00aae4;
-}
-
-section .cuadrado:nth-child(3) {
-    bottom: 80px;
-    right: 120px;
-    width: 450px;
-    height: 450px;
-    background: #04a4ec;
-}
-
-.cuadrado {
-    position: absolute;
-    animation: animacion 5s linear infinite;
-    animation-delay: calc(1s * var(--i));
-}
-
-@keyframes animacion {
-    0%, 100% {
-        transform: translatex(-50px);
-    }
-    50% {
-        transform: translatex(50px);
-    }
-}
-
 .LoginBox {
     position: relative;
-
-    height: 80vh;
-    
-}
+  }
 
 .LoginContainer {
     position: relative;
     width: 400px;
-    min-height: 400px;
+    height: 450px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     display: flex;
@@ -83,6 +39,8 @@ section .cuadrado:nth-child(3) {
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 10px;
+    margin-bottom: 200px;
 }
 
 .LoginForm {
@@ -158,7 +116,6 @@ section .cuadrado:nth-child(3) {
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     text-align: center;
-
     position: relative;
     display: inline-block;
     padding: 15px 30px;
@@ -239,20 +196,6 @@ section .cuadrado:nth-child(3) {
     font-weight: 600;
 }
 
-header .navbar-brand {     
-  
-    color: whitesmoke;
-}
-
-.footer {
-    background: none;
-    color: whitesmoke;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-  
 .error {
     text-align: center;
     color: #001133;
@@ -260,74 +203,40 @@ header .navbar-brand {
 
 /* Consultas de medios para hacer el diseño más responsive */
 
-@media screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
+   
     section {
-        min-height: 70vh;
+        background: #00aae4;
     }
-
-    section .cuadrado:nth-child(1) {
-        top: -300px;
-        width: 400px;
-        height: 400px;
+    section .cuadrado {
+        display: none; /* Oculta los cuadrados en pantallas más pequeñas */
+        background: #00aae4;
     }
-
-    section .cuadrado:nth-child(2) {
-        bottom: -100px;
-        left: 60px;
-        width: 450px;
-        height: 450px;
-    }
-
-    section .cuadrado:nth-child(3) {
-        bottom: 30px;
-        right: 70px;
-        width: 350px;
-        height: 350px;
+ 
+     .LoginBox {
+        margin-top: 0; /* Ajusta el margen superior */
     }
 
     .LoginContainer {
-        width: 80%;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    section {
-        min-height: 60vh;
-    }
-
-    section .cuadrado:nth-child(1) {
-        top: -200px;
-        width: 300px;
-        height: 300px;
-    }
-
-    section .cuadrado:nth-child(2) {
-        bottom: -50px;
-        left: 30px;
-        width: 350px;
-        height: 350px;
-    }
-
-    section .cuadrado:nth-child(3) {
-        bottom: 10px;
-        right: 40px;
-        width: 250px;
-        height: 250px;
-    }
-
-    .LoginContainer {
-        width: 90%;
+        width: 80%; /* Ajusta el ancho del contenedor de login */
+        margin-top: 20px; /* Ajusta el margen superior del contenedor de login */
     }
 
     .LoginForm {
-        padding: 20px;
+        padding: 20px; /* Ajusta el relleno del formulario de login */
+    }
+
+    .LoginForm h2 {
+        margin-bottom: 20px; /* Ajusta el margen inferior del título del formulario */
+    }
+
+    .btn-neon {
+        padding: 10px 20px; /* Ajusta el relleno del botón */
+        margin-top: 20px; /* Ajusta el margen superior del botón */
+    }
+    
+    .footer {
+        display: none;
     }
 }
 
-footer .nav {
-    border-bottom: none !important;
-}
-
-.navbar-toggler {
-    display: none;
-}
