@@ -10,9 +10,9 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
-        <link href="/css/main.css" rel="stylesheet" type="text/css"/>
-         <link href="/css/inicio.css" rel="stylesheet" type="text/css"/>
-        <link href="/css/navfoot.css" rel="stylesheet" type="text/css"/>
+        
+        <link href="/css/inicio.css" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body>
 
@@ -27,32 +27,47 @@ and open the template in the editor.
                 <p class="card-text" th:text="${exito}"></p>
             </div>   
         </div>
-        <section>
-
-            <div class="content"> 
-                <div class="cuadrado" style="-- i :0"></div>
-                <div class="cuadrado" style="-- i :1"></div>
-                <div class="cuadrado" style="-- i :2"></div>
-
-                <div class="content">
-
-                    <h1> Pagina principal de proveedores</h1>
-                    <h3 align="center" th:if="${session.usuarioSesion != null}" th:text="'Bienvenido '+ ${session.usuarioSesion.nombre} "></h3>
 
 
-                    <div class="imagenProve" style="height: 700px;">
-                        <img th:src="@{/imagen/perfil/__${session.usuarioSesion.id}__}" style="width: 700px;" alt="Imagen Perfil">
-                       <!-- 
-                        <p th:if="${session.usuarioSesion != null}" th:text="Oficio: ${session.usuarioSesion.oficio} + Breve descripcion: ${session.usuarioSesion.descripService} " >
-                            
-                        </p>
-                    -->
-                    </div>
+
+        <div class="content">
+            <h1>MENU PROVEEDORES</h1>
+            <p th:if="${session.usuarioSesion != null}" th:text="'Bienvenido '+ ${session.usuarioSesion.nombre} + ' !'" align="center"></p>
+        </div>
 
 
+
+        <div class="imagenProve" style="height: 400px;">
+            <img th:src="@{/imagen/perfil/__${session.usuarioSesion.id}__}" style="width: 400px;" alt="Imagen Perfil">
+            <!--
+            <p th:if="${session.usuarioSesion != null}" th:text="'Oficio: '+  ${session.usuarioSesion.oficio} + ' Breve descripcion: ' +  ${session.usuarioSesion.descripService} '" >
+                
+            </p>           -->
+        </div>
+
+        <div class="options">
+           
+            <div class="card-body" align="center" width="120px" height="120px">
+                <div class="card shadow-sm">
+                    <h3 class="card-title ">Listado de trabajos</h3>
+                    <a th:if="${session.usuarioSesion != null}" th:href="@{/proveedor/listaTrabajos/__${session.usuarioSesion.id}__}">
+                        <img class="imgTrabajo " src="../img/trabajo.png" alt="Listado de trabajos">
+
+                    </a>
                 </div>
 
-                <div class="footer">
+            </div>
+            <div class="card-body" align="center" width="120px" height="120px">
+                <div class="card shadow-sm">
+                    <h3 class="card-title ">Editar perfil</h3>
+                    <a th:if="${session.usuarioSesion != null}" th:href="@{/perfil}">
+                        <img class="imgTrabajo " src="../img/edit.png" alt="editar">
+
+                    </a>
+                </div>
+
+
+                <div >
                     <footer th:replace="/fragments/footer :: footer"> </footer>
                 </div>
 
