@@ -5,9 +5,11 @@
  */
 package ProyectoFinal.Final.controladores;
 
+import ProyectoFinal.Final.entidades.Cliente;
 import ProyectoFinal.Final.entidades.Proveedor;
 import ProyectoFinal.Final.entidades.Trabajo;
 import ProyectoFinal.Final.excepciones.miException;
+import ProyectoFinal.Final.servicios.ClienteService;
 import ProyectoFinal.Final.servicios.ProveedorService;
 import ProyectoFinal.Final.servicios.TrabajoService;
 import java.util.List;
@@ -31,6 +33,9 @@ public class ProveedorControlador {
 
     @Autowired
     private TrabajoService traServ;
+
+    @Autowired
+    private ClienteService cliServ;
 
     @PreAuthorize("permitAll()")
     @GetMapping("/registrar")
@@ -147,9 +152,49 @@ public class ProveedorControlador {
 
         return "listaTrabajosProveedor.html";
     }
-     
-    
-  
-    
+
+    @GetMapping("/modificarRolProveedor/{id}")
+    public String cambiarRolProveedor(@PathVariable String id, ModelMap modelo) {
+        try {
+
+            proServ.cambiarRol(id);
+
+            Proveedor pro = proServ.getOne(id);
+
+            Cliente cli = new Cliente();
+            cli.setNombre(pro.getNombre());
+            cli.setApellido(pro.getApellido());
+            cli.setDni(pro.getDni());
+            cli.setCorreo(pro.getCorreo());
+            cli.setDireccion(pro.getDireccion());
+            cli.setTelefono(pro.getTelefono());
+            cli.setPassword(pro.getPassword());
+            cli.setRol(pro.getRol());
+
+            cliServ.registrarCambiado(cli);
+
+            proServ.eliminarProveedor(id);
+
+            modelo.put("exito", "Rol de Proveedor a Cliente modificado correctamente! Ingrese sus mismos datos para logearse");
+
+        } catch (miException e) {
+            modelo.put("error", e.getMessage());
+        }
+        return "redirect:/logout";
+    }
+
+    @GetMapping("/darseBaja/{id}")
+    public String darseBaja(@PathVariable String id, ModelMap modelo) {
+        try {
+
+            proServ.darBaja(id);
+
+            modelo.put("exito", "Proveedor dado de baja correctamente!");
+
+        } catch (miException e) {
+            modelo.put("error", e.getMessage());
+        }
+        return "redirect:/logout";
+    }
 
 }

@@ -16,19 +16,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ProyectoFinal.Final.repositorios.ClienteRepositorio;
 import java.util.Optional;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class ClienteService {
 
     @Autowired
     private ClienteRepositorio cliRepo;
-    
+
     @Autowired
     private ProveedorService proServ;
 
@@ -136,6 +131,22 @@ public class ClienteService {
 
     }
 
+    @Transactional
+    public void darBaja(String id) throws miException {
+
+        if (id == null || id.isEmpty()) {
+            throw new miException("La identificacion del Proveedor no es correcta.");
+        }
+
+        Optional<Cliente> respuesta = cliRepo.findById(id);
+
+        if (respuesta.isPresent()) {
+            Cliente user = respuesta.get();
+
+            user.setRol(Rol.BAJA);
+        }
+    }
+
     public Cliente buscarClientePorDNI(Long DNI) {
         return cliRepo.buscarClientePorDni(DNI);
     }
@@ -191,7 +202,5 @@ public class ClienteService {
         return matcher.find();
 
     }
-    
-   
 
 }

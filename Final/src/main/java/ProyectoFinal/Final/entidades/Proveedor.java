@@ -6,10 +6,13 @@
 package ProyectoFinal.Final.entidades;
 
 import ProyectoFinal.Final.enumeraciones.Oficios;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Proveedor extends Usuario {
@@ -23,6 +26,10 @@ public class Proveedor extends Usuario {
     private String descripService;
     private Double calificacionPromedio;
     private Integer numeroCalificaciones;
+    
+       
+    @Temporal(TemporalType.DATE)
+    private Date fechaCreacion;
 
     @OneToOne
     private Imagen imagen;
@@ -75,6 +82,14 @@ public class Proveedor extends Usuario {
 
     public void setImagen(Imagen imagen) {
         this.imagen = imagen;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 
 }

@@ -67,14 +67,14 @@ public class ImagenService {
     public Imagen obtenerImagenPorDefecto() {
         try {
             // Ruta relativa al directorio de recursos
-            String rutaImagenPredeterminada = "static/img/electricista.jpg";
+            String rutaImagenPredeterminada = "static/img/perfilDefecto.jpg";
 
             Resource resource = new ClassPathResource(rutaImagenPredeterminada);
             byte[] contenidoImagen = Files.readAllBytes(resource.getFile().toPath());
 
             Imagen imagen = new Imagen();
             imagen.setMime("image/jpeg"); 
-            imagen.setNombre("electricista.jpg");
+            imagen.setNombre("perfilDefecto.jpg");
             imagen.setContenido(contenidoImagen);
 
             return imagen;

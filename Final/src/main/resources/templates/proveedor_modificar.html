@@ -52,6 +52,10 @@
                 </div>
                 <button type="submit" class="btn btn-primary mt-3 botones">Actualizar</button>
             </form>
+            
+           <a class="btn btn-primary mt-3 botones" th:href="@{/proveedor/modificarRolProveedor/__${user.id}__}"><i class="fas fa-father-alt"></i> Cambiar Rol a Cliente </a>
+
+           <a class="btn btn-primary mt-3 botones" style="color: red" th:href="@{/proveedor/darseBaja/__${user.id}__}"><i class="fas fa-father-alt"></i> Darse de Baja </a>
 
         </div>
         <a href="/inicio" style="margin: 0 auto">
