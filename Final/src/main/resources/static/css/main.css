@@ -21,8 +21,8 @@ p{
 .intro{
     
  font-family: 'Raleway', sans-serif;
- color: #001133;
- text-shadow:  #21222c;
+ color: whitesmoke;
+    text-shadow:  #21222c;
  text-align: justify;
  padding: 40px;
  padding-top: 60px;
@@ -32,12 +32,18 @@ h2{
     font-family: 'Raleway', sans-serif;
     text-align: center;
     font-weight: bolder;
-    color: #001133;
+    color: whitesmoke;
     text-shadow:  #21222c;
     padding: 40px;
           
 }
 
+h3, .filtro{
+    font-family: 'Raleway', sans-serif;
+    color: whitesmoke;
+    text-shadow:  #21222c;
+   
+}
 
 .btn-neon {
 
@@ -47,6 +53,12 @@ h2{
     cursor: pointer;
     margin-bottom: 20px;
     transition: 0.1s;
+}
+
+#aplicarFiltros.btn-neon {
+
+
+    width: 20%;
 }
 
 .btn-neon{
@@ -65,7 +77,7 @@ h2{
     position: relative;
     display: inline-block;
     padding: 15px 30px;
-    color: #001133;
+    color: #fff;
     letter-spacing: 1px;
     text-decoration: none;
     font-size: 16px;
@@ -133,7 +145,7 @@ h2{
 }
 
 .card-title, .card-text{
-    color: #001133;
+    color: whitesmoke;
     text-align: center;
 }
 

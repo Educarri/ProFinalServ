@@ -51,7 +51,7 @@
                         <h3>SELECCIONE EL FILTRO PARA BUSCAR :</h3>
 
                         <!-- Filtro por oficio -->
-                        <label for="oficioFilter">Oficio:</label>
+                        <label class="filtro" for="oficioFilter">Oficio:</label>
                         <select id="oficioFilter" class="form-select">
                             <option value="">Todos</option>
                             <option value="PLOMERO">PLOMEROS</option>
@@ -62,7 +62,7 @@
                         </select>
 
                         <!-- Filtro por antigüedad -->
-                        <label for="antiguedadFilter">Antigüedad:</label>
+                        <label class="filtro" for="antiguedadFilter">Antigüedad:</label>
                         <select id="antiguedadFilter" class="form-select">
                             <option value="">Todas</option>
                             <option value="1">Creados hace menos de 1 dia</option>
@@ -71,7 +71,7 @@
                         </select>
 
                         <!-- Botón para aplicar filtros -->
-                        <button id="aplicarFiltros" class="btn btn-primary">Aplicar Filtros</button>
+                        <button id="aplicarFiltros" class="btn-neon">Aplicar Filtros</button>
                     </div>
 
                     <div class="album">
@@ -108,7 +108,7 @@
 
                     </div>
                 </div>
-
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         </section>
         <div> 
             <footer th:replace="/fragments/footer :: footer"> </footer>
