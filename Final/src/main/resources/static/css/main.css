@@ -38,7 +38,6 @@ h2{
           
 }
 
-<<<<<<< HEAD
 h3, .filtro{
     font-family: 'Raleway', sans-serif;
     color: whitesmoke;
@@ -49,12 +48,6 @@ h3, .filtro{
 .form-select{
  width: 20%;   
 }
-<<<<<<< HEAD
-=======
-=======
-
->>>>>>> deedba276932ab49725335d98e9388f039465406
->>>>>>> a0ecd479e246385c8086e865f33d8552156ce8f4
 .btn-neon {
 
     background: #fff;
@@ -152,15 +145,7 @@ h3, .filtro{
     transition-delay: 0.2s;
 }
 
-<<<<<<< HEAD
 .card-title, .card-text, .card-text-oficio, .card-text-antiguedad{
-=======
-<<<<<<< HEAD
-.card-title, .card-text, .card-text-oficio, .card-text-antiguedad{
-=======
-.card-title, .card-text{
->>>>>>> deedba276932ab49725335d98e9388f039465406
->>>>>>> a0ecd479e246385c8086e865f33d8552156ce8f4
     color: whitesmoke;
     text-align: center;
 }
