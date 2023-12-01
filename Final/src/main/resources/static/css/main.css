@@ -1,14 +1,15 @@
+body{
+    background-image: url('../img/fondo3.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size:  cover;
 
-img{
-    /*        display:flex ;*/
-    width: 50px;
-    margin: 10px auto;
-    border-radius: 40px;
 }
+
 
 p{
     margin-left: 10px;
-    margin-top: 10px;
+    margin-top: 0px;
 }
 
 * {
@@ -16,158 +17,26 @@ p{
     padding: 10;
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif;
-    color: whitesmoke;
 }
-.intro {
+.intro{
+    
+ font-family: 'Raleway', sans-serif;
+ color: #001133;
+ text-shadow:  #21222c;
+ text-align: justify;
+ padding: 40px;
+ padding-top: 60px;
+}
 
-    font-family: 'Raleway', sans-serif;
-    color: whitesmoke;
-    text-shadow:  #21222c;
-    text-align: justify;
-    padding: 40px;
-    padding-top: 100px;
-}
-/*body {
-    overflow: hidden;
-}*/
 h2{
     font-family: 'Raleway', sans-serif;
     text-align: center;
     font-weight: bolder;
-    color: whitesmoke;
+    color: #001133;
     text-shadow:  #21222c;
     padding: 40px;
-
+          
 }
-
-
-
-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #21222c;
-    color: whitesmoke;
-    padding-bottom: 120px;
-}
-
-section .cuadrado {
-    position: absolute;
-    filter: blur(70px);
-}
-
-section .cuadrado:nth-child(1) {
-    top: -370px;
-    left: 250px;
-    width: 500px;
-    height: 500px;
-    background: #04a4ec;
-}
-
-section .cuadrado:nth-child(2) {
-    bottom: -170px;
-    left: 110px;
-    width: 550px;
-    height: 550px;
-    background: #00aae4;
-}
-
-section .cuadrado:nth-child(3) {
-    bottom: 80px;
-    right: 120px;
-    width: 450px;
-    height: 450px;
-    background: #04a4ec;
-}
-
-.cuadrado {
-    position: absolute;
-    animation: animacion 5s linear infinite;
-    /*animation-delay: calc(1s * var(--i));*/
-}
-
-@keyframes animacion {
-    0%, 100% {
-        transform: translatex(-50px);
-    }
-    50% {
-        transform: translatex(50px);
-    }
-}
-
-/*.LoginBox {
-    position: relative;
-}
-
-.LoginContainer {
-    position: relative;
-    width: 400px;
-    min-height: 400px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-<<<<<<< HEAD
-.LoginForm {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    padding: 40px;
-}
-
-.LoginForm h2 {
-    position: relative;
-    color: #fff;
-    font-size: 24px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    margin-bottom: 40px;
-}
-
-.LoginForm h2::before {
-    content: ' ';
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    width: 180px;
-    height: 4px;
-    background: #fff;
-}
-
-.LoginForm .inputBox {
-    width: 100%;
-    margin-top: 20px;
-}
-
-.LoginForm .inputBox input {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    outline: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 16px;
-    letter-spacing: 1px;
-    color: #fff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-
-
-.LoginForm 
-*/
 
 
 .btn-neon {
@@ -196,7 +65,7 @@ section .cuadrado:nth-child(3) {
     position: relative;
     display: inline-block;
     padding: 15px 30px;
-    color: #fff;
+    color: #001133;
     letter-spacing: 1px;
     text-decoration: none;
     font-size: 16px;
@@ -261,40 +130,15 @@ section .cuadrado:nth-child(3) {
     bottom: 100%;
     transition: 0.5s;
     transition-delay: 0.2s;
-}/*
-
-.OlvidoPass, .Registro {
-    margin-top: 5px;
-    color: #fff;
 }
-
-.OlvidoPass a, .Registro a {
-    color: #fff;
-    font-weight: 600;
-}
-
-header .navbar-brand{     
-    background-color: #21222c;
-    color: whitesmoke;
-}*/
-
-
-/*Tarjetas*/
-/*.card-body, .card{
-    background-color: #21222c ;
-    opacity: 90;
-    border-radius: 20px;
-}*/
 
 .card-title, .card-text{
-    color: whitesmoke;
+    color: #001133;
     text-align: center;
 }
 
 .card-img-top{
     border-radius: 20px;
-    height: 20vh;
-    width: 20vh;
 }
 
 .bd-placeholder-img card-img-top{
@@ -302,27 +146,9 @@ header .navbar-brand{
 }
 
 .card{
-    position: relative; 
-    height: 50vh;
-    width: 30vh;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 10px;
-    margin-bottom: 35px;
-}
-
-.list_card{
     position: relative;
-    /*    width: 300px;
-        min-height: 200px;*/
+    width: 300px;
+    min-height: 200px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     display: flex;
@@ -334,38 +160,24 @@ header .navbar-brand{
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding: 12px;
-    margin-top: -30px;
-    height: 75vh;
-    width: 200vh;
-    margin-left: 20px;
+    flex-wrap:wrap;
 }
 
-header button.navbar-toggler {
-    display: block;
-}
-
-h3 {
-    margin-top: -80px;
-}
-
-footer.footer.fixed-bottom {
-    margin-bottom: 0px;
-}
-
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0; /* Cambia según sea necesario */
-    background: none;/* Cambia según sea necesario */
-    color: whitesmoke; /* Cambia según sea necesario */
-    transition: opacity 0.3s ease-in-out;
+.list_card{
+    position: relative;
+/*    width: 300px;
+    min-height: 200px;*/
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    margin-bottom: 200px;
     
 }
-
-/* Estilo del footer cuando tiene la clase 'visible' (visible) */
-.footer.visible {
-    opacity: 1; /* Cambia según sea necesario */
-}
-
