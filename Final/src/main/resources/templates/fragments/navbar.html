@@ -4,9 +4,9 @@
     <div class="contenedor-navbar">
         <div class="item-navbar">
             <div>
-            <img src="../img/logo.png"  alt="HomeFix" width="50" height="35">
-            <a class="navbar-brand" href="/" >HomeFix</a> 
-           </div>
+                <img src="../img/logo.png"  alt="HomeFix" width="50" height="35">
+                <a class="navbar-brand" href="/" >HomeFix</a> 
+            </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -14,6 +14,9 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" sec:authorize="hasRole('ADMIN')"  href="/admin/dashboard">Menú Administrador</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link active" sec:authorize="hasRole('ADMIN')" aria-current="page" href="###">Lista Calificacion</a>
                 </li>
@@ -41,6 +44,7 @@
                 <li class="nav-item">
                     <a class="nav-link" th:if="${session.usuarioSesion == null}" href="/login">Ingresar</a>
                 </li>
+
             </ul>
         </div>
 
