@@ -9,70 +9,37 @@
 
 body {
     overflow: hidden;
+    background-image: url('../img/fondo3.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size:  cover;
 }
 
 section {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background: #21222c;
-    margin-top: -7.5%;
+    min-height: 110vh;
+   
 }
 
-section .cuadrado {
-    position: absolute;
-    filter: blur(100px);
-}
 
-section .cuadrado:nth-child(1) {
-    top: -370px;
-    width: 500px;
-    height: 500px;
-    background: #04a4ec;
-}
-
-section .cuadrado:nth-child(2) {
-    bottom: -170px;
-    left: 110px;
-    width: 550px;
-    height: 550px;
-    background: #00aae4;
-}
-
-section .cuadrado:nth-child(3) {
-    bottom: 80px;
-    right: 120px;
-    width: 450px;
-    height: 450px;
-    background: #04a4ec;
-}
-
-.cuadrado {
-    position: absolute;
-    animation: animacion 5s linear infinite;
-    animation-delay: calc(1s * var(--i));
-}
-
-@keyframes animacion {
-    0%, 100% {
-        transform: translatex(-50px);
-    }
-    50% {
-        transform: translatex(50px);
-    }
-}
 
 .TableBox {
     position: relative;   
     padding-left: 150px;
 }
 
+.fixed-bottom {
+    bottom: -40px;
+}
+
 .TableContainer {
-    top: 0;
+    top: -15px;
+    left: 30px;
     position: relative;
-    width: 1000px;
-    min-height: 580px;
+    width: 950px;
+    min-height: 510px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     display: flex;
@@ -85,7 +52,7 @@ section .cuadrado:nth-child(3) {
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     margin-bottom: 150px;
-    margin-top: 10px;
+
 }
 
 .TableList {
@@ -95,9 +62,10 @@ section .cuadrado:nth-child(3) {
     text-align: center;
     padding-top: -100px;
     padding-right: 30px;
-    padding-left: 100px;
+    padding-left: 50px;
     max-height: 500px; 
     overflow-y: auto; 
+    
 }
 
 .TableList h2 {
@@ -109,10 +77,7 @@ section .cuadrado:nth-child(3) {
     margin-bottom: 40px;
 }
 
-.fixed-bottom {
-    margin-bottom: 30px;
-    padding-left: 100px;
-}
+
 
 table {
     color: whitesmoke;
@@ -276,7 +241,6 @@ tbody tr:hover {
         margin-top: 20px; /* Ajusta el margen superior del botón */
     }
 
-    .footer {
-        display: none;
-    }
 }
+
+   

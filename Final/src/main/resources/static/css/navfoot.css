@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 /*.navbar{
     max-height: 150px;
     width: 100%;
@@ -14,9 +12,7 @@ img{
     border-radius: 40px;
 }
 
->>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8
 
-<<<<<<< HEAD
 footer{
     width: 100%;
     height: 80px;
@@ -25,13 +21,7 @@ footer{
     animation: movimiento 10s infinite linear alternate;
        
     color: whitesmoke;
-    margin-top: 10px;
-    opacity: 0.9;
 }
-<<<<<<< HEAD
-=======
-
-=======
 footer fixed-bottom{
     height: 20px;
 }
@@ -124,28 +114,18 @@ button .navbar-toggler {
     
     
 }
->>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8
 
-
-
-
->>>>>>> 751caa238522f284de30154efa23f2007a9f28b4
 /*.navbar-brand, .navbar-toggler-icon, .navbar-toggler  {
     color: whitesmoke;
     font-family: sans-serif bolder;
-}*/
-.navbarNav, .navbar, .nav, .nav-item, .nav-link, .navbar-brand, .navbar-collapse, .navbar-expand-lg, .navbar-nav, .navbar-toggler, .navbar-toggler-icon  {
+
+
+
+.navbarNav, .navbar, .nav, .nav-item, .navbar-brand, .navbar-collapse, .navbar-expand-lg, .navbar-nav, .navbar-toggler, .navbar-toggler-icon, span  {
     color: whitesmoke !important;
     font-family: sans-serif bolder !important;
     background-color: #21222c !important;
-<<<<<<< HEAD
-     font-family: sans-serif bolder;
-     opacity: 0.9;
-}
-=======
     font-family: sans-serif bolder;
 }
 
 }*/
-
->>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8

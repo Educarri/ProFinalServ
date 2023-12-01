@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ProyectoFinal.Final.servicios;
 
 import ProyectoFinal.Final.entidades.Cliente;
@@ -18,9 +23,6 @@ public class ClienteService {
 
     @Autowired
     private ClienteRepositorio cliRepo;
-
-    @Autowired
-    private ProveedorService proServ;
 
     @Autowired
     private ProveedorService proServ;

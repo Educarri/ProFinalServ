@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ProyectoFinal.Final.controladores;
 
 import ProyectoFinal.Final.entidades.Cliente;
@@ -180,8 +185,4 @@ public class ClienteControlador {
         }
         return "redirect:/logout";
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d176ffd3d1a1e2681a4487c2b5d5a47a699e688c

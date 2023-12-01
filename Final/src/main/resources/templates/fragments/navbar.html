@@ -1,23 +1,4 @@
 
-<<<<<<< HEAD
-
-<link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
-
-<div class="navbar">
-<nav class="navbar expand-lg bg-dark border-body" data-bs-theme="dark">
-
-    <div class="container-fluid">
-        <div>
-            <img src="../img/logo.png"  alt="HomeFix" width="50" height="35">
-            <a class="navbar-brand " href="/" >HomeFix</a> 
-        </div>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-
-=======
 <nav class="navbar expand-lg bg-dark border-body" data-bs-theme="dark">
     <link href="/css/navfoot.css" rel="stylesheet" type="text/css"/>
     <div class="contenedor-navbar">
@@ -31,30 +12,23 @@
             </button>
         </div>
 
->>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link active" sec:authorize="hasRole('ADMIN')" aria-current="page" href="###">Lista Calificacion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" sec:authorize="hasRole('USER')" th:if="${session.usuarioSesion != null}" th:href="@{/inicio}">Menu Cliente</a>
-                </li>
-                 <li class="nav-item">
-                    <a class="nav-link" sec:authorize="hasRole('PROVEEDOR')" th:if="${session.usuarioSesion != null}" th:href="@{/inicio}">Menu Proveedor</a>
-                </li>
-<!--                <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasRole('USER')" th:if="${session.usuarioSesion != null}" th:href="@{/cliente/listaTrabajos/__${session.usuarioSesion.id}__}">Lista Trabajos Solicitados</a>
-                </li>-->
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasRole('ADMIN')"  href="/cliente/lista">Lista cliente</a>
                 </li>
-<!--                <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasRole('PROVEEDOR')" th:if="${session.usuarioSesion != null}" th:href="@{/proveedor/listaTrabajos/__${session.usuarioSesion.id}__}">Lista Trabajos</a>
-                </li>-->
-<!--                <li class="nav-item">
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasAnyRole('ADMIN', 'USER', 'PROVEEDOR')" href="/perfil"> Editar Perfil</a>
-                </li>-->
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" sec:authorize="hasAnyRole('ADMIN', 'USER', 'PROVEEDOR')" href="/logout">Cerrar sesion</a>
                 </li>
@@ -72,10 +46,4 @@
 
 
     </div>
-<<<<<<< HEAD
-<nav/>
-
-=======
-</nav>
-</div>
->>>>>>> 751caa238522f284de30154efa23f2007a9f28b4
+    <nav/>

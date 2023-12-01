@@ -77,7 +77,11 @@ p{
     display: flex;
     flex-direction: column;
     flex-flow: nowrap; 
-   margin:12px;
+   margin-right: 75px;
+   margin-top: 12px;
+   margin-bottom: 12px;
+   margin-left: 75px;
+  
    
     
 }

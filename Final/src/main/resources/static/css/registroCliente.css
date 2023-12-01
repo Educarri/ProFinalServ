@@ -19,12 +19,7 @@ section {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-<<<<<<< HEAD
-    background: #21222c;
-    margin-top: -4.5%;
-=======
     
->>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8
         
 }
 
@@ -48,15 +43,9 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-<<<<<<< HEAD
-    margin-bottom: 150px;
-    margin-top: 100px;
-}
-=======
     margin-bottom: 200px;
     margin-top: 10px;
     }
->>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8
 
 .LoginForm {
     position: relative;

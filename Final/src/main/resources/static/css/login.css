@@ -4,89 +4,26 @@
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif;
     color: whitesmoke;
-<<<<<<< HEAD
-}
-=======
    }
->>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8
 
-/*body {
+body {
     overflow: hidden;
-<<<<<<< HEAD
-}*/
-=======
     background-image: url('../img/fondo3.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size:  cover;
 }
->>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8
 
 section {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-<<<<<<< HEAD
-    background: #21222c;
-    margin-top: -4.5%;
-        
-}
-
-section .cuadrado {
-    position: absolute;
-    filter: blur(100px);
-}
-
-section .cuadrado:nth-child(1) {
-    top: -370px;
-    width: 500px;
-    height: 500px;
-    background: #04a4ec;
-}
-
-section .cuadrado:nth-child(2) {
-    bottom: -170px;
-    left: 110px;
-    width: 550px;
-    height: 550px;
-    background: #00aae4;
-}
-
-section .cuadrado:nth-child(3) {
-    bottom: 80px;
-    right: 120px;
-    width: 450px;
-    height: 450px;
-    background: #04a4ec;
-}
-
-.cuadrado {
-    position: absolute;
-/*    animation: animacion 5s linear infinite;
-    animation-delay: calc(1s * var(--i));*/
-}
-/*
-@keyframes animacion {
-    0%, 100% {
-        transform: translatex(-50px);
-    }
-    50% {
-        transform: translatex(50px);
-    }
-}*/
-
-.LoginBox {
-    position: relative;
-    height: 90vh;   
-}
-=======
            
 }
 .LoginBox {
     position: relative;
   }
->>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8
 
 .LoginContainer {
     position: relative;
@@ -102,12 +39,8 @@ section .cuadrado:nth-child(3) {
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-<<<<<<< HEAD
-    margin-top: 100px;
-=======
     margin-top: 10px;
     margin-bottom: 200px;
->>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8
 }
 
 .LoginForm {
@@ -263,13 +196,6 @@ section .cuadrado:nth-child(3) {
     font-weight: 600;
 }
 
-<<<<<<< HEAD
-
-
-
-  
-=======
->>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8
 .error {
     text-align: center;
     color: #001133;
@@ -313,4 +239,3 @@ section .cuadrado:nth-child(3) {
         display: none;
     }
 }
-

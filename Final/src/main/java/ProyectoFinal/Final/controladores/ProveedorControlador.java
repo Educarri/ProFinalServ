@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ProyectoFinal.Final.controladores;
 
 import ProyectoFinal.Final.entidades.Cliente;
@@ -146,50 +151,6 @@ public class ProveedorControlador {
         modelo.addAttribute("trabajos", trabajos);
 
         return "listaTrabajosProveedor.html";
-    }
-
-    @GetMapping("/modificarRolProveedor/{id}")
-    public String cambiarRolProveedor(@PathVariable String id, ModelMap modelo) {
-        try {
-
-            proServ.cambiarRol(id);
-
-            Proveedor pro = proServ.getOne(id);
-
-            Cliente cli = new Cliente();
-            cli.setNombre(pro.getNombre());
-            cli.setApellido(pro.getApellido());
-            cli.setDni(pro.getDni());
-            cli.setCorreo(pro.getCorreo());
-            cli.setDireccion(pro.getDireccion());
-            cli.setTelefono(pro.getTelefono());
-            cli.setPassword(pro.getPassword());
-            cli.setRol(pro.getRol());
-
-            cliServ.registrarCambiado(cli);
-
-            proServ.eliminarProveedor(id);
-
-            modelo.put("exito", "Rol de Proveedor a Cliente modificado correctamente! Ingrese sus mismos datos para logearse");
-
-        } catch (miException e) {
-            modelo.put("error", e.getMessage());
-        }
-        return "redirect:/logout";
-    }
-
-    @GetMapping("/darseBaja/{id}")
-    public String darseBaja(@PathVariable String id, ModelMap modelo) {
-        try {
-
-            proServ.darBaja(id);
-
-            modelo.put("exito", "Proveedor dado de baja correctamente!");
-
-        } catch (miException e) {
-            modelo.put("error", e.getMessage());
-        }
-        return "redirect:/logout";
     }
 
     @GetMapping("/modificarRolProveedor/{id}")

@@ -4,110 +4,26 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif;
-    color: whitesmoke;
 }
 
 body {
     overflow: hidden;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 0520c4e9c734f94ca092d1f5835a3503f5726a8e
     background-image: url('../img/fondo3.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size:  cover;
-<<<<<<< HEAD
 }
 
 section {
     z-index: 0;
-=======
-}
-
-section {
-    z-index: 0;
-=======
-    
-}
-
-section {
-    
->>>>>>> ba4ed5e85042a2516c2e0f9cc9e813614e16de69
->>>>>>> 0520c4e9c734f94ca092d1f5835a3503f5726a8e
     display: flex;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
-    min-height: 100vh;
-    background: #21222c;
-    margin-bottom: 20px;    
-    margin-top: -70px;
-=======
     min-height: 0vh;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    margin-bottom: 20px;
-   
->>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8
-}
-
-=======
-    background: #21222c;
->>>>>>> 0520c4e9c734f94ca092d1f5835a3503f5726a8e
     margin-bottom: 20px;
    
 }
 
-<<<<<<< HEAD
-=======
-section .cuadrado {
-    position: absolute;
-    filter: blur(100px);
-    
-}
-
-
-section .cuadrado:nth-child(1) {
-    top: -370px;
-    width: 500px;
-    height: 500px;
-    background: #04a4ec;
-}
-
-section .cuadrado:nth-child(2) {
-    bottom: -170px;
-    left: 110px;
-    width: 550px;
-    height: 550px;
-    background: #00aae4;
-}
-
-section .cuadrado:nth-child(3) {
-    bottom: 80px;
-    right: 120px;
-    width: 450px;
-    height: 450px;
-    background: #04a4ec;
-}
-
-.cuadrado {
-    position: absolute;
-    animation: animacion 5s linear infinite;
-    animation-delay:calc(1s * var(--i));
-}
-
-@keyframes animacion {
-    0%, 100% {
-        transform: translatex(-50px);
-    }
-    50% {
-        transform: translatex(50px);
-    }
-}
->>>>>>> ba4ed5e85042a2516c2e0f9cc9e813614e16de69
->>>>>>> 0520c4e9c734f94ca092d1f5835a3503f5726a8e
 
 .RegistroBox {
     position: relative;
@@ -129,15 +45,7 @@ section .cuadrado:nth-child(3) {
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-<<<<<<< HEAD
       
-=======
-<<<<<<< HEAD
-      
-=======
-   
->>>>>>> ba4ed5e85042a2516c2e0f9cc9e813614e16de69
->>>>>>> 0520c4e9c734f94ca092d1f5835a3503f5726a8e
     
 }
 
@@ -160,7 +68,15 @@ section .cuadrado:nth-child(3) {
     margin-bottom: 40px;
 }
 
-
+.RegistroForm h2::before {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 180px;
+    height: 4px;
+    background: #fff;
+}
 
 .RegistroForm .inputBox {
     width: 100%;
@@ -175,6 +91,39 @@ section .cuadrado:nth-child(3) {
     font-style: italic;
    
 }
+/*
+@media screen and (max-width: 480px) {
+    section {
+        min-height: 60vh;
+    }
+    
+section .cuadrado:nth-child(1) {
+        top: -200px;
+        width: 300px;
+        height: 300px;
+    }
+    
+    section .cuadrado:nth-child(2) {
+        bottom: -50px;
+        left: 30px;
+        width: 350px;
+        height: 350px;
+    }
+    section .cuadrado:nth-child(3) {
+        bottom: 10px;
+        right: 40px;
+        width: 250px;
+        height: 250px;
+    }
+    
+    .RegitroContainer {
+        width: 90%;
+    }
+
+    .RegistroForm {
+        padding: 20px;
+    }*/
+
 
 .RegistroForm .inputBox input {
     width: 50%;
@@ -323,28 +272,4 @@ section .cuadrado:nth-child(3) {
     transition-delay: 0.75s;
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
-=======
-
-header .navbar-brand{     
-    background-color: #21222c;
-    color: whitesmoke;
-}
-
-.footer {
-    background: none;
-    color: whitesmoke;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
->>>>>>> ba4ed5e85042a2516c2e0f9cc9e813614e16de69
->>>>>>> 0520c4e9c734f94ca092d1f5835a3503f5726a8e
  
->>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8

@@ -87,8 +87,4 @@ public class ImagenService {
         return null; 
     }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d176ffd3d1a1e2681a4487c2b5d5a47a699e688c
