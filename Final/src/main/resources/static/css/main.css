@@ -6,16 +6,10 @@ body{
 
 }
 
-img{
-    /*        display:flex ;*/
-    width: 50px;
-    margin: 10px auto;
-    border-radius: 40px;
-}
 
 p{
     margin-left: 10px;
-    margin-top: 10px;
+    margin-top: 0px;
 }
 
 * {
@@ -23,16 +17,15 @@ p{
     padding: 10;
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif;
-    color: whitesmoke;
 }
-.intro {
-
-    font-family: 'Raleway', sans-serif;
-    color: whitesmoke;
+.intro{
+    
+ font-family: 'Raleway', sans-serif;
+ color: whitesmoke;
     text-shadow:  #21222c;
-    text-align: justify;
-    padding: 40px;
-    padding-top: 100px;
+ text-align: justify;
+ padding: 40px;
+ padding-top: 60px;
 }
 
 h2{
@@ -42,61 +35,7 @@ h2{
     color: whitesmoke;
     text-shadow:  #21222c;
     padding: 40px;
-
-}
-
-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #21222c;
-    color: whitesmoke;
-    padding-bottom: 120px;
-}
-
-section .cuadrado {
-    position: absolute;
-    filter: blur(70px);
-}
-
-section .cuadrado:nth-child(1) {
-    top: -370px;
-    left: 250px;
-    width: 500px;
-    height: 500px;
-    background: #04a4ec;
-}
-
-section .cuadrado:nth-child(2) {
-    bottom: -170px;
-    left: 110px;
-    width: 550px;
-    height: 550px;
-    background: #00aae4;
-}
-
-section .cuadrado:nth-child(3) {
-    bottom: 80px;
-    right: 120px;
-    width: 450px;
-    height: 450px;
-    background: #04a4ec;
-}
-
-.cuadrado {
-    position: absolute;
-    animation: animacion 5s linear infinite;
-    /*animation-delay: calc(1s * var(--i));*/
-}
-
-@keyframes animacion {
-    0%, 100% {
-        transform: translatex(-50px);
-    }
-    50% {
-        transform: translatex(50px);
-    }
+          
 }
 
 
@@ -200,8 +139,6 @@ section .cuadrado:nth-child(3) {
 
 .card-img-top{
     border-radius: 20px;
-    height: 20vh;
-    width: 20vh;
 }
 
 .bd-placeholder-img card-img-top{
@@ -209,29 +146,9 @@ section .cuadrado:nth-child(3) {
 }
 
 .card{
-    position: relative; 
-    height: 50vh;
-    width: 30vh;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    flex-wrap:wrap;
-    padding: 10px;
-    margin-bottom: 35px;
-
-}
-
-.list_card{
     position: relative;
-    /*    width: 300px;
-        min-height: 200px;*/
+    width: 300px;
+    min-height: 200px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     display: flex;
@@ -243,39 +160,24 @@ section .cuadrado:nth-child(3) {
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding: 12px;
-    margin-top: -30px;
-    height: 75vh;
-    width: 200vh;
-    margin-left: 20px;
+    flex-wrap:wrap;
 }
 
-header button.navbar-toggler {
-    display: block;
-}
-
-h3 {
-    margin-top: -80px;
-}
-
-footer.footer.fixed-bottom {
-    margin-bottom: 0px;
-}
-
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0; /* Cambia según sea necesario */
-    background: none;/* Cambia según sea necesario */
-    color: whitesmoke; /* Cambia según sea necesario */
-    transition: opacity 0.3s ease-in-out;
+.list_card{
+    position: relative;
+/*    width: 300px;
+    min-height: 200px;*/
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    margin-bottom: 200px;
     
 }
-
-/* Estilo del footer cuando tiene la clase 'visible' (visible) */
-.footer.visible {
-    opacity: 1; /* Cambia según sea necesario */
-}
-
-

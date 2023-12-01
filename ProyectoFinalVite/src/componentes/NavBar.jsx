@@ -17,6 +17,7 @@ export const NavBar = () => {
 
   return (
     <nav className="navbar navbar-dark bg-dark" aria-label="First navbar example" >
+<<<<<<< HEAD
       <div className="container-fluid">
         <div><img src="/src/assets/logo.png" alt="logo" className="imagenLogo" /><Link className="link" to={"/"}>HomeFix</Link></div>
 
@@ -32,6 +33,15 @@ export const NavBar = () => {
 
 
         {/* <div>
+=======
+    <div className="container-fluid">
+      <Link className="link" to={"/"}>Servicios</Link>
+      <img src='/src/assets/logo.png' alt="logo" />
+      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      {/* <div>
+>>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8
       <ReactSwitch 
           onChange={handleSwitch}
           checked={checked}
@@ -49,6 +59,7 @@ export const NavBar = () => {
         /> 
         <p className='mode'>{contextTheme} Mode</p>
       </div> */}
+<<<<<<< HEAD
         {/* <div className="collapse navbar-collapse" id="navbarsExample01">
           <ul className="navbar-nav me-auto mb-2">
             <li className="nav-item">
@@ -61,6 +72,20 @@ export const NavBar = () => {
         </div> */}
       </div>
     </nav>
+=======
+      <div className="collapse navbar-collapse" id="navbarsExample01">
+        <ul className="navbar-nav me-auto mb-2">
+          <li className="nav-item">
+            <Link className="link" to={"/"}>Home</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="link" to={"/registrar"}>Registrar Cliente</Link>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+>>>>>>> 53a3ca74642226f4729787d7e56d36e4f7268ea8
   )
 }
 
