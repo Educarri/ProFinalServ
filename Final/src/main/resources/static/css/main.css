@@ -38,6 +38,7 @@ h2{
           
 }
 
+<<<<<<< HEAD
 h3, .filtro{
     font-family: 'Raleway', sans-serif;
     color: whitesmoke;
@@ -48,6 +49,9 @@ h3, .filtro{
 .form-select{
  width: 20%;   
 }
+=======
+
+>>>>>>> deedba276932ab49725335d98e9388f039465406
 .btn-neon {
 
     background: #fff;
@@ -145,7 +149,11 @@ h3, .filtro{
     transition-delay: 0.2s;
 }
 
+<<<<<<< HEAD
 .card-title, .card-text, .card-text-oficio, .card-text-antiguedad{
+=======
+.card-title, .card-text{
+>>>>>>> deedba276932ab49725335d98e9388f039465406
     color: whitesmoke;
     text-align: center;
 }
