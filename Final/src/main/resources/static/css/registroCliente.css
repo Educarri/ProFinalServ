@@ -14,7 +14,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 110vh;
     background: #21222c;
     margin-top: -4.5%;
         
@@ -67,8 +67,12 @@ section .cuadrado:nth-child(3) {
     position: relative;
 }
 
+footer.fixed-bottom {
+bottom: -12px;    
+} 
+
 .LoginContainer {
-    top: 0;
+    top: -120px;
     position: relative;
     width: 400px;
     min-height: 400px;
@@ -90,7 +94,7 @@ section .cuadrado:nth-child(3) {
     position: relative;
     width: 100%;
     height: 100%;
-    padding: 40px;
+    padding: 20px;
 }
 
 .LoginForm h2 {

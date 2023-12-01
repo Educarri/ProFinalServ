@@ -1,5 +1,4 @@
 
-button.navbar-toggler {
-    display: none;
+body > header > nav {
+    width: 100%;
 }
-

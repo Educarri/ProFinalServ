@@ -16,7 +16,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 110vh;
     background: #21222c;
     margin-top: -4.5%;
         
@@ -66,11 +66,11 @@ section .cuadrado:nth-child(3) {
 }
 
 .LoginBox {
-    position: relative;
-    height: 90vh;   
+    position: relative;  
 }
 
 .LoginContainer {
+    top: -200px;
     position: relative;
     width: 400px;
     min-height: 400px;
