@@ -180,6 +180,24 @@ public class ProveedorService {
         return proRepo.getOne(id);
     }
 
+    public String obtenerNombreProveedor(String id){
+       
+        String nombre = null;
+        
+         Optional<Proveedor> respuesta = proRepo.findById(id);
+         
+         if(respuesta != null){
+             Proveedor pro = respuesta.get();
+             nombre = pro.getNombre();
+         }
+        
+        return nombre;
+    }
+    
+    
+    
+    
+    
     @Transactional
     public void eliminarProveedor(String id) throws miException {
 

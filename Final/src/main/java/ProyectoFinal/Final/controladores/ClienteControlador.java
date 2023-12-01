@@ -129,6 +129,9 @@ public class ClienteControlador {
     public String listarTrabajos(@PathVariable String id, ModelMap modelo) {
 
         List<Trabajo> trabajos = traServ.listarTrabajosPorIdCliente(id);
+        
+        
+        
         modelo.addAttribute("trabajos", trabajos);
 
         return "listaTrabajosCliente.html";

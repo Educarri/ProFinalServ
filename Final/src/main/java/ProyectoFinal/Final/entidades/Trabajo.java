@@ -33,6 +33,8 @@ public class Trabajo {
     
     private Integer calificacion;
     private String comentario;
+    
+    private Boolean aceptado;
    
 
     public Trabajo() {
@@ -109,5 +111,14 @@ public class Trabajo {
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
+
+    public Boolean getAceptado() {
+        return aceptado;
+    }
+
+    public void setAceptado(Boolean aceptado) {
+        this.aceptado = aceptado;
+    }
+    
     
 }

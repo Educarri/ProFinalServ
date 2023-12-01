@@ -75,16 +75,15 @@ public class TrabajoControlador {
             Trabajo trabajo = trabServ.getOne(id);
             if (trabajo.getEstado().toLowerCase().equals("finalizado")) {
                 modelo.addAttribute("trabajo", trabajo);
-                 return "calificarTrabajo.html";
-            }else{
+                return "calificarTrabajo.html";
+            } else {
                 modelo.put("error", "El trabajo todavia no fue finalizado, intente mas tarde.");
             }
-            
-            
+
         } catch (Exception e) {
             modelo.put("error", e.getMessage());
-        }  
-       return "index.html";
+        }
+        return "index.html";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
@@ -120,6 +119,19 @@ public class TrabajoControlador {
         }
 
         return "cambiarEstadoTrabajo.html";
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @GetMapping("/aceptado/{id}")
+    public String aceptado(@PathVariable String id, ModelMap modelo) {
+        try {
+            trabServ.cambiarAceptado(id, true);
+            modelo.put("exito", "Trabajo Aceptado. A trabajar!");
+        } catch (Exception e) {
+            modelo.put("error", e.getMessage());
+        }
+
+        return "listaTrabajosProveedor.html"; // Devolver la misma vista
     }
 
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")

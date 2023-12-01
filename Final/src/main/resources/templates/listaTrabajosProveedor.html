@@ -9,6 +9,7 @@
     </head>
     <body>
         <div class="container m-5">
+            <h1>LISTA TRABAJOS</h1>
             <table class="table table-dark">
                 <thead>
                     <tr >
@@ -19,13 +20,13 @@
                         <th scope="col">COMENTARIO</th>
                         <th scope="col">FECHA CREACION</th>
 
-                        <th scope="col" sec:authorize="hasAnyRole('ADMIN', 'USER', 'PROVEEDOR')">Acciones</th>
+                        <th scope="col" sec:authorize="hasAnyRole('ADMIN', 'PROVEEDOR')">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="trabajo:${trabajos}">
+                    <tr th:each="trabajo:${trabajos}" th:if="${trabajo.aceptado}">
                         <th th:text="${trabajo.HsTrabajo}" ></th>
-                        <th th:text="${trabajo.presupuesto}"></th>
+                        <th th:text="'$' + ${#numbers.formatDecimal(trabajo.presupuesto, 0, 'COMMA', 2, 'POINT')}"></th>
                         <th th:text="${trabajo.estado}"></th>
                         <th th:text="${trabajo.calificacion}"></th>
                         <th th:text="${trabajo.comentario}"></th>
@@ -48,6 +49,35 @@
                 </tbody>
             </table>
 
+
+
+
+            <h2>LISTA TRABAJOS PENDIENTES DE ACEPTACION</h2>
+            <table class="table table-dark">
+                <thead>
+                    <tr >
+                        <th scope="col">HORAS TRABAJO</th>
+                        <th scope="col">PRESUPUESTO</th>
+                        <th scope="col">FECHA CREACION</th>
+
+                        <th scope="col" sec:authorize="hasAnyRole('ADMIN', 'PROVEEDOR')">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="trabajo:${trabajos}" th:if="${not trabajo.aceptado}">
+                        <th th:text="${trabajo.HsTrabajo}" ></th>
+                        <th th:text="'$' + ${#numbers.formatDecimal(trabajo.presupuesto, 0, 'COMMA', 2, 'POINT')}"></th>
+                        <th th:text="${trabajo.fechaCreacion}"></th>
+
+                        <th>
+                            <a th:href="@{/trabajo/aceptado/__${trabajo.id}__}"
+                               sec:authorize="hasAnyRole('PROVEEDOR', 'ADMIN')"
+                               class="btn btn-sm btn-outline-secondary">ACEPTAR TRABAJO</a>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+
             <div>
                 <a>
                     <button class="btn btn-primary" onclick="goBack()">Volver</button>
@@ -61,5 +91,13 @@
             window.history.back();
             }
         </script>
+
+        <script th:if="${exito}">
+            <!-- Este script se ejecutará solo si hay un éxito -->
+            setTimeout(function(){
+            location.reload(); // Recargar la página después de 1 segundo
+            }, 1000);
+        </script>
+
     </body>
 </html>

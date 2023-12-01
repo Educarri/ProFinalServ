@@ -37,14 +37,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="trabajo:${trabajos}">
+                                    <tr th:each="trabajo:${trabajos}" th:if="${trabajo.aceptado}">
                                         <th th:text="${trabajo.HsTrabajo}" ></th>
-                                        <th th:text="${trabajo.presupuesto}"></th>
+                                        <th th:text="'$' + ${#numbers.formatDecimal(trabajo.presupuesto, 0, 'COMMA', 2, 'POINT')}"></th>
                                         <th th:text="${trabajo.estado}"></th>
                                         <th th:text="${trabajo.calificacion}"></th>
                                         <th th:text="${trabajo.comentario}"></th>
                                         <th th:text="${trabajo.fechaCreacion}"></th>
-                                       
+
                                         <th>
                                             <a  th:if="${trabajo.calificacion == 0}"
                                                 th:href="@{/trabajo/calificar/__${trabajo.id}__}"
@@ -63,6 +63,30 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <h2>Listado De Trabajos Seleccionados</h2>
+                            <table>
+                                <thead>
+                                    <tr class="tr1">
+                                        <th scope="col">PRESUPUESTO</th>
+                                        <th scope="col">ESTADO</th>
+                                        <th scope="col">FECHA CREACION</th>
+                                        <th scope="col">NOMBRE PROVEEDOR</th>
+                                        <th scope="col">ESTADO DE SOLICITUD</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="trabajo:${trabajos}" th:if="${not trabajo.aceptado}">
+                                       <th th:text="'$' + ${#numbers.formatDecimal(trabajo.presupuesto, 0, 'COMMA', 2, 'POINT')}"></th>
+                                       <th th:text="${trabajo.estado}"></th>
+                                       <th th:text="${trabajo.fechaCreacion}"></th>
+                                       <th>
+                                            <span th:text="${@proveedorService.obtenerNombreProveedor(trabajo.idProveedor)}"></span>
+                                       </th>
+                                        <th th:text="${trabajo.aceptado ? 'Sí' : 'No'}"></th>
+                                    </tr>
+                                </tbody>
+                            </table>
                             <div class="boton">
                                 <a>
                                     <button class="btn btn-primary" onclick="goBack()">Volver</button>
@@ -74,6 +98,7 @@
                 </div>
             </div>
         </section>
+
 
 
         <script>

@@ -48,6 +48,7 @@ public class TrabajoService {
         tra.setFechaCreacion(new Date());
         tra.setCalificacion(calificacion);
         tra.setComentario("");
+        tra.setAceptado(false);
 
         traRepo.save(tra);
 
@@ -135,7 +136,26 @@ public class TrabajoService {
             traRepo.save(tra);
         }
     }
+    
+        
+    @Transactional
+    public void cambiarAceptado(String id, 
+            Boolean aceptado) throws miException {
 
+        Optional<Trabajo> respuesta = traRepo.findById(id);
+
+        if (respuesta.isPresent()) {
+            Trabajo tra = respuesta.get();
+            
+            
+            tra.setAceptado(aceptado);
+            
+            traRepo.save(tra);
+        }
+    }
+
+    
+    
     public void validar(Integer HsTrabajo) throws miException {
 
         if (HsTrabajo < 0 || HsTrabajo == null) {
