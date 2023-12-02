@@ -4,7 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif;
-    color: whitesmoke;
+    color: #21222c;
 }
 
 body {
@@ -70,7 +70,7 @@ section {
 
 .TableList h2 {
     position: relative;
-    color: #fff;
+    color: #21222c;
     font-size: 24px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -80,7 +80,7 @@ section {
 
 
 table {
-    color: whitesmoke;
+    color: #001133;
     table-layout: fixed;
     border-collapse: collapse;
 }
@@ -117,7 +117,7 @@ tbody tr:hover {
     text-align: center;
     position: relative;
     display: inline-block;
-    color: #fff;
+    color: #001133;
     letter-spacing: 1px;
     text-decoration: none;
     overflow: hidden;
