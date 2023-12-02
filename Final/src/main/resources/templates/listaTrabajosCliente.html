@@ -61,7 +61,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <h2>Listado De Trabajos Seleccionados</h2>
+                            <h2>Listado De Trabajos En Espera de Aceptacion</h2>
                             <table>
                                 <thead>
                                     <tr class="tr1">
@@ -81,7 +81,7 @@
                                        <th>
                                             <span th:text="${@proveedorService.obtenerNombreProveedor(trabajo.idProveedor)}"></span>
                                        </th>
-                                        <th th:text="${trabajo.aceptado ? 'Sí' : 'No'}"></th>
+                                        <th th:text="${trabajo.aceptado ? 'Aceptado' : 'Denegado'}"></th>
                                     </tr>
                                 </tbody>
                             </table>
