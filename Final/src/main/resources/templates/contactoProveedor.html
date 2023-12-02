@@ -31,6 +31,8 @@
                         <p class="infoProve" th:text="'Oficio: ' +${proveedor.oficio}"></p>
                         <p class="infoProve" th:text="'Descripción del servicio: ' +${proveedor.descripService}"></p>
                         <p class="infoProve" th:text="'Precio por hora: ' +${proveedor.precioHs}"></p>
+                        <p class="infoProve" th:text="'Calificación: ' + ${proveedor.calificacionPromedio}"></p>
+                        <p class="infoProve" th:text="'Fecha de inicio: ' + ${proveedor.fechaCreacion}"></p>
                     </div>
 
                     <div class="botones">
@@ -40,7 +42,7 @@
                         <span id="span3"></span>
                         <span id="span4"></span>
                         </a>
-                        
+
                         <a href="/" >
                             <button class="btn-neon"> Volver </button>
                         </a>
