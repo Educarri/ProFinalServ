@@ -33,13 +33,17 @@ p{
     border-radius: 20px;
     box-shadow: 10px 5px 5px black;
 }*/
-
+/*
 .content{
     margin: 10px;
     padding: 20px;
+}*/
+
+section{
+    margin-top: 100px;
+    margin-bottom: 200px;
+    
 }
-
-
 
 /*.infoProve{
     color: #cccc;
@@ -78,8 +82,8 @@ p{
     flex-direction: column;
     flex-flow: nowrap; 
    margin-right: 75px;
-   margin-top: 12px;
-   margin-bottom: 12px;
+   margin-top:20px;
+   margin-bottom: 20px;
    margin-left: 75px;
    justify-content: center;
   
