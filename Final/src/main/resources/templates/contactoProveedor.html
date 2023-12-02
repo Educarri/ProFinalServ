@@ -10,32 +10,43 @@
         <link href="/css/contactoprov.css" rel="stylesheet" type="text/css"/>
 
     <body>
+
         <div class="box">
             <div class="container">
                 <div class="contacto">
                     <h2>Proveedor seleccionado:</h2>
-                    <div >
-                    <img class="imagenProve"  style="width: 400px" th:src="@{/imagen/perfil/__${proveedor.id}__}"/>
-                    <p class="infoProve" th:text="'Nombre: ' + ${proveedor.nombre}"></p>
-                    <p class="infoProve" th:text="'Apellido: ' +${proveedor.apellido}"></p>
-                    <p class="infoProve" th:text="'Correo electrónico: ' +${proveedor.correo}"></p>
-                    <p class="infoProve" th:text="'Teléfono: ' +${proveedor.telefono}"></p>
-                    <p class="infoProve" th:text="'Dirección: ' +${proveedor.direccion}"></p>
+                    <div class="proveedor-info">
+                        <img class="imagenProve" style="height: 250px;" th:src="@{/imagen/perfil/__${proveedor.id}__}" />
+                        <div class="infoProve">
+                            <p th:text="'Nombre: ' + ${proveedor.nombre}"></p>
+                            <p th:text="'Apellido: ' + ${proveedor.apellido}"></p>
+                            <p th:text="'Correo electrónico: ' + ${proveedor.correo}"></p>
+                            <p th:text="'Teléfono: ' + ${proveedor.telefono}"></p>
+                            <p th:text="'Dirección: ' + ${proveedor.direccion}"></p>
+                        </div>
                     </div>
-                    
 
-                    <p class="infoProve" th:text="'Oficio: ' +${proveedor.oficio}"></p>
-                    <p class="infoProve" th:text="'Descripción del servicio: ' +${proveedor.descripService}"></p>
-                    <p class="infoProve" th:text="'Precio por hora: ' +${proveedor.precioHs}"></p>
-                   
-                    
 
-                    <a th:href="@{/trabajo/contratar/__${proveedor.id}__}" sec:authorize="hasAnyRole('USER', 'ADMIN')" class="btn-neon">Contratar</a>
-                    <span id="span1"></span>
-                    <span id="span2"></span>
-                    <span id="span3"></span>
-                    <span id="span4"></span>
-                    </a>
+                    <div >
+                        <p class="infoProve" th:text="'Oficio: ' +${proveedor.oficio}"></p>
+                        <p class="infoProve" th:text="'Descripción del servicio: ' +${proveedor.descripService}"></p>
+                        <p class="infoProve" th:text="'Precio por hora: ' +${proveedor.precioHs}"></p>
+                    </div>
+
+                    <div class="botones">
+                        <a th:href="@{/trabajo/contratar/__${proveedor.id}__}" sec:authorize="hasAnyRole('USER', 'ADMIN')" class="btn-neon">Contratar</a>
+                        <span id="span1"></span>
+                        <span id="span2"></span>
+                        <span id="span3"></span>
+                        <span id="span4"></span>
+                        </a>
+                        
+                        <a href="/" >
+                            <button class="btn-neon"> Volver </button>
+                        </a>
+
+                    </div>
+
                 </div>
             </div>
         </div>
