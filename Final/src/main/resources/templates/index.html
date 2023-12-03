@@ -84,10 +84,10 @@
 
                                         <div class="card-body">
                                             <!-- Mostrar información del proveedor -->
-                                            <h5 class="card-title" th:text="'Nombre: ' + ${proveedor.nombre}"></h5>
-                                            <p class="card-text-oficio" th:text="'Oficio: ' + ${proveedor.oficio}"></p>
-                                            <p class="card-text-oficio" th:text="'Calificación: ' + ${proveedor.calificacionPromedio}"></p>
-                                            <p class="card-text-oficio" th:text="'Fecha de inicio: ' + ${proveedor.fechaCreacion}"></p>
+                                            <h5 class="card-title" th:text="${proveedor.nombre}"></h5>
+                                            <p class="card-text-oficio" th:text="${proveedor.oficio}"></p>
+                                            <p class="card-text" th:text="${proveedor.calificacionPromedio}"></p>
+                                            <p class="card-text-antiguedad" th:text="${proveedor.fechaCreacion}"></p>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
                                                     <!--                                                        Agregar enlaces o botones según tus necesidades -->                             
@@ -180,6 +180,5 @@
 
     </body>
 </html>
-
 
 
