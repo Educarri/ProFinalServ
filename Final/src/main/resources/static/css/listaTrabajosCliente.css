@@ -241,6 +241,11 @@ tbody tr:hover {
         margin-top: 20px; /* Ajusta el margen superior del botón */
     }
 
+    
+    .rechazado{
+        color: red;
+        
+    }
 }
 
    
