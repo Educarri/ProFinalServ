@@ -25,7 +25,7 @@
                         <form th:action="@{/cliente/modificar/__${user?.id}__}" method="POST">
                             <div class="inputBox">
 
-                                <input type="text" name="id" th:value="${user.id}" >
+                                <input hidden type="text" name="id" th:value="${user.id}" >
                                 <input type="text" class="input" name="nombre" placeholder="Nombre" th:value= "${user.nombre}">
                                 <input type="text" class="input" name="apellido" placeholder="apellido" th:value = "${user.apellido}">
                                 <input type="number" class="input" name="dni" placeholder="Dni" th:value = "${user.dni}">

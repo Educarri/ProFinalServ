@@ -51,7 +51,7 @@
                         <h3>SELECCIONE EL FILTRO PARA BUSCAR :</h3>
 
                         <!-- Filtro por oficio -->
-                        <label for="oficioFilter">Oficio:</label>
+                        <label class="filtro" for="oficioFilter">Oficio:</label>
                         <select id="oficioFilter" class="form-select">
                             <option value="">Todos</option>
                             <option value="PLOMERO">PLOMEROS</option>
@@ -62,7 +62,7 @@
                         </select>
 
                         <!-- Filtro por antigüedad -->
-                        <label for="antiguedadFilter">Antigüedad:</label>
+                        <label class="filtro" for="antiguedadFilter">Antigüedad:</label>
                         <select id="antiguedadFilter" class="form-select">
                             <option value="">Todas</option>
                             <option value="1">Creados hace menos de 1 dia</option>
@@ -71,7 +71,7 @@
                         </select>
 
                         <!-- Botón para aplicar filtros -->
-                        <button id="aplicarFiltros" class="btn btn-primary">Aplicar Filtros</button>
+                        <button id="aplicarFiltros" class="btn-neon">Aplicar Filtros</button>
                     </div>
 
                     <div class="album">
@@ -91,13 +91,16 @@
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
                                                     <!--                                                        Agregar enlaces o botones según tus necesidades -->                             
-                                                    <a th:href="@{/login}" th:if="${session.usuarioSesion == null}" class="btn-neon">Ver Perfil</a>
-                                                    <a th:href="@{/proveedor/contacto/__${proveedor.id}__}" sec:authorize="hasAnyRole('USER', 'ADMIN')" class="btn-neon">Ver Perfil</a>
+                                                    <a th:href="@{/login}" th:if="${session.usuarioSesion == null}" class="btn-neon"><img class="contact" src="../img/contact.png" alt="contacto"></a>
+                                                    <a th:href="@{/proveedor/contacto/__${proveedor.id}__}" sec:authorize="hasAnyRole('USER', 'ADMIN')" class="btn-neon"><img class="contact" src="../img/contact.png" alt="contacto"></a>
+                                                    <div class="btn-group">
+                                                        <form th:action="@{/proveedor/eliminar/__${proveedor.id}__}" method="post">
+                                                            <button type="submit" sec:authorize="hasRole('ADMIN')" class="btn-neon" >
+                                                                <img class="delete" src="../img/delete.png" alt="delete">
+                                                            </button>
+                                                        </form>
 
-                                                    <form th:action="@{/proveedor/eliminar/__${proveedor.id}__}" method="post">
-                                                        <button type="submit" sec:authorize="hasRole('ADMIN')"><i class="fas fa-father-alt" ></i> Eliminar</button>
-                                                    </form>  
-
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -108,14 +111,14 @@
 
                     </div>
                 </div>
-
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         </section>
         <div> 
             <footer th:replace="/fragments/footer :: footer"> </footer>
         </div>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-     
+
         <script>
             jQuery(document).ready(function($) {
             var footer = $('.footer');
@@ -177,6 +180,5 @@
 
     </body>
 </html>
-
 
 

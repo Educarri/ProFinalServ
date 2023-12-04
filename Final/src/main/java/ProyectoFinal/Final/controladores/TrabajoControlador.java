@@ -134,6 +134,33 @@ public class TrabajoControlador {
         return "listaTrabajosProveedor.html"; // Devolver la misma vista
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @GetMapping("/cancelar/{id}")
+    public String cancelar(@PathVariable String id, ModelMap modelo) {
+        try {
+            trabServ.eliminarTrabajo(id);
+            modelo.put("exito", "Trabajo Eliminado.");
+        } catch (Exception e) {
+            modelo.put("error", e.getMessage());
+        }
+
+        return "redirect:/inicio";
+    }
+
+    
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @GetMapping("/rechazar/{id}")
+    public String rechazar(@PathVariable String id, ModelMap modelo) {
+        try {
+            trabServ.rechazarTrabajo(id);
+            modelo.put("exito", "Trabajo Rechazado.");
+        } catch (Exception e) {
+            modelo.put("error", e.getMessage());
+        }
+
+        return "redirect:/inicio";
+    }
+
     @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
     @PostMapping("/cambiar/{id}")
     public String cambiarEstado(@PathVariable String id,

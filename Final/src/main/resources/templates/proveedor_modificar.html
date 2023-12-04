@@ -18,7 +18,7 @@
         <div class="formulario">
             <form th:action="@{/proveedor/modificar/__${user?.id}__}" method="POST" enctype="multipart/form-data">
 
-                <input type="text" name="id" th:value="${user.id}" >
+                <input hidden type="text" name="id" th:value="${user.id}" >
                 <input type="text" class="input" name="nombre"  th:value= "${user.nombre}">
                 <input type="text" class="input" name="apellido"  th:value = "${user.apellido}">
                 <input type="number" class="input" name="dni"  th:value = "${user.dni}">

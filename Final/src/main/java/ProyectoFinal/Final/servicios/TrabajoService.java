@@ -69,21 +69,20 @@ public class TrabajoService {
 
     }
 
-    
     @Transactional
     public void eliminarComentario(String id) throws miException {
 
         Optional<Trabajo> respuesta = traRepo.findById(id);
-        
-        if(respuesta.isPresent()){
+
+        if (respuesta.isPresent()) {
             Trabajo tra = respuesta.get();
-            
+
             tra.setComentario("**********");
-             traRepo.save(tra);
+            traRepo.save(tra);
         }
-   
+
     }
-    
+
     public List<Trabajo> listarTrabajos() {
 
         return traRepo.findAll();
@@ -94,68 +93,77 @@ public class TrabajoService {
 
         return traRepo.buscarTrabajoPorIdCliente(id);
     }
+
     public List<Trabajo> listarTrabajosPorIdProveedor(String id) {
 
         return traRepo.buscarTrabajoPorIdProveedor(id);
     }
 
     @Transactional
-    public void modificar(String id, 
+    public void modificar(String id,
             Integer calificacion, String comentario) throws miException {
 
         Optional<Trabajo> respuesta = traRepo.findById(id);
 
         if (respuesta.isPresent()) {
             Trabajo tra = respuesta.get();
-            
-            if(calificacion == null){
+
+            if (calificacion == null) {
                 calificacion = tra.getCalificacion(); //ver si funciona para cuando el proveedor cambia el estado
             }
-            
+
             tra.setCalificacion(calificacion);
 
             tra.setComentario(comentario);
-            
+
             traRepo.save(tra);
         }
     }
-    
+
     @Transactional
-    public void cambiarEstado(String id, 
+    public void cambiarEstado(String id,
             String estado) throws miException {
 
         Optional<Trabajo> respuesta = traRepo.findById(id);
 
         if (respuesta.isPresent()) {
             Trabajo tra = respuesta.get();
-            
-            
+
             tra.setEstado(estado);
-            
-            
+
             traRepo.save(tra);
         }
     }
-    
-        
+
     @Transactional
-    public void cambiarAceptado(String id, 
+    public void rechazarTrabajo(String id) throws miException {
+
+        Optional<Trabajo> respuesta = traRepo.findById(id);
+
+        if (respuesta.isPresent()) {
+            Trabajo tra = respuesta.get();
+
+            tra.setEstado("Rechazado");
+
+            traRepo.save(tra);
+        }
+    }
+
+    @Transactional
+    public void cambiarAceptado(String id,
             Boolean aceptado) throws miException {
 
         Optional<Trabajo> respuesta = traRepo.findById(id);
 
         if (respuesta.isPresent()) {
             Trabajo tra = respuesta.get();
-            
-            
+
             tra.setAceptado(aceptado);
-            
+
             traRepo.save(tra);
         }
     }
 
-    
-    
     public void validar(Integer HsTrabajo) throws miException {
 
         if (HsTrabajo < 0 || HsTrabajo == null) {
@@ -164,5 +172,5 @@ public class TrabajoService {
         }
 
     }
-    
+
 }

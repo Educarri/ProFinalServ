@@ -19,24 +19,35 @@
                         <th scope="col">DIRECCION</th>
                         <th scope="col">CORREO</th>
                         <th scope="col">ROL</th>
-                        <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th>
+                        <th scope="col" sec:authorize="hasRole('ADMIN')">MODIFICAR/ELIMINAR</th>
+                        <th scope="col" sec:authorize="hasRole('ADMIN')">CAMBIAR ROL</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="cliente:${clientes}">
-                        <th th:text="${cliente.nombre}" ></th>
-                        <th th:text="${cliente.apellido}"></th>
-                        <th th:text="${cliente.telefono}"></th>
-                        <th th:text="${cliente.dni}"></th>
-                        <th  th:text="${cliente.direccion}"></th>
-                        <th th:text="${cliente.correo}"></th>
-                        <th th:text="${cliente.Rol}"></th>
-                        <th>
+                             <form th:action="@{/cliente/modificar/__${cliente?.id}__}" method="POST">
+                            <div class="inputBox">
+
+                                <input hidden type="text" name="id" th:value="${cliente.id}" >
+                                <th><input type="text" class="input" name="nombre" th:value= "${cliente.nombre}"></th>
+                                <th><input type="text" class="input" name="apellido"  th:value = "${cliente.apellido}"></th>
+                                <th><input type="number" class="input" name="dni"  th:value = "${cliente.dni}"></th>
+                                <th><input type="text" class="input" name="correo" th:value = "${cliente.correo}"></th>
+                                <th><input type="number" class="input" name="telefono" th:value = "${cliente.telefono}"></th>
+                                <th><input type="text" class="input" name="direccion" th:value = "${cliente.direccion}"></th>
+                                <th><input type="text" class="input" name="password" placeholder="password" required=""></th>
+                            </div>
+
+                                 <th><button type="submit" class="btn-neon">Actualizar</button>
+                        </form>
+                        
                             <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
                                 <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
                             </form>    
-
-                            <a  th:href="@{/admin/modificarRolCliente/__${cliente.id}__}"><i class="fas fa-father-alt"></i> Cambiar Rol </a>
+                                </th>
+                        <th>        
+                            <a th:href="@{/admin/modificarRolCliente/__${cliente.id}__}"><i></i> Cambiar Rol </a>
+                            
                         <th>
                     </tr>
                 </tbody>
