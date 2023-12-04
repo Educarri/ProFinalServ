@@ -130,8 +130,6 @@ public class ClienteControlador {
 
         List<Trabajo> trabajos = traServ.listarTrabajosPorIdCliente(id);
         
-        
-        
         modelo.addAttribute("trabajos", trabajos);
 
         return "listaTrabajosCliente.html";

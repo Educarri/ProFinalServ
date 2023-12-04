@@ -50,9 +50,10 @@
                                                 <span id="span4"></span>
                                                 Calificar
                                             </a>
-                                            <button th:unless="${trabajo.calificacion == 0}"
+                                            <button th:unless="${trabajo.calificacion == 0}"    
                                                     type="button"
                                                     class="btn-neon"
+                                                    th:class="${trabajo.calificacion != 0} ? 'calificado' : ''"
                                                     disabled="disabled">Calificado</button>
 
                                             <a th:if="${trabajo.aceptado && #strings.trim(trabajo.estado) != 'Finalizado'}" th:href="@{/trabajo/cancelar/__${trabajo.id}__}"
@@ -66,8 +67,14 @@
                                         </th>
                                     </tr>
                                 </tbody>
-                            </table>
-                            <h2>Listado De Trabajos En Espera de Aceptacion</h2>
+                            </table>                       
+                        </div>
+                    </div>
+                </div>    
+                <div class="TableBox">
+                    <div class="TableContainer">
+                        <div class="TableList">
+                            <h2>Listado De Trabajos Seleccionados</h2>
                             <table>
                                 <thead>
                                     <tr class="tr1">
@@ -80,7 +87,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="trabajo:${trabajos}" th:if="${not trabajo.aceptado}" th:style="${#strings.trim(trabajo.estado) == 'Rechazado' ? 'color:red' : ''}">
+                                    <tr th:each="trabajo:${trabajos}" th:if="${not trabajo.aceptado && #strings.trim(trabajo.estado) != 'Rechazado'}" th:style="${#strings.trim(trabajo.estado) == 'Rechazado' ? 'color:red' : ''}">
                                         <th th:text="'$' + ${#numbers.formatDecimal(trabajo.presupuesto, 0, 'COMMA', 2, 'POINT')}"></th>
                                         <th th:text="${trabajo.estado}"></th>
                                         <th th:text="${trabajo.fechaCreacion}"></th>
@@ -88,6 +95,43 @@
                                             <span th:text="${@proveedorService.obtenerNombreProveedor(trabajo.idProveedor)}"></span>
                                         </th>
                                         <th th:text="${trabajo.aceptado ? 'Aceptado' : 'En Espera'}"></th>
+                                    </tr>
+                                </tbody>
+
+
+
+                            </table>
+                            <div class="boton">
+                                <a href="/" >
+                                    <button class="btn btn-primary"> Volver </button>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="TableBox">
+                    <div class="TableContainer">
+                        <div class="TableList">
+                            <h2>Listado De Trabajos Rechazados</h2>
+                            <table>
+                                <thead>
+                                    <tr class="tr1">
+                                        <th scope="col">PRESUPUESTO</th>
+                                        <th scope="col">ESTADO</th>
+                                        <th scope="col">FECHA CREACION</th>
+                                        <th scope="col">NOMBRE PROVEEDOR</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="trabajo:${trabajos}" th:if="${#strings.trim(trabajo.estado) == 'Rechazado'}" th:style="${#strings.trim(trabajo.estado) == 'Rechazado' ? 'color:red' : ''}">
+                                        <th th:text="'$' + ${#numbers.formatDecimal(trabajo.presupuesto, 0, 'COMMA', 2, 'POINT')}"></th>
+                                        <th th:text="${trabajo.estado}"></th>
+                                        <th th:text="${trabajo.fechaCreacion}"></th>
+                                        <th>
+                                            <span th:text="${@proveedorService.obtenerNombreProveedor(trabajo.idProveedor)}"></span>
+                                        </th>
                                     </tr>
                                 </tbody>
 

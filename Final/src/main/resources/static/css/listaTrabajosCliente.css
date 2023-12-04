@@ -8,7 +8,6 @@
 }
 
 body {
-    overflow: hidden;
     background-image: url('../img/fondo3.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -20,7 +19,6 @@ section {
     justify-content: center;
     align-items: center;
     min-height: 110vh;
-   
 }
 
 
@@ -117,11 +115,12 @@ tbody tr:hover {
     text-align: center;
     position: relative;
     display: inline-block;
-        color: whitesmoke;
+    color: whitesmoke;
     letter-spacing: 1px;
     text-decoration: none;
     overflow: hidden;
     transition: 0.2s;
+    padding: 3px;
 }
 
 .btn-neon:hover{
@@ -245,6 +244,10 @@ tbody tr:hover {
     .rechazado{
         color: red;
         
+    }
+    
+    .calificado{
+        color: red;
     }
 }
 
