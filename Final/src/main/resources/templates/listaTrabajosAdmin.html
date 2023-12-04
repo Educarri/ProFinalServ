@@ -39,6 +39,11 @@
                                 <button type="submit" sec:authorize="hasRole('ADMIN')" class="btn btn-sm btn-outline-secondary" style="color: red">CENSURAR COMENTARIO</button>
                             </form>  
 
+                            <a th:href="@{/trabajo/cancelar/__${trabajo.id}__}"
+                                sec:authorize="hasRole( 'ADMIN')" class="btn btn-sm btn-outline-secondary" style="color: red">
+                                CANCELAR TRABAJO
+                            </a>
+
                             <!-- <a th:href="@{/trabajo/eliminarComentario/__${trabajo.id}__}" sec:authorize="hasRole('ADMIN')" class="btn btn-sm btn-outline-secondary" style="color: red">CENSURAR COMENTARIO</a>
                             -->
 
