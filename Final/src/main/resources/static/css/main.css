@@ -1,0 +1,196 @@
+body{
+    background-image: url('../img/fondo3.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size:  cover;
+
+}
+
+
+p{
+    margin-left: 10px;
+    margin-top: 0px;
+}
+
+* {
+    margin: 10;
+    padding: 10;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+.intro{
+    
+ font-family: 'Raleway', sans-serif;
+ color: whitesmoke;
+    text-shadow:  #21222c;
+ text-align: justify;
+ padding: 40px;
+ padding-top: 60px;
+}
+
+h2{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-weight: bolder;
+    color: whitesmoke;
+    text-shadow:  #21222c;
+    padding: 40px;
+          
+}
+
+h3, .filtro{
+    font-family: 'Raleway', sans-serif;
+    color: whitesmoke;
+    text-shadow:  #21222c;
+   
+}
+
+.form-select{
+ width: 20%;   
+}
+.btn-neon {
+
+    background: #fff;
+    color: #666;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: 0.1s;
+}
+
+#aplicarFiltros.btn-neon {
+    width: 20%;
+}
+
+.btn-neon{
+    width: 100%;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid  rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    color: #fff;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: 16px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.btn-neon:hover{
+    background: #04a4ec;
+    box-shadow: 0 0 10px whitesmoke, 0 0 40px whitesmoke, 0 0 80px whitesmoke;
+    transition-delay: 0.2s;
+    color: #fff;
+}
+.btn-neon span{
+    position: absolute;
+    display: block;
+}
+#span1{
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent,#21222c);
+}
+.btn-neon:hover #span1{
+    left: 100%;
+    transition: 0.2s;
+}
+#span3{
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent,#21222c);
+}
+.btn-neon:hover #span3{
+    right: 100%;
+    transition: 0.5s;
+    transition-delay: 0.2s;
+}
+#span2{
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg,transparent,#21222c);
+}
+.btn-neon:hover #span2{
+    top: 100%;
+    transition: 0.5s;
+    transition-delay: 0.25s;
+}
+#span4{
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg,transparent,#21222c);
+}
+.btn-neon:hover #span4{
+    bottom: 100%;
+    transition: 0.5s;
+    transition-delay: 0.2s;
+}
+
+.card-title, .card-text, .card-text-oficio, .card-text-antiguedad{
+    color: whitesmoke;
+    text-align: center;
+}
+
+.card-img-top{
+    border-radius: 20px;
+}
+
+.bd-placeholder-img card-img-top{
+    margin:20px 20px;
+}
+
+.card{
+    position: relative;
+    width: 300px;
+    min-height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    flex-wrap:wrap;
+}
+
+.list_card{
+    position: relative;
+/*    width: 300px;
+    min-height: 200px;*/
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    margin-bottom: 200px;
+    
+}

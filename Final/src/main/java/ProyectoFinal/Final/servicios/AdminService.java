@@ -15,24 +15,57 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ProyectoFinal.Final.repositorios.AdminRepositorio;
-
+import java.util.Optional;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
 public class AdminService {
- 
+
     @Autowired
     private AdminRepositorio adminRepo;
-    
+
     @Transactional
-    public Administrador registrarAdmin(Administrador admin) throws miException {
-        validar(admin);
+    public void registrarAdmin(String nombre, String apellido, Long dni,
+            String correo, Integer telefono, String password, String direccion) throws miException {
         
+        validar(nombre, apellido, dni, correo, telefono, password, direccion);
+
+        Administrador admin = new Administrador();
+        admin.setNombre(nombre);
+        admin.setApellido(apellido);
+        admin.setDni(dni);
+        admin.setCorreo(correo);
+        admin.setTelefono(telefono);
+        admin.setPassword(new BCryptPasswordEncoder().encode(password));
+        admin.setDireccion(direccion);
         admin.setRol(Rol.ADMIN);
-        return adminRepo.save(admin);
+        adminRepo.save(admin);
     }
     
-        //AGREGAR METODO PARA QUE EL USUARIO PUEDA MODIFICAR SUS DATOS ??
     
+    @Transactional
+    public void modificarAdmin(String nombre, String apellido, Long dni,
+            String correo, Integer telefono, String password, String direccion, String id) throws miException {
+
+        validar(nombre, apellido, dni, correo, telefono, password, direccion);
+        
+        Optional<Administrador> respuesta = adminRepo.findById(id);
+
+        if (respuesta.isPresent()) {
+            Administrador admin = respuesta.get();
+            admin.setNombre(nombre);
+            admin.setApellido(apellido);
+            admin.setCorreo(correo);
+            admin.setTelefono(telefono);
+            admin.setPassword(new BCryptPasswordEncoder().encode(password));
+            admin.setDireccion(direccion);
+            admin.setDni(dni);
+            admin.setRol(Rol.ADMIN);
+            adminRepo.save(admin);
+        }
+    }
+
+    //AGREGAR METODO PARA QUE EL USUARIO PUEDA MODIFICAR SUS DATOS ??
     public List<Administrador> listarAdministradores() {
 
         return adminRepo.findAll();
@@ -54,47 +87,47 @@ public class AdminService {
 
     }
 
-    public void validar(Administrador admin) throws miException {
-        if (admin.getNombre().isEmpty() || admin.getNombre() == null) {
+    public void validar(String nombre, String apellido, Long dni,
+            String correo, Integer telefono, String password, String direccion) throws miException {
+        if (nombre.isEmpty() || nombre == null) {
             throw new miException("El nombre no puede estar vacio.");
         }
 
-        if (admin.getApellido().isEmpty() || admin.getApellido() == null) {
+        if (apellido.isEmpty() || apellido == null) {
             throw new miException("El apellido no puede estar vacio.");
         }
 
-        if (admin.getDni() > 99999999) {
+        if (dni > 99999999) {
             throw new miException("El dni supera la cantidad de digitos maximos.");
         }
 
-        if (admin.getDni() == null) {
+        if (dni == null) {
             throw new miException("El dni no puede estar vacio.");
         }
 
-        if (admin.getCorreo().isEmpty() || admin.getNombre() == null) {
+        if (correo.isEmpty() || correo == null) {
             throw new miException("El correo no puede estar vacio.");
         }
 
-        if (!admin.getCorreo().contains("@")) {
+        if (!correo.contains("@")) {
             throw new miException("El correo no contiene el simbolo '@'");
         }
 
-        if (admin.getTelefono() < 0) {
+        if (telefono < 0) {
             throw new miException("El numero ingresado es incorrecto.");
         }
 
-        if (admin.getTelefono() == null) {
+        if (telefono == null) {
             throw new miException("El numero de telefono no puede estar vacio.");
         }
 
-        if (admin.getPassword().isEmpty() || admin.getPassword() == null) {
+        if (password.isEmpty() || password == null) {
             throw new miException("La password no puede estar incompleta.");
         }
 
-        if (!isPasswordValid(admin.getPassword())) {
+        if (!isPasswordValid(password)) {
             throw new miException("La password no cumple con los requisitos de ser Alfanumerica y longitud minimo 6 caracteres");
         }
-
     }
 
     public boolean isPasswordValid(String password) {
@@ -105,7 +138,4 @@ public class AdminService {
 
     }
 
-    
-    
-    
 }
