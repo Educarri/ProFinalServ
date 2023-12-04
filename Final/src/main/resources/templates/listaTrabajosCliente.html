@@ -9,13 +9,10 @@
         <link href="/css/listaTrabajosCliente.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <header class="navbar">
+        <header>
             <nav th:replace="/fragments/navbar :: nav"></nav> 
         </header>
         <section>
-            <div class="cuadrado" style="-- i :0"></div>
-            <div class="cuadrado" style="-- i :1"></div>
-            <div class="cuadrado" style="-- i :2"></div>
             <div class="container m-5">
                 <div class="TableBox">
                     <div class="TableContainer">
@@ -98,8 +95,8 @@
 
                             </table>
                             <div class="boton">
-                                <a>
-                                    <button class="btn btn-primary" onclick="goBack()">Volver</button>
+                                <a href="/" >
+                                    <button class="btn btn-primary"> Volver </button>
                                 </a>
                             </div>
                         </div>
@@ -110,14 +107,7 @@
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         </section>
 
-
-
-        <script>
-            function goBack() {
-            window.history.back();
-            }
-        </script>
-        <div class="footer">
+        <div>
             <footer th:replace="/fragments/footer :: footer"> </footer>
         </div>
     </body>

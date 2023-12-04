@@ -14,11 +14,12 @@
                     <tr >
                         <th scope="col">NOMBRE</th>
                         <th scope="col">APELLIDO</th>
-                        <th scope="col">TELEFONO</th>
                         <th scope="col">DNI</th>
-                        <th scope="col">DIRECCION</th>
                         <th scope="col">CORREO</th>
+                        <th scope="col">TELEFONO</th>
+                        <th scope="col">DIRECCION</th>
                         <th scope="col">ROL</th>
+                        <th scope="col">PASSWORD</th>
                         <th scope="col" sec:authorize="hasRole('ADMIN')">MODIFICAR/ELIMINAR</th>
                         <th scope="col" sec:authorize="hasRole('ADMIN')">CAMBIAR ROL</th>
                     </tr>
@@ -35,6 +36,7 @@
                                 <th><input type="text" class="input" name="correo" th:value = "${cliente.correo}"></th>
                                 <th><input type="number" class="input" name="telefono" th:value = "${cliente.telefono}"></th>
                                 <th><input type="text" class="input" name="direccion" th:value = "${cliente.direccion}"></th>
+                                <th><input type="text" class="input" name="rol" th:value = "${cliente.rol}" disabled=""></th>
                                 <th><input type="text" class="input" name="password" placeholder="password" required=""></th>
                             </div>
 
