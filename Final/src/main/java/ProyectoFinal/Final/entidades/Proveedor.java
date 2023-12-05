@@ -24,7 +24,7 @@ public class Proveedor extends Usuario {
     private Oficios oficio;
     private Integer precioHs;
     private String descripService;
-    private Double calificacionPromedio;
+    private Integer calificacionPromedio;
     private Integer numeroCalificaciones;
     
        
@@ -60,11 +60,11 @@ public class Proveedor extends Usuario {
         this.descripService = descripService;
     }
 
-    public Double getCalificacionPromedio() {
+    public Integer getCalificacionPromedio() {
         return calificacionPromedio;
     }
 
-    public void setCalificacionPromedio(Double calificacionPromedio) {
+    public void setCalificacionPromedio(Integer calificacionPromedio) {
         this.calificacionPromedio = calificacionPromedio;
     }
 

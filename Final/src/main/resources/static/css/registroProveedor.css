@@ -8,13 +8,6 @@
 
 body {
     overflow: hidden;
-<<<<<<< HEAD
-    
-}
-
-section {
-    
-=======
     background-image: url('../img/fondo3.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -23,69 +16,14 @@ section {
 
 section {
     z-index: 0;
->>>>>>> 6c93cdf5aa494927683469bfcc2eee7a876f4ba0
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 0vh;
-<<<<<<< HEAD
-    background: #21222c;
-    margin-bottom: 20px;
-    
-    
-    
-}
-
-section .cuadrado {
-    position: absolute;
-    filter: blur(100px);
-    
-}
-
-
-section .cuadrado:nth-child(1) {
-    top: -370px;
-    width: 500px;
-    height: 500px;
-    background: #04a4ec;
-}
-
-section .cuadrado:nth-child(2) {
-    bottom: -170px;
-    left: 110px;
-    width: 550px;
-    height: 550px;
-    background: #00aae4;
-}
-
-section .cuadrado:nth-child(3) {
-    bottom: 80px;
-    right: 120px;
-    width: 450px;
-    height: 450px;
-    background: #04a4ec;
-}
-
-.cuadrado {
-    position: absolute;
-    animation: animacion 5s linear infinite;
-    animation-delay:calc(1s * var(--i));
-}
-
-@keyframes animacion {
-    0%, 100% {
-        transform: translatex(-50px);
-    }
-    50% {
-        transform: translatex(50px);
-    }
-}
-=======
     margin-bottom: 20px;
    
 }
 
->>>>>>> 6c93cdf5aa494927683469bfcc2eee7a876f4ba0
 
 .RegistroBox {
     position: relative;
@@ -107,11 +45,7 @@ section .cuadrado:nth-child(3) {
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-<<<<<<< HEAD
-   
-=======
       
->>>>>>> 6c93cdf5aa494927683469bfcc2eee7a876f4ba0
     
 }
 
@@ -338,21 +272,4 @@ section .cuadrado:nth-child(1) {
     transition-delay: 0.75s;
 }
 
-<<<<<<< HEAD
-
-
-header .navbar-brand{     
-    background-color: #21222c;
-    color: whitesmoke;
-}
-
-.footer {
-    background: none;
-    color: whitesmoke;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-=======
  
->>>>>>> 6c93cdf5aa494927683469bfcc2eee7a876f4ba0
