@@ -128,7 +128,7 @@ public class AdminControlador {
             pro.setOficio(null);
             pro.setPrecioHs(1);
             pro.setPassword(cli.getPassword());
-            pro.setCalificacionPromedio(0.0);
+            pro.setCalificacionPromedio(0);
             pro.setNumeroCalificaciones(0);
             pro.setFechaCreacion(new Date());
 

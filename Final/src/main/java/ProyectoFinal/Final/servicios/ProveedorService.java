@@ -55,7 +55,7 @@ public class ProveedorService {
         pro.setTelefono(telefono);
         pro.setPassword(new BCryptPasswordEncoder().encode(password));
         pro.setDireccion(direccion);
-        pro.setCalificacionPromedio(0.0);
+        pro.setCalificacionPromedio(0);
         pro.setNumeroCalificaciones(0);
         pro.setFechaCreacion(new Date());
 
@@ -285,10 +285,10 @@ public class ProveedorService {
     if (optionalProveedor.isPresent()) {
         Proveedor proveedor = optionalProveedor.get();
         
-        double nuevoPromedio = ((proveedor.getCalificacionPromedio() * proveedor.getNumeroCalificaciones()) + calificacion)
+        Integer nuevoPromedio = ((proveedor.getCalificacionPromedio() * proveedor.getNumeroCalificaciones()) + calificacion)
                 / (proveedor.getNumeroCalificaciones() + 1);
 
-        proveedor.setCalificacionPromedio(Math.floor(nuevoPromedio));
+        proveedor.setCalificacionPromedio(nuevoPromedio);
         proveedor.setNumeroCalificaciones(proveedor.getNumeroCalificaciones() + 1);
 
         proRepo.save(proveedor);
