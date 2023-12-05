@@ -113,7 +113,7 @@ public class TrabajoControlador {
         } catch (miException e) {
 
             modelo.put("error", e.getMessage());
-            return "calificarTrabajo.html";
+            return "redirect:/trabajo/calificar/" + id;
         }
         return pagina;
     }

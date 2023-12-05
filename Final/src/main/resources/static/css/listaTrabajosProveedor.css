@@ -22,8 +22,6 @@ section {
    
 }
 
-
-
 .TableBox {
     position: relative;   
     padding-left: 150px;
@@ -85,6 +83,7 @@ table {
     color: #001133;
     table-layout: fixed;
     border-collapse: collapse;
+    margin: 0 auto;
     
 }
 
@@ -137,6 +136,7 @@ tbody tr:hover {
     text-decoration: none;
     overflow: hidden;
     transition: 0.1s;
+    padding: 5px;
 }
 
 .btn-neon:hover{
@@ -206,6 +206,20 @@ tbody tr:hover {
     transition-delay: 0.75s;
 }
 
+
+.btn-primary{
+    display: flex;
+    margin: 20px auto;
+}
+
+.titulos{
+     margin: 30px auto;
+     text-align: center;
+}
+
+td, th {
+    text-align: center;
+}
 
 /* Consultas de medios para hacer el diseño más responsive */
 @media only screen and (max-width: 768px) {
