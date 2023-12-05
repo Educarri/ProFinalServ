@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
@@ -12,21 +13,50 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 /* Body */
+=======
+/* Body */
+
+body {
+    overflow: hidden;
+    background-image: url('../img/fondo3.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size:  cover;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+>>>>>>> back
 .container {
   display: grid;
   grid-template-columns: auto;
   gap: 0px;
+<<<<<<< HEAD
+=======
+  padding-left: 20%;
+>>>>>>> back
 }
 
 hr {
   height: 1px;
+<<<<<<< HEAD
   background-color: rgba(16, 86, 82, .75);
   ;
+=======
+  background-color: #5F9EA0; /* Celeste cielo oscuro */
+>>>>>>> back
   border: none;
 }
 
 .card {
+<<<<<<< HEAD
   width: 400px;
+=======
+  width: 600px;
+>>>>>>> back
   background: rgb(255, 250, 235);
   box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09), 0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
 }
@@ -39,10 +69,17 @@ hr {
   align-items: center;
   padding-left: 20px;
   border-bottom: 1px solid rgba(16, 86, 82, .75);
+<<<<<<< HEAD
   ;
   font-weight: 700;
   font-size: 11px;
   color: #000000;
+=======
+  font-weight: 700;
+  font-size: 25px;
+  color: #000000;
+  padding: 15px;
+>>>>>>> back
 }
 
 /* Cart */
@@ -62,7 +99,11 @@ hr {
 }
 
 .cart .steps .step span {
+<<<<<<< HEAD
   font-size: 13px;
+=======
+  font-size: 20px;
+>>>>>>> back
   font-weight: 600;
   color: #000000;
   margin-bottom: 8px;
@@ -70,13 +111,21 @@ hr {
 }
 
 .cart .steps .step p {
+<<<<<<< HEAD
   font-size: 11px;
+=======
+  font-size: 16px;
+>>>>>>> back
   font-weight: 600;
   color: #000000;
 }
 
 /* Promo */
+<<<<<<< HEAD
 .promo form {
+=======
+.promo .form {
+>>>>>>> back
   display: grid;
   grid-template-columns: 1fr 80px;
   gap: 10px;
@@ -100,7 +149,11 @@ hr {
   background-color: rgb(201, 193, 178);
 }
 
+<<<<<<< HEAD
 .promo form button {
+=======
+.promo .form .boton {
+>>>>>>> back
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -109,15 +162,25 @@ hr {
   gap: 10px;
   width: 100%;
   height: 36px;
+<<<<<<< HEAD
   background: rgba(16, 86, 82, .75);
+=======
+  background-image: url('../img/fondo3.jpg');
+>>>>>>> back
   box-shadow: 0px 0.5px 0.5px #F3D2C9, 0px 1px 0.5px rgba(239, 239, 239, 0.5);
   border-radius: 5px;
   border: 0;
   font-style: normal;
   font-weight: 600;
+<<<<<<< HEAD
   font-size: 12px;
   line-height: 15px;
   color: #000000;
+=======
+  font-size: 17px;
+  line-height: 15px;
+  color: #fff;
+>>>>>>> back
 }
 
 /* Checkout */
@@ -129,12 +192,17 @@ hr {
 }
 
 .payments .details span:nth-child(odd) {
+<<<<<<< HEAD
   font-size: 12px;
+=======
+  font-size: 17px;
+>>>>>>> back
   font-weight: 600;
   color: #000000;
   margin: auto auto auto 0;
 }
 
+<<<<<<< HEAD
 .payments .details span:nth-child(even) {
   font-size: 13px;
   font-weight: 600;
@@ -142,12 +210,21 @@ hr {
   margin: auto 0 auto auto;
 }
 
+=======
+>>>>>>> back
 .checkout .footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 10px 10px 20px;
+<<<<<<< HEAD
   background-color: rgba(16, 86, 82, .5);
+=======
+  background-color: #87CEFB; /* Celeste cielo */
+
+
+
+>>>>>>> back
 }
 
 .price {
@@ -164,6 +241,7 @@ hr {
   align-items: center;
   width: 150px;
   height: 36px;
+<<<<<<< HEAD
   background: rgba(16, 86, 82, .55);
   box-shadow: 0px 0.5px 0.5px rgba(16, 86, 82, .75), 0px 1px 0.5px rgba(16, 86, 82, .75);
   ;
@@ -175,3 +253,25 @@ hr {
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
 }
+=======
+    background-image: url('../img/fondo3.jpg');
+  box-shadow: 0px 0.5px 0.5px rgba(16, 86, 82, .75), 0px 1px 0.5px rgba(16, 86, 82, .75);
+  border-radius: 7px;
+  border: 1px solid rgb(16, 86, 82);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    margin: 0; /* Asegura que no haya margen que afecte el centrado */
+    padding: 0; /* Asegura que no haya relleno que afecte el centrado */
+}
+
+>>>>>>> back
