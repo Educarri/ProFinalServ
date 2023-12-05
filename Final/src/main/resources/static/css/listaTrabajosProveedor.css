@@ -15,27 +15,32 @@ body {
 }
 
 section {
-/*    display: flex;*/
-    justify-content: center;
-    align-content: center;
-}
-
-
-.LoginBox {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 80%;
+   
 }
 
-.LoginContainer {
-    top: 0;
+.TableBox {
+    position: relative;   
+    padding-left: 150px;
+}
+
+.fixed-bottom {
+    bottom: -40px;
+}
+
+.TableContainer {
+    top: -15px;
+    left: 30px;
     position: relative;
-    width: 500px;
-    height: 550px;
+    width: 950px;
+    min-height: 510px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(5px);
@@ -43,100 +48,95 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    margin-top: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 150px;
+
 }
 
-.LoginForm {
-    position: relative;
+.TableList {
     width: 100%;
     height: 100%;
-    padding: 40px;
-
-
-
+    text-align: center;
+    padding-top: -100px;
+    padding-right: 30px;
+    padding-left: 50px;
+    max-height: 500px; 
+    overflow-y: auto;
+    
+}
+::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra de desplazamiento */
 }
 
-.LoginForm h2 {
+.TableList h2 {
     position: relative;
-    color: #fff;
-    font-size: 24px;
+    color: whitesmoke;
+    font-size: x-large;
     font-weight: 600;
     letter-spacing: 1px;
     margin-bottom: 40px;
+    padding: 38px;
 }
 
-.LoginForm h2::before {
-    content: ' ';
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    width: 180px;
-    height: 4px;
-    background: #fff;
+
+
+table {
+    color: #001133;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin: 0 auto;
+    
 }
 
-.LoginForm .inputBox {
-    width: 100%;
-    margin-top: 20px;
+thead {
+    background: #00aae4;
+    position: relative;
+    padding: 8px
+    overflow-y: scroll;
+    
 }
 
-.LoginForm .inputBox input {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    outline: none;
-    padding: 5px;
-    border-radius: 10px;
+tr th:first-child {
+          border-radius: 6px 0px 0px 0px;
+        }
+tr th:last-child  {
+          border-radius: 0px 6px 0px 0px;
+        }
+
+
+th {
+    padding: 8px;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 16px;
-    letter-spacing: 1px;
-    color: #fff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
-.LoginForm .inputBox input::placeholder {
-    color: whitesmoke;
-}
-
-.LoginForm .btn-neon, .boton-volver button {
-    background: #fff;
-    color: #666;
-    width: 100%;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.boton-volver{
-    width: 10%;
-    
-   
+.boton {
+    padding-top: 30px;
 }
 
 .btn-neon{
-/*    width: 100%;*/
-    margin-top: 20px;
+    width: 100%;
     background: rgba(255, 255, 255, 0.2);
     border: none;
-    outline: none;
-    padding: 10px ;
+    outline: none;  
     border-radius: 10px;
     border: 1px solid  rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     text-align: center;
-/*    position: relative;
+    position: relative;
     display: inline-block;
-    padding-top:10px;*/
-    color: #fff;
+    color: whitesmoke;
     letter-spacing: 1px;
     text-decoration: none;
-    font-size: 16px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     overflow: hidden;
-    transition: 0.2s;
+    transition: 0.1s;
+    padding: 5px;
 }
 
 .btn-neon:hover{
@@ -171,11 +171,13 @@ section {
     height: 2px;
     background: linear-gradient(270deg, transparent,#21222c);
 }
+
 .btn-neon:hover #span3{
     right: 100%;
     transition: 1s;
     transition-delay: 0.5s;
 }
+
 #span2{
     top: -100%;
     right: 0;
@@ -183,11 +185,13 @@ section {
     height: 100%;
     background: linear-gradient(180deg,transparent,#21222c);
 }
+
 .btn-neon:hover #span2{
     top: 100%;
     transition: 1s;
     transition-delay: 0.25s;
 }
+
 #span4{
     bottom: -100%;
     left: 0;
@@ -195,6 +199,7 @@ section {
     height: 100%;
     background: linear-gradient(360deg,transparent,#21222c);
 }
+
 .btn-neon:hover #span4{
     bottom: 100%;
     transition: 1s;
@@ -202,15 +207,26 @@ section {
 }
 
 
+.btn-primary{
+    display: flex;
+    margin: 20px auto;
+}
 
+.titulos{
+     margin: 30px auto;
+     text-align: center;
+}
+
+td, th {
+    text-align: center;
+}
 
 /* Consultas de medios para hacer el diseño más responsive */
-
 @media only screen and (max-width: 768px) {
-
     section {
         background: #00aae4;
     }
+
     section .cuadrado {
         display: none; /* Oculta los cuadrados en pantallas más pequeñas */
         background: #00aae4;
@@ -233,12 +249,30 @@ section {
         margin-bottom: 20px; /* Ajusta el margen inferior del título del formulario */
     }
 
+    .TableContainer {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        overflow-x: auto; /* Agrega barra de desplazamiento horizontal */
+        overflow-y: hidden; /* Deshabilita la barra de desplazamiento vertical */
+    }
+
+
+    .TableList {
+        padding-left: 10px; /* Ajusta el relleno izquierdo */
+        padding-right: 10px; /* Ajusta el relleno derecho */
+        overflow-y: hidden; /* Agrega barra de desplazamiento vertical */
+        max-height: 300px; /* Establece la altura máxima de la tabla, ajusta según tus necesidades */
+    }
+
     .btn-neon {
         padding: 10px 20px; /* Ajusta el relleno del botón */
         margin-top: 20px; /* Ajusta el margen superior del botón */
     }
 
-    .footer {
-        display: none;
+    
+    .rechazado{
+        color: red;
+        
     }
 }

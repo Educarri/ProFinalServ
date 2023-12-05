@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="/css/registroProveedor.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
-        
+        <link href="/css/errorexito.css" rel="stylesheet" type="text/css"/>
         <title>Registro Proveedor</title>
     </head>
 
@@ -14,6 +14,13 @@
         <header>
             <nav th:replace="/fragments/navbar :: nav"></nav> 
         </header>
+
+        <div th:if="${error != null}" class="mensajeError">
+            <div class="bloque">
+                <h5 class="texto-error">Error!</h5>
+                <p class="texto-error-mensaje" th:text="${error}"></p>
+            </div> 
+        </div>
 
         <section>
 
@@ -74,12 +81,6 @@
                                     Registrar Proveedor
                                 </button>
                             </form>
-                        </div>
-                        <div style="display: block">
-                            <div th:if="${error != null}" style="background-color: red">
-                                <h5>Error!</h5>
-                                <p th:text="${error}"></p>
-                            </div>
                         </div>
                         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
                         </script>

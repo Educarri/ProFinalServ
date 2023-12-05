@@ -5,111 +5,122 @@
         <title>Lista Trabajos</title>
         <meta charset="UTF-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <link href="/css/listaTrabajosProveedor.css" rel="stylesheet" type="text/css"/>
 
     </head>
     <body>
-        <div class="container m-5">
-            <h1>LISTA TRABAJOS</h1>
-            <table class="table table-dark">
-                <thead>
-                    <tr >
-                        <th scope="col">HORAS TRABAJO</th>
-                        <th scope="col">PRESUPUESTO</th>
-                        <th scope="col">ESTADO</th>
-                        <th scope="col">CALIFICACION</th>
-                        <th scope="col">COMENTARIO</th>
-                        <th scope="col">FECHA CREACION</th>
+        <section>        
+            <div class="container m-5">
+                <h1 class="titulos">LISTA TRABAJOS</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">HORAS TRABAJO</th>
+                            <th scope="col">PRESUPUESTO</th>
+                            <th scope="col">ESTADO</th>
+                            <th scope="col">CALIFICACION</th>
+                            <th scope="col">COMENTARIO</th>
+                            <th scope="col">FECHA CREACION</th>
 
-                        <th scope="col" sec:authorize="hasAnyRole('ADMIN', 'PROVEEDOR')">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="trabajo:${trabajos}" th:if="${trabajo.aceptado}">
-                        <th th:text="${trabajo.HsTrabajo}" ></th>
-                        <th th:text="'$' + ${#numbers.formatDecimal(trabajo.presupuesto, 0, 'COMMA', 2, 'POINT')}"></th>
-                        <th th:text="${trabajo.estado}"></th>
-                        <th th:text="${trabajo.calificacion}"></th>
-                        <th th:text="${trabajo.comentario}"></th>
-                        <th th:text="${trabajo.fechaCreacion}"></th>
+                            <th scope="col" sec:authorize="hasAnyRole('ADMIN', 'PROVEEDOR')">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="trabajo:${trabajos}" th:if="${trabajo.aceptado}">
+                            <th th:text="${trabajo.HsTrabajo}" ></th>
+                            <th th:text="'$' + ${#numbers.formatDecimal(trabajo.presupuesto, 0, 'COMMA', 2, 'POINT')}"></th>
+                            <th th:text="${trabajo.estado}"></th>
+                            <th th:text="${trabajo.calificacion}"></th>
+                            <th th:text="${trabajo.comentario}"></th>
+                            <th th:text="${trabajo.fechaCreacion}"></th>
 
-                        <th>
-                            <a th:if="${#strings.trim(trabajo.estado) == 'Pendiente'}"
+                           <th>
+                            <a th:if="${#strings.trim(trabajo.estado) != 'FINALIZADO'}"
                                th:href="@{/trabajo/estado/__${trabajo.id}__}"
                                sec:authorize="hasAnyRole('PROVEEDOR', 'ADMIN')"
-                               class="btn btn-sm btn-outline-secondary">CAMBIAR ESTADO</a>
+                               class="btn-neon">
+                                <span id="span1"></span>
+                                <span id="span2"></span>
+                                <span id="span3"></span>
+                                CAMBIAR ESTADO</a>
 
-                            <button th:unless="${#strings.trim(trabajo.estado) != 'Finalizado'}"
+                            <button th:unless="${#strings.trim(trabajo.estado.toUpperCase()) != 'FINALIZADO'}"
                                     type="button"
-                                    class="btn btn-sm btn-outline-secondary"
+                                    class="btn-neon" style="color: blue"
                                     disabled="disabled">TRABAJO FINALIZADO</button>
                         </th>
+                        </tr>
+                    </tbody>
+                </table>
 
+                <h2 class="titulos">LISTA TRABAJOS PENDIENTES DE ACEPTACION</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">HORAS TRABAJO</th>
+                            <th scope="col">PRESUPUESTO</th>
+                            <th scope="col">FECHA CREACION</th>
 
-                    </tr>
-                </tbody>
-            </table>
+                            <th scope="col" sec:authorize="hasAnyRole('ADMIN', 'PROVEEDOR')">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="trabajo:${trabajos}" th:if="${not trabajo.aceptado && #strings.trim(trabajo.estado) != 'Rechazado'}">
+                            <th th:text="${trabajo.HsTrabajo}" ></th>
+                            <th th:text="'$' + ${#numbers.formatDecimal(trabajo.presupuesto, 0, 'COMMA', 2, 'POINT')}"></th>
+                            <th th:text="${trabajo.fechaCreacion}"></th>
 
+                            <th>
+                                <a th:href="@{/trabajo/aceptado/__${trabajo.id}__}"
+                                   sec:authorize="hasAnyRole('PROVEEDOR', 'ADMIN')"
+                                   class="btn-neon" style="color: green">
+                                    <span id="span1"></span>
+                                    <span id="span2"></span>
+                                    <span id="span3"></span>
+                                    <span id="span4"></span>
+                                    ACEPTAR TRABAJO</a>
 
+                                <a th:href="@{/trabajo/rechazar/__${trabajo.id}__}"
+                                   sec:authorize="hasAnyRole('PROVEEDOR', 'ADMIN')"
+                                   class="btn-neon" style="color: red">
+                                    <span id="span1"></span>
+                                    <span id="span2"></span>
+                                    <span id="span3"></span>
+                                    <span id="span4"></span>
+                                    RECHAZAR TRABAJO</a>   
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
 
+                <h2 class="titulos">LISTA TRABAJOS RECHAZADOS</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">HORAS TRABAJO</th>
+                            <th scope="col">PRESUPUESTO</th>
+                            <th scope="col">FECHA CREACION</th>
+                            <th scope="col">ESTADO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="trabajo:${trabajos}" th:if="${#strings.trim(trabajo.estado) == 'Rechazado'}">
+                            <th th:text="${trabajo.HsTrabajo}" ></th>
+                            <th th:text="'$' + ${#numbers.formatDecimal(trabajo.presupuesto, 0, 'COMMA', 2, 'POINT')}"></th>
+                            <th th:text="${trabajo.fechaCreacion}"></th>
+                            <th th:text="${trabajo.estado}"></th>
+                        </tr>
+                    </tbody>
+                </table>
 
-            <h2>LISTA TRABAJOS PENDIENTES DE ACEPTACION</h2>
-            <table class="table table-dark">
-                <thead>
-                    <tr >
-                        <th scope="col">HORAS TRABAJO</th>
-                        <th scope="col">PRESUPUESTO</th>
-                        <th scope="col">FECHA CREACION</th>
-
-                        <th scope="col" sec:authorize="hasAnyRole('ADMIN', 'PROVEEDOR')">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="trabajo:${trabajos}" th:if="${not trabajo.aceptado && #strings.trim(trabajo.estado) != 'Rechazado'}">
-                        <th th:text="${trabajo.HsTrabajo}" ></th>
-                        <th th:text="'$' + ${#numbers.formatDecimal(trabajo.presupuesto, 0, 'COMMA', 2, 'POINT')}"></th>
-                        <th th:text="${trabajo.fechaCreacion}"></th>
-
-                        <th>
-                            <a th:href="@{/trabajo/aceptado/__${trabajo.id}__}"
-                               sec:authorize="hasAnyRole('PROVEEDOR', 'ADMIN')"
-                               class="btn btn-sm btn-outline-secondary" style="color: green">ACEPTAR TRABAJO</a>
-                            
-                               <a th:href="@{/trabajo/rechazar/__${trabajo.id}__}"
-                               sec:authorize="hasAnyRole('PROVEEDOR', 'ADMIN')"
-                               class="btn btn-sm btn-outline-secondary" style="color: red">RECHAZAR TRABAJO</a>   
-                        </th>
-                    </tr>
-                </tbody>
-            </table>
-            
-                        <h2>LISTA TRABAJOS RECHAZADOS</h2>
-            <table class="table table-dark">
-                <thead>
-                    <tr >
-                        <th scope="col">HORAS TRABAJO</th>
-                        <th scope="col">PRESUPUESTO</th>
-                        <th scope="col">FECHA CREACION</th>
-                        <th scope="col">ESTADO</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="trabajo:${trabajos}" th:if="${#strings.trim(trabajo.estado) == 'Rechazado'}">
-                        <th th:text="${trabajo.HsTrabajo}" ></th>
-                        <th th:text="'$' + ${#numbers.formatDecimal(trabajo.presupuesto, 0, 'COMMA', 2, 'POINT')}"></th>
-                        <th th:text="${trabajo.fechaCreacion}"></th>
-                        <th th:text="${trabajo.estado}"></th>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div>
-                <a>
-                    <button class="btn btn-primary" onclick="goBack()">Volver</button>
-                </a>
+                <div>
+                    <a>
+                        <button class="btn btn-primary" onclick="goBack()">Volver</button>
+                    </a>
+                </div>
             </div>
-        </div>
 
-
+        </section>
         <script>
             function goBack() {
             window.history.back();
@@ -123,5 +134,9 @@
             }, 1000);
         </script>
 
+        <div class="footer">
+            <footer th:replace="/fragments/footer :: footer"> </footer>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     </body>
 </html>

@@ -49,7 +49,25 @@ color: whitesmoke;
 
 .nav-link{
      color: whitesmoke;
-     
+     font-size: 18px;
+ 
+}
+
+.nav-link:hover, .navbar-brand:hover{
+    color: #04a4ec;
+    text-decoration: underline;
+}
+
+
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+     color: #04a4ec; 
+    font-style: oblique;
+}
+
+.nav-link:focus {
+    color: #04a4ec; 
+  font-size: 20px;
 }
 /*
 .contenedor-navbar{
@@ -115,12 +133,12 @@ button .navbar-toggler {
     
 }
 
-/*.navbar-brand, .navbar-toggler-icon, .navbar-toggler  {
+.navbar-brand  {
     color: whitesmoke;
     font-family: sans-serif bolder;
+                                   }
 
-
-
+/*
 .navbarNav, .navbar, .nav, .nav-item, .navbar-brand, .navbar-collapse, .navbar-expand-lg, .navbar-nav, .navbar-toggler, .navbar-toggler-icon, span  {
     color: whitesmoke !important;
     font-family: sans-serif bolder !important;

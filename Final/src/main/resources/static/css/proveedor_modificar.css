@@ -1,80 +1,250 @@
-h1{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
     color: whitesmoke;
-    font-size: 30px;
-    text-align: center;
-    margin: 15px;
-    font-family: monospace;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #21222c;
+    overflow: hidden;
+    background-image: url('../img/fondo3.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size:  cover;
+    overflow-y: auto;
 }
 
-.footer {
-    background-color: #f0f0f0;
-    padding: 20px 0;
-    text-align: center;
-    margin-top: auto;
-}
-
-.footer-content {
-    color: #333;
-}
-
-.formulario{
+section {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    
+        
 }
 
 
-
-
-.custum-file-upload {
-  height: 200px;
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: space-between;
-  gap: 20px;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  border: 2px dashed #cacaca;
-  background-color: rgba(255, 255, 255, 1);
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0px 48px 35px -48px rgba(0,0,0,0.1);
+.LoginBox {
+    position: relative;
 }
 
-.custum-file-upload .icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.LoginContainer {
+    top: 0;
+    position: relative;
+    width: 400px;
+    height: 90%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 200px;
+    margin-top: 10px;
+    }
+
+.LoginForm {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
 }
 
-.custum-file-upload .icon svg {
-  height: 80px;
-  fill: rgba(75, 85, 99, 1);
+.LoginForm h2 {
+    position: relative;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
 }
 
-.custum-file-upload .text {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.LoginForm h2::before {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 180px;
+    height: 4px;
+    background: #fff;
 }
 
-.custum-file-upload .text span {
-  font-weight: 400;
-  color: rgba(75, 85, 99, 1);
+.LoginForm .inputBox {
+    width: 100%;
+    margin-top: 20px;
 }
 
-.custum-file-upload input {
-  display: none;
+.LoginForm .inputBox input, .form-control  {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.LoginForm .inputBox input::placeholder {
+    color: whitesmoke;
+}
+
+.LoginForm .btn-neon {
+    background: #fff;
+    color: #666;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.LoginForm option{
+    color:black;
+}
+
+
+.btn-neon{
+    width: 100%;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    outline: none;
+    padding: 10px ;
+    border-radius: 10px;
+    border: 1px solid  rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    color: #fff;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: 16px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.btn-neon:hover{
+    background: #04a4ec;
+    box-shadow: 0 0 10px whitesmoke, 0 0 40px whitesmoke, 0 0 80px whitesmoke;
+    transition-delay: 1s;
+    color: #fff;
+}
+
+.btn-neon span{
+    position: absolute;
+    display: block;
+}
+
+#span1{
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent,#21222c);
+}
+
+.btn-neon:hover #span1{
+    left: 100%;
+    transition: 1s;
+}
+
+#span3{
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent,#21222c);
+}
+.btn-neon:hover #span3{
+    right: 100%;
+    transition: 1s;
+    transition-delay: 0.5s;
+}
+#span2{
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg,transparent,#21222c);
+}
+.btn-neon:hover #span2{
+    top: 100%;
+    transition: 1s;
+    transition-delay: 0.25s;
+}
+#span4{
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg,transparent,#21222c);
+}
+.btn-neon:hover #span4{
+    bottom: 100%;
+    transition: 1s;
+    transition-delay: 0.75s;
+}
+
+ .LoginForm .inputBox .imagenProve {
+        max-height: 40%;
+        max-width: 40%;
+        border-radius: 1px;
+        display:flex;
+        justify-content: center;
+    }
+
+
+/* Consultas de medios para hacer el diseño más responsive */
+
+@media only screen and (max-width: 768px) {
+   
+    section {
+        background: #00aae4;
+    }
+    section .cuadrado {
+        display: none; /* Oculta los cuadrados en pantallas más pequeñas */
+        background: #00aae4;
+    }
+ 
+     .LoginBox {
+        margin-top: 0; /* Ajusta el margen superior */
+    }
+
+    .LoginContainer {
+        width: 80%; /* Ajusta el ancho del contenedor de login */
+        margin-top: 20px; /* Ajusta el margen superior del contenedor de login */
+    }
+
+    .LoginForm {
+        padding: 20px; /* Ajusta el relleno del formulario de login */
+    }
+
+    .LoginForm h2 {
+        margin-bottom: 20px; /* Ajusta el margen inferior del título del formulario */
+    }
+
+    .btn-neon {
+        padding: 10px 20px; /* Ajusta el relleno del botón */
+        margin-top: 20px; /* Ajusta el margen superior del botón */
+    }
+    
+    .footer {
+        display: none;
+    }
+    
+   
 }

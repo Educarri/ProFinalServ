@@ -81,6 +81,7 @@ table {
     color: #001133;
     table-layout: fixed;
     border-collapse: collapse;
+    margin: 0 auto;
 }
 
 thead {
@@ -121,7 +122,7 @@ tbody tr:hover {
     overflow: hidden;
     transition: 0.2s;
     padding: 3px;
-}
+    margin: 3px;
 
 .btn-neon:hover{
     background: #04a4ec;
@@ -188,6 +189,10 @@ tbody tr:hover {
     bottom: 100%;
     transition: 1s;
     transition-delay: 0.75s;
+}
+
+td, th {
+    text-align: center;
 }
 
 

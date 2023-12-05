@@ -11,9 +11,9 @@
     </head>
 
     <body>
-        <header>
+<!--        <header>
             <nav th:replace="/fragments/navbar :: nav"></nav> 
-        </header> 
+        </header> -->
 
         <section>
 
@@ -37,17 +37,15 @@
 
                             <button type="submit" class="btn-neon">Actualizar</button>
                         </form>
-
+                        <a href="/inicio">
+                            <button class="btn-neon"> Volver </button>
+                        </a>
                     </div>
                 </div>
 
             </div>
 
-
-            <a href="/inicio" style="margin: 0 auto">
-                <button class="btn-neon"> Volver </button>
-            </a>
-     
+             
         <div th:if="${error != null}" class="mensajeError">
             <h5>Error!</h5>
             <p th:text="${error}"></p>

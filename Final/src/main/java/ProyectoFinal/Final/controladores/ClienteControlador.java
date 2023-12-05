@@ -20,6 +20,7 @@ import ProyectoFinal.Final.servicios.ProveedorService;
 import ProyectoFinal.Final.servicios.TrabajoService;
 import java.util.Date;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -89,15 +90,16 @@ public class ClienteControlador {
             @RequestParam(required = false) Integer telefono,
             @RequestParam(required = false) String password,
             @RequestParam(required = false) String direccion,
-            ModelMap modelo) {
+            ModelMap modelo,
+            HttpSession sesion) {
         try {
             cliServ.modificarCliente(nombre, apellido, dni, correo, telefono, password, direccion, id);
-            modelo.put("exito", "Logro modificar correctamente al Cliente");
-            return "inicio.html";
+            sesion.setAttribute("exito", "Logro modificar correctamente al Cliente");
+            return "redirect:/inicio";
         } catch (miException e) {
 
-            modelo.put("error", e.getMessage());
-            return "cliente_modificar.html";
+            sesion.setAttribute("error", e.getMessage());
+            return "redirect:/perfil";
         }
     }
 
