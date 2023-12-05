@@ -12,6 +12,7 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size:  cover;
+    overflow-y: auto; 
 }
 
 section {
@@ -35,8 +36,8 @@ section {
 .TableContainer {
     top: -15px;
     left: 30px;
-    position: relative;
-    width: 950px;
+    position: center;
+    width: 100%;
     min-height: 510px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
@@ -58,18 +59,17 @@ section {
     width: 100%;
     height: 100%;
     text-align: center;
-    padding-top: -100px;
+    padding-top: 30px;
     padding-right: 30px;
-    padding-left: 50px;
-    max-height: 500px; 
-    overflow-y: auto; 
-    
+    padding-left: 30px;
+    padding-bottom: 30px;
+
 }
 
 .TableList h2 {
     position: relative;
     color: whitesmoke;
-    font-size: 24px;
+    font-size: 35px;
     font-weight: 600;
     letter-spacing: 1px;
     margin-bottom: 40px;
@@ -81,6 +81,7 @@ table {
     color: #001133;
     table-layout: fixed;
     border-collapse: collapse;
+    margin: 0 auto;
 }
 
 thead {
@@ -121,8 +122,8 @@ tbody tr:hover {
     overflow: hidden;
     transition: 0.2s;
     padding: 3px;
+    margin: 3px;
 }
-
 .btn-neon:hover{
     background: #04a4ec;
     box-shadow: 0 0 10px whitesmoke, 0 0 40px whitesmoke, 0 0 80px whitesmoke;
@@ -190,6 +191,10 @@ tbody tr:hover {
     transition-delay: 0.75s;
 }
 
+td, th {
+    text-align: center;
+}
+
 
 /* Consultas de medios para hacer el diseño más responsive */
 @media only screen and (max-width: 768px) {
@@ -240,15 +245,13 @@ tbody tr:hover {
         margin-top: 20px; /* Ajusta el margen superior del botón */
     }
 
-    
+
     .rechazado{
         color: red;
-        
+
     }
-    
+
     .calificado{
         color: red;
     }
 }
-
-   
