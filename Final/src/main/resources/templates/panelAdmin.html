@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
         <link href="/css/panelAdmin..css" rel="stylesheet" type="text/css"/>
-
+        <link href="/css/errorexito.css" rel="stylesheet" type="text/css"/>
 
     </head>
 
@@ -22,11 +22,11 @@
                     <img src="../img/logo.png"  alt="HomeFix" width="50" height="35">
                     <a class="navbar-brand" href="/" >HomeFix</a> 
                 </div>
-<!--                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>-->
-                
-<!--                <div class="collapse navbar-collapse" id="navbarNavDropdown">-->
+                <!--                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>-->
+
+                <!--                <div class="collapse navbar-collapse" id="navbarNavDropdown">-->
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -62,19 +62,33 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/perfil">Ver perfil</a></li>
                             <li><a class="dropdown-item" href="/logout">Cerrar Sesion</a></li> 
-                            
+
                         </ul>
                     </li>
                 </ul>
             </div>
-            </div>
-
-
-            
         </div>
+
+
+
+
     </nav>
-    
+
     <body>
+
+        <div th:if="${exito != null}" class="exito" >
+            <div class="bloque">
+                <h5 class="texto-exito" >Exito!</h5>
+                <p class="texto-exito-mensaje" th:text="${exito}"></p>
+            </div>   
+        </div>
+        <div th:if="${error != null}" class="mensajeError">
+            <div class="bloque">
+                <h5 class="texto-error">Error!</h5>
+                <p class="texto-error-mensaje" th:text="${error}"></p>
+            </div> 
+        </div>
+
         <div class="content">
             <h1>Bienvenido al panel administrador!</h1>
             <p style="color: whitesmoke; text-align: center" th:if="${session.usuarioSesion != null}" th:text="'Hola '+ ${session.usuarioSesion.nombre}"></p>

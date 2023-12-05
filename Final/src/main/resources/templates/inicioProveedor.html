@@ -13,7 +13,7 @@ and open the template in the editor.
         <link href="/css/main.css" rel="stylesheet" type="text/css"/>
         <link href="/css/inicio.css" rel="stylesheet" type="text/css"/>
         <link href="/css/navfoot.css" rel="stylesheet" type="text/css"/>
-
+        <link href="/css/errorexito.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
@@ -22,11 +22,17 @@ and open the template in the editor.
         </header>
         <!--        Mensaje de inicio de sesion exitoso-->
 
-        <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
-            <div class="card-body">
-                <h5 class="card-title">Exito!</h5>
-                <p class="card-text" th:text="${exito}"></p>
+        <div th:if="${exito != null}" class="exito" >
+            <div class="bloque">
+                <h5 class="texto-exito" >Exito!</h5>
+                <p class="texto-exito-mensaje" th:text="${exito}"></p>
             </div>   
+        </div>
+        <div th:if="${error != null}" class="mensajeError">
+            <div class="bloque">
+            <h5 class="texto-error">Error!</h5>
+            <p class="texto-error-mensaje" th:text="${error}"></p>
+            </div> 
         </div>
 
         <section>
@@ -71,7 +77,7 @@ and open the template in the editor.
             </div>
         </section>
 
-        <div class="footer">
+        <div >
 
             <footer th:replace="/fragments/footer :: footer"> </footer>
         </div>
