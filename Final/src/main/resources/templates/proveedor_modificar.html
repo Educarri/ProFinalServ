@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
     <head>
         <title>Modificar Usuario</title>
@@ -21,9 +21,11 @@
                 <div class="LoginContainer">
                     <div class="LoginForm">
 
-                        <h2>Modificar Perfil</h2>
+                        <h2>Modificar Perfil del Proveedor</h2>
                         <div class="formulario">
                             <form th:action="@{/proveedor/modificar/__${user?.id}__}" method="POST" enctype="multipart/form-data">
+                                
+                                <div class="inputBox">
 
                                 <input hidden type="text" name="id" th:value="${user.id}" >
                                 <input type="text" class="input" name="nombre" placeholder="Nombre" th:value= "${user.nombre}">
@@ -32,9 +34,10 @@
                                 <input type="text" class="input" name="correo" placeholder="Correo Electronico" th:value = "${user.correo}">
                                 <input type="number" class="input" name="telefono" placeholder="Telefono" th:value = "${user.telefono}">
                                 <input type="text" class="input" name="direccion" placeholder="Direccion" th:value = "${user.direccion}">
-                                <input type="text" class="input" name="password" placeholder="password" required="">
-
-                                <div class="form-group">
+                                <label for="password">La contraseña debe tener al menos 6 caracteres alfanuméricos</label>
+                                <input type="password" class="input" name="password" placeholder="Password" required="">
+                                </div>
+                                <div class="inputBox">
                                     <label for="tipoProveedor">Selecciona el tipo de proveedor:</label>
                                     <select class="form-control"  name="oficio">
                                         <option value="albañil">Albañil</option>
@@ -42,31 +45,37 @@
                                         <option value="plomero">Plomero</option>
                                         <option value="gasista">Gasista</option>
                                     </select>
+                                    
+                                
+                                    <label for="precioHs">Ingrese un precio por hora</label>
+                                <input type="number" class="input" name="precioHs" placeholder="Precio por Hora" th:value = "${user.precioHs}">
+                                <label for="DescpServicie">Describa el servicio. La descripción debe tener al menos 20 caracteres</label>
+                                <input type="text" class="input" name="descripService" placeholder="Descripción del Servicio" th:value = "${user.descripService}">
                                 </div>
 
-                                <input type="number" class="input" name="precioHs" th:value = "${user.precioHs}">
-                                <input type="text" class="input" name="descripService" th:value = "${user.descripService}">
 
 
+                                <div class="inputBox">
+                                    <label class="tipoProveedor" for="inputGroupFile01">Foto Actual</label>
+                                    
+                                    <div class="foto">
 
-
-                                <div class="input-group mb-3">
-                                    <label class="input-group-text" for="inputGroupFile01">Foto Actual</label>
-
-                                    <img th:if="${user.imagen != null}" th:src="@{/imagen/perfil/__${user.id}__}" class="img-fluid" style="height: 100px"/>
+                                    <img th:if="${user.imagen != null}" th:src="@{/imagen/perfil/__${user.id}__}"class="imagenProve"/>
+                                    
+                                    </div>
 
                                     <input type="file" class="form-control" id="inputGroupFile01" name="archivo" />
                                 </div>
-                                <button type="submit" class="btn btn-primary mt-3 botones">Actualizar</button>
+                                <button type="submit" class="btn-neon">Actualizar</button>
+
+
+                                <a class="btn-neon" th:href="@{/proveedor/modificarRolProveedor/__${user.id}__}"><i class="fas fa-father-alt"></i> Cambiar Rol a Cliente </a>
+
+                                <a class="btn-neon" style="color: red" th:href="@{/proveedor/darseBaja/__${user.id}__}"><i class="fas fa-father-alt"></i> Darse de Baja </a>
                             </form>
-
-                            <a class="btn btn-primary mt-3 botones" th:href="@{/proveedor/modificarRolProveedor/__${user.id}__}"><i class="fas fa-father-alt"></i> Cambiar Rol a Cliente </a>
-
-                            <a class="btn btn-primary mt-3 botones" style="color: red" th:href="@{/proveedor/darseBaja/__${user.id}__}"><i class="fas fa-father-alt"></i> Darse de Baja </a>
-
                         </div>
                         <a href="/inicio" style="margin: 0 auto">
-                            <button class="btn btn-primary mt-3 botones"> Volver </button>
+                            <button class="btn-neon"> Volver </button>
                         </a>
 
 

@@ -12,6 +12,7 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size:  cover;
+    overflow-y: auto;
 }
 
 section {
@@ -32,7 +33,7 @@ section {
     top: 0;
     position: relative;
     width: 400px;
-    height: 450px;
+    height: 10%;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     display: flex;
@@ -76,6 +77,8 @@ section {
 .LoginForm .inputBox {
     width: 100%;
     margin-top: 20px;
+    overflow-y: auto;
+
 }
 
 .LoginForm .inputBox input {
