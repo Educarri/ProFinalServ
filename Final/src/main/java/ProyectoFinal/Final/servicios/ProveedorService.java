@@ -111,6 +111,7 @@ public class ProveedorService {
             pr.setDireccion(direccion);
             pr.setDescripService(descripService);
             pr.setPrecioHs(precioHs);
+            pr.setCalificacionPromedio(pr.getCalificacionPromedio());
 
             System.out.println("Precio hora dentro modificar " + precioHs);
 
@@ -194,10 +195,7 @@ public class ProveedorService {
         return nombre;
     }
     
-    
-    
-    
-    
+   
     @Transactional
     public void eliminarProveedor(String id) throws miException {
 

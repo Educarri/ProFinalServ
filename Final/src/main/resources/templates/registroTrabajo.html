@@ -5,39 +5,102 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Formulario de Creación</title>
-        <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
-        <link href="/css/registro.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+        <link  rel="stylesheet" href="/css/presupuesto.css" />
+
+        <!-- Imprimir el valor de proveedor.precioHs -->
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            var precioHoraProveedor = /*[[${proveedor.precioHs}]]*/ 0;
+            console.log("Precio por hora del proveedor: " + precioHoraProveedor);
+
+            function calcularPresupuesto() {
+            var horasTrabajo = document.getElementById("horasTrabajo").value;
+            var presupuesto = horasTrabajo * precioHoraProveedor;
+            console.log("Horas trabajo: " + horasTrabajo);
+            // Mostrar el presupuesto en el elemento con id "presupuestoResultado"
+            document.getElementById("cantHoras").innerText = horasTrabajo;
+            document.getElementById("presupuestoResultado").innerText = "$" + presupuesto.toFixed(2);
+
+
+            }
+            /*]]>*/
+        </script>
     </head>
     <body>
 
-        <header><nav th:replace="/fragments/navbar :: nav"></nav> </header> 
+        <header><nav th:replace="/fragments/navbar :: nav"></nav> </header>
 
-        <div class="formulario"  > 
-            <h1 class="tituloform">Formulario de Creación</h1>
 
-            <form th:action="@{/trabajo/registro}" method="post">
-                <div class="mb-3">
+        <form th:action="@{/trabajo/registro}" method="post">
+            <div class="mb-3">
+                <input hidden th:value="${session.usuarioSesion.id}" name="idCliente">
+                <input hidden th:value="${proveedor.id}" name="idProveedor">
+                <input hidden type="text" th:value="0" name="presupuesto">
+                <input hidden type="text" th:value="0" name="calificacion">
+                <input hidden type="text"  name="estado" th:value="Pendiente">
+            </div>
 
-                    <input hidden th:value="${session.usuarioSesion.id}" name="idCliente">
-                    <input hidden th:value="${proveedor.id}" name="idProveedor">
-                    <input type="text" class="input" name="HsTrabajo" placeholder="Horas del Trabajo">
-                    <input hidden type="text" th:value="0" name="presupuesto">
-                    <input hidden type="text" th:value="0" name="calificacion">
-                    <input hidden type="text"  name="estado" th:value="Pendiente">
-           
-                    
-                    <div/>
 
-                    <button class="mx-auto d-block" type="submit">Solicitar el Trabajo</button>
-            </form>
-        </div>
+
+            <!-- CHECKOUT -->
+            <div class="center-container">
+                <div class="container">
+                    <div class="card cart">
+                        <label class="title">PRESUPUESTO HOMEFIX</label>
+                        <img src="/img/logo.png"> </img>
+                        <div class="steps">
+                            <div class="step">
+                                <div>
+                                    <span>Datos Proveedor</span>
+                                    <p th:text="'Nombre : ' + ${proveedor.nombre}"></p>
+                                    <p th:text="'Tel. : ' + ${proveedor.telefono}"></p>
+                                    <p th:text="'Email : ' + ${proveedor.correo}"></p>
+                                    <p th:text="'Reputacion : ' + ${proveedor.calificacionPromedio}"></p>
+
+                                </div>
+                                <hr>
+                                <div class="promo">
+
+                                    <span>INGRESE LAS HORAS A TRABAJAR</span>
+
+                                    <div class="form">
+                                        <input type="number" min="1" name="HsTrabajo" id="horasTrabajo" placeholder="Cantidad Horas" class="input_field">
+                                        <button type="button" onclick="calcularPresupuesto()" class="boton">Calcular</button>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="payments">
+                                    <span>RESUMEN</span>
+                                    <div class="details">
+                                        <span>Honorarios: </span>
+                                        <span th:text="'$' + ${proveedor.precioHs}"></span>
+                                        <span>Cantidad Horas: </span>
+                                        <span id="cantHoras"></span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card checkout">
+                        <div class="footer">
+                            <label class="price" id="presupuestoResultado">$</label>
+                            <button class="checkout-btn" type="submit">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
         <div style="display: block">
             <div th:if="${error != null}" style="background-color: red">
                 <h5>Error!</h5>
                 <p th:text="${error}"></p>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
-        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
