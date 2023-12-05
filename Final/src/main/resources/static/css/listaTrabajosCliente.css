@@ -11,6 +11,7 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size:  cover;
+    overflow-y: auto; 
 }
 
 section {
@@ -34,8 +35,8 @@ section {
 .TableContainer {
     top: -15px;
     left: 30px;
-    position: relative;
-    width: 950px;
+    position: center;
+    width: 100%;
     min-height: 510px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
@@ -57,18 +58,17 @@ section {
     width: 100%;
     height: 100%;
     text-align: center;
-    padding-top: -100px;
+    padding-top: 30px;
     padding-right: 30px;
-    padding-left: 50px;
-    max-height: 500px; 
-    overflow-y: auto; 
-    
+    padding-left: 30px;
+    padding-bottom: 30px;
+
 }
 
 .TableList h2 {
     position: relative;
     color: whitesmoke;
-    font-size: 24px;
+    font-size: 35px;
     font-weight: 600;
     letter-spacing: 1px;
     margin-bottom: 40px;
@@ -122,6 +122,8 @@ tbody tr:hover {
     transition: 0.2s;
     padding: 3px;
     margin: 3px;
+
+}
 
 .btn-neon:hover{
     background: #04a4ec;
@@ -244,15 +246,19 @@ td, th {
         margin-top: 20px; /* Ajusta el margen superior del botón */
     }
 
-    
+
     .rechazado{
         color: red;
-        
+
     }
-    
+
     .calificado{
         color: red;
     }
+<<<<<<< HEAD
 
 }
    
+=======
+}
+>>>>>>> f4d70420599827fdff802b5bdb17c98ad5867daa

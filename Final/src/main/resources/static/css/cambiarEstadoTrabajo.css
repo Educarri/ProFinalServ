@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+    color: black;
+
+}
+
+body {
+    overflow: hidden;
+    background-image: url('../img/fondo3.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size:  cover;
+    overflow-y: auto;
+}
+
+.tituloform{
+    margin: 30px auto;
+    text-align: center;
+}
+
+label {
+    color: whitesmoke
+}
+.formulario{
+    background-image: url('../img/fondo3.jpg');
+    /*background-attachment: fixed;*/
+    background-size: cover;
+}
