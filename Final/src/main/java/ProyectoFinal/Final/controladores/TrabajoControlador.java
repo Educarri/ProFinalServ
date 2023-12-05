@@ -2,10 +2,12 @@ package ProyectoFinal.Final.controladores;
 
 import ProyectoFinal.Final.entidades.Proveedor;
 import ProyectoFinal.Final.entidades.Trabajo;
+import ProyectoFinal.Final.entidades.Usuario;
 import ProyectoFinal.Final.excepciones.miException;
 import ProyectoFinal.Final.servicios.ProveedorService;
 import ProyectoFinal.Final.servicios.TrabajoService;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -67,36 +69,53 @@ public class TrabajoControlador {
         return "listaTrabajosAdmin.html";
     }
 
-    @PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/calificar/{id}")
     public String calificar(@PathVariable String id, ModelMap modelo) {
-
         try {
             Trabajo trabajo = trabServ.getOne(id);
-            modelo.addAttribute("trabajo", trabajo);
+            if (trabajo.getEstado().toLowerCase().equals("finalizado")) {
+                modelo.addAttribute("trabajo", trabajo);
+                return "calificarTrabajo.html";
+            } else {
+                modelo.put("error", "El trabajo todavia no fue finalizado, intente mas tarde.");
+            }
 
         } catch (Exception e) {
             modelo.put("error", e.getMessage());
         }
 
-        return "calificarTrabajo.html";
+        return "index.html";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/modificar/{id}")
-    public String calificado(@PathVariable String id, String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
+    public String calificado(@PathVariable String id,
             String estado, Integer calificacion, String comentario,
-            ModelMap modelo) {
+            ModelMap modelo, HttpSession sesion) {
+
+        Usuario logeado = (Usuario) sesion.getAttribute("usuarioSesion");
+
+        String pagina = "redirect:/trabajo/listaTrabajos";
+        String idCliente = logeado.getId();
+
+        if (logeado.getRol().toString().equals("USER")) {
+            // modelo.addAttribute("idCliente", idCliente);
+            pagina = "redirect:/cliente/listaTrabajos/" + idCliente;
+        }
 
         try {
-            trabServ.modificar(id, idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion, comentario);
+            trabServ.modificar(id, calificacion, comentario);
             modelo.put("exito", "Logro modificar correctamente al Trabajo");
-            return "redirect:/inicio";
+
+            proServ.calificarProveedor(id, calificacion);
+
         } catch (miException e) {
 
             modelo.put("error", e.getMessage());
             return "calificarTrabajo.html";
         }
+        return pagina;
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
@@ -114,20 +133,92 @@ public class TrabajoControlador {
         return "cambiarEstadoTrabajo.html";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
-    @PostMapping("/cambiar/{id}")
-    public String cambiarEstado(@PathVariable String id, String idCliente, String idProveedor, Integer HsTrabajo, Integer presupuesto,
-            String estado, Integer calificacion, String comentario,
-            ModelMap modelo) {
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @GetMapping("/aceptado/{id}")
+    public String aceptado(@PathVariable String id, ModelMap modelo, HttpSession sesion) {
+        
+         Usuario logeado = (Usuario) sesion.getAttribute("usuarioSesion");
+         String idProveedor = logeado.getId();
+         
+         String pagina = "redirect:/proveedor/listaTrabajos/" +idProveedor;
+         
+        try {
+            trabServ.cambiarAceptado(id, true);
+            modelo.put("exito", "Trabajo Aceptado. A trabajar!");
+        } catch (Exception e) {
+            modelo.put("error", e.getMessage());
+        }
+
+        return pagina; 
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @GetMapping("/cancelar/{id}")
+    public String cancelar(@PathVariable String id, ModelMap modelo, HttpSession sesion) {
+
+        Usuario logeado = (Usuario) sesion.getAttribute("usuarioSesion");
+
+        String pagina = "redirect:/trabajo/listaTrabajos";
+        String idCliente = logeado.getId();
+
+        if (logeado.getRol().toString().equals("USER")) {
+            // modelo.addAttribute("idCliente", idCliente);
+            pagina = "redirect:/cliente/listaTrabajos/" + idCliente;
+        }
 
         try {
-            trabServ.modificar(id, idCliente, idProveedor, HsTrabajo, presupuesto, estado, calificacion, comentario);
-            modelo.put("exito", "Logro modificar correctamente al Trabajo");
-            return "redirect:/inicio";
+            trabServ.eliminarTrabajo(id);
+            modelo.put("exito", "Trabajo Eliminado.");
+        } catch (Exception e) {
+            modelo.put("error", e.getMessage());
+        }
+
+         return pagina;
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @GetMapping("/rechazar/{id}")
+    public String rechazar(@PathVariable String id, ModelMap modelo, HttpSession sesion) {
+        
+             Usuario logeado = (Usuario) sesion.getAttribute("usuarioSesion");
+         String idProveedor = logeado.getId();
+         
+         String pagina = "redirect:/proveedor/listaTrabajos/" +idProveedor;
+        try {
+            trabServ.rechazarTrabajo(id);
+            modelo.put("exito", "Trabajo Rechazado.");
+        } catch (Exception e) {
+            modelo.put("error", e.getMessage());
+        }
+
+        return pagina;
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_PROVEEDOR','ROLE_ADMIN')")
+    @PostMapping("/cambiar/{id}")
+    public String cambiarEstado(@PathVariable String id,
+            String estado,
+            ModelMap modelo,
+            HttpSession sesion) {
+        
+        Usuario logeado = (Usuario) sesion.getAttribute("usuarioSesion");
+
+        String pagina = "redirect:/trabajo/listaTrabajos";
+        String idProveedor = logeado.getId();
+
+        if (logeado.getRol().toString().equals("PROVEEDOR")) {
+            // modelo.addAttribute("idCliente", idCliente);
+            pagina = "redirect:/proveedor/listaTrabajos/" + idProveedor;
+        }
+
+        try {
+            trabServ.cambiarEstado(id, estado);
+            modelo.put("exito", "Logro cambiar el estado correctamente al Trabajo");
+            return pagina;
         } catch (miException e) {
 
             modelo.put("error", e.getMessage());
-            return "cambiarEstadoTrabajo.html";
+            return pagina;
         }
     }
 
@@ -139,7 +230,7 @@ public class TrabajoControlador {
         try {
             trabServ.eliminarComentario(id);
             modelo.put("exito", "Logro eliminar el Comentario correctamente del Trabajo");
-            return "redirect:/inicio";
+            return "redirect:/trabajo/listaTrabajos";
         } catch (miException e) {
 
             modelo.put("error", e.getMessage());

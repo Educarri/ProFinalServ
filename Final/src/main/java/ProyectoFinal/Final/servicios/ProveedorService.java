@@ -7,6 +7,7 @@ package ProyectoFinal.Final.servicios;
 
 import ProyectoFinal.Final.entidades.Imagen;
 import ProyectoFinal.Final.entidades.Proveedor;
+import ProyectoFinal.Final.entidades.Trabajo;
 import ProyectoFinal.Final.enumeraciones.Oficios;
 import ProyectoFinal.Final.enumeraciones.Rol;
 import ProyectoFinal.Final.excepciones.miException;
@@ -17,6 +18,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ProyectoFinal.Final.repositorios.ProveedorRepositorio;
+import java.util.Date;
 import java.util.Optional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,6 +31,9 @@ public class ProveedorService {
 
     @Autowired
     private ImagenService imgService;
+    
+    @Autowired
+    private TrabajoService traserv;
 
     @Transactional
     public void registrarProveedor(String nombre, String apellido, Long dni,
@@ -50,6 +55,9 @@ public class ProveedorService {
         pro.setTelefono(telefono);
         pro.setPassword(new BCryptPasswordEncoder().encode(password));
         pro.setDireccion(direccion);
+        pro.setCalificacionPromedio(0.0);
+        pro.setNumeroCalificaciones(0);
+        pro.setFechaCreacion(new Date());
 
         Imagen imagen = imgService.guardar(archivo);
         pro.setImagen(imagen);
@@ -70,12 +78,19 @@ public class ProveedorService {
         }
 
         pro.setPrecioHs(precioHs);
-        pro.setReputacion(0); //inicializo la reputancion al momento de crear el proveedor en 0
         pro.setDescripService(descripService);
         pro.setRol(Rol.PROVEEDOR);
 
         proRepo.save(pro);
 
+    }
+    
+   
+    @Transactional
+    public void registrarCambiado(Proveedor pro){
+        if(pro != null){
+            proRepo.save(pro);
+        }
     }
 
     @Transactional
@@ -84,8 +99,7 @@ public class ProveedorService {
             Integer precioHs, Integer reputacion, String descripService, MultipartFile archivo,
             String id) throws miException {
 
-      //  validar(nombre, apellido, dni, correo, telefono, password, direccion, oficio, precioHs, descripService, archivo);
-
+        //  validar(nombre, apellido, dni, correo, telefono, password, direccion, oficio, precioHs, descripService, archivo);
         Optional<Proveedor> respuesta = proRepo.findById(id);
 
         if (respuesta.isPresent()) {
@@ -96,12 +110,11 @@ public class ProveedorService {
             pr.setRol(Rol.PROVEEDOR);
             pr.setDireccion(direccion);
             pr.setDescripService(descripService);
-            pr.setReputacion(pr.getReputacion());
             pr.setPrecioHs(precioHs);
+            pr.setCalificacionPromedio(pr.getCalificacionPromedio());
 
-            
             System.out.println("Precio hora dentro modificar " + precioHs);
-            
+
             String idImagen = null;
 
             if (pr.getImagen() != null) {
@@ -121,6 +134,43 @@ public class ProveedorService {
 
     }
 
+    @Transactional
+    public void cambiarRol(String id) throws miException {
+
+        if (id == null || id.isEmpty()) {
+            throw new miException("La identificacion del Proveedor no es correcta.");
+        }
+
+        Optional<Proveedor> respuesta = proRepo.findById(id);
+
+        if (respuesta.isPresent()) {
+            Proveedor user = respuesta.get();
+
+            if (user.getRol().equals(Rol.PROVEEDOR)) {
+                user.setRol(Rol.USER);
+            }else{
+                user.setRol(Rol.PROVEEDOR);
+            }
+        }
+    }
+    
+    
+    @Transactional
+    public void darBaja(String id) throws miException {
+
+        if (id == null || id.isEmpty()) {
+            throw new miException("La identificacion del Proveedor no es correcta.");
+        }
+
+        Optional<Proveedor> respuesta = proRepo.findById(id);
+
+        if (respuesta.isPresent()) {
+            Proveedor user = respuesta.get();
+
+            user.setRol(Rol.BAJA);
+        }
+    }
+
     public List<Proveedor> listarProveedores() {
 
         return proRepo.findAll();
@@ -131,6 +181,21 @@ public class ProveedorService {
         return proRepo.getOne(id);
     }
 
+    public String obtenerNombreProveedor(String id){
+       
+        String nombre = null;
+        
+         Optional<Proveedor> respuesta = proRepo.findById(id);
+         
+         if(respuesta != null){
+             Proveedor pro = respuesta.get();
+             nombre = pro.getNombre();
+         }
+        
+        return nombre;
+    }
+    
+   
     @Transactional
     public void eliminarProveedor(String id) throws miException {
 
@@ -210,4 +275,25 @@ public class ProveedorService {
         return matcher.find();
 
     }
+   public void calificarProveedor(String idTrabajo, Integer calificacion) throws miException {
+       
+       Trabajo tra = traserv.getOne(idTrabajo);
+       String idProveedor = tra.getIdProveedor();
+    Optional<Proveedor> optionalProveedor = proRepo.findById(idProveedor);
+    
+       
+    if (optionalProveedor.isPresent()) {
+        Proveedor proveedor = optionalProveedor.get();
+        
+        double nuevoPromedio = ((proveedor.getCalificacionPromedio() * proveedor.getNumeroCalificaciones()) + calificacion)
+                / (proveedor.getNumeroCalificaciones() + 1);
+
+        proveedor.setCalificacionPromedio(Math.floor(nuevoPromedio));
+        proveedor.setNumeroCalificaciones(proveedor.getNumeroCalificaciones() + 1);
+
+        proRepo.save(proveedor);
+    } else {
+        throw new miException("Proveedor no encontrado");
+    }
+}
 }

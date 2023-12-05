@@ -1,0 +1,129 @@
+body{
+    background-image: url('../img/fondo3.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size:  cover;
+
+}
+
+
+/*p{
+    margin-left: 10px;
+    margin-top: 0px;
+}
+
+*/
+
+h1{
+    color: whitesmoke;
+    font-size: 35px;
+    text-align: center;
+    margin-top: 40px;
+     font-family: 'Raleway', sans-serif;
+}
+p{
+    margin-top: 20px;
+    text-align: center;
+    color: whitesmoke;
+     font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-style: italic;
+}
+* {
+    margin: 10;
+    padding: 10;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
+img{
+    /*        display:flex ;*/
+    width: 50px;
+    margin: 10px auto;
+    border-radius: 40px;
+}
+.imgAdmin img{
+    width: 35%;
+    margin: 0 auto;
+    align-items: center;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-link{
+     color: whitesmoke;
+     
+}
+
+.navbar-brand{
+    color: whitesmoke;
+    font-family: sans-serif bolder;
+}
+
+.navbar-nav{
+    margin-right: 70px;
+   
+    
+}
+.contenedor-navbar{
+    width: 100%;
+    height: 80px;
+    background-image:url(../img/fondo2.jpg);
+    background-size: 180%;
+    animation: movimiento 10s infinite linear alternate;
+    z-index: 1000;
+ 
+}
+.nav-item dropdown{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 30px;
+    margin-top: 15px;
+    color: whitesmoke;
+    font-family: sans-serif bolder;
+    
+}
+/*@keyframes movimiento{
+    from{ background-position: bottom left;
+        
+    }to {background-position: top right;
+        
+    }
+}*/
+
+
+.dropdown-menu, .dropdown-item{
+     background-color: #21222c;
+      color: whitesmoke;
+    font-family: sans-serif bolder;
+}
+
+.dropdown-toggle::hover{
+    color: red;
+}
+
+button .navbar-toggler {
+    display: none;
+    align-self: center;
+    
+    
+}
+
+
+/*.navbar-collapse {
+    display: flex;
+    padding: 30px;
+    margin-left: 1060px;
+    margin-top: -30px;
+    align-items:flex-end;
+    width:max-content;
+    border-radius: 10px;
+    align-items: center;
+    flex-grow: 1;  Permitir que crezca y ocupe el espacio restante 
+    
+    justify-content: flex-end;
+    
+    
+}*/

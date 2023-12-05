@@ -18,7 +18,7 @@
         <div class="formulario">
             <form th:action="@{/proveedor/modificar/__${user?.id}__}" method="POST" enctype="multipart/form-data">
 
-                <input type="text" name="id" th:value="${user.id}" >
+                <input hidden type="text" name="id" th:value="${user.id}" >
                 <input type="text" class="input" name="nombre"  th:value= "${user.nombre}">
                 <input type="text" class="input" name="apellido"  th:value = "${user.apellido}">
                 <input type="number" class="input" name="dni"  th:value = "${user.dni}">
@@ -52,6 +52,10 @@
                 </div>
                 <button type="submit" class="btn btn-primary mt-3 botones">Actualizar</button>
             </form>
+            
+           <a class="btn btn-primary mt-3 botones" th:href="@{/proveedor/modificarRolProveedor/__${user.id}__}"><i class="fas fa-father-alt"></i> Cambiar Rol a Cliente </a>
+
+           <a class="btn btn-primary mt-3 botones" style="color: red" th:href="@{/proveedor/darseBaja/__${user.id}__}"><i class="fas fa-father-alt"></i> Darse de Baja </a>
 
         </div>
         <a href="/inicio" style="margin: 0 auto">

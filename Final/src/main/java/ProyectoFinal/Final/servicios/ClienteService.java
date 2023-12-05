@@ -24,6 +24,9 @@ public class ClienteService {
     @Autowired
     private ClienteRepositorio cliRepo;
 
+    @Autowired
+    private ProveedorService proServ;
+
     @Transactional
     public void registrarCliente(String nombre, String apellido, Long dni,
             String correo, Integer telefono, String password, String direccion) throws miException {
@@ -54,7 +57,7 @@ public class ClienteService {
             String correo, Integer telefono, String password, String direccion, String id) throws miException {
 
         validar(nombre, apellido, dni, correo, telefono, password, direccion);
-        
+
         Optional<Cliente> respuesta = cliRepo.findById(id);
 
         if (respuesta.isPresent()) {
@@ -68,6 +71,33 @@ public class ClienteService {
             cl.setDni(dni);
             cl.setRol(Rol.USER);
             cliRepo.save(cl);
+        }
+    }
+
+    @Transactional
+    public void cambiarRol(String id) throws miException {
+
+        if (id == null || id.isEmpty()) {
+            throw new miException("La identificacion del usuario no es correcta.");
+        }
+
+        Optional<Cliente> respuesta = cliRepo.findById(id);
+
+        if (respuesta.isPresent()) {
+            Cliente user = respuesta.get();
+
+            if (user.getRol().equals(Rol.USER)) {
+                user.setRol(Rol.PROVEEDOR);
+            } else {
+                user.setRol(Rol.USER);
+            }
+        }
+    }
+
+    @Transactional
+    public void registrarCambiado(Cliente cli) {
+        if (cli != null) {
+            cliRepo.save(cli);
         }
     }
 
@@ -99,6 +129,22 @@ public class ClienteService {
 
         cliRepo.deleteById(id);
 
+    }
+
+    @Transactional
+    public void darBaja(String id) throws miException {
+
+        if (id == null || id.isEmpty()) {
+            throw new miException("La identificacion del Proveedor no es correcta.");
+        }
+
+        Optional<Cliente> respuesta = cliRepo.findById(id);
+
+        if (respuesta.isPresent()) {
+            Cliente user = respuesta.get();
+
+            user.setRol(Rol.BAJA);
+        }
     }
 
     public Cliente buscarClientePorDNI(Long DNI) {
