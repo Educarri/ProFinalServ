@@ -21,10 +21,10 @@ and open the template in the editor.
             <nav th:replace="/fragments/navbar :: nav"></nav> 
         </header>
 
-        <div th:if="${exito != null}" class="exito" >
+        <div th:if="${session.exito}" class="exito" >
             <div class="bloque">
                 <h5 class="texto-exito" >Exito!</h5>
-                <p class="texto-exito-mensaje" th:text="${exito}"></p>
+                <p class="texto-exito-mensaje" th:text="${session.exito}"></p>
             </div>   
         </div>
         <div th:if="${error != null}" class="mensajeError">

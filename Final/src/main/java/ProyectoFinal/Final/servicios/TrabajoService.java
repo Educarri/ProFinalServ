@@ -103,13 +103,18 @@ public class TrabajoService {
     public void modificar(String id,
             Integer calificacion, String comentario) throws miException {
 
+        if(comentario.isEmpty() || comentario.length() < 5){
+            throw new miException("Error en la carga de la calificacion.");
+        }
+           
         Optional<Trabajo> respuesta = traRepo.findById(id);
 
+            
         if (respuesta.isPresent()) {
             Trabajo tra = respuesta.get();
 
             if (calificacion == null) {
-                calificacion = tra.getCalificacion(); //ver si funciona para cuando el proveedor cambia el estado
+                calificacion = tra.getCalificacion(); 
             }
 
             tra.setCalificacion(calificacion);
