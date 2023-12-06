@@ -1,0 +1,136 @@
+* { 
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+    background-image: url('../img/fondo3.jpg');
+    background-size: cover;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    margin-top: 50px; /* Ajusta el margen superior del contenedor principal */
+}
+
+.TableBox {
+    position: relative;   
+}
+
+.TableContainer {
+    width: 100%;
+    min-height: 510px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    margin: 30px auto;
+    min-width: 1600px;
+}
+
+.TableList {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    min-width: 1600px;
+}
+
+.TableList h2 {
+    color: whitesmoke;
+    font-size: 35px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+table {
+    color: #001133;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 10px;
+}
+
+th, td {
+    color: whitesmoke;
+    padding: 10px; /* Ajusta el relleno de las celdas */
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    word-wrap: break-word; /* Para que el contenido largo se ajuste verticalmente */
+}
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+input[type="file"],
+.input {
+    width: 100%; /* Haz que los input ocupen el 100% del ancho de su contenedor */
+    box-sizing: border-box; /* Incluye el padding y border en el ancho total */
+    margin-bottom: 5px; /* Ajusta el margen inferior para separar los input */
+}
+
+.input-group-text {
+    cursor: pointer;
+}
+
+.img-container {
+    position: relative;
+}
+
+.img-container img {
+    width: 100%;
+    max-height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.input-group-text:hover + input[type="file"] {
+    display: block;
+}
+
+.botones {
+    margin-top: 3px;
+    color: whitesmoke;
+    min-width: 100px;
+}
+
+.btn-primary {
+    background: #00a2e8;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    color: whitesmoke;
+    letter-spacing: 1px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.1s;
+    padding: 5px 10px; /* Ajusta el relleno de los botones */
+    margin: 1px;
+}
+
+.btn-primary:hover {
+    background: #007bb5;
+    box-shadow: 0 0 10px whitesmoke, 0 0 40px whitesmoke, 0 0 80px whitesmoke;
+    transition-delay: 0.3s;
+    color: #fff;
+}
+
+.volver {
+    display: flex;
+    margin: 0 auto;
+}

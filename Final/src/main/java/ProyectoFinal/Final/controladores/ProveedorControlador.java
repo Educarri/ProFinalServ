@@ -124,7 +124,7 @@ public class ProveedorControlador {
             modelo.put("error", e.getMessage());
 
         }
-        return "redirect:/";
+         return "redirect:/proveedor/lista";
     }
 
     @GetMapping("/inicio")
