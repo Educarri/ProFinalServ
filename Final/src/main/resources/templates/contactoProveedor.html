@@ -31,8 +31,18 @@
                         <p class="infoProve" th:text="'Oficio: ' +${proveedor.oficio}"></p>
                         <p class="infoProve" th:text="'Descripción del servicio: ' +${proveedor.descripService}"></p>
                         <p class="infoProve" th:text="'Precio por hora: ' +${proveedor.precioHs}"></p>
-                        <p class="infoProve" th:text="'Calificación: ' + ${proveedor.calificacionPromedio}"></p>
                         <p class="infoProve" th:text="'Fecha de inicio: ' + ${proveedor.fechaCreacion}"></p>
+                            
+                        <span class="infoProve" th:switch="${proveedor.calificacionPromedio}">Calificación :
+                                                    <span th:case="0">☆☆☆☆☆</span>
+                                                    <span th:case="1">★☆☆☆☆</span>
+                                                    <span th:case="2">★★☆☆☆</span>
+                                                    <span th:case="3">★★★☆☆</span>
+                                                    <span th:case="4">★★★★☆</span>
+                                                    <span th:case="5">★★★★★</span>
+                                                </span></div>
+                        
+                        
                     </div>
 
                     <div class="botones">

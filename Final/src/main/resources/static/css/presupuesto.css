@@ -1,7 +1,7 @@
 /* Body */
 
 body {
-    overflow: hidden;
+    
     background-image: url('../img/fondo3.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -59,7 +59,7 @@ hr {
 
 .cart .steps .step {
   display: grid;
-  gap: 10px;
+  gap: 0px;
 }
 
 .cart .steps .step span {
@@ -80,8 +80,9 @@ hr {
 .promo .form {
   display: grid;
   grid-template-columns: 1fr 80px;
-  gap: 10px;
+  gap: 5px;
   padding: 0px;
+  margin-bottom: -20px;
 }
 
 .input_field {
@@ -127,6 +128,7 @@ hr {
   grid-template-columns: 10fr 1fr;
   padding: 0px;
   gap: 5px;
+ 
 }
 
 .payments .details span:nth-child(odd) {
@@ -142,8 +144,7 @@ hr {
   justify-content: space-between;
   padding: 10px 10px 10px 20px;
   background-color: #87CEFB; /* Celeste cielo */
-
-
+  margin-bottom: 10px;
 
 }
 
@@ -171,13 +172,30 @@ hr {
   transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
 }
 
-.center-container {
+.presupuesto-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
     width: 100%;
     margin: 0; /* Asegura que no haya margen que afecte el centrado */
     padding: 0; /* Asegura que no haya relleno que afecte el centrado */
 }
 
+.logo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 30px;
+    margin-top: 10px;
+    font-size: 20px;
+}
+.proveedor-data{
+    margin-top: 5px;
+    margin-bottom: -10px;
+}
+
+.logo p{
+    font-weight: bolder;
+    
+}
