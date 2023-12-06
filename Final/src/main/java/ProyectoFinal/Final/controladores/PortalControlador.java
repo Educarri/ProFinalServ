@@ -61,7 +61,7 @@ public class PortalControlador {
 
             return "redirect:/admin/dashboard";
         } else if (logeado.getRol().toString().equals("PROVEEDOR")) {
-            return "redirect:/proveedor/inicio";
+            return "inicioProveedor.html";
         } else if(logeado.getRol().toString().equals("USER")){
             return "inicio.html";//seria para el cliente
         }      

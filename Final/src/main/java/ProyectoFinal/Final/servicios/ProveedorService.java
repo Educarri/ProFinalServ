@@ -31,7 +31,7 @@ public class ProveedorService {
 
     @Autowired
     private ImagenService imgService;
-    
+
     @Autowired
     private TrabajoService traserv;
 
@@ -84,11 +84,10 @@ public class ProveedorService {
         proRepo.save(pro);
 
     }
-    
-   
+
     @Transactional
-    public void registrarCambiado(Proveedor pro){
-        if(pro != null){
+    public void registrarCambiado(Proveedor pro) {
+        if (pro != null) {
             proRepo.save(pro);
         }
     }
@@ -96,22 +95,39 @@ public class ProveedorService {
     @Transactional
     public void actualizarProveedor(String nombre, String apellido, Long dni,
             String correo, Integer telefono, String password, String direccion, String oficio,
-            Integer precioHs, Integer reputacion, String descripService, MultipartFile archivo,
+            Integer precioHs, String descripService, MultipartFile archivo,
             String id) throws miException {
 
-        //  validar(nombre, apellido, dni, correo, telefono, password, direccion, oficio, precioHs, descripService, archivo);
+        validar(nombre, apellido, dni, correo, telefono, password, direccion, oficio, precioHs, descripService, archivo);
         Optional<Proveedor> respuesta = proRepo.findById(id);
 
         if (respuesta.isPresent()) {
             Proveedor pr = respuesta.get();
             pr.setNombre(nombre);
+            pr.setApellido(apellido);
+            pr.setDni(dni);
             pr.setCorreo(correo);
+            pr.setTelefono(telefono);
             pr.setPassword(new BCryptPasswordEncoder().encode(password));
             pr.setRol(Rol.PROVEEDOR);
             pr.setDireccion(direccion);
             pr.setDescripService(descripService);
             pr.setPrecioHs(precioHs);
-            pr.setCalificacionPromedio(pr.getCalificacionPromedio());
+
+            switch (oficio.toLowerCase()) {
+                case "albañil":
+                    pr.setOficio(Oficios.ALBAÑIL);
+                    break;
+                case "gasista":
+                    pr.setOficio(Oficios.GASISTA);
+                    break;
+                case "plomero":
+                    pr.setOficio(Oficios.PLOMERO);
+                    break;
+                case "electricista":
+                    pr.setOficio(Oficios.ELECTRICISTA);
+                    break;
+            }
 
             System.out.println("Precio hora dentro modificar " + precioHs);
 
@@ -148,13 +164,12 @@ public class ProveedorService {
 
             if (user.getRol().equals(Rol.PROVEEDOR)) {
                 user.setRol(Rol.USER);
-            }else{
+            } else {
                 user.setRol(Rol.PROVEEDOR);
             }
         }
     }
-    
-    
+
     @Transactional
     public void darBaja(String id) throws miException {
 
@@ -181,21 +196,20 @@ public class ProveedorService {
         return proRepo.getOne(id);
     }
 
-    public String obtenerNombreProveedor(String id){
-       
+    public String obtenerNombreProveedor(String id) {
+
         String nombre = null;
-        
-         Optional<Proveedor> respuesta = proRepo.findById(id);
-         
-         if(respuesta != null){
-             Proveedor pro = respuesta.get();
-             nombre = pro.getNombre();
-         }
-        
+
+        Optional<Proveedor> respuesta = proRepo.findById(id);
+
+        if (respuesta != null) {
+            Proveedor pro = respuesta.get();
+            nombre = pro.getNombre();
+        }
+
         return nombre;
     }
-    
-   
+
     @Transactional
     public void eliminarProveedor(String id) throws miException {
 
@@ -275,25 +289,25 @@ public class ProveedorService {
         return matcher.find();
 
     }
-   public void calificarProveedor(String idTrabajo, Integer calificacion) throws miException {
-       
-       Trabajo tra = traserv.getOne(idTrabajo);
-       String idProveedor = tra.getIdProveedor();
-    Optional<Proveedor> optionalProveedor = proRepo.findById(idProveedor);
-    
-       
-    if (optionalProveedor.isPresent()) {
-        Proveedor proveedor = optionalProveedor.get();
-        
-        Integer nuevoPromedio = ((proveedor.getCalificacionPromedio() * proveedor.getNumeroCalificaciones()) + calificacion)
-                / (proveedor.getNumeroCalificaciones() + 1);
 
-        proveedor.setCalificacionPromedio(nuevoPromedio);
-        proveedor.setNumeroCalificaciones(proveedor.getNumeroCalificaciones() + 1);
+    public void calificarProveedor(String idTrabajo, Integer calificacion) throws miException {
 
-        proRepo.save(proveedor);
-    } else {
-        throw new miException("Proveedor no encontrado");
+        Trabajo tra = traserv.getOne(idTrabajo);
+        String idProveedor = tra.getIdProveedor();
+        Optional<Proveedor> optionalProveedor = proRepo.findById(idProveedor);
+
+        if (optionalProveedor.isPresent()) {
+            Proveedor proveedor = optionalProveedor.get();
+
+            Integer nuevoPromedio = ((proveedor.getCalificacionPromedio() * proveedor.getNumeroCalificaciones()) + calificacion)
+                    / (proveedor.getNumeroCalificaciones() + 1);
+
+            proveedor.setCalificacionPromedio(nuevoPromedio);
+            proveedor.setNumeroCalificaciones(proveedor.getNumeroCalificaciones() + 1);
+
+            proRepo.save(proveedor);
+        } else {
+            throw new miException("Proveedor no encontrado");
+        }
     }
-}
 }
