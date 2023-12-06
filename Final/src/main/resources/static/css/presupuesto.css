@@ -180,8 +180,6 @@ hr {
     width: 100%;
     margin: 0; /* Asegura que no haya margen que afecte el centrado */
     padding: 0; /* Asegura que no haya relleno que afecte el centrado */
-<<<<<<< HEAD
-=======
 }
 
 .logo{
@@ -200,5 +198,4 @@ hr {
 .logo p{
     font-weight: bolder;
     
->>>>>>> 5096046d5d0555d04aaaa8fc9f7f16b5c4d9ce5c
 }
