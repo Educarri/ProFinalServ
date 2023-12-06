@@ -9,7 +9,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
         <link href="/css/main.css" rel="stylesheet" type="text/css"/>
- <link href="/css/errorexito.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/errorexito.css" rel="stylesheet" type="text/css"/>
+        <link rel="icon" href="/img/logo.png" type="image">
 
     </head>
     <body>
@@ -17,7 +18,7 @@
             <nav th:replace="/fragments/navbar :: nav"></nav>  
         </header> 
 
-       <div th:if="${exito != null}" class="exito" >
+        <div th:if="${exito != null}" class="exito" >
             <div class="bloque">
                 <h5 class="texto-exito" >Exito!</h5>
                 <p class="texto-exito-mensaje" th:text="${exito}"></p>
@@ -25,8 +26,8 @@
         </div>
         <div th:if="${error != null}" class="mensajeError">
             <div class="bloque">
-            <h5 class="texto-error">Error!</h5>
-            <p class="texto-error-mensaje" th:text="${error}"></p>
+                <h5 class="texto-error">Error!</h5>
+                <p class="texto-error-mensaje" th:text="${error}"></p>
             </div> 
         </div>
 
@@ -88,7 +89,20 @@
                                             <!-- Mostrar información del proveedor -->
                                             <h5 class="card-title" th:text="${proveedor.nombre}"></h5>
                                             <p class="card-text-oficio" th:text="${proveedor.oficio}"></p>
-                                            <p class="card-text" th:text="${proveedor.calificacionPromedio}"></p>
+
+                                            <!-- <p class="card-text" th:text="${proveedor.calificacionPromedio}"></p>-->
+                                            <p class="card-text">
+                                                <span th:switch="${proveedor.calificacionPromedio}">
+                                                    <span th:case="0">☆☆☆☆☆</span>
+                                                    <span th:case="1">★☆☆☆☆</span>
+                                                    <span th:case="2">★★☆☆☆</span>
+                                                    <span th:case="3">★★★☆☆</span>
+                                                    <span th:case="4">★★★★☆</span>
+                                                    <span th:case="5">★★★★★</span>
+                                                </span>
+                                            </p>
+
+
                                             <p class="card-text-antiguedad" th:text="${proveedor.fechaCreacion}"></p>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">

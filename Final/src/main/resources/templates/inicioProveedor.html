@@ -14,6 +14,7 @@ and open the template in the editor.
         <link href="/css/inicio.css" rel="stylesheet" type="text/css"/>
         <link href="/css/navfoot.css" rel="stylesheet" type="text/css"/>
         <link href="/css/errorexito.css" rel="stylesheet" type="text/css"/>
+        <link rel="icon" href="/img/logo.png" type="image">
     </head>
     <body>
 
@@ -22,16 +23,16 @@ and open the template in the editor.
         </header>
         <!--        Mensaje de inicio de sesion exitoso-->
 
-        <div th:if="${exito != null}" class="exito" >
+      <div th:if="${session.exito}" class="exito" >
             <div class="bloque">
                 <h5 class="texto-exito" >Exito!</h5>
-                <p class="texto-exito-mensaje" th:text="${exito}"></p>
+                <p class="texto-exito-mensaje" th:text="${session.exito}"></p>
             </div>   
         </div>
-        <div th:if="${error != null}" class="mensajeError">
+       <div th:if="${session.error != null}" class="mensajeError">
             <div class="bloque">
-            <h5 class="texto-error">Error!</h5>
-            <p class="texto-error-mensaje" th:text="${error}"></p>
+                <h5 class="texto-error">Error!</h5>
+                <p class="texto-error-mensaje" th:text="${session.error}"></p>
             </div> 
         </div>
 

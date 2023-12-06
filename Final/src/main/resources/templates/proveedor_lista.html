@@ -5,90 +5,98 @@
         <title>Lista Clientes</title>
         <meta charset="UTF-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
+        <link rel="icon" href="/img/logo.png" type="image">
+        <link href="/css/proveedorLista.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div class="container m-5">
-            <table class="table table-dark">
-                <thead>
-                    <tr >
-                        <th scope="col">FOTO</th>
-                        <th scope="col">NOMBRE</th>
-                        <th scope="col">APELLIDO</th>
-                        <th scope="col">DNI</th>  
-                        <th scope="col">CORREO</th>
-                        <th scope="col">TELEFONO</th>
-                        <th scope="col">DIRECCION</th>
-                        <th scope="col">PASSWORD</th>
-                        <th scope="col">OFICIO</th>
-                        <th scope="col">PRECIO HORA</th>               
-                        <th scope="col">DESCRIPCION SERVICIO</th>
-                        <th scope="col">ROL</th>
-                        <th scope="col">FECHA CREACION DE CUENTA</th>
+     
+            <div class="TableBox">
+                <div class="TableContainer">
+                    <div class="TableList">
+                        <h2>LISTADO DE TODOS LOS PROVEEDORES</h2>
+                        <table class="col-md-12">
+                            <thead>
+                                <tr >
+                                    <th scope="col">FOTO</th>
+                                    <th scope="col">NOMBRE</th>
+                                    <th scope="col">APELLIDO</th>
+                                    <th scope="col">DNI</th>  
+                                    <th scope="col">CORREO</th>
+                                    <th scope="col">TELEFONO</th>
+                                    <th scope="col">DIRECCION</th>
+                                    <th scope="col">PASSWORD</th>
+                                    <th scope="col">OFICIO</th>
+                                    <th scope="col">PRECIO HORA</th>               
+                                    <th scope="col">DESC. SERVICIO</th>
+                                    <th scope="col">ROL</th>
+                                    <th scope="col">FECHA CREACION DE CUENTA</th>
 
-                        <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="proveedor:${proveedores}">
-                <form th:action="@{/proveedor/modificar/__${proveedor?.id}__}" method="POST" enctype="multipart/form-data">
+                                    <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="proveedor:${proveedores}">
+                            <form th:action="@{/proveedor/modificar/__${proveedor?.id}__}" method="POST" enctype="multipart/form-data">
 
-                    <input hidden type="text" name="id" th:value="${proveedor.id}" >
+                                <input hidden type="text" name="id" th:value="${proveedor.id}" >
 
-                    <th>
-                        <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupFile01">Foto Actual</label>
+                                <th>
+                                    <div class="input-group mb-3">
+                                        <label class="input-group-text" for="inputGroupFile01">Cambiar foto</label>
 
-                            <img th:if="${proveedor.imagen != null}" th:src="@{/imagen/perfil/__${proveedor.id}__}" class="img-fluid" style="height: 100px"/>
+                                        <img th:if="${proveedor.imagen != null}" th:src="@{/imagen/perfil/__${proveedor.id}__}" class="img-fluid" style="height: 100px"/>
 
-                            <input type="file" class="form-control" id="inputGroupFile01" name="archivo" />
-                        </div>
-                    </th>
-                    <th><input type="text" class="input" name="nombre"  th:value= "${proveedor.nombre}"></th>
-                    <th><input type="text" class="input" name="apellido"  th:value = "${proveedor.apellido}"></th>
-                    <th><input type="number" class="input" name="dni"  th:value = "${proveedor.dni}"></th>
-                    <th><input type="text" class="input" name="correo"  th:value = "${proveedor.correo}"></th>
-                    <th><input type="number" class="input" name="telefono"  th:value = "${proveedor.telefono}"></th>
-                    <th><input type="text" class="input" name="direccion"  th:value = "${proveedor.direccion}"></th>
-                    <th><input type="text" class="input" name="password" placeholder="password" required=""></th>
+                                        <input type="file" class="form-control" id="inputGroupFile01" name="archivo" />
+                                    </div>
+                                </th>
+                                <th><input type="text" class="input" name="nombre"  th:value= "${proveedor.nombre}"></th>
+                                <th><input type="text" class="input" name="apellido"  th:value = "${proveedor.apellido}"></th>
+                                <th><input type="number" class="input" name="dni"  th:value = "${proveedor.dni}"></th>
+                                <th><input type="text" class="input" name="correo"  th:value = "${proveedor.correo}"></th>
+                                <th><input type="number" class="input" name="telefono"  th:value = "${proveedor.telefono}"></th>
+                                <th><input type="text" class="input" name="direccion"  th:value = "${proveedor.direccion}"></th>
+                                <th><input type="text" class="input" name="password" placeholder="password" required=""></th>
 
-                     <th><input type="text" class="input" th:value = "${proveedor.oficio}"></th>
-       
+                                <th><input type="text" class="input" name="oficio" th:value = "${proveedor.oficio}"></th>
 
-                    </th>
 
-                    <th><input type="number" class="input" name="precioHs" th:value = "${proveedor.precioHs}"></th>
-                    <th><input type="text" class="input" name="descripService" th:value = "${proveedor.descripService}"></th>
-                    <th><input type="text" class="input" th:value = "${proveedor.rol}" disabled="disabled"></th>
-                    <th><input type="text" class="input" th:value = "${proveedor.fechaCreacion}" disabled="disabled"></th>
+                                </th>
 
-                    <th>
-                        <button type="submit" class="btn btn-primary mt-3 botones">Actualizar</button>
-                </form>
+                                <th><input type="number" class="input" name="precioHs" th:value = "${proveedor.precioHs}"></th>
+                                <th><input type="text" class="input" name="descripService" th:value = "${proveedor.descripService}"></th>
+                                <th><input type="text" class="input" th:value = "${proveedor.rol}" disabled="disabled"></th>
+                                <th><input type="text" class="input" th:value = "${proveedor.fechaCreacion}" disabled="disabled"></th>
 
-                <form th:action="@{/proveedor/eliminar/__${proveedor.id}__}" method="post">
-                    <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
-                </form> 
-                <a  th:href="@{/admin/modificarRolProveedor/__${proveedor.id}__}"><i class="fas fa-father-alt"></i> Cambiar Rol </a>
+                                <th>
+                                    <button type="submit" class="btn btn-primary mt-3 botones">Actualizar</button>
+                            </form>
 
-                </th>
+                            <form th:action="@{/proveedor/eliminar/__${proveedor.id}__}" method="post">
+                                <button class="btn btn-primary mt-3 botones" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')" style="color: red"> Eliminar</button>
+                            </form> 
+                            <a  th:href="@{/admin/modificarRolProveedor/__${proveedor.id}__}" class="btn btn-primary mt-3 botones"> Cambiar Rol </a>
 
-                </tr>
-                </tbody>
-            </table>
+                            </th>
 
-            <div>
-                <a>
-                    <button class="btn btn-primary" onclick="goBack()">Volver</button>
-                </a>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+           
             </div>
-        </div>
+
+                    <div>
+                        <a>
+                            <button class="btn btn-primary volver" onclick="goBack()">Volver</button>
+                        </a>
+                    </div>
+                </div>
 
 
-        <script>
-            function goBack() {
-            window.history.back();
-            }
-        </script>
-    </body>
-</html>
+                <script>
+                    function goBack() {
+                    window.history.back();
+                    }
+                </script>
+                </body>
+                </html>

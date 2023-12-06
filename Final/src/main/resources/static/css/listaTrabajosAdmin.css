@@ -1,42 +1,24 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* { 
     font-family: 'Raleway', sans-serif;
     color: whitesmoke;
 }
 
 body {
-    overflow: hidden;
     background-image: url('../img/fondo3.jpg');
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size:  cover;
-    overflow-y: auto;
-}
-
-section {
+    background-size: cover;
     display: flex;
-    justify-content: center;
+    margin: 0 auto;
     align-items: center;
-    min-height: 80%;
-   
+    justify-content: center;
 }
 
 .TableBox {
     position: relative;   
-    padding-left: 150px;
-}
-
-.fixed-bottom {
-    bottom: -40px;
 }
 
 .TableContainer {
-    top: -15px;
-    left: 30px;
-    position: relative;
-    width: 950px;
+    position: center;
+    width: 100%;
     min-height: 510px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
@@ -47,62 +29,37 @@ section {
     backdrop-filter: blur(5px);
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.5);
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    margin-bottom: 150px;
-
+    border-radius: 10px; /* Añade bordes redondeados */
+    margin-bottom: 30px;
 }
 
 .TableList {
+    position: relative;
     width: 100%;
     height: 100%;
     text-align: center;
-    padding-top: -100px;
-    padding-right: 30px;
-    padding-left: 50px;
-    max-height: 500px; 
-    overflow-y: auto;
-    
-}
-::-webkit-scrollbar {
-  width: 8px; /* Ancho de la barra de desplazamiento */
+    padding: 30px;
 }
 
 .TableList h2 {
     position: relative;
     color: whitesmoke;
-    font-size: x-large;
+    font-size: 35px;
     font-weight: 600;
     letter-spacing: 1px;
-    margin-bottom: 40px;
-    padding: 38px;
 }
-
-
 
 table {
     color: #001133;
     table-layout: fixed;
     border-collapse: collapse;
     margin: 0 auto;
-    text-align: center;
+    border-radius: 10px; /* Añade bordes redondeados */
 }
 
 thead {
     background: #00aae4;
-    position: relative;
-    padding: 8px
-    overflow-y: scroll;
-    
 }
-
-tr th:first-child {
-          border-radius: 6px 0px 0px 0px;
-        }
-tr th:last-child  {
-          border-radius: 0px 6px 0px 0px;
-        }
-
 
 th {
     padding: 8px;
@@ -110,25 +67,28 @@ th {
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
+}
 
 tbody tr:hover {
     background: rgba(255, 255, 255, 0.2);
 }
 
 .boton {
-    padding-top: 30px;
+    min-width: 200px;
+    color: whitesmoke;
+    border: solid 1px whitesmoke;
+    font-size: 14px;
+    font-weight: 600;
+
 }
 
-.btn-neon{
+.btn-neon {
     width: 100%;
-    background: rgba(255, 255, 255, 0.2);
+    background: #00a2e8; /* Cambia el color del botón */
     border: none;
-    outline: none;  
+    outline: none;
     border-radius: 10px;
-    border: 1px solid  rgba(255, 255, 255, 0.5);
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     text-align: center;
     position: relative;
     display: inline-block;
@@ -136,93 +96,85 @@ tbody tr:hover {
     letter-spacing: 1px;
     text-decoration: none;
     overflow: hidden;
-    transition: 0.1s;
-    padding: 5px;
+    transition: 0.2s;
+    padding: 3px;
+    margin: 3px;
 }
 
-.btn-neon:hover{
-    background: #04a4ec;
+.btn-neon:hover {
+    background: #007bb5; /* Cambia el color del hover del botón */
     box-shadow: 0 0 10px whitesmoke, 0 0 40px whitesmoke, 0 0 80px whitesmoke;
     transition-delay: 1s;
     color: #fff;
 }
 
-.btn-neon span{
+.btn-neon span {
     position: absolute;
     display: block;
 }
 
-#span1{
+#span1 {
     top: 0;
     left: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent,#21222c);
+    background: linear-gradient(90deg, transparent, #21222c);
 }
 
-.btn-neon:hover #span1{
+.btn-neon:hover #span1 {
     left: 100%;
     transition: 1s;
 }
 
-#span3{
+#span3 {
     bottom: 0;
     right: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(270deg, transparent,#21222c);
+    background: linear-gradient(270deg, transparent, #21222c);
 }
 
-.btn-neon:hover #span3{
+.btn-neon:hover #span3 {
     right: 100%;
     transition: 1s;
     transition-delay: 0.5s;
 }
 
-#span2{
+#span2 {
     top: -100%;
     right: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(180deg,transparent,#21222c);
+    background: linear-gradient(180deg, transparent, #21222c);
 }
 
-.btn-neon:hover #span2{
+.btn-neon:hover #span2 {
     top: 100%;
     transition: 1s;
     transition-delay: 0.25s;
 }
 
-#span4{
+#span4 {
     bottom: -100%;
     left: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(360deg,transparent,#21222c);
+    background: linear-gradient(360deg, transparent, #21222c);
 }
 
-.btn-neon:hover #span4{
+.btn-neon:hover #span4 {
     bottom: 100%;
     transition: 1s;
     transition-delay: 0.75s;
 }
 
-.volver{
-    display: flex;
-}
-
-.btn-primary{
-    display: flex;
-    margin: 20px auto;
-}
-
-.titulos{
-     margin: 30px auto;
-     text-align: center;
-}
-
 td, th {
     text-align: center;
+}
+
+.volver {
+    display: flex;
+    margin: 0 auto;
 }
 
 
@@ -263,11 +215,10 @@ td, th {
         overflow-y: hidden; /* Deshabilita la barra de desplazamiento vertical */
     }
 
-
     .TableList {
         padding-left: 10px; /* Ajusta el relleno izquierdo */
         padding-right: 10px; /* Ajusta el relleno derecho */
-        overflow-y: hidden; /* Agrega barra de desplazamiento vertical */
+        overflow-y: auto; /* Agrega barra de desplazamiento vertical */
         max-height: 300px; /* Establece la altura máxima de la tabla, ajusta según tus necesidades */
     }
 
@@ -276,9 +227,11 @@ td, th {
         margin-top: 20px; /* Ajusta el margen superior del botón */
     }
 
-    
-    .rechazado{
+    .rechazado {
         color: red;
-        
+    }
+
+    .calificado {
+        color: red;
     }
 }

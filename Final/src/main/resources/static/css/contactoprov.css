@@ -161,6 +161,12 @@
 }
 
 
+ span.infoProve {
+    margin-left: 10px;
+    margin-top: 0px;
+    margin-bottom: 1rem;
+}
+
 @media only screen and (max-width: 768px) {
    
     

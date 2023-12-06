@@ -13,6 +13,7 @@ import ProyectoFinal.Final.servicios.ClienteService;
 import ProyectoFinal.Final.servicios.ProveedorService;
 import ProyectoFinal.Final.servicios.TrabajoService;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -88,16 +89,18 @@ public class ProveedorControlador {
             Integer reputacion,
             @RequestParam(required = false) String descripService,
             @RequestParam(required = false) MultipartFile archivo,
-            ModelMap modelo) {
+            ModelMap modelo,
+            HttpSession sesion) {
         try {
             proServ.actualizarProveedor(nombre, apellido, dni, correo, telefono,
-                    password, direccion, oficio, precioHs, reputacion, descripService, archivo, id);
-            modelo.put("exito", "Logro modificar correctamente al Proveedor");
-            return "inicioProveedor.html";
+                    password, direccion, oficio, precioHs, descripService, archivo, id);
+            sesion.setAttribute("error", null);
+            sesion.setAttribute("exito", "Logro modificar correctamente al Proveedor");
+            return "redirect:/inicio";
         } catch (miException e) {
 
-            modelo.put("error", e.getMessage());
-            return "proveedor_modificar.html";
+            sesion.setAttribute("error", e.getMessage());
+            return "redirect:/perfil";
         }
     }
 
@@ -121,7 +124,7 @@ public class ProveedorControlador {
             modelo.put("error", e.getMessage());
 
         }
-        return "redirect:/";
+        return "redirect:/proveedor/lista";
     }
 
     @GetMapping("/inicio")

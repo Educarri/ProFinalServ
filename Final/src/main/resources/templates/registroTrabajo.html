@@ -7,6 +7,7 @@
         <title>Formulario de Creación</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
         <link  rel="stylesheet" href="/css/presupuesto.css" />
+        <link rel="icon" href="/img/logo.png" type="image">
 
         <!-- Imprimir el valor de proveedor.precioHs -->
         <script th:inline="javascript">
@@ -44,20 +45,34 @@
 
 
             <!-- CHECKOUT -->
-            <div class="center-container">
+            <div class="presupuesto-container">
                 <div class="container">
                     <div class="card cart">
-                        <label class="title">PRESUPUESTO HOMEFIX</label>
-                        <img src="/img/logo.png"> </img>
+                        <div class="logo">
+                            <label class="title">PRESUPUESTO</label>
+                            <img src="/img/logo.png"> </img>
+                            <p>HomeFix</p>
+
+                        </div>
                         <div class="steps">
                             <div class="step">
-                                <div>
-                                    <span>Datos Proveedor</span>
-                                    <p th:text="'Nombre : ' + ${proveedor.nombre}"></p>
-                                    <p th:text="'Tel. : ' + ${proveedor.telefono}"></p>
-                                    <p th:text="'Email : ' + ${proveedor.correo}"></p>
-                                    <p th:text="'Reputacion : ' + ${proveedor.calificacionPromedio}"></p>
+                                <div >
+                                    <span>PROVEEDOR :</span>
+                                    <div class="proveedor-data">
+                                        <p th:text="'Nombre : ' + ${proveedor.nombre}+ ' ' + ${proveedor.apellido}"></p>
+                                        <p th:text="'Contacto: '+'Tel. : ' + ${proveedor.telefono}+ ' / ' + 'Email : ' + ${proveedor.correo}" ></p>
+                                        <p>Calificación:<span th:switch="${proveedor.calificacionPromedio}" style="display: inline-block;">
+                                                <span th:case="0">☆☆☆☆☆</span>
+                                                <span th:case="1">★☆☆☆☆</span>
+                                                <span th:case="2">★★☆☆☆</span>
+                                                <span th:case="3">★★★☆☆</span>
+                                                <span th:case="4">★★★★☆</span>
+                                                <span th:case="5">★★★★★</span>
+                                                <span th:case="*">Calificación no disponible</span>
+                                            </span>
+                                        </p>
 
+                                    </div>
                                 </div>
                                 <hr>
                                 <div class="promo">
