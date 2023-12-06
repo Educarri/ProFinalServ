@@ -6,13 +6,14 @@
 body { 
     background-image: url('../img/fondo3.jpg'); 
     background-size:  cover;
-   
+    
    
 }
 
 label {
     color: whitesmoke
 }
+
 .formulario{
     padding: 30px;
     background-size: cover;
@@ -31,8 +32,19 @@ label {
     font-weight: 600;
     letter-spacing: 1px;
 }
+.encuadre{
+   
+   margin: 130px 60px;
+}
+.calificacion-input {
+    width: 20%; /* Ajusta el ancho según tus necesidades */
+}
+
+.comentario-input {
+    width: 60%; /* Ajusta el ancho según tus necesidades */
+}
 .input{
-    width: 40%;
+   
     border-radius: 10px;
     border: 1px solid  rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);

@@ -21,7 +21,7 @@
                 <p th:text="${error}"></p>
             </div>
         </div>
-        <div class="container m-5">
+        <div class="encuadre">
             <div class="TableBox">
 
             
@@ -33,8 +33,8 @@
                             <div class="mb-3">
 
 
-                                <input type="number" min="1" max="5" class="input" name="calificacion" placeholder="CALIFICACION">
-                                <input type="text" class="input" name="comentario" placeholder="COMENTARIO">
+                                <input type="number" min="1" max="5" class="input calificacion-input" name="calificacion" placeholder="CALIFICACION">
+                                <input type="text" class="input comentario-input" name="comentario" placeholder="COMENTARIO">
                                 <input hidden type="text"  name="estado" th:value="Pendiente">
 
                                 <button class="btn-neon" type="submit">Registrar Calificacion</button>
@@ -44,6 +44,10 @@
                 </div>
 
             </div>
+        </div>
+        
+        <div> 
+            <footer th:replace="/fragments/footer :: footer"> </footer>
         </div>
     
 
