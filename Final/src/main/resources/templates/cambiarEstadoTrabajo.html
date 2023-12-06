@@ -18,7 +18,7 @@
         <div class="formulario" > 
             <h1 >ASIGNE EL ESTADO DEL TRABAJO</h1>
 
-            <form th:action="@{/trabajo/cambiar/__${trabajo.id}__}" method="post" >
+            <form th:action="@{/trabajo/modificar/__${trabajo.id}__}" method="post" >
                 <div class="mb-8">
 
                 
@@ -31,9 +31,10 @@
                         <option value="EN CURSO">EN CURSO</option>
                         <option value="FINALIZADO">FINALIZADO</option>
                     </select>
-                        <button class="mx-auto d-block" type="submit">Registrar Calificacion</button>
+                         <button class="btn-neon" type="submit">Registrar Calificacion</button>
                     </div>
             </form>
+           
         </div>
 
         <div style="display: block">
