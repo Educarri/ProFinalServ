@@ -85,7 +85,7 @@ table {
     table-layout: fixed;
     border-collapse: collapse;
     margin: 0 auto;
-    
+    text-align: center;
 }
 
 thead {
@@ -207,6 +207,9 @@ tbody tr:hover {
     transition-delay: 0.75s;
 }
 
+.volver{
+    display: flex;
+}
 
 .btn-primary{
     display: flex;
@@ -221,6 +224,8 @@ tbody tr:hover {
 td, th {
     text-align: center;
 }
+
+
 
 /* Consultas de medios para hacer el diseño más responsive */
 @media only screen and (max-width: 768px) {

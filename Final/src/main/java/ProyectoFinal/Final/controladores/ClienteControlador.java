@@ -94,6 +94,7 @@ public class ClienteControlador {
             HttpSession sesion) {
         try {
             cliServ.modificarCliente(nombre, apellido, dni, correo, telefono, password, direccion, id);
+            sesion.setAttribute("error", null);
             sesion.setAttribute("exito", "Logro modificar correctamente al Cliente");
             return "redirect:/inicio";
         } catch (miException e) {
