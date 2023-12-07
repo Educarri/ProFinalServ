@@ -79,11 +79,14 @@ tbody tr:hover {
 }
 
 .boton {
-    min-width: 200px;
+    min-width: 150px;
     color: whitesmoke;
     border: solid 1px whitesmoke;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
+    margin-top:5px;
+    margin-bottom: 10px;
+    
 
 }
 

@@ -106,29 +106,7 @@ input[type="file"],
     min-width: 100px;
 }
 
-.btn-primary {
-    background: #00a2e8;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    text-align: center;
-    position: relative;
-    display: inline-block;
-    color: whitesmoke;
-    letter-spacing: 1px;
-    text-decoration: none;
-    overflow: hidden;
-    transition: 0.1s;
-    padding: 5px 10px; /* Ajusta el relleno de los botones */
-    margin: 1px;
-}
 
-.btn-primary:hover {
-    background: #007bb5;
-    box-shadow: 0 0 10px whitesmoke, 0 0 40px whitesmoke, 0 0 80px whitesmoke;
-    transition-delay: 0.3s;
-    color: #fff;
-}
 
 .volver {
     display: flex;

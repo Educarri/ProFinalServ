@@ -13,7 +13,7 @@
         <div class="TableBox">
             <div class="TableContainer">
                 <div class="TableList">
-                    <h2>Listado De Trabajos Seleccionados</h2>
+                    <h2>LISTADO DE TODOS LOS CLIENTES</h2>
 
                     <table>
                         <thead>
@@ -46,11 +46,11 @@
                                 <th><input type="text" size="10" class="input" name="password" placeholder="password" required=""></th>
                             </div>
 
-                            <th><button style="width: 90px" type="submit" class="btn-neon">Actualizar</button>
+                            <th><button style="width: 90px" type="submit" class="btn btn-sm btn-outline-secondary boton">ACTUALIZAR</button>
                         </form>
 
                         <form th:action="@{/cliente/eliminar/__${cliente.id}__}" method="post">
-                            <button style="width: 90px;color: red" class="btn-neon" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> Eliminar</button>
+                            <button style="width: 90px;color: red" class="btn btn-sm btn-outline-secondary boton" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')"><i class="fas fa-father-alt"></i> ELIMINAR</button>
                         </form>    
                         </th>
                         <th>        
@@ -65,7 +65,7 @@
         
         <div>
             <a>
-                <button class="btn-neon" onclick="goBack()">Volver</button>
+                <button class="btn btn-primary volver" onclick="goBack()">Volver</button>
             </a>
         </div>
             </div>
