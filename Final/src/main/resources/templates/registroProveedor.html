@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/registroProveedor.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+        <link href="/css/errorexito.css" rel="stylesheet" type="text/css"/>
+        <link rel="icon" href="/img/logo.png" type="image">
+        <title>Registro Proveedor</title>
+    </head>
+
+    <body>
+
+        <header>
+            <nav th:replace="/fragments/navbar :: nav"></nav> 
+        </header>
+
+        <div th:if="${error != null}" class="mensajeError">
+            <div class="bloque">
+                <h5 class="texto-error">Error!</h5>
+                <p class="texto-error-mensaje" th:text="${error}"></p>
+            </div> 
+        </div>
+
+        <section>
+
+
+            <div class="RegistroBox">
+                <div class="RegistroContainer">
+                    <div class="RegistroForm"> 
+
+                        <h2>Registro de Proveedor</h2>
+                        <div class="formulario"> 
+
+                            <form th:action="@{/proveedor/registro}" method="post" enctype="multipart/form-data">
+                                <!-- Campos del formulario -->
+                                <div class="inputBox">
+                                    <input type="text" class="input" name="nombre" placeholder="Nombre">
+                                    <input type="text" class="input" name="apellido" placeholder="Apellido">
+                                    <input type="number" class="input" name="dni" placeholder="DNI">
+                                </div>
+                                <div class="inputBox">
+                                    <input type="text" class="input" name="correo" placeholder="Correo electronico">
+                                    <input type="number" class="input" name="telefono" placeholder="Telefono">
+                                    <input type="text" class="input" name="direccion" placeholder="Direccion">
+                                </div>
+
+                                <div class="inputBox">
+                                    <input type="password" class="input" name="password" placeholder="Password">
+                                    <label class="LabelFoto" for="inputGroupFile01">Foto</label>
+                                    <input type="file" class="form-control" id="inputGroupFile01" name="archivo">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="tipoProveedor">Selecciona el tipo de proveedor:</label>
+                                    <select class="form-control"  name="oficio">
+                                        <option value="albañil">Albañil</option>
+                                        <option value="electricista">Electricista</option>
+                                        <option value="plomero">Plomero</option>
+                                        <option value="gasista">Gasista</option>
+                                    </select>
+                                </div>
+
+                                <div class="inputBox">
+
+                                    <input type="text" class="input" name="descripService" placeholder="Descripcion del Servicio">
+                                    <!--                    <input type="file" class="input" name="archivo">-->
+
+                                    <input type="number" class="input" name="precioHs" placeholder="Precio x Hora">
+
+
+                                </div>
+
+
+
+                                <button class="btn-neon" type="submit">
+                                    <span id="span1"></span>
+                                    <span id="span2"></span>
+                                    <span id="span3"></span>
+                                    <span id="span4"></span>
+                                    Registrar Proveedor
+                                </button>
+                            </form>
+                        </div>
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+                        </script>
+                        </section>
+                        <div>
+                            <footer th:replace="/fragments/footer :: footer"> </footer>
+                        </div>
+
+                        </body>
+                        </html>

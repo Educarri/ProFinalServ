@@ -1,0 +1,89 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>0</x><y>100</y><w>210</w><h>190</h></coordinates><panel_attributes>Usuario
+--
+# id: String
+# nombre: String
+# apellido: String
+# DNI: Long
+# correo: String
+# telefono: String
+# password: String
+# direccion: String
+# rol: Rol
+--
++ usuario()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>20</y><w>220</w><h>170</h></coordinates><panel_attributes>Cliente
+--
++ cliente()
++ registrarCliente(Cliente): Cliente
++ modificarCliente(String, Cliente): Cliente
++ listarClientes(): List&lt;Cliente&gt;
++getOne(String) : Cliente
++ eliminarCliente(String): void
++buscarClientePorDNI(Long) : Cliente
++validar(Cliente): void
++isPasswordValid(String): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>90</y><w>100</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;60;72;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>390</y><w>380</w><h>150</h></coordinates><panel_attributes>Administrador
+--
++ administrador()
++ registrarAdministrador(Administrador): Administrador
++ modificarAdministrador(String, Administrador): Administrador
++ listarAdministrador(): List&lt;Administrador&gt;
++getOne(String) : Administrador
++ eliminarAdministrador(String): void
++validar(Administrador): void
++isPasswordValid(String): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>130</x><y>280</y><w>140</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>14;10;122;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>310</y><w>310</w><h>240</h></coordinates><panel_attributes>Proveedor
+--
+- oficio: Oficios
+- precioHs: Integer
+- reputacion: Integer
+- descripcionService: String 
+- imagen : Imagen    
+--
++ proveedor()
++ registrarProveedor(Proveedor): Proveedor
++ modificarProveedor(String, Proveedor): Proveedor
++ listarProveedor(): List&lt;Proveedor&gt;
++getOne(String) : Proveedor
++ eliminarProveedor(String): void
++validar(Proveedor): void
++isPasswordValid(String): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>170</y><w>340</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;320;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>10</y><w>260</w><h>240</h></coordinates><panel_attributes>Trabajo
+--
+# id:String
+-  IdCliente :String
+- IdProveedor : String
+- HsTrabajo :Integer
+- presupuesto: Integer
+- estado: String
+- calificacion: Calificacion 
+--
+ + registrarTrabajo(Trabajo): Trabajo
++ modificarTrabajo(String, Trabajo): Trabajo
++ listarTrabajo(): List&lt;Trabajo&gt;
++getOne(String) : Trabajo
++ eliminarTrabajo(String): void
++validar(Trabajo): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>320</y><w>110</w><h>80</h></coordinates><panel_attributes>Rol
+--
+USER: Rol
+PROVEEDOR: Rol
+ADMIN: Rol</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>880</x><y>310</y><w>200</w><h>100</h></coordinates><panel_attributes>Oficios
+--
+ALBAÑIL: Oficio
+ELECTRICISTA: Oficio
+PLOMERO: Oficio
+GASISTA: Oficio</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>10</y><w>210</w><h>190</h></coordinates><panel_attributes>Calificacion
+--
+- id: String;
+-puntaje: Integer 
+- comentario: String 
+--
++Calificacion()
++ registrarCalificacion(String, Integer)
++ eliminarCalificacion(String): void
++validar(String, Integer): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>60</x><y>280</y><w>40</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>14;40;12;10</additional_attributes></element><element><id>Relation</id><coordinates><x>820</x><y>90</y><w>80</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>54;10;12;40</additional_attributes></element><element><id>Relation</id><coordinates><x>820</x><y>350</y><w>90</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>64;10;12;10</additional_attributes></element><element><id>Relation</id><coordinates><x>650</x><y>240</y><w>40</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>14;70;12;10</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>90</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>14;10;92;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>860</x><y>440</y><w>220</w><h>150</h></coordinates><panel_attributes>Imagen
+--
+- id: String
+ - mime: String
+ - nombre :String
+ - contenido : byte
+--
++ Imagen()
++guardar (MultipartFile)
++eliminarImagen(MultipartFle, String)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>820</x><y>390</y><w>70</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>14;10;52;50</additional_attributes></element></diagram>

@@ -10,5 +10,5 @@ package ProyectoFinal.Final.enumeraciones;
  * @author gianc
  */
 public enum Rol {
-    ADMIN, USER, PROVEEDOR
+    ADMIN, USER, PROVEEDOR, BAJA
 }

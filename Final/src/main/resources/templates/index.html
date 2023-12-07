@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>HomeFix</title>
+
+        <!--    <img src="../static/img/logo.png "/>-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+        <link href="/css/main.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/errorexito.css" rel="stylesheet" type="text/css"/>
+        <link rel="icon" href="/img/logo.png" type="image">
+
+    </head>
+    <body>
+        <header>
+            <nav th:replace="/fragments/navbar :: nav"></nav>  
+        </header> 
+
+        <div th:if="${exito != null}" class="exito" >
+            <div class="bloque">
+                <h5 class="texto-exito" >Exito!</h5>
+                <p class="texto-exito-mensaje" th:text="${exito}"></p>
+            </div>   
+        </div>
+        <div th:if="${error != null}" class="mensajeError">
+            <div class="bloque">
+                <h5 class="texto-error">Error!</h5>
+                <p class="texto-error-mensaje" th:text="${error}"></p>
+            </div> 
+        </div>
+
+        <section>
+
+
+
+            <div class="intro"> 
+
+                <h3>HomeFix surge a partir de la necesidad de los vecinos de la
+                    localidad de Chacras de Coria de contar con una plataforma que
+                    permita el acceso a proveedores de servicios de mantenimiento, reparación y mejora del hogar con profesionales recomendados por la misma comunidad.
+                    Los usuarios registrados pueden buscar proveedores del oficio que requieren, evaluar su reputacion y obtener los datos de contacto y solicitrar un trabajo.
+                    Una vez finalizado el trabajo, el usuario califica el servicio y deja sus comentarios.
+                </h3>
+            </div>
+
+
+            <div class="list_card shadow ">
+                <div class="card-body ">
+                    <h2 class="card-title ">Listado de proveedores de servicios</h2>
+
+                    <div>
+                        <h3>SELECCIONE EL FILTRO PARA BUSCAR :</h3>
+
+                        <!-- Filtro por oficio -->
+                        <label class="filtro" for="oficioFilter">Oficio:</label>
+                        <select id="oficioFilter" class="form-select">
+                            <option value="">Todos</option>
+                            <option value="PLOMERO">PLOMEROS</option>
+                            <option value="GASISTA">GASISTAS</option>
+                            <option value="ALBAÑIL">ALBAÑILES</option>
+                            <option value="ELECTRICISTA">ELECTRICISTAS</option>
+                            <!-- Agrega más opciones según tus oficios -->
+                        </select>
+
+                        <!-- Filtro por antigüedad -->
+                        <label class="filtro" for="antiguedadFilter">Antigüedad:</label>
+                        <select id="antiguedadFilter" class="form-select">
+                            <option value="">Todas</option>
+                            <option value="1">Creados hace menos de 1 dia</option>
+                            <option value="30">Creados hace menos de 30 dias</option>
+                            <!-- Agrega más opciones según tu lógica de antigüedad -->
+                        </select>
+
+                        <!-- Botón para aplicar filtros -->
+                        <button id="aplicarFiltros" class="btn-neon">Aplicar Filtros</button>
+                    </div>
+
+                    <div class="album">
+                        <div class="container-fluid">
+                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                                <div class="col-6 col-md-4 col-lg-3 " th:each="proveedor : ${proveedores}">
+                                    <div class="card shadow-sm" >
+                                        <!-- Puedes personalizar la imagen según la información del proveedor -->
+                                        <img th:if="${proveedor.imagen != null}" th:src="@{/imagen/perfil/__${proveedor.id}__}" class="bd-placeholder-img card-img-top" width="150px" height="200px" alt="Imagen del proveedor"/>
+
+                                        <div class="card-body">
+                                            <!-- Mostrar información del proveedor -->
+                                            <h5 class="card-title" th:text="${proveedor.nombre}"></h5>
+                                            <p class="card-text-oficio" th:text="${proveedor.oficio}"></p>
+
+                                            <!-- <p class="card-text" th:text="${proveedor.calificacionPromedio}"></p>-->
+                                            <p class="card-text">
+                                                <span th:switch="${proveedor.calificacionPromedio}">
+                                                    <span th:case="0">☆☆☆☆☆</span>
+                                                    <span th:case="1">★☆☆☆☆</span>
+                                                    <span th:case="2">★★☆☆☆</span>
+                                                    <span th:case="3">★★★☆☆</span>
+                                                    <span th:case="4">★★★★☆</span>
+                                                    <span th:case="5">★★★★★</span>
+                                                </span>
+                                            </p>
+
+
+                                            <p class="card-text-antiguedad" th:text="${proveedor.fechaCreacion}"></p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <!--                                                        Agregar enlaces o botones según tus necesidades -->                             
+                                                    <a th:href="@{/login}" th:if="${session.usuarioSesion == null}" class="btn-neon"><img class="contact" src="../img/contact.png" alt="contacto"></a>
+                                                    <a th:href="@{/proveedor/contacto/__${proveedor.id}__}" sec:authorize="hasAnyRole('USER', 'ADMIN')" class="btn-neon"><img class="contact" src="../img/contact.png" alt="contacto"></a>
+                                                    <div class="btn-group">
+                                                        <form th:action="@{/proveedor/eliminar/__${proveedor.id}__}" method="post">
+                                                            <button type="submit" sec:authorize="hasRole('ADMIN')" class="btn-neon" >
+                                                                <img class="delete" src="../img/delete.png" alt="delete">
+                                                            </button>
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        </section>
+        <div> 
+            <footer th:replace="/fragments/footer :: footer"> </footer>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+            jQuery(document).ready(function($) {
+            var footer = $('.footer');
+
+            $(window).scroll(function() {
+            var windowHeight = $(window).height();
+            var scrollTop = $(window).scrollTop();
+            var documentHeight = $(document).height();
+
+            // Verifica si el usuario está cerca del final de la página (ajusta el 100 según sea necesario)
+            if (windowHeight + scrollTop >= documentHeight - 100) {
+            footer.addClass('visible');
+            } else {
+            footer.removeClass('visible');
+            }
+            });
+            });
+
+
+
+        </script>
+
+        <!-- SCRIPT PARA EL FILTRADO -->
+        <script>
+            $(document).ready(function () {
+            $('#aplicarFiltros').on('click', function () {
+
+            var oficio = $('#oficioFilter').val();
+            var antiguedad = $('#antiguedadFilter').val();
+
+            $('.card').each(function () {
+            var proveedorOficio = $(this).find('.card-text-oficio').text().trim();
+            var proveedorFechaCreacion = $(this).find('.card-text-antiguedad').text().trim();
+
+            // Convierte la fecha de creación a un objeto Date
+            var proveedorDate = new Date(Date.parse(proveedorFechaCreacion.replace(/-/g, '/')));
+
+            // Calcula la diferencia de días entre la fecha actual y la fecha de creación
+            var diferenciaDias = Math.floor((new Date() - proveedorDate) / (1000 * 60 * 60 * 24));
+
+            var cumpleFiltroAntiguedad = antiguedad === '' || diferenciaDias < parseInt(antiguedad);
+
+            var cumpleFiltroOficio = oficio === '' || proveedorOficio === oficio;
+
+            if (cumpleFiltroOficio && cumpleFiltroAntiguedad) {
+            $(this).addClass('cumpleFiltro').show();
+            } else {
+            $(this).removeClass('cumpleFiltro').hide();
+            }
+            });
+            });
+            });
+        </script>
+
+
+
+
+
+
+    </body>
+</html>
+
+
